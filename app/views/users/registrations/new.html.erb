@@ -4,6 +4,42 @@
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname, autofocus: true, autocomplete: "lastname" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_no %><br />
+    <%= f.text_field :phone_no, autofocus: true, autocomplete: "phone_no" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birthdate %><br />
+    <%= f.text_field :birthdate, autofocus: true, autocomplete: "birthdate" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.radio_button :gender, :value => "Male" %>Male
+    <%= f.radio_button :gender, :value => "Female" %>Female
+  </div>
+
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_area :address, autofocus: true, autocomplete: "address" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
