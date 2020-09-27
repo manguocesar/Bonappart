@@ -5,13 +5,20 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag controller_name, media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag controller_name, 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="page-container">
+      <div class="main-content">
+        <%= render 'shared/header' %>
+        <%= render 'shared/messages' %>
+        <div class="main-content-inner">
+          <%= yield %>
+        </div>
+      </div>
+      <%= render 'shared/footer' %>
+    </div>
   </body>
 </html>
