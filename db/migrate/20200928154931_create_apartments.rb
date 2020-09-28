@@ -8,10 +8,9 @@ class CreateApartments < ActiveRecord::Migration[6.0]
       t.string :city
       t.string :country
       t.string :area
-      t.string :type
+      t.string :apartment_type
       t.boolean :availability
       t.datetime :available_date
-      t.string :status
       t.integer :total_bedrooms
       t.string :shower_room
       t.string :distance_from_university
