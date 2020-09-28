@@ -1,0 +1,10 @@
+<div class="flashbox">
+  <% flash.each do |type, msg| %>
+    <% unless msg == 'You need to sign in or sign up before continuing.' %>
+      <div id='flash' class="alert alert-dismissible <%= build_alert_classes(type) %>">
+        <%= msg %>
+        <button type="button" class="close" data-dismiss="alert">×</button>
+      </div>
+    <% end %>
+  <% end %>
+</div>
