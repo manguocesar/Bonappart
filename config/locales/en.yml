@@ -10,6 +10,7 @@
 #
 #     <%= t('hello') %>
 #
+
 # To use a different locale, set it with `I18n.locale`:
 #
 #     I18n.locale = :es
@@ -31,3 +32,29 @@
 
 en:
   hello: "Hello world"
+  apartments: Accomodations
+  apartment:
+    add_apartment: Add apartment
+    edit_apartment: Edit apartment
+    title: Title
+    description: Description
+    postalcode: Postalcode
+    floor: Floor
+    city: City
+    country: Country
+    area: Area
+    apartment_type: Accomodation type
+    availability: Availability
+    arrival_date: Arrival date
+    departure_date: Departure date
+    status: Status
+    total_bedrooms: Total bedrooms
+    shower_room: Shower room
+    distance_from_university: Distance from university
+    other_facilities: Other facilities
+    longitude: Longitude
+    latitude: Latitude
+    images: Images
+    create: Apartment added successfully
+    edit: Apartment edited successfully
+    delete: Apartment deleted successfully

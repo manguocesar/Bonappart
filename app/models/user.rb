@@ -9,4 +9,8 @@ class User < ApplicationRecord
   validates :phone_no, :presence => true,
                        :numericality => true,
                        :length => { :minimum => 10, :maximum => 12 }
+
+  def administrative_role?
+  	(has_role? :admin) || (has_role? :landloard)
+  end
 end

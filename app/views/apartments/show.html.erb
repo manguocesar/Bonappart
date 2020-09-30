@@ -1,0 +1,57 @@
+<div class="col-lg-12 mt-8">
+  <div class="card mt-3">
+    <div class="card-body">
+      <div class="row mt-3">
+        <div class="col-sm-6">
+          <h4 class="mb-3"><%= @apartment.title %><br> Available: <%= @apartment.arrival_date.strftime('%d-%m-%Y') %> To <%= @apartment.departure_date.strftime('%d-%m-%Y') %></h4>
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+              <% @apartment.images.each do |image| %>
+                  <% if image == @apartment.images.first%>
+                    <div class="carousel-item active">
+                    <%= image_tag url_for(image), class: "d-block w-100" %> 
+                    </div>
+                  <% else %>
+                  <div class="carousel-item">
+                    <%= image_tag url_for(image), class: "d-block w-100" %>
+                    </div>
+                <% end %>
+              <% end %>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 mt-5">
+              <div class="card">
+                <div class="card-body">
+                  <div class="media mb-5">
+                    <div class="media-body">
+                      <p><%= t('apartment.shower_room') %>: <%= @apartment.shower_room %></p>
+                      <p><%= t('apartment.floor') %>: <%= @apartment.floor %></p>
+                      <p><%= t('apartment.total_bedrooms') %>: <%= @apartment.total_bedrooms %></p>
+                      <p><%= t('apartment.area') %>: <%= @apartment.area %></p>
+                      <p><%= t('apartment.distance_from_university') %>: <%= @apartment.distance_from_university %></p>
+                      <p><%= t('apartment.description') %>: <%= @apartment.description %></p>
+                      <p><%= t('apartment.other_facilities') %>: <%= @apartment.other_facilities %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
+          <% if current_user.administrative_role? %>
+            <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'btn btn-primary mt-4 pr-4 pl-4' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

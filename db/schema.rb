@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_28_160440) do
+ActiveRecord::Schema.define(version: 2020_09_29_154444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,18 +44,20 @@ ActiveRecord::Schema.define(version: 2020_09_28_160440) do
     t.string "city"
     t.string "country"
     t.string "area"
-    t.string "type"
+    t.string "apartment_type"
     t.boolean "availability"
-    t.datetime "available_date"
-    t.string "status"
+    t.datetime "arrival_date"
+    t.datetime "departure_date"
     t.integer "total_bedrooms"
     t.string "shower_room"
     t.string "distance_from_university"
     t.string "other_facilities"
-    t.string "longitude"
-    t.string "latitude"
+    t.float "longitude"
+    t.float "latitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_apartments_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -101,4 +103,5 @@ ActiveRecord::Schema.define(version: 2020_09_28_160440) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "apartments", "users"
 end

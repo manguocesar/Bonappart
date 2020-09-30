@@ -6,3 +6,4 @@
 //= require jquery.validate
 //= require common/jquery.slimscroll.min
 //= require common/custom
+//= require apartments/custom
