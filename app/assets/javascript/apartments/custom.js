@@ -51,3 +51,27 @@ var ApartmentForm = {
   });
   }
 }
+
+var Filter = {
+  result: function (){
+    $('.sort-filter').click(function () {
+      $.ajax({
+        type: "GET",
+        url: '/apartments',
+        dataType: 'script',
+        data: {
+          filter: {
+            distance_from_university: $('#distance_from_university').val(),
+            distance_from_university: $('#distance_from_university').val(),
+            arrival_date: $('#arrival-date').val(),
+            departure_date: $('#departure-date').val(),
+          }
+        }
+      });
+    });
+  }
+}
+
+$('#arrival-date, #departure-date').datetimepicker({
+  format: 'DD/MM/YYYY'
+});

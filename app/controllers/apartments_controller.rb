@@ -5,7 +5,31 @@ class ApartmentsController < ApplicationController
   before_action :set_apartment, only: %i[show edit update destroy]
 
   def index
-    @apartments = Apartment.all
+    if params.dig(:filter).present?
+      @apartments = pagination(filter_result)
+    else
+      @apartments = pagination(search_data)
+    end
+  end
+
+  def filter_result
+    binding.pry
+    if params.dig(:filter, :distance_from_university).present?
+      @apartments = Apartment.filter_by_distance_from_university(params.dig(:filter, :distance_from_university))
+    elsif params.dig(:filter, :arrival_date).present?
+      @apartments = Apartment.filter_by_arrival_date(params.dig(:filter, :arrival_date))
+    elsif params.dig(:filter, :departure_date).present?
+      @apartments = Apartment.filter_by_departure_date(params.dig(:filter, :departure_date))
+    else
+      @apartments = Apartment.all
+    end
+  end
+
+  def search_data
+    search_data = params.dig(:search)
+    return Apartment.all if search_data.blank?
+
+    Apartment.filter_by_type(params.dig(:search))
   end
 
   def show; end

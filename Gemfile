@@ -34,6 +34,7 @@ gem "pundit" # for authorization
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise', '~> 4.7', '>= 4.7.3' # for authentication
+gem 'kaminari' # for pagination
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

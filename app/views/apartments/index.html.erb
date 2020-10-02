@@ -1,42 +1,43 @@
-<%= link_to new_apartment_path, class: 'btn btn-outline-primary btn-sm mt-3 ml-3 ' do %>
-  <i class="fa fa-plus left" aria-hidden="true"></i> <%= t('apartment.add_apartment') %>
+<% if current_user.administrative_role? %>
+  <%= link_to new_apartment_path, class: 'btn btn-rounded btn-sm pull-right' do %>
+    <i class="fa fa-plus left" aria-hidden="true"></i> <%= t('apartment.add_apartment') %>
+  <% end %>
 <% end %>
-<div class="card-area">
-  <div class="row">
-    <% @apartments.each do |apartment| %>
-      <div class="col-lg-4 col-md-6 mt-5">
-        <div class="card card-bordered">
-          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner" role="listbox">
-              <% apartment.images.each do |image| %>
-                <% if image == apartment.images.first%>
-                  <div class="carousel-item active">
-                    <%= image_tag url_for(image), class: "d-block w-100" %> 
-                  </div>
-                <% else %>
-                  <div class="carousel-item">
-                    <%= image_tag url_for(image), class: "d-block w-100" %>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-          <div class="card-body">
-            <h5 class="title"><%= apartment.title %></h5>
-            <p class="card-text"><%= apartment.description.truncate(100) %>
-            </p>
-            <%= link_to  'View more', apartment_path(apartment), class: 'btn btn-primary' %> 
-          </div>
-        </div>
-      </div>
+<div class='row'>
+  <div class="search-box ml-4 mt-3">
+    <%= form_tag apartments_path, :method => 'get' do %>
+      <p>
+        <%= text_field_tag :search, params[:search] , placeholder: 'Search by Apartment Type..'%>
+        <i class= 'ti-search'></i>
+      </p>
     <% end %>
   </div>
+  <div class="col-sm-2 mt-3">
+    <%= select_tag(:distance_from_university, options_for_select(Apartment.pluck(:distance_from_university)), class: "form-control selectpicker", "data-live-search" => "true", include_blank: t('apartment.distance_from_university')) %>
+  </div>
+  <div class="col-sm-2 mt-3">
+    <%= select_tag(:distance_from_university, options_for_select(Apartment.pluck(:distance_from_university)), class: "form-control selectpicker", "data-live-search" => "true", include_blank: t('apartment.rent')) %>
+  </div>
+  <div class="col-sm-2 mt-3">
+    <input class="form-control" id="arrival-date", placeholder="<%= t('apartment.arrival_date') %>">
+  </div>
+  <div class="col-sm-1.5 mt-3">
+      <input class="form-control" id="departure-date", placeholder="<%= t('apartment.departure_date') %>">
+  </div>
+  <div class="col-sm-1 mt-2">
+    <button type="button" class="btn btn-outline-primary mt-2 btn-xs sort-filter"  data-disable-with="false" ><%= t('filter') %></button>
+  </div>
 </div>
+<div class="card-area">
+  <div class="row", id='apartmentCard'>
+    <%= render 'apartments', apartments: @apartments %>
+  </div>
+  <div class='d-flex justify-content-center mt-3 dapartments-pagination'>
+    <%= render 'apartments_pagination', apartments: @apartments %>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function (e) {
+    Filter.result();    
+  });
+</script>

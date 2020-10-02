@@ -32,6 +32,9 @@
 
 en:
   hello: "Hello world"
+  filter_results: Filter
+  search: Seacrh
+  confirmation: Are you sure?
   apartments: Accomodations
   apartment:
     add_apartment: Add apartment
@@ -48,6 +51,7 @@ en:
     arrival_date: Arrival date
     departure_date: Departure date
     status: Status
+    rent: Rent
     total_bedrooms: Total bedrooms
     shower_room: Shower room
     distance_from_university: Distance from university

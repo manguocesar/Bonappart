@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   root 'dashboard#index'
   get 'homes/index'
   resources :apartments
+  get 'sort_result', to: 'apartments#sort_result'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
