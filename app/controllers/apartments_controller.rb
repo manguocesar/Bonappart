@@ -13,7 +13,6 @@ class ApartmentsController < ApplicationController
   end
 
   def filter_result
-    binding.pry
     if params.dig(:filter, :distance_from_university).present?
       @apartments = Apartment.filter_by_distance_from_university(params.dig(:filter, :distance_from_university))
     elsif params.dig(:filter, :arrival_date).present?

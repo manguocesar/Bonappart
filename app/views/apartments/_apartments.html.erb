@@ -4,15 +4,9 @@
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
               <% apartment.images.each do |image| %>
-                <% if image == apartment.images.first%>
-                  <div class="carousel-item active">
-                    <%= image_tag url_for(image), class: "d-block w-100" %> 
-                  </div>
-                <% else %>
-                  <div class="carousel-item">
-                    <%= image_tag url_for(image), class: "d-block w-100" %>
-                  </div>
-                <% end %>
+                <div class="carousel-item <%= apartment.active_class(image) %>">
+                  <%= image_tag url_for(image), class: "d-block w-100" %>
+                </div>
               <% end %>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
