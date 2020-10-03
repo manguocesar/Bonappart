@@ -12,6 +12,9 @@ class Apartment < ApplicationRecord
 						:shower_room, :other_facilities,
 						:distance_from_university, :longitude, :latitude
 
+  geocoded_by :full_address
+  after_validation :geocode#, if: ->(obj){ obj.address.present? and obj.address_changed? }
+
   scope :filter_by_type, lambda { |search| where("apartment_type ILIKE :search", search: "%#{search.downcase}%") }
   scope :filter_by_distance_from_university, ->(distance_from_university) { where distance_from_university: distance_from_university }
   # scope :filter_by_rent, ->(rent) { where distance_from_university: rent } Update when rent model available
@@ -20,5 +23,9 @@ class Apartment < ApplicationRecord
 
   def active_class(image)
     image == images.first ? 'active' : ''
+  end
+
+  def full_address
+    [country, city, area].compact.join(', ')
   end
 end

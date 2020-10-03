@@ -35,6 +35,7 @@ gem "pundit" # for authorization
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise', '~> 4.7', '>= 4.7.3' # for authentication
 gem 'kaminari' # for pagination
+gem 'geocoder' # For geocoding map
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
