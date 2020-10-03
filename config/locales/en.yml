@@ -32,6 +32,7 @@
 en:
   hello: "Hello world"
   users:
+    sign_up: Sign Up
     edit_user: Edit User
     firstname: First Name
     lastname: Last Name
@@ -45,3 +46,5 @@ en:
     new_password: New Password
     confirm_password: Confirm Password
     profile_pic: Profile Picture
+    select_role: Select Role
+    sign_up_as: Sign Up As
