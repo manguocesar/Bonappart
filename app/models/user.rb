@@ -5,6 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :image
   validates_presence_of :firstname, :lastname, :birthdate, :address, :gender
   validates :phone_no, :presence => true,
                        :numericality => true,

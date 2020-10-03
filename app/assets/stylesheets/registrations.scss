@@ -8,3 +8,24 @@
 @import "default-css";
 @import "styles";
 @import "responsive";
+
+.custom-radio{
+  margin-top: 0%;
+  .male{
+    margin-left: 20%;
+  }
+  .female{
+    margin-left: 17.5%;
+  }
+}
+
+.profile {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}

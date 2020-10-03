@@ -31,3 +31,17 @@
 
 en:
   hello: "Hello world"
+  users:
+    edit_user: Edit User
+    firstname: First Name
+    lastname: Last Name
+    phone_no: Phone No
+    email: Email
+    birthdate: Birth date
+    address: Address
+    gender: Gender
+    username: User Name
+    current_password: Current Password
+    new_password: New Password
+    confirm_password: Confirm Password
+    profile_pic: Profile Picture

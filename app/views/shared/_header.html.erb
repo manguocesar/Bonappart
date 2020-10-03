@@ -156,11 +156,11 @@
         <div class="clearfix d-md-inline-block d-block">
           <div class="user-profile m-0">
             <%= image_tag image_path('avatar.png'), class: "avatar user-thumb user-name dropdown-toggle" %>
-            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
+            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><%= current_user.firstname %><i class="fa fa-angle-down"></i></h4>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#">Message</a>
-              <a class="dropdown-item" href="#">Settings</a>
-              <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+              <%= link_to "Settings", edit_user_registration_path, class: 'dropdown-item' %>
+              <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
             </div>
           </div>
         </div>
