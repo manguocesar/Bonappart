@@ -15,4 +15,9 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:firstname, :lastname, :username, :phone_no, :birthdate, :gender, :address, :email, :password, :current_password, :password_confirmation, :image)}
   end
+
+  def pagination(data)
+    updated_data = data.is_a?(Array) ? Kaminari.paginate_array(data) : data
+    updated_data.page(params[:page]).per(10)
+  end
 end

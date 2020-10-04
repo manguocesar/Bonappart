@@ -10,6 +10,7 @@
 #
 #     <%= t('hello') %>
 #
+
 # To use a different locale, set it with `I18n.locale`:
 #
 #     I18n.locale = :es
@@ -48,3 +49,33 @@ en:
     profile_pic: Profile Picture
     select_role: Select Role
     sign_up_as: Sign Up As
+  filter_results: Filter
+  search: Seacrh
+  confirmation: Are you sure?
+  apartments: Accomodations
+  apartment:
+    add_apartment: Add apartment
+    edit_apartment: Edit apartment
+    title: Title
+    description: Description
+    postalcode: Postalcode
+    floor: Floor
+    city: City
+    country: Country
+    area: Area
+    apartment_type: Accomodation type
+    availability: Availability
+    arrival_date: Arrival date
+    departure_date: Departure date
+    status: Status
+    rent: Rent
+    total_bedrooms: Total bedrooms
+    shower_room: Shower room
+    distance_from_university: Distance from university
+    other_facilities: Other facilities
+    longitude: Longitude
+    latitude: Latitude
+    images: Images
+    create: Apartment added successfully
+    edit: Apartment edited successfully
+    delete: Apartment deleted successfully
