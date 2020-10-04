@@ -71,7 +71,3 @@ var Filter = {
     });
   }
 }
-
-$('#arrival-date, #departure-date').datetimepicker({
-  format: 'DD/MM/YYYY'
-});

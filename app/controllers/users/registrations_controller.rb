@@ -9,8 +9,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.save
     yield resource if block_given?
     if resource.persisted?
+      resource.add_role(params[:roles]) if params[:roles].present?
       if resource.active_for_authentication?
-        resource.add_role(params[:roles]) if params[:roles].present?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
         respond_with resource, location: after_sign_up_path_for(resource)
