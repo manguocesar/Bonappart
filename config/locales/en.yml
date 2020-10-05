@@ -44,6 +44,7 @@ en:
     gender: Gender
     username: User Name
     current_password: Current Password
+    password: Password
     new_password: New Password
     confirm_password: Confirm Password
     profile_pic: Profile Picture
