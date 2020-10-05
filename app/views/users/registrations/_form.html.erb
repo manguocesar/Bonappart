@@ -57,7 +57,7 @@
     <div class="form-group col-sm-6">
       <%= form.label t('users.new_password'), class:"col-form-label" %>
       <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em>(<%= @minimum_password_length %> <%= t('users.min_character') %>)</em>
       <% end %><br/>
       <%= form.password_field :password, autocomplete: "new-password", class: 'form-control' %>
     </div>
