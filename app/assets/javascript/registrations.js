@@ -1,6 +1,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require popper
 //= require bootstrap.min.js
+//= require moment
+//= require bootstrap-datetimepicker
+//= require common/bootstrap-select.min.js
 //= require jquery.validate
+//= require common/jquery.slimscroll.min
 //= require common/custom
