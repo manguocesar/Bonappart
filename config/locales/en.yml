@@ -33,7 +33,7 @@
 en:
   hello: "Hello world"
   users:
-    sign_up: Sign Up
+    sign_up: SIGN UP
     edit_user: Edit User
     firstname: First Name
     lastname: Last Name
