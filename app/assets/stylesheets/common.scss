@@ -8,6 +8,22 @@
   }
 }
 
+.form-gp{
+  .lbl{
+    margin-left: 13px;
+  }
+  .custom-radio{
+    padding-bottom: 6px;
+    margin-left: 75px;
+    margin-top: 0px;
+    .custom-control-label {
+      margin-left: 100px;
+    }
+  }
+  .select{
+    height: 42px;
+  }
+}
 .profile {
   display: inline-block;
   width: 150px;

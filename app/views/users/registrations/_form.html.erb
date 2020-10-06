@@ -1,5 +1,5 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |form| %>
-  <%#= render 'shared/error_messages', target: resource %>
+  <%= render 'shared/error_messages', target: resource %>
   <div class="row">
     <div class="form-group col-sm-6">
       <%= form.label t('users.firstname'), class:"col-form-label" %><br/>
@@ -42,11 +42,11 @@
   <div class="row">
     <div class="form-group col-sm-6">
       <%= form.label t('users.username'), class:"col-form-label" %><br/>
-        <%= form.text_field :username, class: 'form-control' %>
+      <%= form.text_field :username, class: 'form-control' %>
     </div>
     <div class="form-group col-sm-6">
       <%= form.label t('users.email'), class:"col-form-label" %><br/>
-        <%= form.text_field :email, class: 'form-control' %>
+      <%= form.text_field :email, class: 'form-control' %>
     </div>
   </div>
   <div class="row">
@@ -57,7 +57,7 @@
     <div class="form-group col-sm-6">
       <%= form.label t('users.new_password'), class:"col-form-label" %>
       <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em>(<%= @minimum_password_length %> <%= t('users.min_character') %>)</em>
       <% end %><br/>
       <%= form.password_field :password, autocomplete: "new-password", class: 'form-control' %>
     </div>
