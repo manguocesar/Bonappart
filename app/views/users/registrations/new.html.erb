@@ -31,7 +31,7 @@
             </div>
             <div class="form-gp focused col-sm-6">
               <%= form.label t('users.birthdate'), class:"col-form-label lbl" %><br/>
-              <%= form.text_field :birthdate, id: '' %>
+              <%= form.text_field :birthdate, id: 'birthdate' %>
               <i class="ti-calendar"></i>
             </div>
           </div>
@@ -103,3 +103,12 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function (e) {
+    $('.selectpicker').selectpicker('refresh');
+    $('#birthdate').datetimepicker({
+      format: 'DD/MM/YYYY'
+    });
+    Filter.result();
+  });
+</script>
