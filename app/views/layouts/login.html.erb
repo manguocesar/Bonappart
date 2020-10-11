@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ApartmentBooking</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <title>ApartmentBooking</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag controller_name %>
-    <%= javascript_include_tag controller_name %>
+    <%= stylesheet_link_tag 'login' %>
+    <%= javascript_include_tag 'login' %>
   </head>
 
   <body>
     <div class="page-container">
       <div class="main-content">
-        <%= render 'shared/header' %>
-        <%= render 'shared/messages' %>
+        <% if current_user.present? %>
+          <%= render 'shared/header' %>
+          <%= render 'shared/messages' %>
+        <% end %>
         <div class="main-content-inner">
           <%= yield %>
         </div>

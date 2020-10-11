@@ -1746,8 +1746,8 @@ table.dbkit-table tr td {
     color: #36b398;
 }
 
-.alert-items .alert-danger {
-    color: #f96776;
+.alert-items .alert-alert {
+    color: #934C5B;
     background-color: #ffdde0;
 }
 
@@ -1762,6 +1762,15 @@ table.dbkit-table tr td {
 
 .alert-items .alert-warning .alert-link {
     color: #d6a20c;
+}
+
+.close {
+    color: #934C5B;
+}
+
+.close:hover {
+    color: #f96776;
+    text-decoration: none;
 }
 
 /* additional content */
@@ -2323,24 +2332,46 @@ table.dataTable thead td {
     border-radius: 3px;
 }
 
+.container .login-box .login-form-head {
+    text-align: center;
+    background: #8655FC;
+    padding: 50px;
+}
+
 .login-form-head {
     text-align: center;
     background: #8655FC;
     padding: 50px;
 }
 
-.login-form-head h4 {
-    letter-spacing: 0;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 7px;
-    color: #fff;
+.container .login-box .login-form-head {
+    h4 {
+        color: #fff;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 7px;
+    }
+    p {
+        color: #fff;
+        font-size: 14px;
+        line-height: 22px;
+    }
 }
 
-.login-form-head p {
-    color: #fff;
-    font-size: 14px;
-    line-height: 22px;
+.login-form-head {
+    h4 {
+        color: #fff;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 7px;
+    }
+    p {
+        color: #fff;
+        font-size: 14px;
+        line-height: 22px;
+    }
 }
 
 .login-form-body {
@@ -2474,6 +2505,20 @@ table.dataTable thead td {
 
 .form-footer a {
     margin-left: 5px;
+    a:visited {
+        line-height: inherit;
+        outline: 0;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        outline: 0;
+        font-family: 'Poppins', sans-serif;
+    }
+    a:hover {
+        text-decoration: none;
+    }
 }
 
 /* login-s2 */
@@ -2900,4 +2945,5 @@ table.dataTable thead td {
     font-weight: bold;
     font-size: 15px;
 }
+
 /*-------------------- END Offset Sidebar ------------------- */
