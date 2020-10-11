@@ -7,14 +7,14 @@
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
               <% @apartment.images.each do |image| %>
-                  <% if image == @apartment.images.first%>
-                    <div class="carousel-item active">
-                    <%= image_tag url_for(image), class: "d-block w-100" %> 
-                    </div>
-                  <% else %>
+                <% if image == @apartment.images.first%>
+                  <div class="carousel-item active">
+                    <%= image_tag url_for(image), class: "d-block w-100" %>
+                  </div>
+                <% else %>
                   <div class="carousel-item">
                     <%= image_tag url_for(image), class: "d-block w-100" %>
-                    </div>
+                  </div>
                 <% end %>
               <% end %>
             </div>
@@ -53,7 +53,13 @@
             <% end %>
           <% end %>
         </div>
+        <div class="col-sm-6">
+          <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@apartment.latitude},#{@apartment.longitude}&markers=#{@apartment.latitude},#{@apartment.longitude}&zoom=7&size=640x400&key=AIzaSyB5OWOzIcLtzOgcWX14TaqpsHMmgcNdre8",
+              class: 'img-fluid img-rounded', alt: "on the map"%>
+          <%= link_to 'Contact Landlord for more details', new_inquiry_path(apartment: params[:id]), class: 'btn btn-dark btn-lg btn-block', data: { remote: true } %>
+        </div>
       </div>
     </div>
   </div>
+  <%= render '/inquiries/inquiry_form' %>
 </div>
