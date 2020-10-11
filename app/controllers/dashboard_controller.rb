@@ -2,11 +2,10 @@
 
 # Dashboard controller
 class DashboardController < ApplicationController
-
-  def index
-  	if current_user.has_role? :admin
+	def index
+  	if current_user&.has_role? :admin
   	  render 'admin_dashboard'
-		elsif current_user.has_role? :landloard
+		elsif current_user&.has_role? :landloard
 	   	render 'landloard_dashboard'
 		else
 	  	redirect_to apartments_path

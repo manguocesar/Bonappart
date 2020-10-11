@@ -1,5 +1,5 @@
 <div class='header-area header-bottom'>
-  <% if current_user.administrative_role? %>
+  <% if current_user&.administrative_role? %>
     <%= link_to new_apartment_path, class: 'btn btn-outline-primary mt-2 btn-xs mt-3 mr-3 pull-right' do %>
       <i class="fa fa-plus left" aria-hidden="true"></i> <%= t('apartment.add_apartment') %>
     <% end %>
