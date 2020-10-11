@@ -1,5 +1,6 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |form| %>
-  <%= render 'shared/error_messages', target: resource %>
+  <%= devise_error_messages! %>
+  <%= render 'shared/messages' %>
   <div class="row">
     <div class="form-group col-sm-6">
       <%= form.label t('users.firstname'), class:"col-form-label" %><br/>

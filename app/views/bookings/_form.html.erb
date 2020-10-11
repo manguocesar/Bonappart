@@ -5,7 +5,7 @@
   <div class='row'>
     <div class="form-group col-sm-12">
       <%= form.label t('booking.status'), class:"col-form-label" %><br/>
-      <%= form.text_field :status, class: 'form-control' %>
+      <%= select_tag 'booking[status]', options_for_select(Booking.statuses.map {|k, v| [k.humanize.capitalize, k]}),  class: 'form-control selectpicker' %>
     </div>
   </div>
   <div class='row'>
@@ -25,6 +25,7 @@
 <% end %>
 <script type="text/javascript">
   $(document).ready(function (e) {
+    $('.selectpicker').selectpicker('refresh');
     $('#start-date, #end-date').datetimepicker({
       format: 'DD/MM/YYYY'
     });

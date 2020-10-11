@@ -1,24 +1,14 @@
+# frozen_string_literal: true
+
+# Payments controller
 class PaymentsController < ApplicationController
-  
-  def new
-    # binding.pry
-    # respond_to do |format|
-    #   format.js
-    # end
-	end
+
+  def new; end
 
   def create
-    binding.pry
-
-    # @amount = 100
-    # @booking = Booking.new(booking_params)
-    # @booking.apartment = Apartment.find_by(id: params[:booking][:apartment_id])
-    # @booking.status = 'pending'
-    # @booking.save!
-
     customer = Stripe::Customer.create(
       email: params[:stripeEmail],
-        source: params[:stripeToken]
+      source: params[:stripeToken]
     )
 
     Stripe::Charge.create(
@@ -37,29 +27,24 @@ class PaymentsController < ApplicationController
       description: 'email',
       currency: 'usd'
     )
-    binding.pry
     @payment = Payment.new(payment_params)
+    @payment.amount = 100.0
+    @payment.stripe_token = params[:stripeToken]
     @payment.save!
+    @payment.update(status: 'paid')
+    @payment.booking.update(status: 'paid')
     redirect_to apartments_path
-	rescue Stripe::CardError => e
-		flash[:error] = e.message
-		redirect_to apartments_path
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to add_payment_method_path
   end
-  
-  private
 
-  def set_payment
-    @booking = Booking.find_by(id: params[:id])
-  end
+  private
 
   def payment_params
     params.require(:payment).permit(
-      :type, :amount, :status, :remarks,
+      :payment_type, :amount, :status, :remarks,
       :stripe_token, :booking_id
     )
-  end
-
-  def booking_params
-    params.require(:booking).permit(:status, :start_date, :end_date, :user_id)
   end
 end

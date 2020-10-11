@@ -73,11 +73,10 @@ ActiveRecord::Schema.define(version: 2020_10_10_095621) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.string "type"
+    t.integer "payment_type"
     t.float "amount"
     t.integer "status"
     t.text "remarks"
-    t.text "details"
     t.string "stripe_token"
     t.bigint "booking_id"
     t.datetime "created_at", precision: 6, null: false

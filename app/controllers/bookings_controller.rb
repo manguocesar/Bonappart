@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.apartment = Apartment.find_by(id: params[:apartment])
     if @booking.save
-      redirect_to add_payment_method_path, notice: t('apartment.create')
+      redirect_to add_payment_method_path(booking_id: @booking&.id)
     else
       render :new
     end

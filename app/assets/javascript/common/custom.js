@@ -19,7 +19,7 @@ $(window).on('load', function () {
 	};
 	windowResize();
 
-	$(document).on('turbolinks:load', function () {
+	$(document).ready(function () {
 		windowResize();
 	});
 
