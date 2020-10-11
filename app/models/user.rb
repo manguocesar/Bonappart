@@ -12,6 +12,6 @@ class User < ApplicationRecord
                        :length => { :minimum => 10, :maximum => 12 }
 
   def administrative_role?
-  	(has_role? :admin) || (has_role? :landloard)
+  	(has_role? :admin) || (has_role? :landlord)
   end
 end

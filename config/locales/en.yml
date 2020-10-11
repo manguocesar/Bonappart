@@ -79,5 +79,18 @@ en:
     latitude: Latitude
     images: Images
     create: Apartment added successfully
-    edit: Apartment edited successfully
+    update: Apartment updated successfully
     delete: Apartment deleted successfully
+  rent:
+    net_rate: Net rate
+    water_charge: Water charge
+    heating_charge: Heating charge
+    electricity_charge: Electricity charge
+    internet_charge: Internet charge
+    insurance_charge: Insurance charge
+    deposit_amount: Deposit amount
+  booking:
+    status: Status
+    start_date: Start date
+    end_date: End date
+    book_now: Book Now

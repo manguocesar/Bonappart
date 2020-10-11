@@ -1,0 +1,52 @@
+<div class=".payment-errors"></div>
+<%= form_with url: create_payment_method_path, id: 'stripe-form' do |form| %>
+
+    <div class="formset">
+      <%= form.label 'Card number', class:"col-form-label" %><br/>
+      <%= form.text_field :number, class: 'form-control credit-number' %>
+    </div>
+    <div class="formset">
+      <%= form.label 'CVV', class:"col-form-label" %><br/>
+      <%= form.text_field :cvc, class: 'form-control credit-scurity' %>
+    </div><div class="formset">
+      <%= form.label 'exp_month', class:"col-form-label" %><br/>
+      <%= form.text_field :exp_month, class: 'form-control card-expiry-month' %>
+    </div>
+   </div><div class="formset">
+      <%= form.label 'exp_year', class:"col-form-label" %><br/>
+      <%= form.text_field :exp_year, class: 'form-control card-expiry-year' %>
+    </div>
+ 
+    <button type="submit" class="submit">Submit Payment</button>
+<%end%>
+<script type="text/javascript" src="https://js.stripe.com/v1/">
+Stripe.setPublishableKey('pk_test_51HZY7lFYh30SOXdPiBXS9R16JA8sU4QpBTLzlWoSsnCRQhPc6NSRxsxDl047P6A71UWBSZcwduL3o5WQS6MvYAw000dcmzAW6p');
+function stripeResponseHandler(status, response) {
+ 
+    if (response.error) {
+        $(".payment-errors").text(response.error.message);
+    } 
+    else {
+        var form$ = $("#stripe-form");
+        var token = response['id'];
+        form$.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+        form$.get(0).submit();
+    }
+}
+ 
+$(document).ready(function() {
+  $("#stripe-form").submit(function(event) {
+    $('.submit').attr("disabled", "disabled");
+ 
+    Stripe.createToken({
+        number: $('.credit-number').val(),
+        cvc: $('.credit-security').val(),
+        exp_month: $('.card-expiry-month').val(),
+        exp_year: $('.card-expiry-year').val()
+    }, stripeResponseHandler);
+ 
+    // prevent the form from submitting with the default action
+    return false;
+  });
+});
+</script>
