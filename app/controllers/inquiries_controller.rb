@@ -11,13 +11,29 @@ class InquiriesController < ApplicationController
   end
 
   def create
-    inquiry = Inquiry.new(inquiry_params)
+    @inquiry = Inquiry.new(inquiry_params)
+    if @inquiry.save
+      InquiryMailer.send_inquiry(current_user, get_user, @inquiry).deliver_now
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    end
   end
 
   private
 
   def inquiry_params
-    params.require(:inquiry).permit(:sender_id, :receiver_id, :email, :message)
+    params.require(:inquiry).permit(:sender_id, :receiver_id, :message)
+  end
+
+  def get_user
+    User.find_by(id: @inquiry.receiver_id)
   end
 
   def load_landlord

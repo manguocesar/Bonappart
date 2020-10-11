@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2020_10_10_165544) do
   end
 
   create_table "inquiries", force: :cascade do |t|
-    t.string "email"
     t.string "message"
     t.integer "sender_id"
     t.integer "receiver_id"
