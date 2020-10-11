@@ -5,10 +5,12 @@
   <div class="container">
     <div class="login-box ptb--100">
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-        <%= render "users/shared/error_messages", resource: resource %>
+        <%= devise_error_messages! %>
+        <%= render 'shared/messages' %>
         <div class="login-form-head">
           <h4>Forgot your password?</h4>
         </div>
+        
         <div class="form-gp focused">
           <label for="exampleInputEmail1">Email</label>
           <%= f.text_field :email, id: 'exampleInputEmail1', autocomplete: 'off' %>

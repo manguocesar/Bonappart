@@ -5,9 +5,12 @@
   <div class="container">
     <div class="login-box ptb--100">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <%= render 'shared/messages' %>
         <div class="login-form-head">
           <h4>Log In</h4>
         </div>
+        
         <div class="login-form-body">
           <div class="form-gp focused">
             <label for="exampleInputEmail1">Email</label>
@@ -30,3 +33,9 @@
     </div>
   </div>
 </div>
+<script>
+  $(document).ready(function () {
+    LoginForm.validate();
+  })
+</script>
+
