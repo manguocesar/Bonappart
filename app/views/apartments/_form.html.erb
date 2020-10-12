@@ -86,10 +86,10 @@
     <%= form.file_field :images, multiple: true, class: "form-control select" %>
   </div>
   <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
-  <%= button_tag 'Save', class:"btn btn-primary mt-4 pr-4 pl-4", type: "submit" %>
+  <%= button_tag 'Save', class:"btn btn-success mt-4 pr-4 pl-4", type: "submit" %>
 <% end %>
 <script type="text/javascript">
   $(document).ready(function (e) {
-    ApartmentForm.validate();    
+    ApartmentForm.validate();
   });
 </script>
