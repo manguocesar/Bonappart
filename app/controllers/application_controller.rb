@@ -20,11 +20,13 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # Add customized/new signup params for permit
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(Constant::USER_FIELDS) }
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(Constant::USER_UPDATE_FIELDS) }
   end
 
+  # For setting paginations in apartments page
   def pagination(data)
     updated_data = data.is_a?(Array) ? Kaminari.paginate_array(data) : data
     updated_data.page(params[:page]).per(10)

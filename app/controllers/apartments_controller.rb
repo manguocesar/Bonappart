@@ -12,18 +12,20 @@ class ApartmentsController < ApplicationController
     end
   end
 
+  # Filters apartments using various filters
   def filter_result
-    if params.dig(:filter, :distance_from_university).present?
-      @apartments = Apartment.filter_by_distance_from_university(params.dig(:filter, :distance_from_university))
-    elsif params.dig(:filter, :arrival_date).present?
-      @apartments = Apartment.filter_by_arrival_date(params.dig(:filter, :arrival_date))
-    elsif params.dig(:filter, :departure_date).present?
-      @apartments = Apartment.filter_by_departure_date(params.dig(:filter, :departure_date))
-    else
-      @apartments = Apartment.all
-    end
+    @apartments = if params.dig(:filter, :distance_from_university).present?
+                    Apartment.filter_by_distance_from_university(params.dig(:filter, :distance_from_university))
+                  elsif params.dig(:filter, :arrival_date).present?
+                    Apartment.filter_by_arrival_date(params.dig(:filter, :arrival_date))
+                  elsif params.dig(:filter, :departure_date).present?
+                    Apartment.filter_by_departure_date(params.dig(:filter, :departure_date))
+                  else
+                    Apartment.all
+                  end
   end
 
+  # Returns the apartments based on search parameters
   def search_data
     search_data = params.dig(:search)
     return Apartment.all if search_data.blank?
@@ -66,10 +68,12 @@ class ApartmentsController < ApplicationController
 
   private
 
+  # Find and set the apaatment of given ID.
   def set_apartment
     @apartment = Apartment.find_by(id: params[:id])
   end
 
+  # Permit the apartment parameters
   def apartment_params
     params.require(:apartment).permit(
       :title, :description, :postalcode, :floor,

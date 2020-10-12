@@ -2,6 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
+  # Override from devise for add roles for authorizations
   def create
     build_resource(sign_up_params)
 
@@ -25,6 +26,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  # Override from devise for update roles for authorizations
   def update
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)

@@ -81,6 +81,15 @@ en:
     create: Apartment added successfully
     edit: Apartment edited successfully
     delete: Apartment deleted successfully
+    previous: Previous
+    next: Next
+  dashboard:
+    count_of_ads: Count of Ads
+    count_of_active_ads: Count of Active Ads
+    count_of_contacts: Count of contacts
+    count_of_members: Count of members
+    landlord_management: Landlords management
   mailer:
     send_inquiry:
       subject: Inquiry for appartment booking
+
