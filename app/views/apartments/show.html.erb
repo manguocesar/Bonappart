@@ -9,11 +9,11 @@
               <% @apartment.images.each do |image| %>
                   <% if image == @apartment.images.first%>
                     <div class="carousel-item active">
-                    <%= image_tag url_for(image), class: "d-block w-100" %> 
+                      <%= image_tag url_for(image), class: "d-block w-100" %>
                     </div>
                   <% else %>
-                  <div class="carousel-item">
-                    <%= image_tag url_for(image), class: "d-block w-100" %>
+                    <div class="carousel-item">
+                      <%= image_tag url_for(image), class: "d-block w-100" %>
                     </div>
                 <% end %>
               <% end %>
