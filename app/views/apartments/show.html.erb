@@ -56,7 +56,7 @@
         <div class="col-sm-6">
           <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@apartment.latitude},#{@apartment.longitude}&markers=#{@apartment.latitude},#{@apartment.longitude}&zoom=7&size=640x400&key=AIzaSyB5OWOzIcLtzOgcWX14TaqpsHMmgcNdre8",
               class: 'img-fluid img-rounded', alt: "on the map"%>
-          <%= link_to 'Contact Landlord for more details', new_inquiry_path(apartment: params[:id]), class: 'btn btn-dark btn-lg btn-block', data: { remote: true } %>
+          <%= link_to 'Contact Landlord for more details', new_inquiry_path(apartment: params[:id]), class: 'btn btn-success btn-lg btn-block', data: { remote: true } %>
         </div>
       </div>
     </div>
