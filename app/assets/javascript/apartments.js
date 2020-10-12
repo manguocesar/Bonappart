@@ -3,7 +3,7 @@
 //= require popper
 //= require bootstrap.min.js
 //= require moment
-//= require bootstrap-datetimepicker
+//= require common/bootstrap-datetimepicker.min.js
 //= require common/bootstrap-select.min.js
 //= require jquery.validate
 //= require common/jquery.slimscroll.min

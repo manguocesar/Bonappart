@@ -48,7 +48,7 @@
           </div>
           <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
           <% if current_user&.administrative_role? %>
-            <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'btn btn-primary mt-4 pr-4 pl-4' %>
+            <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'btn btn-success mt-4 pr-4 pl-4' %>
             <%= link_to  apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn btn-danger mt-4 pr-4 pl-4' do %>Delete
             <% end %>
           <% end %>

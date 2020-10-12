@@ -1,11 +1,11 @@
 <div class='header-area header-bottom'>
   <% if current_user&.administrative_role? %>
-    <%= link_to new_apartment_path, class: 'btn btn-outline-primary mt-2 btn-xs mt-3 mr-3 pull-right' do %>
+    <%= link_to new_apartment_path, class: 'btn btn-outline-success mt-2 btn-xs mt-3 mr-3 pull-right' do %>
       <i class="fa fa-plus left" aria-hidden="true"></i> <%= t('apartment.add_apartment') %>
     <% end %>
   <% end %>
   <div class='row'>
-    <div class="search-box ml-4 mt-3">
+    <div class="search-box col-md-2">
       <%= form_tag apartments_path, :method => 'get' do %>
         <p>
           <%= text_field_tag :search, params[:search] , placeholder: 'Apartment Type..'%>
@@ -13,20 +13,20 @@
         </p>
       <% end %>
     </div>
-    <div class="col-sm-2 mt-3">
+    <div class="col-md-2">
       <%= select_tag(:distance_from_university, options_for_select(Apartment.pluck(:distance_from_university)), class: "form-control selectpicker", "data-live-search" => "true", include_blank: t('apartment.distance_from_university')) %>
     </div>
-    <div class="col-sm-2 mt-3">
+    <div class="col-md-2">
       <%= select_tag(:distance_from_university, options_for_select(Apartment.pluck(:distance_from_university)), class: "form-control selectpicker", "data-live-search" => "true", include_blank: t('apartment.rent')) %>
     </div>
-    <div class="col-sm-2 mt-3" style="position: relative">
+    <div class="col-md-2">
       <input class="form-control" id="arrival-date", placeholder="<%= t('apartment.arrival_date') %>">
     </div>
-    <div class="col-sm-1.5 mt-3" style="position: relative">
+    <div class="col-md-2">
         <input class="form-control" id="departure-date", placeholder="<%= t('apartment.departure_date') %>">
     </div>
-    <div class="col-sm-1 mt-2">
-      <button type="button" class="btn btn-outline-primary mt-2 btn-xs sort-filter"  data-disable-with="false" ><%= t('filter') %></button>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-outline-success btn-xs sort-filter"  data-disable-with="false" ><%= t('filter') %></button>
     </div>
   </div>
 </div>
