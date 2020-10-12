@@ -81,3 +81,6 @@ en:
     create: Apartment added successfully
     edit: Apartment edited successfully
     delete: Apartment deleted successfully
+  mailer:
+    send_inquiry:
+      subject: Inquiry for appartment booking
