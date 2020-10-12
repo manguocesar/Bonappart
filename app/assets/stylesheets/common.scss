@@ -1,27 +1,35 @@
-.custom-radio{
-  margin-top: 0%;
-  .male{
-    margin-left: 40px;
-  }
-  .female{
-    margin-left: 40px;
+.form-group{
+  .custom-radio{
+    .female{
+      margin-left: 82px !important;
+    }
   }
 }
 
-.form-gp{
+.form-gp, .form-group{
   .lbl{
     margin-left: 13px;
   }
   .custom-radio{
     padding-bottom: 6px;
     margin-left: 75px;
-    margin-top: 0px;
-    .custom-control-label {
+    margin-top: 0%;
+    .male{
+      margin-left: 82px;
+    }
+    .female{
       margin-left: 100px;
     }
   }
-  .select{
-    height: 42px;
+  .min-length{
+    position: initial !important;
+    margin-left: 0px;
+  }
+  .file-select{
+    height: 40px;
+  }
+  .selectpicker{
+    height: 40px;
   }
 }
 .profile {
