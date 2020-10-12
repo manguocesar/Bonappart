@@ -92,4 +92,6 @@ en:
   mailer:
     send_inquiry:
       subject: Inquiry for appartment booking
-
+  footer:
+    copyright: © Copyright 2020. All right reserved.
+    company_name: Bonapart
