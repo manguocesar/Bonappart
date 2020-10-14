@@ -60,11 +60,14 @@ var Filter = {
         url: '/apartments',
         dataType: 'script',
         data: {
-          filter: {
-            distance_from_university: $('#distance_from_university').val(),
-            distance_from_university: $('#distance_from_university').val(),
+          search: {
+            apartment_type: $('#apartment_type').val(),
             arrival_date: $('#arrival-date').val(),
             departure_date: $('#departure-date').val(),
+          },
+          sort: {
+            distance_from_university: $('#distance_from_university').val(),
+            rent: $('#rent').val(),
           }
         }
       });

@@ -3,19 +3,13 @@
     <div class="card-body">
       <div class="row mt-3">
         <div class="col-sm-6">
-          <h4 class="mb-3"><%= @apartment.title %><br> Available: <%= @apartment.arrival_date.strftime('%d-%m-%Y') %> To <%= @apartment.departure_date.strftime('%d-%m-%Y') %></h4>
+          <h4 class="mb-3"><%= @apartment.title %><br> Available by: <%= @apartment.departure_date.strftime('%d-%m-%Y') %></h4>
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
               <% @apartment.images.each do |image| %>
-                <% if image == @apartment.images.first%>
-                  <div class="carousel-item active">
-                    <%= image_tag url_for(image), class: "d-block w-100" %>
-                  </div>
-                <% else %>
-                  <div class="carousel-item">
-                    <%= image_tag url_for(image), class: "d-block w-100" %>
-                  </div>
-                <% end %>
+                <div class="carousel-item <%= @apartment.active_class(image) %>">
+                  <%= image_tag url_for(image), class: "d-block w-100", style:"width:500px; height:360px;" %>
+                </div>
               <% end %>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

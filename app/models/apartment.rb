@@ -8,14 +8,14 @@ class Apartment < ApplicationRecord
   # validates presence of fields
   validates_presence_of :title, :description, :postalcode, :floor,
 						:city, :country, :area, :apartment_type,
-						:arrival_date, :departure_date,:total_bedrooms,
+						:departure_date,:total_bedrooms,
 						:shower_room, :other_facilities,
 						:distance_from_university, :longitude, :latitude
 
   geocoded_by :full_address
   after_validation :geocode # , if: ->(obj){ obj.address.present? and obj.address_changed? }
 
-  scope :filter_by_type, lambda { |search| where("apartment_type ILIKE :search", search: "%#{search.downcase}%") }
+  scope :filter_by_type,-> (apartment_type) {where("apartment_type ILIKE :apartment_type", apartment_type: "%#{apartment_type.downcase}%") }
   scope :filter_by_distance_from_university, ->(distance_from_university) { where distance_from_university: distance_from_university }
   # scope :filter_by_rent, ->(rent) { where distance_from_university: rent } Update when rent model available
   scope :filter_by_arrival_date, ->(arrival_date) { where arrival_date: DateTime.parse(arrival_date) }
