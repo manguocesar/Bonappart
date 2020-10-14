@@ -32,6 +32,7 @@
 
 en:
   hello: "Hello world"
+  cannot_perform: "You can't perform this action."
   users:
     sign_up: SIGN UP
     edit_user: Edit User
