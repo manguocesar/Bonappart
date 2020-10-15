@@ -5,7 +5,7 @@ class ApartmentsController < ApplicationController
   before_action :set_apartment, only: %i[show edit update destroy]
 
   def index
-    @apartments = pagination(FilterApartmentService.new(params, current_user).sort_apartments)
+    @apartments = pagination(filtered_apartments)
     authorize @apartments
   end
 
@@ -44,6 +44,11 @@ class ApartmentsController < ApplicationController
   end
 
   private
+
+  # call filter apartments service for sorting and searching
+  def filtered_apartments
+    FilterApartmentService.new(params, current_user).sort_apartments
+  end
 
   # Find and set the apaatment of given ID.
   def set_apartment

@@ -30,4 +30,9 @@ class Apartment < ApplicationRecord
   def full_address
     [country, city, area].compact.join(', ')
   end
+
+  # departure date availabilty with date format
+  def departure_date_availabilty
+    departure_date&.strftime('%d-%m-%Y')
+  end
 end
