@@ -32,6 +32,7 @@
 
 en:
   hello: "Hello world"
+  cannot_perform: "You can't perform this action."
   users:
     sign_up: SIGN UP
     edit_user: Edit User
@@ -69,6 +70,7 @@ en:
     availability: Availability
     arrival_date: Arrival date
     departure_date: Departure date
+    available_date: Available date
     status: Status
     rent: Rent
     total_bedrooms: Total bedrooms
@@ -78,6 +80,7 @@ en:
     longitude: Longitude
     latitude: Latitude
     images: Images
+    select_images: Upload only .jpg, .jpeg, .png files 
     create: Apartment added successfully
     edit: Apartment edited successfully
     delete: Apartment deleted successfully
