@@ -71,7 +71,7 @@
           </div>
           <div class="row">
             <div class="form-gp focused col-sm-6">
-              <%= form.label t('users.password'), class:"col-form-label lbl" %>
+              <%= form.label t('users.password'), class:"col-form-label lbl min-length" %>
               <% if @minimum_password_length %>
                 <em>(<%= @minimum_password_length %> <%= t('users.min_character') %>)</em>
               <% end %><br/>
@@ -91,7 +91,7 @@
             </div>
             <div class="form-gp focused col-sm-6">
               <%= form.label t('users.profile_pic'), class:"col-form-label lbl" %><br/>
-              <%= form.file_field :image, multiple: false, class: "form-control select" %>
+              <%= form.file_field :image, multiple: false, class: "form-control select file-select" %>
             </div>
           </div>
           <div class="submit-btn-area">

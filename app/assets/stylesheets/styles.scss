@@ -148,7 +148,8 @@
 
 .logo a {
     display: inline-block;
-    max-width: 120px;
+    max-width: 95px;
+    margin-top: 12px;
 }
 
 .metismenu>li>a {
@@ -241,7 +242,7 @@
 }
 
 .horizontal-main-wrapper .container {
-    max-width: 1440px;
+    max-width: 100%;
 }
 
 .horizontal-main-wrapper .header-area,
@@ -290,7 +291,7 @@
 
 .horizontal-menu ul li:hover>a,
 .horizontal-menu ul li.active>a {
-    color: #007BFF;
+    color: #20c997;
 }
 
 .horizontal-menu nav>ul>li:first-child>a {
@@ -310,7 +311,7 @@
     background: #fff;
     opacity: 0;
     visibility: hidden;
-    border-top: 4px solid #007BFF;
+    border-top: 4px solid #20c997;
     border-radius: 3px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
 }
@@ -343,6 +344,9 @@
     width: 100%;
 }
 
+.header-area.header-bottom .row {
+    margin-left: 10%;
+}
 /* mobile menu */
 
 .slicknav_menu {
@@ -493,7 +497,7 @@
 }
 
 .notification-area li.settings-btn.active i {
-    color: #007BFF;
+    color: #20c997;
 }
 
 .notification-area li>i {
@@ -685,7 +689,7 @@ ul.breadcrumbs {
     display: block;
     font-size: 14px;
     font-weight: 400;
-    color: #7801ff;
+    color: #20c997;
     letter-spacing: 0;
     margin-right: 16px;
     position: relative;
@@ -705,8 +709,28 @@ ul.breadcrumbs {
     text-transform: capitalize;
 }
 
+.btn-outline-success, .btn-outline-success:not(:disabled):not(.disabled):active, .btn-outline-success:hover {
+    color: #20c997;
+    border-color: #20c997;
+}
+
+.btn-outline-success:hover, .btn-outline-success:not(:disabled):not(.disabled):active {
+    background-color: #20c997;
+    color: white;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #20c997;
+    border-color: #20c997;
+}
+
+.btn-success:hover {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
 .user-profile {
-    margin-right: -30px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -715,12 +739,13 @@ ul.breadcrumbs {
     align-items: center;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    background: -webkit-linear-gradient(left, #8914fe 0%, #8063f5 100%);
-    background: linear-gradient(to right, #8914fe 0%, #8063f5 100%);
-    padding: 17px 38px;
+    background: #20c997;
+    padding: 10px 14px;
     position: relative;
-    width: 265px;
+    width: 100%;
+    border-radius: 20px;
 }
+
 
 .user-profile img.avatar {
     height: 35px;
@@ -772,6 +797,8 @@ ul.breadcrumbs {
     display: block !important;
     visibility: hidden;
     opacity: 0;
+    width: 100%;
+    border-radius: 10px;
 }
 
 .notification-area .dropdown-menu.show,
@@ -781,7 +808,7 @@ ul.breadcrumbs {
 
 .notification-area .dropdown-menu.show,
 .user-profile .dropdown-menu.show {
-    top: 100% !important;
+    top: 108% !important;
     visibility: visible;
     opacity: 1;
     box-shadow: 0 0 8px 0 rgba(21, 20, 20, 0.5);
@@ -798,7 +825,7 @@ ul.breadcrumbs {
 
 .user-profile .dropdown-menu a:hover {
     background: #f8f9fa;
-    color: #2942fa;
+    color: #20c997;
 }
 
 /*-------------------- END Page Title Area -------------------*/
@@ -1905,7 +1932,7 @@ p.card-text {
 /*-------------------- 16. Pagination ------------------- */
 
 .pg-color-border li a {
-    border-color: #007BFF;
+    border-color: #20c997;
 }
 
 .pagination li a {
@@ -1956,7 +1983,7 @@ p.card-text {
 
 label {
     font-weight: 500;
-    color: #666;
+    color: #20c997;
     display: inline-block;
     margin-bottom: 8px;
     margin-bottom: .5rem;
@@ -2011,7 +2038,7 @@ label {
 }
 
 .fw-icons a:hover {
-    color: #007BFF;
+    color: #20c997;
 }
 
 .fw-icons a i {
@@ -2067,7 +2094,7 @@ label {
 }
 
 .icon-container:hover span {
-    color: #007BFF;
+    color: #20c997;
 }
 
 /*-------------------- END Icons ------------------- */
@@ -2334,13 +2361,13 @@ table.dataTable thead td {
 
 .container .login-box .login-form-head {
     text-align: center;
-    background: #8655FC;
+    background: #20c997;
     padding: 50px;
 }
 
 .login-form-head {
     text-align: center;
-    background: #8655FC;
+    background: #20c997;
     padding: 50px;
 }
 
@@ -2394,7 +2421,7 @@ table.dataTable thead td {
 
 .form-gp.focused label {
     top: -15px;
-    color: #7e74ff;
+    color: #20c997;
 }
 
 .form-gp input {
@@ -2424,7 +2451,7 @@ table.dataTable thead td {
     position: absolute;
     right: 5px;
     bottom: 15px;
-    color: #7e74ff;
+    color: #20c997;
     font-size: 16px;
 }
 
@@ -2452,8 +2479,35 @@ table.dataTable thead td {
     transition: all 0.3s ease 0s;
 }
 
+a, a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a {
+    color: #20c997;
+}
+
+a:hover {
+    color: #28a745;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #20c997;
+}
+
+.form-control:focus {
+    border-color: #20c997;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+    color: #fff;
+    border-color: #20c997;
+    background-color: #20c997;
+}
+
 .submit-btn-area button:hover {
-    background: #2c71da;
+    background: #20c997;
     color: #ffffff;
 }
 
@@ -2486,7 +2540,7 @@ table.dataTable thead td {
 }
 
 .login-other a.fb-login {
-    background: #8655FC;
+    background: #20c997;
     color: #fff;
 }
 

@@ -2,14 +2,14 @@
 
 Rails.application.routes.draw do
   devise_for :users, controllers: { confirmations: 'devise/confirmations', registrations: 'users/registrations' }
-  root 'apartments#index'
-  get 'homes/index'
   resources :apartments
   resources :bookings
   resources :payments
   get '/card/new' => 'payments#new', as: :add_payment_method
   post '/card' => 'payments#create', as: :create_payment_method
+  resources :inquiries
   get 'sort_result', to: 'apartments#sort_result'
   get 'dashboard/index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'homes/index'
+  root 'apartments#index'
 end

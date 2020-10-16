@@ -25,7 +25,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'jquery-validation-rails', '~> 1.19'
 gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+# gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem "rolify" # for roles management

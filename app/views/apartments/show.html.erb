@@ -3,12 +3,12 @@
     <div class="card-body">
       <div class="row mt-3">
         <div class="col-sm-6">
-          <h4 class="mb-3"><%= @apartment.title %><br> Available: <%= @apartment.arrival_date.strftime('%d-%m-%Y') %> To <%= @apartment.departure_date.strftime('%d-%m-%Y') %></h4>
+          <h4 class="mb-3"><%= @apartment.title %><br> Available by: <%= @apartment.departure_date_availabilty %></h4>
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
               <% @apartment.images.each do |image| %>
                 <div class="carousel-item <%= @apartment.active_class(image) %>">
-                    <%= image_tag url_for(image), class: "d-block w-100", style:"width:500px; height:360px;" %> 
+                  <%= image_tag url_for(image), class: "d-block w-100", style:"width:500px; height:360px;" %>
                 </div>
               <% end %>
             </div>
@@ -42,16 +42,22 @@
           </div>
           <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
           <% if current_user&.administrative_role? %>
-            <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'btn btn-primary mt-4 pr-4 pl-4' %>
+            <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'btn btn-success mt-4 pr-4 pl-4' %>
             <%= link_to  apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn btn-danger mt-4 pr-4 pl-4' do %>Delete
             <% end %>
           <% else %>
             <%= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"btn btn-primary mt-4 pr-4 pl-4" %>
           <% end %>
         </div>
+        <div class="col-sm-6">
+          <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@apartment.latitude},#{@apartment.longitude}&markers=#{@apartment.latitude},#{@apartment.longitude}&zoom=7&size=640x400&key=AIzaSyB5OWOzIcLtzOgcWX14TaqpsHMmgcNdre8",
+              class: 'img-fluid img-rounded', alt: "on the map"%>
+          <%= link_to 'Contact Landlord for more details', new_inquiry_path(apartment: params[:id]), class: 'btn btn-success btn-lg btn-block', data: { remote: true } %>
+        </div>
       </div>
     </div>
   </div>
+  <%= render '/inquiries/inquiry_form' %>
 </div>
 <div id="booking_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">

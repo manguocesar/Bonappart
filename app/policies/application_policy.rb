@@ -34,6 +34,22 @@ class ApplicationPolicy
     false
   end
 
+  def allow_admin?
+    user.admin?
+  end
+
+  def allow_landlord?
+    user.landlord?
+  end
+
+  def allow_student?
+    user.student?
+  end
+
+  def allow_admin_or_landlord?
+    allow_admin? || allow_landlord?
+  end
+
   class Scope
     attr_reader :user, :scope
 
