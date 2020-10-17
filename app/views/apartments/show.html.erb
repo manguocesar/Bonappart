@@ -34,6 +34,17 @@
                       <p><%= t('apartment.distance_from_university') %>: <%= @apartment.distance_from_university %></p>
                       <p><%= t('apartment.description') %>: <%= @apartment.description %></p>
                       <p><%= t('apartment.other_facilities') %>: <%= @apartment.other_facilities %></p>
+                      <p><%= t('apartment.rent_details') %>:
+                        <ul>
+                          <% rent = @apartment.rent_rate %>
+                          <li><%= t('rent.net_rate') %>: <%= rent.net_rate %></li>
+                          <li><%= t('rent.water_charge') %>: <%= rent.water_charge %></li>
+                          <li><%= t('rent.heating_charge') %>: <%= rent.heating_charge %></li>
+                          <li><%= t('rent.electricity_charge') %>: <%= rent.electricity_charge %></li>
+                          <li><%= t('rent.internet_charge') %>: <%= rent.internet_charge %></li>
+                          <li><%= t('rent.insurance_charge') %>: <%= rent.insurance_charge %></li>
+                          <li><%= t('rent.deposit_amount') %>: <%= rent.deposit_amount %></li>
+                        </ul>
                     </div>
                   </div>
                 </div>
@@ -46,7 +57,7 @@
             <%= link_to  apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn btn-danger mt-4 pr-4 pl-4' do %>Delete
             <% end %>
           <% else %>
-            <%= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"btn btn-primary mt-4 pr-4 pl-4" %>
+            <%= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"btn btn-success mt-4 pr-4 pl-4" %>
           <% end %>
         </div>
         <div class="col-sm-6">
@@ -97,7 +108,7 @@
           <h5 class="title"><%= apartment.title %></h5>
           <h6 class="card-text"><%= t('apartment.area') %>: <%= apartment.area %></h6>
           <h6 class="card-text"><%= t('apartment.total_bedrooms') %>: <%= apartment.total_bedrooms %></h6>
-          <%= link_to  'View more', apartment_path(apartment), class: 'btn btn-primary mt-4' %> 
+          <%= link_to  'View more', apartment_path(apartment), class: 'btn btn-success mt-4' %> 
         </div>
       </div>
     </div>

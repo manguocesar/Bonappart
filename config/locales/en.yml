@@ -97,6 +97,7 @@ en:
       subject: Inquiry for appartment booking
   footer:
     copyright: © Copyright 2020. All right reserved.
+    company_name: Bonapart
   rent:
     net_rate: Net rate
     water_charge: Water charge

@@ -5,7 +5,7 @@
   <div class='row'>
     <div class="form-group col-sm-12">
       <%= form.label t('booking.status'), class:"col-form-label" %><br/>
-      <%= select_tag 'booking[status]', options_for_select(Booking.statuses.map {|k, v| [k.humanize.capitalize, k]}),  class: 'form-control selectpicker' %>
+      <%= select_tag 'booking[status]', options_for_select(Payment.payment_statuses, 'pending'),  class: 'form-control selectpicker', disabled: true %>
     </div>
   </div>
   <div class='row'>
@@ -19,9 +19,7 @@
     </div>
   </div>
   <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
-  <%#= link_to "Let's go", add_payment_method_path, remote: true, class: "btn btn-primary" %>
-  <%#= button_tag "Let's Go", class:"btn btn-primary mt-4 pr-4 pl-4 pay_now", id: 'billing-create-payment-method',data: {apartment_id: apartment, user_id: current_user&.id}, remote: true %>
-  <%= button_tag 'Save', class:"btn btn-primary mt-4 pr-4 pl-4", type: "submit" %>
+  <%= button_tag 'Save', class:"btn btn-success mt-4 pr-4 pl-4", type: "submit" %>
 <% end %>
 <script type="text/javascript">
   $(document).ready(function (e) {

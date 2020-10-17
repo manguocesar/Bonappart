@@ -3,6 +3,7 @@
 # Bookings controller
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[create edit update]
 
   def index
     @bookings = pagination(Booking.all)
@@ -34,14 +35,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  def destroy
-    if @booking.destroy
-      redirect_to apartments_path, notice: t('apartment.delete')
-    else
-      redirect_to apartments_path
-    end
-  end
-
   private
 
   def set_booking
@@ -49,6 +42,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:status, :start_date, :end_date, :user_id)
+    params.require(:booking).permit(%i[status start_date end_date user_id apartment])
   end
 end

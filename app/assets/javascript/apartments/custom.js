@@ -67,7 +67,7 @@ var Filter = {
           },
           sort: {
             distance_from_university: $('#distance_from_university').val(),
-            rent: $('#rent').val(),
+            rent: $('#net_rate').val(),
           }
         }
       });

@@ -3,7 +3,9 @@
 # Payments controller
 class PaymentsController < ApplicationController
 
-  def new; end
+  def new
+    @payment = Payment.new
+  end
 
   def create
     customer = Stripe::Customer.create(
@@ -11,6 +13,7 @@ class PaymentsController < ApplicationController
       source: params[:stripeToken]
     )
 
+    user = User.find_by(id: params[:user_id])
     Stripe::Charge.create(
       customer: customer.id,
       shipping: {
@@ -23,16 +26,16 @@ class PaymentsController < ApplicationController
           country: 'US'
         }
       },
-      amount: 5000,
-      description: 'email',
-      currency: 'usd'
+      amount: 100,
+      description: ,
+      currency: 'eur'
     )
-    @payment = Payment.new(payment_params)
-    @payment.amount = 100.0
-    @payment.stripe_token = params[:stripeToken]
+    @payment = Payment.new(payment_params).tap do |payment|
+                payment.amount = 100.0
+                payment.stripe_token = params[:stripeToken]
+              end
     @payment.save!
-    @payment.update(status: 'paid')
-    @payment.booking.update(status: 'paid')
+    @payment.paid!
     redirect_to apartments_path
     rescue Stripe::CardError => e
       flash[:error] = e.message
@@ -43,8 +46,7 @@ class PaymentsController < ApplicationController
 
   def payment_params
     params.require(:payment).permit(
-      :payment_type, :amount, :status, :remarks,
-      :stripe_token, :booking_id
+      %i[payment_type amount status remarks stripe_token booking_id]
     )
   end
 end
