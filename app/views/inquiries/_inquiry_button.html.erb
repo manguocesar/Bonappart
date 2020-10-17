@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+  <% if current_user.student_role? %>
+    <%= link_to 'Contact Landlord for more details', new_inquiry_path(apartment: params[:id]), class: 'btn btn-success btn-lg btn-block', data: { remote: true } %>
+  <% end %>
+<% else %>
+  <%= link_to 'Contact Landlord for more details', render_login_path, class: 'btn btn-success btn-lg btn-block', data: { remote: true } %>
+<% end %>

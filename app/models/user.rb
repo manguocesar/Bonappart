@@ -13,6 +13,11 @@ class User < ApplicationRecord
 
   # Check if user has administrative role
   def administrative_role?
-    (has_role? :admin) || (has_role? :landloard)
+    (has_role? :admin) || (has_role? :landlord)
+  end
+
+  # Check if user has student role
+  def student_role?
+    (has_role? :student)
   end
 end

@@ -89,6 +89,9 @@ en:
     count_of_contacts: Count of contacts
     count_of_members: Count of members
     landlord_management: Landlords management
+  inquiry:
+    instructions: Instructions
+    login_message: You need to login to contact with landlord
   mailer:
     send_inquiry:
       subject: Inquiry for appartment booking
