@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_10_165544) do
+ActiveRecord::Schema.define(version: 2020_10_18_083228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(version: 2020_10_10_165544) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "address"
+    t.string "postal_code"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.bigint "payment_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["payment_id"], name: "index_addresses_on_payment_id"
   end
 
   create_table "apartments", force: :cascade do |t|
@@ -72,6 +84,14 @@ ActiveRecord::Schema.define(version: 2020_10_10_165544) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "inquiries", force: :cascade do |t|
+    t.string "message"
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "payments", force: :cascade do |t|
     t.integer "payment_type"
     t.float "amount"
@@ -96,13 +116,6 @@ ActiveRecord::Schema.define(version: 2020_10_10_165544) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["apartment_id"], name: "index_rent_rates_on_apartment_id"
-
-  create_table "inquiries", force: :cascade do |t|
-    t.string "message"
-    t.integer "sender_id"
-    t.integer "receiver_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "roles", force: :cascade do |t|

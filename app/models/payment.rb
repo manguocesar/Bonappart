@@ -8,6 +8,8 @@ class Payment < ApplicationRecord
 
   # Assciations
   belongs_to :booking
+  has_one :address, dependent: :destroy
+  accepts_nested_attributes_for :address
 
   # Callbacks
   after_update :update_booking, if: -> { saved_change_to_attribute?(:status) && paid? }
