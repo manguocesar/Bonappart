@@ -82,7 +82,7 @@ en:
     images: Images
     select_images: Upload only .jpg, .jpeg, .png files 
     create: Apartment added successfully
-    edit: Apartment edited successfully
+    update: Apartment updated successfully
     delete: Apartment deleted successfully
     previous: Previous
     next: Next
@@ -98,3 +98,16 @@ en:
   footer:
     copyright: © Copyright 2020. All right reserved.
     company_name: Bonapart
+  rent:
+    net_rate: Net rate
+    water_charge: Water charge
+    heating_charge: Heating charge
+    electricity_charge: Electricity charge
+    internet_charge: Internet charge
+    insurance_charge: Insurance charge
+    deposit_amount: Deposit amount
+  booking:
+    status: Status
+    start_date: Start date
+    end_date: End date
+    book_now: Book Now    

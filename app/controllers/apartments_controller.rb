@@ -9,10 +9,13 @@ class ApartmentsController < ApplicationController
     authorize @apartments
   end
 
-  def show; end
+  def show
+    @similar_apartments = Apartment.similar_apartments(@apartment&.distance_from_university).where.not(id: @apartment&.id)
+  end
 
   def new
     @apartment = Apartment.new
+    @apartment.build_rent_rate
   end
 
   def edit; end
@@ -63,7 +66,12 @@ class ApartmentsController < ApplicationController
       :city, :country, :area, :apartment_type, :availability,
       :arrival_date, :departure_date, :total_bedrooms,
       :shower_room, :distance_from_university, :other_facilities,
-      :longitude, :latitude, :user_id, images: []
+      :longitude, :latitude, :user_id, images: [],
+      rent_rate_attributes: %i[
+        net_rate water_charge heating_charge
+        electricity_charge internet_charge
+        insurance_charge deposit_amount
+      ]
     )
   end
 end

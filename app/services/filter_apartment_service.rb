@@ -32,9 +32,15 @@ class FilterApartmentService
                   when :distance_from_university
                     search_apartments.filter_by_distance_from_university(field_params)
                   when :rent
-                    search_apartments.filter_by_distance_from_university(field_params)
+                    filter_by_rent(field_params)
                   end
     @apartments
+  end
+
+  def filter_by_rent(rent_params)
+    return search_apartments if rent_params.eql?('All')
+
+    rent_params.eql?('Low to High') ? search_apartments.filter_by_rent_asc : search_apartments.filter_by_rent_desc
   end
 
   def search_apartments

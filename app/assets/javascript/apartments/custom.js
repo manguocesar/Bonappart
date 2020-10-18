@@ -48,6 +48,14 @@ var ApartmentForm = {
       "apartment[longitude]": 'Please enter longtitude',
       "apartment[latitude]": 'Please enter latitude'
     },
+
+    errorPlacement: function (error, element) {
+      popoverPlacement (error, element);
+    }, 
+
+    success: function (label, element) {
+      disablePopover(element);
+    }
   });
   }
 }
@@ -67,7 +75,7 @@ var Filter = {
           },
           sort: {
             distance_from_university: $('#distance_from_university').val(),
-            rent: $('#rent').val(),
+            rent: $('#net_rate').val(),
           }
         }
       });

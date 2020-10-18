@@ -57,8 +57,45 @@ ActiveRecord::Schema.define(version: 2020_10_10_165544) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.bigint "booking_id"
+    t.index ["booking_id"], name: "index_apartments_on_booking_id"
     t.index ["user_id"], name: "index_apartments_on_user_id"
   end
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer "status"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "payment_type"
+    t.float "amount"
+    t.integer "status"
+    t.text "remarks"
+    t.string "stripe_token"
+    t.bigint "booking_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_payments_on_booking_id"
+  end
+
+  create_table "rent_rates", force: :cascade do |t|
+    t.float "net_rate"
+    t.float "water_charge"
+    t.float "heating_charge"
+    t.float "electricity_charge"
+    t.float "internet_charge"
+    t.float "insurance_charge"
+    t.float "deposit_amount"
+    t.bigint "apartment_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["apartment_id"], name: "index_rent_rates_on_apartment_id"
 
   create_table "inquiries", force: :cascade do |t|
     t.string "message"
@@ -111,5 +148,6 @@ ActiveRecord::Schema.define(version: 2020_10_10_165544) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "apartments", "bookings"
   add_foreign_key "apartments", "users"
 end
