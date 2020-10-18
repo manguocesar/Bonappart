@@ -8,4 +8,5 @@
 //= require jquery.validate
 //= require common/jquery.slimscroll.min
 //= require common/custom
+//= require login
 //= require apartments/custom

@@ -5,4 +5,3 @@
 //= require moment
 //= require common/bootstrap-datetimepicker.min.js
 //= require common/bootstrap-select.min.js
-//= require bookings/custom
