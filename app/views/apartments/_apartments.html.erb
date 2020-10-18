@@ -1,7 +1,7 @@
 <% @apartments.each do |apartment| %>
-  <div class="col-lg-4 col-md-6 mt-5">
+  <div class="col-lg-6 col-md-6 mt-5">
     <div class="card card-bordered">
-      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div id="carouselExampleControls<%= "#{apartment.id}" %>" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <% apartment.images.each do |image| %>
             <div class="carousel-item <%= apartment.active_class(image) %>">
@@ -9,11 +9,11 @@
             </div>
           <% end %>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carouselExampleControls<%= "#{apartment.id}" %>" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only"><%= t('apartment.previous') %></span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carouselExampleControls<%= "#{apartment.id}" %>" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only"><%= t('apartment.next') %></span>
         </a>

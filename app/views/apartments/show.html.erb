@@ -79,8 +79,8 @@
   var myLatLng = [
     [ '100.00',
       "<%= url_for(@apartment.images.first) %>",
-      "<%= @apartment.latitude %>"),
-      "<%= @apartment.longitude %>") ]
+      "<%= @apartment.latitude %>",
+      "<%= @apartment.longitude %>" ]
   ];
   function initMap() {
     DisplayMap.mapSettings(myLatLng);
