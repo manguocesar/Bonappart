@@ -53,7 +53,7 @@
               </div>
             </div>
           </div>
-          <!-- Apartment details end -->1
+          <!-- Apartment details end -->
           <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
           <% if current_user&.administrative_role? %>
             <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'btn btn-success mt-4 pr-4 pl-4' %>
