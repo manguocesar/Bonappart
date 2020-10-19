@@ -1,0 +1,2 @@
+$("#booking_modal").find(".modal-body").html("<%= j (render "form", booking: @booking, apartment: params[:apartment_id], url: bookings_path, method: :post ) %>");
+$("#booking_modal").modal();

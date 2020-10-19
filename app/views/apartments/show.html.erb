@@ -3,22 +3,14 @@
     <div class="card-body">
       <div class="row mt-3">
         <div class="col-sm-6">
-          <!-- Apartment title start -->
-          <h4 class="mb-3"><%= @apartment.title %><br> Available: <%= @apartment.arrival_date.strftime('%d-%m-%Y') %> To <%= @apartment.departure_date.strftime('%d-%m-%Y') %></h4>
-          <!-- Apartment title end -->
+          <h4 class="mb-3"><%= @apartment.title %><br> Available by: <%= @apartment.departure_date_availabilty %></h4>
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
               <!-- Image box start -->
               <% @apartment.images.each do |image| %>
-                <% if image == @apartment.images.first %>
-                  <div class="carousel-item active">
-                    <%= image_tag url_for(image), class: "d-block w-100" %>
-                  </div>
-                <% else %>
-                  <div class="carousel-item">
-                    <%= image_tag url_for(image), class: "d-block w-100" %>
-                  </div>
-                <% end %>
+                <div class="carousel-item <%= @apartment.active_class(image) %>">
+                  <%= image_tag url_for(image), class: "d-block w-100", style:"width:500px; height:360px;" %>
+                </div>
               <% end %>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -44,13 +36,32 @@
                       <p><%= t('apartment.distance_from_university') %>: <%= @apartment.distance_from_university %></p>
                       <p><%= t('apartment.description') %>: <%= @apartment.description %></p>
                       <p><%= t('apartment.other_facilities') %>: <%= @apartment.other_facilities %></p>
+                      <p><%= t('apartment.rent_details') %>:
+                        <ul>
+                          <% rent = @apartment.rent_rate %>
+                          <li><%= t('rent.net_rate') %>: <%= rent.net_rate %></li>
+                          <li><%= t('rent.water_charge') %>: <%= rent.water_charge %></li>
+                          <li><%= t('rent.heating_charge') %>: <%= rent.heating_charge %></li>
+                          <li><%= t('rent.electricity_charge') %>: <%= rent.electricity_charge %></li>
+                          <li><%= t('rent.internet_charge') %>: <%= rent.internet_charge %></li>
+                          <li><%= t('rent.insurance_charge') %>: <%= rent.insurance_charge %></li>
+                          <li><%= t('rent.deposit_amount') %>: <%= rent.deposit_amount %></li>
+                        </ul>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Apartment details end -->
+          <!-- Apartment details end -->1
+          <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
+          <% if current_user&.administrative_role? %>
+            <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'btn btn-success mt-4 pr-4 pl-4' %>
+            <%= link_to  apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn btn-danger mt-4 pr-4 pl-4' do %>Delete
+            <% end %>
+          <% else %>
+            <%= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"btn btn-success mt-4 pr-4 pl-4" %>
+          <% end %>
         </div>
         <div class="col-sm-6">
           <!-- Apartment operations buttons start -->
@@ -74,6 +85,28 @@
   </div>
   <%= render '/shared/modal_window' %>
 </div>
+          <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@apartment.latitude},#{@apartment.longitude}&markers=#{@apartment.latitude},#{@apartment.longitude}&zoom=7&size=640x400&key=AIzaSyB5OWOzIcLtzOgcWX14TaqpsHMmgcNdre8",
+              class: 'img-fluid img-rounded', alt: "on the map"%>
+          <%= link_to 'Contact Landlord for more details', new_inquiry_path(apartment: params[:id]), class: 'btn btn-success btn-lg btn-block', data: { remote: true } %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= render '/inquiries/inquiry_form' %>
+</div>
+<div id="booking_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><%= t('booking.book_now') %></h5>
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'similar_apartments' %>
 <script>
   // Set coordinates and pass to the map
   var myLatLng = [

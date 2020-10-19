@@ -5,44 +5,24 @@ class ApartmentsController < ApplicationController
   before_action :set_apartment, only: %i[show edit update destroy]
 
   def index
-    if params.dig(:filter).present?
-      @apartments = pagination(filter_result)
-    else
-      @apartments = pagination(search_data)
-    end
+    @apartments = pagination(filtered_apartments)
+    authorize @apartments
   end
 
-  # Filters apartments using various filters
-  def filter_result
-    @apartments = if params.dig(:filter, :distance_from_university).present?
-                    Apartment.filter_by_distance_from_university(params.dig(:filter, :distance_from_university))
-                  elsif params.dig(:filter, :arrival_date).present?
-                    Apartment.filter_by_arrival_date(params.dig(:filter, :arrival_date))
-                  elsif params.dig(:filter, :departure_date).present?
-                    Apartment.filter_by_departure_date(params.dig(:filter, :departure_date))
-                  else
-                    Apartment.all
-                  end
+  def show
+    @similar_apartments = Apartment.similar_apartments(@apartment&.distance_from_university).where.not(id: @apartment&.id)
   end
-
-  # Returns the apartments based on search parameters
-  def search_data
-    search_data = params.dig(:search)
-    return Apartment.all if search_data.blank?
-
-    Apartment.filter_by_type(params.dig(:search))
-  end
-
-  def show; end
 
   def new
     @apartment = Apartment.new
+    @apartment.build_rent_rate
   end
 
   def edit; end
 
   def create
     @apartment = Apartment.new(apartment_params)
+    authorize @apartment
     if @apartment.save
       redirect_to apartments_path, notice: t('apartment.create')
     else
@@ -68,9 +48,15 @@ class ApartmentsController < ApplicationController
 
   private
 
+  # call filter apartments service for sorting and searching
+  def filtered_apartments
+    FilterApartmentService.new(params, current_user).sort_apartments
+  end
+
   # Find and set the apaatment of given ID.
   def set_apartment
     @apartment = Apartment.find_by(id: params[:id])
+    authorize @apartment
   end
 
   # Permit the apartment parameters
@@ -80,7 +66,12 @@ class ApartmentsController < ApplicationController
       :city, :country, :area, :apartment_type, :availability,
       :arrival_date, :departure_date, :total_bedrooms,
       :shower_room, :distance_from_university, :other_facilities,
-      :longitude, :latitude, :user_id, images: []
+      :longitude, :latitude, :user_id, images: [],
+      rent_rate_attributes: %i[
+        net_rate water_charge heating_charge
+        electricity_charge internet_charge
+        insurance_charge deposit_amount
+      ]
     )
   end
 end

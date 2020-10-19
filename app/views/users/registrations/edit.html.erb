@@ -4,7 +4,7 @@
     <div class="row mt-3">
       <div class="col-sm-12">
         <h4 class="header-title"><%= t('users.edit_user') %></h4>
-        <%= image_tag url_for(resource.image), class: "d-block profile" %>
+        <%= image_tag url_for(resource&.image), class: "d-block profile" %>
         <%= render 'form' %>
       </div>
     </div>
