@@ -1,9 +1,11 @@
 <div class='header-area header-bottom'>
+  <!-- Add new apartment button -->
   <% if current_user&.administrative_role? %>
     <%= link_to new_apartment_path, class: 'btn btn-outline-success btn-xs mr-3 pull-right' do %>
       <i class="fa fa-plus left" aria-hidden="true"></i> <%= t('apartment.add_apartment') %>
     <% end %>
   <% end %>
+  <!-- Apartments searchbar start -->
   <div class='row'>
     <div class="search-box col-md-2">
       <%= form_tag apartments_path, :method => 'get' do %>
@@ -29,16 +31,29 @@
       <button type="button" class="btn btn-outline-success btn-xs sort-filter"  data-disable-with="false" ><%= t('filter') %></button>
     </div>
   </div>
+  <!-- Apartments searchbar end -->
 </div>
-<div class="card-area">
-  <div class="row", id='apartmentCard'>
-    <%= render 'apartments', apartments: @apartments %>
+<div class='row col-md-12'>
+  <div class="card-area col-md-6">
+    <!-- Apartments listing start -->
+    <div class="row", id='apartmentCard'>
+      <%= render 'apartments', apartments: @apartments %>
+    </div>
+    <!-- Apartments listing end -->
+    <!-- Apartments pagination start -->
+    <div class='d-flex justify-content-center mt-3 dapartments-pagination'>
+      <%= render 'apartments_pagination', apartments: @apartments %>
+    </div>
+    <!-- Apartments pagination end -->
   </div>
-  <div class='d-flex justify-content-center mt-3 dapartments-pagination'>
-    <%= render 'apartments_pagination', apartments: @apartments %>
+  <div class='col-md-6'>
+    <!-- Display map start -->
+    <div id="map" class='apartments-map'></div>
+    <!-- Display map end -->
   </div>
 </div>
 <script type="text/javascript">
+  // Add datepicker
   $(document).ready(function (e) {
     $('.selectpicker').selectpicker('refresh');
     $('#arrival-date, #departure-date').datetimepicker({
@@ -46,4 +61,10 @@
     });
     Filter.result();
   });
+
+  // Generate map
+  function initMap() {
+    const myLatLng = JSON.parse('<%= raw coordinates_hash(@apartments) %>');
+    DisplayMap.mapSettings(myLatLng);
+  }
 </script>
