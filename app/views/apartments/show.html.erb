@@ -39,13 +39,13 @@
                       <p><%= t('apartment.rent_details') %>:
                         <ul>
                           <% rent = @apartment.rent_rate %>
-                          <li><%= t('rent.net_rate') %>: <%= rent.net_rate %></li>
-                          <li><%= t('rent.water_charge') %>: <%= rent.water_charge %></li>
-                          <li><%= t('rent.heating_charge') %>: <%= rent.heating_charge %></li>
-                          <li><%= t('rent.electricity_charge') %>: <%= rent.electricity_charge %></li>
-                          <li><%= t('rent.internet_charge') %>: <%= rent.internet_charge %></li>
-                          <li><%= t('rent.insurance_charge') %>: <%= rent.insurance_charge %></li>
-                          <li><%= t('rent.deposit_amount') %>: <%= rent.deposit_amount %></li>
+                          <li><%= t('rent.net_rate') %>: <%= rent&.net_rate %></li>
+                          <li><%= t('rent.water_charge') %>: <%= rent&.water_charge %></li>
+                          <li><%= t('rent.heating_charge') %>: <%= rent&.heating_charge %></li>
+                          <li><%= t('rent.electricity_charge') %>: <%= rent&.electricity_charge %></li>
+                          <li><%= t('rent.internet_charge') %>: <%= rent&.internet_charge %></li>
+                          <li><%= t('rent.insurance_charge') %>: <%= rent&.insurance_charge %></li>
+                          <li><%= t('rent.deposit_amount') %>: <%= rent&.deposit_amount %></li>
                         </ul>
                     </div>
                   </div>
@@ -78,21 +78,12 @@
           <div id="map"></div>
           <!-- Map container end -->
           <!-- Send inquiry to the landlord button -->
-          <%= render '/inquiries/inquiry_button' %>
+          <%= render '/shared/modal_window' %>
         </div>
       </div>
     </div>
   </div>
   <%= render '/shared/modal_window' %>
-</div>
-          <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@apartment.latitude},#{@apartment.longitude}&markers=#{@apartment.latitude},#{@apartment.longitude}&zoom=7&size=640x400&key=AIzaSyB5OWOzIcLtzOgcWX14TaqpsHMmgcNdre8",
-              class: 'img-fluid img-rounded', alt: "on the map"%>
-          <%= link_to 'Contact Landlord for more details', new_inquiry_path(apartment: params[:id]), class: 'btn btn-success btn-lg btn-block', data: { remote: true } %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <%= render '/inquiries/inquiry_form' %>
 </div>
 <div id="booking_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
