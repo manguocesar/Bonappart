@@ -1,13 +1,21 @@
 <%= render 'search_header' %>
 <div class="card-area">
-  <div class="row", id='apartmentCard'>
-    <%= render 'apartments', apartments: @apartments %>
+  <div class='col-md-6'>
+    <div class="row", id='apartmentCard'>
+      <%= render 'apartments', apartments: @apartments %>
+    </div>
+    <div class='d-flex justify-content-center mt-3 dapartments-pagination'>
+      <%= render 'apartments_pagination', apartments: @apartments %>
+    </div>
   </div>
-  <div class='d-flex justify-content-center mt-3 dapartments-pagination'>
-    <%= render 'apartments_pagination', apartments: @apartments %>
+  <div class='col-md-6'>
+    <!-- Display map start -->
+    <div id="map" class='apartments-map'></div>
+    <!-- Display map end -->
   </div>
 </div>
 <script type="text/javascript">
+  // Add datepicker
   $(document).ready(function (e) {
     $('.selectpicker').selectpicker('refresh');
     $('#arrival-date, #departure-date').datetimepicker({
@@ -15,4 +23,10 @@
     });
     Filter.result();
   });
+
+  // Generate map
+  function initMap() {
+    const myLatLng = JSON.parse('<%= raw coordinates_hash(@apartments) %>');
+    DisplayMap.mapSettings(myLatLng);
+  }
 </script>
