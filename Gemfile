@@ -36,6 +36,7 @@ gem 'devise', '~> 4.7', '>= 4.7.3' # for authentication
 gem 'kaminari' # for pagination
 gem 'geocoder' # For geocoding map
 gem 'stripe-rails' # For payment gateway
+gem 'city-state' # For city and state selection
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

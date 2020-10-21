@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get 'sort_result', to: 'apartments#sort_result'
   get 'dashboard/index'
   get 'homes/index'
+  get 'cities/:state', to: 'payments#cities'
   root 'apartments#index'
 end

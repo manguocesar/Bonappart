@@ -112,7 +112,7 @@ en:
     end_date: End date
     book_now: Book Now    
   address:
-    address: Address
+    area: Area
     postal_code: Postal code
     city: City
     state: State
