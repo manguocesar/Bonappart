@@ -22,6 +22,7 @@
               <span class="sr-only">Next</span>
             </a>
           </div>
+          <p><%= t('apartment.virtual_visit_link') %>: <a href="<%= @apartment.virtual_visit_link %>"><%= @apartment.virtual_visit_link %></a></p>
           <!-- Apartment details start -->
           <div class="row">
             <div class="col-lg-12 mt-5">
@@ -54,14 +55,6 @@
             </div>
           </div>
           <!-- Apartment details end -->
-          <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
-          <% if current_user&.administrative_role? %>
-            <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'btn btn-success mt-4 pr-4 pl-4' %>
-            <%= link_to  apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn btn-danger mt-4 pr-4 pl-4' do %>Delete
-            <% end %>
-          <% else %>
-            <%= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"btn btn-success mt-4 pr-4 pl-4" %>
-          <% end %>
         </div>
         <div class="col-sm-6">
           <!-- Apartment operations buttons start -->
