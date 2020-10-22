@@ -5,8 +5,8 @@ class Apartment < ApplicationRecord
   # scopes for filters
   scope :filter_by_type,-> (apartment_type) {where("apartment_type ILIKE :apartment_type", apartment_type: "%#{apartment_type.downcase}%") }
   scope :filter_by_distance_from_university, ->(distance_from_university) { where distance_from_university: distance_from_university }
-  scope :filter_by_rent_asc, -> { includes(:rent_rate).order("rent_rate.net_rate ASC") }
-  scope :filter_by_rent_desc, -> { includes(:rent_rate).order("rent_rate.net_rate DESC") }
+  scope :filter_by_rent_asc, -> { includes(:rent_rate).order("rent_rates.net_rate ASC") }
+  scope :filter_by_rent_desc, -> { includes(:rent_rate).order("rent_rates.net_rate DESC") }
   scope :filter_by_departure_date, ->(departure_date) { where departure_date:  DateTime.parse(departure_date) }
   scope :similar_apartments, ->(distance_from_university) { where distance_from_university: distance_from_university }
 
