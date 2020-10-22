@@ -21,7 +21,7 @@ class PaymentsController < ApplicationController
               end
     @payment.save!
     @payment.paid!
-    redirect_to apartments_path
+    redirect_to apartments_path, notice: t('apartment.booking_success')
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to add_payment_method_path

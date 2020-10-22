@@ -87,6 +87,7 @@ en:
     delete: Apartment deleted successfully
     previous: Previous
     next: Next
+    booking_success: Accomodation booked successfully
   dashboard:
     count_of_ads: Count of Ads
     count_of_active_ads: Count of Active Ads
