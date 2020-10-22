@@ -80,6 +80,7 @@ en:
     longitude: Longitude
     latitude: Latitude
     images: Images
+    virtual_visit_link: Virtual visit link
     select_images: Upload only .jpg, .jpeg, .png files 
     create: Apartment added successfully
     update: Apartment updated successfully
@@ -92,6 +93,9 @@ en:
     count_of_contacts: Count of contacts
     count_of_members: Count of members
     landlord_management: Landlords management
+  inquiry:
+    instructions: Instructions
+    login_message: You need to login to contact with landlord
   mailer:
     send_inquiry:
       subject: Inquiry for appartment booking

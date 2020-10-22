@@ -1,44 +1,21 @@
-<div class='header-area header-bottom'>
-  <% if current_user&.administrative_role? %>
-    <%= link_to new_apartment_path, class: 'btn btn-outline-success btn-xs mr-3 pull-right' do %>
-      <i class="fa fa-plus left" aria-hidden="true"></i> <%= t('apartment.add_apartment') %>
-    <% end %>
-  <% end %>
-  <div class='row'>
-    <div class="search-box col-md-2">
-      <%= form_tag apartments_path, :method => 'get' do %>
-        <p>
-          <%= text_field_tag 'search[apartment_type]', params[:search].present? ? params[:search][:apartment_type] : '', id: 'apartment_type', placeholder: 'Apartment Type..'%>
-          <i class= 'ti-search'></i>
-        </p>
-      <% end %>
-    </div>
-    <div class="col-md-2">
-      <input class="form-control" id="arrival-date", placeholder="<%= t('apartment.arrival_date') %>">
-    </div>
-    <div class="col-md-2">
-      <input class="form-control" id="departure-date", placeholder="<%= t('apartment.departure_date') %>">
-    </div>
-    <div class="col-md-2">
-      <%= select_tag(:distance_from_university, options_for_select(Apartment.pluck(:distance_from_university)), class: "form-control selectpicker", "data-live-search" => "true", include_blank: t('apartment.distance_from_university')) %>
-    </div>
-    <div class="col-md-2">
-      <%= select_tag(:net_rate, options_for_select(Constant::RENT_RATE_DROPDOWN, :net_rate), class: "form-control selectpicker", "data-live-search" => "true", include_blank: t('apartment.rent')) %>
-    </div>
-    <div class="col-md-2">
-      <button type="button" class="btn btn-outline-success btn-xs sort-filter"  data-disable-with="false" ><%= t('filter') %></button>
-    </div>
-  </div>
-</div>
+<%= render 'search_header' %>
 <div class="card-area">
-  <div class="row", id='apartmentCard'>
-    <%= render 'apartments', apartments: @apartments %>
+  <div class='col-md-6'>
+    <div class="row", id='apartmentCard'>
+      <%= render 'apartments', apartments: @apartments %>
+    </div>
+    <div class='d-flex justify-content-center mt-3 dapartments-pagination'>
+      <%= render 'apartments_pagination', apartments: @apartments %>
+    </div>
   </div>
-  <div class='d-flex justify-content-center mt-3 dapartments-pagination'>
-    <%= render 'apartments_pagination', apartments: @apartments %>
+  <div class='col-md-6'>
+    <!-- Display map start -->
+    <div id="map" class='apartments-map'></div>
+    <!-- Display map end -->
   </div>
 </div>
 <script type="text/javascript">
+  // Add datepicker
   $(document).ready(function (e) {
     $('.selectpicker').selectpicker('refresh');
     $('#arrival-date, #departure-date').datetimepicker({
@@ -46,4 +23,10 @@
     });
     Filter.result();
   });
+
+  // Generate map
+  function initMap() {
+    const myLatLng = JSON.parse('<%= raw coordinates_hash(@apartments) %>');
+    DisplayMap.mapSettings(myLatLng);
+  }
 </script>

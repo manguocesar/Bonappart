@@ -82,3 +82,57 @@ var Filter = {
     });
   }
 }
+
+// For diaplay map on apartments page
+var DisplayMap = {
+  mapSettings: function (latlong) {
+    // latlong - coordinates and apartment price
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 12,
+      center: new google.maps.LatLng(parseFloat(latlong[0][2]), parseFloat(latlong[0][3])),
+      panControl: true,
+      zoomControl: true,
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.SMALL,
+        position: google.maps.ControlPosition.LEFT_CENTER
+      },
+      scaleControl: false,
+      streetViewControl: true,
+      overviewMapControl: true
+    });
+    marker = DisplayMap.setMarker(latlong, map)
+  },
+
+  // Set marker (pin/nord) on particular location
+  setMarker: function (latlong, map) {
+    var marker, i;
+    var infowindow = new google.maps.InfoWindow();
+
+    for (i = 0; i < latlong.length; i++){
+      marker = new google.maps.Marker({
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+        position: new google.maps.LatLng(parseFloat(latlong[i][2]), parseFloat(latlong[i][3])),
+        title: latlong[i][0],
+        map,
+      });
+      google.maps.event.addListener(marker, 'click', (function (marker, i) {
+        return function () {
+          infowindow.setContent(latlong[i][0]);
+          infowindow.setContent("<img src="+ latlong[i][1] +" style=height:60px;width:100px><br/><br/><b>Price:</b>"+ latlong[i][0]);
+          infowindow.open(map, marker);
+          DisplayMap.toggleBounce;
+        }
+      })(marker, i));
+    }
+  },
+
+  //  Marker animation
+  toggleBounce: function () {
+    if (marker.getAnimation() !== null) {
+      marker.setAnimation(null);
+    } else {
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+  },
+}
