@@ -66,7 +66,7 @@ class ApartmentsController < ApplicationController
       :city, :country, :area, :apartment_type, :availability,
       :arrival_date, :departure_date, :total_bedrooms,
       :shower_room, :distance_from_university, :other_facilities,
-      :longitude, :latitude, :user_id, images: [],
+      :longitude, :latitude, :user_id, :virtual_visit_link, images: [],
       rent_rate_attributes: %i[
         net_rate water_charge heating_charge
         electricity_charge internet_charge

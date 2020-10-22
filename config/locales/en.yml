@@ -80,6 +80,7 @@ en:
     longitude: Longitude
     latitude: Latitude
     images: Images
+    virtual_visit_link: Virtual visit link
     select_images: Upload only .jpg, .jpeg, .png files 
     create: Apartment added successfully
     update: Apartment updated successfully
