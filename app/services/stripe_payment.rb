@@ -1,65 +1,55 @@
 class StripePayment
-  DEFAULT_CURRENCY = 'usd'.freeze
+  DEFAULT_CURRENCY = 'eur'.freeze
 
-  attr_accessor :user, :email, :token, :amount
+  attr_accessor :user, :email, :token, :amount, :params
   def initialize(params, user)
     @email = user.email
     @token = params[:stripeToken]
-    @amount = params[:stripeAmount]
+    @amount = params[:payment][:amount]
     @user = user
+    @params = params
   end
 
   def call
-    create_charge(find_customer)
+    create_customer
   end
 
   private
 
-  def find_customer
-    if user.stripe_id
-      retrieve_customer(user.stripe_id)
-    else
-      create_customer
-    end
-  end
-
-  def retrieve_customer(token)
-    Stripe::Customer.retrieve(token)
-  end
-
+  # Create stripe customer
   def create_customer
     customer = Stripe::Customer.create(
       email: email,
       source: token,
       address: {
-        line1: 'test',
-        postal_code: '98140',
-        city: 'San Fransico',
-        state: 'CA',
-        country: 'US'
+        line1: params[:address][:area],
+        postal_code: params[:address][:postal_code],
+        city: params[:address][:city],
+        state: params[:address][:state],
+        country: 'France'
       },
-      name: 'test'
+      name: user.firstname
     )
-    user.update(stripe_id: token)
-    customer
+    create_charge(customer)
   end
 
+  # Create stripe charge for payment
   def create_charge(customer)
     Stripe::Charge.create(
       customer: customer.id,
       shipping: {
-        name: 'Dipak Rathod',
+        name: user.firstname,
         address: {
-          line1: '510 Townsend St',
-          postal_code: '98140',
-          city: 'San Francisco',
-          state: 'CA',
-          country: 'US'
+          line1: params[:address][:area],
+          postal_code: params[:address][:postal_code],
+          city: params[:address][:city],
+          state: params[:address][:state],
+          country: 'France'
         }
       },
-      amount: 5000,
+      amount: amount.to_i * 100,
       description: email,
-      currency: 'usd'
+      currency: 'eur'
     )
   end
 end
