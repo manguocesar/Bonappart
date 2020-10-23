@@ -1,0 +1,40 @@
+<div class='header-area header-bottom'>
+  <!-- Add new apartment type button -->
+  <% if current_user&.administrative_role? %>
+    <%= link_to new_admin_apartment_type_path, remote:true, class: 'btn btn-outline-success btn-xs mr-3 pull-right' do %>
+      <i class="fa fa-plus left" aria-hidden="true"></i> <%= t('admin.apartment_type.add_apartment_type') %>
+    <% end %>
+  <% end %>
+</div>
+<div class="row mt-5 mb-5">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-sm-flex justify-content-between align-items-center">
+          <h4 class="header-title mb-0">Apartment Types</h4>
+        </div>
+        <div class="market-status-table mt-4">
+          <div class="table-responsive">
+            <table class="dbkit-table">
+              <tr class="heading-td">
+                <td>Apartment Types</td>
+                <td>Amount</td>
+                <td colspan='2' class='actions'>Actions</td>
+              </tr>
+              <% @apartment_types.each do |apartment_type| %>
+                <tr>
+                  <td><%= apartment_type.name %></td>
+                  <td><%= apartment_type.amount %></td>
+                  <td><%= link_to 'Edit', edit_admin_apartment_type_path(apartment_type), remote: true %></td>
+                  <td><%= link_to 'Delete', admin_apartment_type_path(apartment_type), method: :delete, data: { confirm: t('confirmation') } %></td>
+                </tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Apartment Types area end -->
+<%= render '/shared/modal_window' %>

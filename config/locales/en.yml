@@ -80,7 +80,7 @@ en:
     longitude: Longitude
     latitude: Latitude
     images: Images
-    select_images: Upload only .jpg, .jpeg, .png files 
+    select_images: Upload only .jpg, .jpeg, .png files
     create: Apartment added successfully
     update: Apartment updated successfully
     delete: Apartment deleted successfully
@@ -113,4 +113,7 @@ en:
     status: Status
     start_date: Start date
     end_date: End date
-    book_now: Book Now    
+    book_now: Book Now
+  admin:
+    apartment_type:
+      add_apartment_type: Add New Apartment Type

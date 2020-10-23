@@ -15,4 +15,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w[style.css dashboard.js
                                                  login.scss login.js *.gif
                                                  homes.scss homes.js apartments.js
-                                                 bookings.scss bookings.js payments.js]
+                                                 bookings.scss bookings.js payments.js
+                                                 apartment_types.js]

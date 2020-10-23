@@ -1,0 +1,6 @@
+<% if @apartment_type.errors.present? %>
+  $("#inuiryModal").find(".modal-content").html("<%= j (render 'new') %>");
+  $("#inuiryModal").modal();
+<% else %>
+  $("#inuiryModal").modal('toggle');
+<% end %>
