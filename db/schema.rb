@@ -72,6 +72,14 @@ ActiveRecord::Schema.define(version: 2020_10_10_165544) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "inquiries", force: :cascade do |t|
+    t.string "message"
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "payments", force: :cascade do |t|
     t.integer "payment_type"
     t.float "amount"
@@ -96,13 +104,6 @@ ActiveRecord::Schema.define(version: 2020_10_10_165544) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["apartment_id"], name: "index_rent_rates_on_apartment_id"
-
-  create_table "inquiries", force: :cascade do |t|
-    t.string "message"
-    t.integer "sender_id"
-    t.integer "receiver_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "roles", force: :cascade do |t|
