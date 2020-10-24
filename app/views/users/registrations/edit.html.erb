@@ -1,13 +1,15 @@
 <div class="col-lg-12 mt-8">
-<div class="card mt-3">
-  <div class="card-body">
-    <div class="row mt-3">
-      <div class="col-sm-12">
-        <h4 class="header-title"><%= t('users.edit_user') %></h4>
-        <%= image_tag url_for(resource&.image), class: "d-block profile" %>
-        <%= render 'form' %>
+  <div class="card mt-3">
+    <div class="card-body">
+      <div class="row mt-3">
+        <div class="col-sm-12">
+          <h4 class="header-title"><%= t('users.edit_user') %></h4>
+          <% if resource.image.present? %>
+            <%= image_tag url_for(resource&.image), class: "d-block profile" %>
+          <% end %>
+          <%= render 'form' %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>

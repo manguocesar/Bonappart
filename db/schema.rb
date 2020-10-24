@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(version: 2020_10_24_120733) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "addresses", force: :cascade do |t|
+    t.string "area"
+    t.string "postal_code"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.bigint "payment_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["payment_id"], name: "index_addresses_on_payment_id"
+  end
+
   create_table "apartment_types", force: :cascade do |t|
     t.string "name"
     t.float "amount"
@@ -65,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_10_24_120733) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.bigint "booking_id"
+    t.string "virtual_visit_link"
     t.bigint "apartment_type_id"
     t.index ["apartment_type_id"], name: "index_apartments_on_apartment_type_id"
     t.index ["booking_id"], name: "index_apartments_on_booking_id"

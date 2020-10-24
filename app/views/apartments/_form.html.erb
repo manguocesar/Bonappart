@@ -75,13 +75,17 @@
     </div>
   </div>
   <div class='row'>
-    <div class="form-group col-sm-6">
+    <div class="form-group col-sm-4">
       <%= form.label t('apartment.longitude'), class:"col-form-label" %><br/>
       <%= form.text_field :longitude, class: 'form-control' %>
     </div>
-     <div class="form-group col-sm-6">
+     <div class="form-group col-sm-4">
       <%= form.label t('apartment.latitude'), class:"col-form-label" %><br/>
       <%= form.text_field :latitude, class: 'form-control' %>
+    </div>
+    <div class="form-group col-sm-4">
+      <%= form.label t('apartment.virtual_visit_link'), class:"col-form-label" %><br/>
+      <%= form.text_field :virtual_visit_link, class: 'form-control' %>
     </div>
   </div>
   <%= render partial: 'rent_rates' , locals: { form: form } %>

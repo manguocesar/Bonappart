@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 4.4', '>= 4.4.1'
-gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
+# gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'jquery-validation-rails', '~> 1.19'
@@ -36,6 +36,7 @@ gem 'devise', '~> 4.7', '>= 4.7.3' # for authentication
 gem 'kaminari' # for pagination
 gem 'geocoder' # For geocoding map
 gem 'stripe-rails' # For payment gateway
+gem 'city-state' # For city and state selection
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

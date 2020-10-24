@@ -1,50 +1,12 @@
-<div class='header-area header-bottom'>
-  <!-- Add new apartment button -->
-  <% if current_user&.administrative_role? %>
-    <%= link_to new_apartment_path, class: 'btn btn-outline-success btn-xs mr-3 pull-right' do %>
-      <i class="fa fa-plus left" aria-hidden="true"></i> <%= t('apartment.add_apartment') %>
-    <% end %>
-  <% end %>
-  <!-- Apartments searchbar start -->
-  <div class='row'>
-    <div class="search-box col-md-2">
-      <%= form_tag apartments_path, :method => 'get' do %>
-        <p>
-          <%= text_field_tag 'search[apartment_type]', params[:search].present? ? params[:search][:apartment_type] : '', id: 'apartment_type', placeholder: 'Apartment Type..'%>
-          <i class= 'ti-search'></i>
-        </p>
-      <% end %>
-    </div>
-    <div class="col-md-2">
-      <input class="form-control" id="arrival-date", placeholder="<%= t('apartment.arrival_date') %>">
-    </div>
-    <div class="col-md-2">
-      <input class="form-control" id="departure-date", placeholder="<%= t('apartment.departure_date') %>">
-    </div>
-    <div class="col-md-2">
-      <%= select_tag(:distance_from_university, options_for_select(Apartment.pluck(:distance_from_university)), class: "form-control selectpicker", "data-live-search" => "true", include_blank: t('apartment.distance_from_university')) %>
-    </div>
-    <div class="col-md-2">
-      <%= select_tag(:net_rate, options_for_select(Constant::RENT_RATE_DROPDOWN, :net_rate), class: "form-control selectpicker", "data-live-search" => "true", include_blank: t('apartment.rent')) %>
-    </div>
-    <div class="col-md-2">
-      <button type="button" class="btn btn-outline-success btn-xs sort-filter"  data-disable-with="false" ><%= t('filter') %></button>
-    </div>
-  </div>
-  <!-- Apartments searchbar end -->
-</div>
-<div class='row col-md-12'>
-  <div class="card-area col-md-6">
-    <!-- Apartments listing start -->
+<%= render 'search_header' %>
+<div class="card-area">
+  <div class='col-md-6'>
     <div class="row", id='apartmentCard'>
       <%= render 'apartments', apartments: @apartments %>
     </div>
-    <!-- Apartments listing end -->
-    <!-- Apartments pagination start -->
     <div class='d-flex justify-content-center mt-3 dapartments-pagination'>
       <%= render 'apartments_pagination', apartments: @apartments %>
     </div>
-    <!-- Apartments pagination end -->
   </div>
   <div class='col-md-6'>
     <!-- Display map start -->

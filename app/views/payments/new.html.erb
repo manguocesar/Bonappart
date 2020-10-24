@@ -1,29 +1,39 @@
 <%= form_with url: create_payment_method_path,  id: 'stripe-form' do |form| %>
   <%= hidden_field_tag 'payment[booking_id]', params[:booking_id] %>
-  <%= hidden_field_tag 'payment[user_id]', current_user&.id %>
-  <h2 class='offset-md-5 mt-2 mb-2'>Payment details</h2>
-  <div class='offset-md-4'>
-    <div class="col-sm-6">
+  <h2 class='offset-md-4 mt-2 mb-2'>Payment details</h2>
+  <div class='row ml-4 mr-4'>
+    <div class="form-group col-sm-4">
       <%= form.label 'payment_type', class:"col-form-label" %><br/>
-      <%= select_tag 'payment[payment_type]', options_for_select(Payment.payment_types.map {|k, v| [k.humanize.capitalize, k]}), class: 'form-control selectpicker' %>
+      <%= select_tag 'payment[payment_type]', options_for_select(Payment.payment_types.map {|k, v| [k.humanize.capitalize, k]}), class: 'form-control selectpicker', id: 'payment_type', include_blank: 'Please select payment type' %>
     </div>
-    <div class="col-sm-6">
-      <%= form.label 'status', class:"col-form-label" %><br/>
-      <%= select_tag 'payment[status]', options_for_select(Payment.payment_statuses, 'pending'),  class: 'form-control selectpicker', disabled: true %>
-    </div>
-    <div class="col-sm-6">
+    <div class="form-group col-sm-4">
       <%= form.label 'amount', class:"col-form-label" %><br/>
-      <%= form.text_field 'payment[amount]', class: 'form-control remarks' %>
+      <%= form.text_field 'payment[amount]', class: 'form-control', id: 'amount' %>
     </div>
-    <div class="col-sm-6">
+    <div class="form-group col-sm-4">
       <%= form.label 'remarks', class:"col-form-label" %><br/>
       <%= form.text_field 'payment[remarks]', class: 'form-control remarks' %>
     </div>
   </div>
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="pk_test_51HZY7lFYh30SOXdPiBXS9R16JA8sU4QpBTLzlWoSsnCRQhPc6NSRxsxDl047P6A71UWBSZcwduL3o5WQS6MvYAw000dcmzAW6p"
-          data-description="Book Accomodation"
-          data-amount="100"
-          data-locale="auto">
-  </script>
-<%end%>
+  <%= render partial: 'address_details' , locals: { form: form } %>
+  <div class='offset-md-5 mt-3'>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_51HZY7lFYh30SOXdPiBXS9R16JA8sU4QpBTLzlWoSsnCRQhPc6NSRxsxDl047P6A71UWBSZcwduL3o5WQS6MvYAw000dcmzAW6p"
+            data-description="Book Accomodation"
+            data-email = "<%= current_user.email %>"
+            data-locale="auto">
+    </script>
+  </div>
+<% end %>
+<script>
+  $('#payment_type').change(function () {
+    if ($('#payment_type').val() == 'full' ){
+      $('#amount').val(<%= find_net_rate %>)
+    } else {
+      $('#amount').val(<%= find_deposit_amount %>)
+    }
+  })
+  $('.stripe-button').on('click', function () {
+    PaymentForm.validate();
+  })
+</script>
