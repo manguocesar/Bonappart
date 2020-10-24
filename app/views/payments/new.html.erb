@@ -1,5 +1,7 @@
-<%= form_with url: create_payment_method_path,  id: 'stripe-form' do |form| %>
+<% url = params[:booking_id].present? ? create_payment_method_path : create_subscription_payment_path  %>
+<%= form_with url: url,  id: 'stripe-form' do |form| %>
   <%= hidden_field_tag 'payment[booking_id]', params[:booking_id] %>
+  <%= hidden_field_tag 'payment[subscription_id]', params[:subscription] %>
   <h2 class='offset-md-4 mt-2 mb-2'>Payment details</h2>
   <div class='row ml-4 mr-4'>
     <div class="form-group col-sm-4">

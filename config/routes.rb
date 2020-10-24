@@ -6,12 +6,13 @@ Rails.application.routes.draw do
   resources :bookings
   resources :payments
   resources :inquiries
-  resources :subscriptions, only: %i[new create]
+  resources :subscriptions, only: %i[index new create]
   namespace :admin do
     resources :apartment_types
   end
   get '/card/new' => 'payments#new', as: :add_payment_method
   post '/card' => 'payments#create', as: :create_payment_method
+  post '/subscription_payment' => 'payments#create_subscription_payment', as: :create_subscription_payment
   get 'sort_result', to: 'apartments#sort_result'
   get 'dashboard/index'
   get 'homes/index'

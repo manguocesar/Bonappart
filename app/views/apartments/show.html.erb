@@ -4,7 +4,10 @@
     <div class="card-body">
       <div class="row mt-3">
         <div class="col-sm-6">
-          <h4 class="mb-3"><%= @apartment.title %><br> Available by: <%= @apartment.departure_date_availabilty %></h4>
+          <h4 class="mb-3">
+            <%= @apartment.title %><br>
+            <%= check_availability(@apartment) %>
+          </h4>
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
               <!-- Image box start -->
@@ -47,7 +50,9 @@
           <!-- Apartment details end -->
           <% if !current_user&.administrative_role? %>
             <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
-            <%= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"btn btn-success mt-4 pr-4 pl-4" %>
+            <% unless @apartment.subscribed %>
+              <%= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"btn btn-success mt-4 pr-4 pl-4" %>
+            <% end %>
           <% end %>
         </div>
         <div class="col-sm-6">
@@ -58,8 +63,6 @@
               <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'btn btn-success mt-4 pr-4 pl-4' %>
               <%= link_to  apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn btn-danger mt-4 pr-4 pl-4' do %>Delete
               <% end %>
-            <% else %>
-              <%= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"btn btn-success mt-4 pr-4 pl-4" %>
             <% end %>
           </div>
           <!-- Apartment operations buttons end -->
@@ -86,10 +89,11 @@
     </div>
   </div>
   <!-- Inquiry modal -->
-  <%= render '/shared/modal_window', locals: { modelId: 'inuiryModal' } %>
 </div>
 <!-- Booking form modal -->
 <%= render '/shared/modal_window', locals: { modelId: 'booking_modal' } %>
+<%= render '/shared/modal_window', locals: { modelId: 'inuiryModal' } %>
+
 <!-- Similar apartments -->
 <%= render 'similar_apartments' %>
 <script>
