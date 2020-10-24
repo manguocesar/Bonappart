@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :bookings
   resources :payments
   resources :inquiries
+  resources :subscriptions, only: %i[new create]
   namespace :admin do
     resources :apartment_types
   end

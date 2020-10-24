@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_173937) do
+ActiveRecord::Schema.define(version: 2020_10_24_120733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 2020_10_22_173937) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.bigint "booking_id"
+    t.bigint "apartment_type_id"
+    t.index ["apartment_type_id"], name: "index_apartments_on_apartment_type_id"
     t.index ["booking_id"], name: "index_apartments_on_booking_id"
     t.index ["user_id"], name: "index_apartments_on_user_id"
   end
@@ -123,6 +125,17 @@ ActiveRecord::Schema.define(version: 2020_10_22_173937) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.datetime "started_at"
+    t.date "expired_at"
+    t.bigint "user_id", null: false
+    t.bigint "apartment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["apartment_id"], name: "index_subscriptions_on_apartment_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -156,6 +169,9 @@ ActiveRecord::Schema.define(version: 2020_10_22_173937) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "apartments", "apartment_types"
   add_foreign_key "apartments", "bookings"
   add_foreign_key "apartments", "users"
+  add_foreign_key "subscriptions", "apartments"
+  add_foreign_key "subscriptions", "users"
 end
