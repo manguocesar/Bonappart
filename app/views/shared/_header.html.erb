@@ -1,35 +1,79 @@
-<div class="horizontal-main-wrapper">
-<!-- main header area start -->
-<div class="mainheader-area">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-3">
-        <div class="logo">
-          <%= link_to root_url do%>
-            <%= image_tag image_path('logo.png') %>
-          <% end %>
-        </div>
-      </div>
-      <!-- profile info & task notification -->
-      <div class="col-md-9 clearfix text-right">
-        <div class="d-md-inline-block d-block mr-md-4">
-        </div>
-        <div class="clearfix d-md-inline-block d-block">
-          <div class="user-profile">
-            <%= image_tag image_path('avatar.png'), class: "avatar user-thumb user-name dropdown-toggle" %>
-            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><%= current_user&.firstname %><i class="fa fa-angle-down"></i></h4>
-            <div class="dropdown-menu">
+<header id="at-header" class="at-header at-headervtwo at-haslayout">
+  <div class="at-navigationarea">
+    <div class="container-fluid">
+      <%= render 'shared/messages' %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <strong class="at-logo">
+            <%= link_to root_url do%>
+              <%= image_tag image_path('logo2.png') %>
+            <% end %>
+          </strong>
+          <div class="at-rightarea">
+            <nav id="at-nav" class="at-nav navbar-expand-lg">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="lnr lnr-menu"></i>
+              </button>
+              <div class="collapse navbar-collapse at-navigation" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a href="">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="">Contact Us</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+            <div class="at-loginarea float-right">
               <% if current_user.present? %>
-                <%= link_to 'My Dashboard', dashboard_index_path, class: 'dropdown-item' %>
-                <%= link_to "Edit Profile", edit_user_registration_path, class: 'dropdown-item' %>
-                <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+                <%= link_to 'My Dashboard', dashboard_index_path, class: 'at-loginoption' %>
+                <%= link_to "Edit Profile", edit_user_registration_path, class: 'at-registeroption' %>
+                <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'at-registeroption' %>
               <% else %>
-                <%= link_to "Sign In", new_user_session_path, class: 'dropdown-item' %>
+                <a href="javascript:void(0);" class="at-loginoption" data-toggle="modal" data-target="#loginpopup">Login</a>
+              <a href="javascript:void(0);" class="at-registeroption" data-toggle="modal" data-target="#registerpopup">Register</a>
               <% end %>
+              <div class="at-detailsbtn-topbar">
+                <a href="javascript:void(0);" class="at-btn at-btnactive">Became a Host</a>
+                <em>OR</em>
+                <a href="javascript:void(0);" class="at-btn at-btnactive at-btntwo" data-toggle="modal" data-target="#findproperty">Find Property</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</header>
+<!-- Header End -->
+<!-- Login Popup Start-->
+<div class="modal fade at-loginpopup" tabindex="-1" role="dialog" id="loginpopup" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="at-modalcontent modal-content">
+      <div class="at-popuptitle">
+        <h4>Login</h4>
+        <a href="javascript:void(0);" class="at-closebtn close"><i class="lnr lnr-cross" data-dismiss="modal"></i></a>
+      </div>
+      <div class="modal-body">
+        <%= render 'users/sessions/new' %>
+      </div>
+    </div>
+  </div>
 </div>
+<!-- Login Popup End-->
+<!-- Register Popup Start-->
+<div class="modal fade at-loginpopup" tabindex="-1" role="dialog" id="registerpopup" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="at-modalcontent modal-content">
+      <div class="at-popuptitle">
+        <h4>Register</h4>
+        <a href="javascript:void(0);" class="at-closebtn close"><i class="lnr lnr-cross" data-dismiss="modal"></i></a>
+      </div>
+      <div class="modal-body">
+        <%= render 'users/registrations/new' %>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- Register Popup End-->

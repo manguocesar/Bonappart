@@ -1,93 +1,129 @@
 <%= render 'search_header' %>
-<div class="col-lg-12 mt-8">
-  <div class="card mt-3">
-    <div class="card-body">
-      <div class="row mt-3">
-        <div class="col-sm-6">
-          <h4 class="mb-3"><%= @apartment.title %><br> Available by: <%= @apartment.departure_date_availabilty %></h4>
-          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner" role="listbox">
-              <!-- Image box start -->
-              <% @apartment.images.each do |image| %>
-                <div class="carousel-item <%= @apartment.active_class(image) %>">
-                  <%= image_tag url_for(image), class: "d-block w-100", style:"width:500px; height:360px;" %>
-                </div>
-              <% end %>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-          <p><%= t('apartment.virtual_visit_link') %>: <a href="<%= @apartment.virtual_visit_link %>"><%= @apartment.virtual_visit_link %></a></p>
-          <!-- Apartment details start -->
-          <div class="row">
-            <div class="col-lg-12 mt-5">
-              <div class="card">
-                <div class="card-body">
-                  <div class="media mb-5">
-                    <div class="media-body">
-                      <p><%= t('apartment.shower_room') %>: <%= @apartment.shower_room %></p>
-                      <p><%= t('apartment.floor') %>: <%= @apartment.floor %></p>
-                      <p><%= t('apartment.total_bedrooms') %>: <%= @apartment.total_bedrooms %></p>
-                      <p><%= t('apartment.area') %>: <%= @apartment.area %></p>
-                      <p><%= t('apartment.distance_from_university') %>: <%= @apartment.distance_from_university %></p>
-                      <p><%= t('apartment.description') %>: <%= @apartment.description %></p>
-                      <p><%= t('apartment.other_facilities') %>: <%= @apartment.other_facilities %></p>
-                    </div>
-                  </div>
-                </div>
+<div class="at-haslayout at-propertybannerholder">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-12">
+        <div class="at-propertybannercontent">
+          <div class="at-propertyholder">
+            
+            <div class="at-title">
+              
+              <div class="at-username">
+                <h2><%= @apartment.title %></h2>
+                <address><i class="fa fa-location-arrow"></i><%= @apartment.area %></address>
               </div>
             </div>
           </div>
-          <!-- Apartment details end -->
-        </div>
-        <div class="col-sm-6">
-          <!-- Apartment operations buttons start -->
-          <div class='action-buttons mb3'>
-            <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
-            <% if current_user&.administrative_role? %>
-              <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'btn btn-success mt-4 pr-4 pl-4' %>
-              <%= link_to  apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn btn-danger mt-4 pr-4 pl-4' do %>Delete
+          <div class="at-rightarea">
+            <div class="at-singlerate">
+              <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
+              <% if current_user&.administrative_role? %>
+                <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'at-btn at-btnactive mt-4 pr-4 pl-4', style:"height: 40px;min-width:auto;" %>
+                <%= link_to  apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn btn-danger mt-4 pr-4 pl-4' do %>Delete
+                <% end %>
+              <% else %>
+                <%= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"at-btn at-btnactive mt-4 pr-4 pl-4", style:"height: 40px;min-width:auto;" %>
               <% end %>
-            <% else %>
-              <%= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"btn btn-success mt-4 pr-4 pl-4" %>
-            <% end %>
+            </div>
+            <div class="at-singlerate">
+              <span><em>€ <%= @apartment.rent_rate.net_rate %></em></span>
+            </div>
           </div>
-          <!-- Apartment operations buttons end -->
-          <!-- Map container start -->
-          <div id="map"></div>
-          <!-- Map container end -->
-          <!-- Rent details start -->
-          <p><%= t('apartment.rent_details') %>:
-          <ul>
-            <% rent = @apartment.rent_rate %>
-            <li><%= t('rent.net_rate') %>: <%= rent&.net_rate %></li>
-            <li><%= t('rent.water_charge') %>: <%= rent&.water_charge %></li>
-            <li><%= t('rent.heating_charge') %>: <%= rent&.heating_charge %></li>
-            <li><%= t('rent.electricity_charge') %>: <%= rent&.electricity_charge %></li>
-            <li><%= t('rent.internet_charge') %>: <%= rent&.internet_charge %></li>
-            <li><%= t('rent.insurance_charge') %>: <%= rent&.insurance_charge %></li>
-            <li><%= t('rent.deposit_amount') %>: <%= rent&.deposit_amount %></li>
-          </ul><br>
-          <!-- Rent details end -->
-          <!-- Send inquiry to the landlord button -->
-          <%= render '/inquiries/inquiry_button' %>
         </div>
       </div>
     </div>
   </div>
-  <!-- Inquiry modal -->
-  <%= render '/shared/modal_window', locals: { modelId: 'inuiryModal' } %>
+<div class='row'>
+  <div class="col-sm-6">
+    <div id="carouselExampleControls" class="carousel slide ml-4" data-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+        <!-- Image box start -->
+        <% @apartment.images.each do |image| %>
+          <div class="carousel-item <%= @apartment.active_class(image) %>">
+            <%= image_tag url_for(image), class: "d-block w-100", style:"height:400px;" %>
+          </div>
+        <% end %>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+  <div class='col-sm-6'>
+  <!-- Map container start -->
+    <div id="map"></div>
+  <!-- Map container end -->
+  </div>
 </div>
-<!-- Booking form modal -->
+<main id="at-main" class="at-main at-haslayout">
+  <!-- Two Columns Start -->
+  <div class="at-haslayout at-main-section at-propertysingle-mt">
+    <div class="container">
+      <div class="row">
+        <div id="at-twocolumns" class="at-twocolumns at-haslayout">
+          <div class="col-xs-6 col-sm-6 col-md-6 float-right">
+            <div class="at-propertydetails at-detailsproperty">
+              <div class="at-propertytitle">
+                <h3><%= t('apartment.rent_details') %></h3>
+              </div>
+              <ul class="at-detailslisting">
+                <% rent = @apartment.rent_rate %>
+                <li><h4><%= t('rent.net_rate') %></h4><span><%= rent&.net_rate %></span></li>
+                <li><h4><%= t('rent.water_charge') %></h4><span><%= rent&.water_charge %></span></li>
+                <li><h4><%= t('rent.heating_charge') %></h4><span><%= rent&.heating_charge %></span></li>
+                <li><h4><%= t('rent.electricity_charge') %></h4><span><%= rent&.electricity_charge %></span></li>
+                <li><h4><%= t('rent.internet_charge') %></h4><span><%= rent&.internet_charge %></span></li>
+                <li><h4><%= t('rent.deposit_amount') %></h4><span><%= rent&.deposit_amount %></span></li>
+              </ul>
+            </div>
+            <!-- Send inquiry to the landlord button -->
+            <%= render '/inquiries/inquiry_button' %>
+          </div>
+          <%= render '/shared/modal_window', locals: { modelId: 'inuiryModal' } %>
+          <div class="col-xs-12 col-sm-6 col-md-6 float-left">
+            <div class="at-gridlist-option at-option-mt">
+              <a href="javascript:void(0);" id="at-btnopenclose" class="at-btnopenclose"><i class="ti-settings"></i></a>
+            </div>
+            <div class="at-propertylinkdetails at-haslayout">
+              
+              <div id="at-about" class="at-propertydetails at-aboutproperty">
+                <div class="at-propertytitle">
+                  <h3>About Property</h3>
+                </div>
+                <div class="at-description">
+                  <p><%= @apartment.description %></p>
+                </div>
+              </div>
+              <div class="at-propertydetails at-detailsproperty">
+                <div class="at-propertytitle">
+                  <h3>Property Details</h3>
+                </div>
+                <ul class="at-detailslisting">
+                  <li><h4><%= t('apartment.shower_room') %></h4><span><%= @apartment.shower_room %></span></li>
+                  <li><h4><%= t('apartment.floor') %></h4><span><%= @apartment.floor %></span></li>
+                  <li><h4><%= t('apartment.total_bedrooms') %></h4><span><%= @apartment.total_bedrooms %></span></li>
+                  <li><h4><%= t('apartment.area') %></h4><span><%= @apartment.area %></li>
+                  <li><h4><%= t('apartment.distance_from_university') %></h4><span><%= @apartment.distance_from_university %></span></li>
+                  <li><h4><%= t('apartment.other_facilities') %></h4><span><%= @apartment.other_facilities %></span></li>
+                  <li><h4><%= t('apartment.virtual_visit_link') %></h4><span><a href="<%= @apartment.virtual_visit_link %>"><%= @apartment.virtual_visit_link %></a></span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Booking form modal -->
 <%= render '/shared/modal_window', locals: { modelId: 'booking_modal' } %>
 <!-- Similar apartments -->
 <%= render 'similar_apartments' %>
+</main>
 <script>
   // Set coordinates and pass to the map
   var myLatLng = [

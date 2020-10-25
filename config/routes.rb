@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users, controllers: { confirmations: 'devise/confirmations', registrations: 'users/registrations' }
+  devise_for :users, controllers: { confirmations: 'users/confirmations', registrations: 'users/registrations' }
   resources :apartments
   resources :bookings
   resources :payments
@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   get 'homes/index'
   get 'cities/:state', to: 'payments#cities'
   get 'render_login', to: 'inquiries#render_login_page'
-  root 'apartments#index'
+  root 'dashboard#index'
 end

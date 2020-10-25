@@ -1,28 +1,35 @@
 <% @apartments.each do |apartment| %>
-  <div class="col-lg-6 col-md-6 mt-5">
-    <div class="card card-bordered">
-      <div id="carouselExampleControls<%= "#{apartment.id}" %>" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner" role="listbox">
-          <% apartment.images.each do |image| %>
-            <div class="carousel-item <%= apartment.active_class(image) %>">
-              <%= image_tag url_for(image), class: "d-block w-100", style:"width:500px; height:300px;" %>
-            </div>
-          <% end %>
+  <div class="at-featured-holder">
+    <div class="at-featuredslider owl-carousel owl-loaded owl-drag">
+      <% apartment.images.each do |image| %>
+        <div class="owl-stage-outer owl-height <%= apartment.active_class(image) %>" style="height: 190px;">
+          <%= image_tag url_for(image) %>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls<%= "#{apartment.id}" %>" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only"><%= t('apartment.previous') %></span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls<%= "#{apartment.id}" %>" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only"><%= t('apartment.next') %></span>
-        </a>
-      </div>
-      <div class="card-body">
-        <h5 class="title"><%= apartment.title.truncate(35) %></h5>
-        <p class="card-text" style="height:70px;"><%= apartment.description.truncate(100) %></p>
-        <%= link_to  'View more', apartment_path(apartment), class: 'btn btn-success' %>
+      <% end %>
+      <div class="at-featur-nav">
+        <div class="at-featurprev">
+          <span class="ti-angle-left"></span>
+        </div>
+        <div class="at-featurnext">
+          <span class="ti-angle-right"></span>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="at-featured-content">
+      <div class="at-featured-head">
+        <div class="at-featured-tags">
+          <a href="<%= apartment_path(apartment) %>">Apartment</a>
+        </div>
+        <div class="at-featured-title">
+          <h3><%= apartment.title %><span>€ <%= apartment.rent_rate.net_rate %> <em></em></span></h3>
+        </div>
+        <ul class="at-room-featured">
+          <%= apartment.description.truncate(50) %>
+        </ul>
+        <div class="at-featured-footer">
+          <address><%= apartment.area %></address>
+        </div>
+      </div>
+    </div>
+</div>
 <% end %>
