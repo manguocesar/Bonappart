@@ -3,12 +3,19 @@
   <div class="container">
     <div class="row">
       <div id="at-twocolumns" class="at-twocolumns at-haslayout">
-        <div class="col-sm-6">
-        <!-- Properties List Start -->
-          <div class="at-properties-listing", id='apartmentCard'>
-            <%= render 'apartments', apartments: @apartments %>
+        <div class='row col-md-12'>
+          <div class="col-md-6">
+          <!-- Properties List Start -->
+            <div class="at-properties-listing", id='apartmentCard'>
+              <%= render 'apartments', apartments: @apartments %>
+            </div>
+          <!-- Properties List End -->
           </div>
-        <!-- Properties List End -->
+          <div class='col-md-6'>
+            <!-- Display map start -->
+            <div id="map" class='apartments-map'></div>
+            <!-- Display map end -->
+          </div>
         </div>
       </div>
     </div>
@@ -16,11 +23,6 @@
 </div>
 <div class='at-pagination apartments-pagination'>
   <%= render 'apartments_pagination', apartments: @apartments %>
-</div>
-<div class='col-md-6'>
-  <!-- Display map start -->
-  <div id="map" class='apartments-map'></div>
-  <!-- Display map end -->
 </div>
 <script type="text/javascript">
   // Add datepicker
@@ -30,11 +32,12 @@
     //   format: 'DD/MM/YYYY'
     // });
     Filter.result();
+    initilizeMap();
   });
 
   // Generate map
-  // function initMap() {
-  //   const myLatLng = JSON.parse('<%= raw coordinates_hash(@apartments) %>');
-  //   DisplayMap.mapSettings(myLatLng);
+  function initilizeMap() {
+    const myLatLng = JSON.parse('<%= raw coordinates_hash(@apartments) %>');
+    DisplayMap.mapSettings(myLatLng);
   }
 </script>

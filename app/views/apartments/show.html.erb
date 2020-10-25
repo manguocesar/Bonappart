@@ -5,9 +5,9 @@
       <div class="col-12 col-md-12">
         <div class="at-propertybannercontent">
           <div class="at-propertyholder">
-            
+
             <div class="at-title">
-              
+
               <div class="at-username">
                 <h2><%= @apartment.title %></h2>
                 <address><i class="fa fa-location-arrow"></i><%= @apartment.area %></address>
@@ -26,7 +26,7 @@
               <% end %>
             </div>
             <div class="at-singlerate">
-              <span><em>€ <%= @apartment.rent_rate.net_rate %></em></span>
+              <span><em>€ <%= @apartment&.rent_rate&.net_rate %></em></span>
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@
               <a href="javascript:void(0);" id="at-btnopenclose" class="at-btnopenclose"><i class="ti-settings"></i></a>
             </div>
             <div class="at-propertylinkdetails at-haslayout">
-              
+
               <div id="at-about" class="at-propertydetails at-aboutproperty">
                 <div class="at-propertytitle">
                   <h3>About Property</h3>
@@ -126,13 +126,16 @@
 </main>
 <script>
   // Set coordinates and pass to the map
-  var myLatLng = [
-    [ '100.00',
-      "<%= url_for(@apartment.images.first) %>",
-      "<%= @apartment.latitude %>",
-      "<%= @apartment.longitude %>" ]
-  ];
-  function initMap() {
+  $(document).ready(function (e) {
+    initilizeMap();
+  });
+  function initilizeMap() {
+    var myLatLng = [
+      [ '100.00',
+        "<%= url_for(@apartment.images.first) %>",
+        "<%= @apartment.latitude %>",
+        "<%= @apartment.longitude %>" ]
+    ];
     DisplayMap.mapSettings(myLatLng);
   }
 </script>
