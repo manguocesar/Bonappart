@@ -1,0 +1,77 @@
+<%= form_for(:user, url: registration_path(:user)) do |form| %>
+  <%= devise_error_messages! %>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.text_field :firstname, id: '', class: 'form-control', placeholder: t('users.firstname') %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.text_field :lastname, id: '', class: 'form-control', placeholder: t('users.lastname') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.text_field :phone_no, id: '', class: 'form-control', placeholder: t('users.phone_no') %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.text_field :birthdate, id: 'birthdate', class: 'form-control', placeholder: t('users.birthdate') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <div class="at-room ml-3">
+        <span class="at-radio">
+          <%= form.radio_button :gender, "Male", id: 'at-private1', class: 'at-private' %>
+          <label class="at-private male" for="at-private1">Male</label>
+        </span>
+        <span class="at-radio mt-3">
+          <%= form.radio_button :gender, "Female", id: 'at-private2', class: 'at-private' %>
+          <label class="at-private female" for="at-private2">Female</label>
+        </span>
+      </div>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.text_field :address, id: '', class: 'form-control', placeholder: t('users.address') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.text_field :username, id: '', class: 'form-control', placeholder: t('users.username') %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.text_field :email, id: '', class: 'form-control', placeholder: t('users.email') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> <%= t('users.min_character') %>)</em>
+      <% end %>
+      <%= form.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: t('users.password') %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.password_field :password_confirmation, id: '', class: 'form-control', placeholder: t('users.confirm_password') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= select_tag(:roles, options_for_select(Role.all.pluck(:name)), class: "form-control selectpicker", include_blank: t('user.select_role')) %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.file_field :image, multiple: false, class: "form-control select file-select", include_blank: t('users.profile_pic') %>
+    </div>
+  </div>
+  <div class="form-group at-btnarea text-center">
+    <button id="form_submit" type="submit" class="at-btn"><%= t('users.sign_up') %> </button>
+  </div>
+  <div class="form-footer text-center mt-5">
+    <p class="text-muted"><%#= render "users/shared/links" %></p>
+  </div>
+<% end %>
+<script type="text/javascript">
+  $(document).ready(function (e) {
+    $('.selectpicker').selectpicker('refresh');
+    // $('#birthdate').datetimepicker({
+    //   format: 'DD/MM/YYYY'
+    // });
+  });
+</script>

@@ -1,0 +1,33 @@
+<%= form_for(:user, url: session_path(:user), class: 'at-formtheme at-formlogin') do |f| %>
+  <%= devise_error_messages! %>
+  <div class="row">
+    <div class="form-group">
+      <%= f.text_field :email, autocomplete: 'off', class: 'form-control', placeholder: 'Your Email *' %>
+    </div>
+    <div class="form-group">
+      <%= f.password_field :password, class: 'form-control', placeholder: 'Password *' %>
+    </div>
+    <div class="form-group at-btnarea text-center">
+      <button id="form_submit" type="submit" class="at-btn mt-2">Login </button>
+    </div>
+    <div class="form-footer text-center mt-4">
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <p class='text-muted'>
+          <%= link_to "Forgot Your Password?", new_password_path(resource_name) %>
+        </p>
+      <% end %>
+
+      <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+        <p class='text-muted'>
+          <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %>
+        </p>
+      <% end %>
+      </p>
+    </div>
+  </div>
+<% end %>
+<script>
+  $(document).ready(function () {
+    LoginForm.validate();
+  })
+</script>

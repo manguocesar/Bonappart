@@ -1,5 +1,21 @@
-<footer>
-  <div class="footer-area">
-    <p><%= t('footer.copyright') %> <a href="<%= root_path %>"><%= t('footer.company_name') %></a>.</p>
+<footer id="at-footer" class="at-footer at-haslayout">
+  <div class="at-footerbottom at-haslayout">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-12">
+          <div class="at-copyrights-holder">
+            <div class="at-flogoarea">
+              <strong class="at-flogo"><a href="<%= root_path %>"><%= image_tag image_path('logo2.png'), style: 'height: 30px;' %></a></strong>
+              <p class="at-copyrights"><%= t('footer.copyright') %> <a href="<%= root_path %>"><%= t('footer.company_name') %></a></p>
+            </div>
+            <div class="at-rightarea">
+              <figure class="at-payment-icons">
+                <%= image_tag image_path('payment-icon/img-04.jpg') %>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </footer>

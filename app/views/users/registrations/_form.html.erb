@@ -3,93 +3,92 @@
   <%= render 'shared/messages' %>
   <div class="row">
     <div class="form-group col-sm-6">
-      <%= form.label t('users.firstname'), class:"col-form-label" %><br/>
+      <%= form.label t('users.firstname'), class:"col-form-label" %>
       <%= form.text_field :firstname, class: 'form-control' %>
     </div>
     <div class="form-group col-sm-6">
-      <%= form.label t('users.lastname'), class:"col-form-label" %><br/>
+      <%= form.label t('users.lastname'), class:"col-form-label" %>
       <%= form.text_field :lastname, class: 'form-control' %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-sm-6">
-      <%= form.label t('users.phone_no'), class:"col-form-label" %><br/>
+      <%= form.label t('users.phone_no'), class:"col-form-label" %>
       <%= form.text_field :phone_no, class: 'form-control' %>
     </div>
     <div class="form-group col-sm-6">
-      <%= form.label t('users.birthdate'), class:"col-form-label" %><br/>
+      <%= form.label t('users.birthdate'), class:"col-form-label" %>
       <%= form.text_field :birthdate, class: 'form-control', id: 'birthdate' %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-sm-6">
-      <%= form.label t('users.gender'), class:"col-form-label" %><br/>
+      <%= form.label t('users.gender'), class:"col-form-label" %>
       <div class="custom-control custom-radio custom-control-inline">
         <%= form.label :male %>
         <%= form.radio_button :gender, "Male", id: 'customRadio1', class: 'custom-control-input' %>
-        <label class="custom-control-label male" for="customRadio1"></label>
+        <label class="custom-control-label male mt-4" for="customRadio1"></label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
         <%= form.label :female %>
         <%= form.radio_button :gender, "Female", id: 'customRadio2', class: 'custom-control-input' %>
-        <label class="custom-control-label female" for="customRadio2"></label>
+        <label class="custom-control-label female mt-4" for="customRadio2"></label>
       </div>
     </div>
     <div class="form-group col-sm-6">
-      <%= form.label t('users.address'), class:"col-form-label" %><br/>
+      <%= form.label t('users.address'), class:"col-form-label" %>
       <%= form.text_field :address, class: 'form-control' %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-sm-6">
-      <%= form.label t('users.username'), class:"col-form-label" %><br/>
+      <%= form.label t('users.username'), class:"col-form-label" %>
       <%= form.text_field :username, class: 'form-control' %>
     </div>
     <div class="form-group col-sm-6">
-      <%= form.label t('users.email'), class:"col-form-label" %><br/>
+      <%= form.label t('users.email'), class:"col-form-label" %>
       <%= form.text_field :email, class: 'form-control' %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-sm-6">
-      <%= form.label t('users.current_password'), class:"col-form-label" %><br/>
+      <%= form.label t('users.current_password'), class:"col-form-label" %>
       <%= form.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
     </div>
     <div class="form-group col-sm-6">
       <%= form.label t('users.new_password'), class:"col-form-label" %>
       <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> <%= t('users.min_character') %>)</em>
-      <% end %><br/>
+      <% end %>
       <%= form.password_field :password, autocomplete: "new-password", class: 'form-control' %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-sm-6">
-      <%= form.label t('users.confirm_password'), class:"col-form-label" %><br/>
+      <%= form.label t('users.confirm_password'), class:"col-form-label" %>
       <%= form.password_field :password_confirmation, class: 'form-control' %>
     </div>
     <div class="form-group col-sm-6">
-      <%= form.label t('users.sign_up_as'), class:"col-form-label" %><br/>
+      <%= form.label t('users.sign_up_as'), class:"col-form-label" %>
       <%= select_tag(:roles, options_for_select(Role.all.pluck(:name)), class: "form-control selectpicker", include_blank: t('user.select_role')) %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-sm-12">
-      <%= form.label t('users.profile_pic'), class:"col-form-label" %><br/>
+      <%= form.label t('users.profile_pic'), class:"col-form-label" %>
       <%= form.file_field :image, multiple: false, class: "form-control select" %>
     </div>
   </div>
   <div class="actions">
     <%= link_to 'Back', root_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
-    <%= form.submit "Update", class:"btn btn-primary mt-4 pr-4 pl-4" %>
+    <%= form.submit "Update", class:"at-btn at-btnactive mt-4 pr-4 pl-4", style:"height: 40px;min-width:auto;" %>
   </div>
 <% end %>
 <script type="text/javascript">
   $(document).ready(function (e) {
     $('.selectpicker').selectpicker('refresh');
-    $('#birthdate').datetimepicker({
-      format: 'DD/MM/YYYY'
-    });
-    Filter.result();
+    // $('#birthdate').datetimepicker({
+    //   format: 'DD/MM/YYYY'
+    // });
   });
 </script>

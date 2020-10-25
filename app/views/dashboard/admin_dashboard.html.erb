@@ -1,54 +1,41 @@
-<div class="col-lg-12">
-  <div class="row">
-    <div class="col-md-4 mt-5" >
-      <div class="card">
-        <div class="seo-fact sbg1"  style="height: 180px;">
-          <div class="p-4 d-flex justify-content-between align-items-center">
-            <div class="seofct-icon"><i class="ti-calendar"></i><%= t('dashboard.count_of_ads') %></div>
-            <h2>100</h2>
-          </div>
-        </div>
+<%= render 'shared/header_bg' %>
+<div class='row'>
+  <div class="card text-white bg-primary ml-5 mt-4 mr-4 col-sm-6" style="max-width: 18rem;">
+    <div class="card-header"><%= t('dashboard.count_of_ads') %></div>
+      <div class="card-body">
+        <h5 class="card-title" style="color:white;">Total Accommodations count</h5>
+        <p class="card-text">10</p>
       </div>
     </div>
-    <div class="col-md-4 mt-5" >
-      <div class="card">
-        <div class="seo-fact sbg2"  style="height: 180px;">
-          <div class="p-4 d-flex justify-content-between align-items-center">
-            <div class="seofct-icon"><i class="ti-file"></i><%= t('dashboard.count_of_active_ads') %></div>
-            <h2>80</h2>
-          </div>
-        </div>
+    <div class="card text-white bg-danger mt-4 mr-4 col-sm-6" style="max-width: 18rem;">
+      <div class="card-header"><%= t('dashboard.count_of_active_ads') %></div>
+      <div class="card-body">
+        <h5 class="card-title" style="color:white;">Active Accommodations count</h5>
+        <p class="card-text">5</p>
       </div>
     </div>
-    <div class="col-md-4 mt-5" >
-      <div class="card">
-        <div class="seo-fact sbg3"  style="height: 180px;">
-          <div class="p-4 d-flex justify-content-between align-items-center">
-            <div class="seofct-icon"><i class="ti-bookmark-alt"></i><%= t('dashboard.count_of_contacts') %></div>
-            <h2>50</h2>
-          </div>
-        </div>
+    <div class="card text-white bg-success mt-4 mr-4 col-sm-6" style="max-width: 18rem;">
+      <div class="card-header"><%= t('dashboard.count_of_contacts') %></div>
+      <div class="card-body">
+        <h5 class="card-title" style="color:white;">Count of Contacts</h5>
+        <p class="card-text">10</p>
       </div>
     </div>
-    <div class="col-md-4 mt-5" >
-      <div class="card">
-        <div class="seo-fact sbg4"  style="height: 180px;">
-          <div class="p-4 d-flex justify-content-between align-items-center">
-            <div class="seofct-icon"><i class="ti-user"></i><%= t('dashboard.count_of_members') %></div>
-            <h2>100</h2>
-          </div>
-        </div>
+    <div class="card text-white bg-warning mt-4 mr-4 col-sm-6" style="max-width: 18rem;">
+      <div class="card-header"><%= t('dashboard.count_of_members') %></div>
+      <div class="card-body">
+        <h5 class="card-title" style="color:white;">Count of Members</h5>
+        <p class="card-text">10</p>
       </div>
     </div>
-    <div class="col-md-4 mt-5" >
-      <div class="card">
-        <div class="seo-fact sbg1"  style="height: 180px;">
-          <div class="p-4 d-flex justify-content-between align-items-center">
-            <div class="seofct-icon"><i class="ti-settings"></i><%= t('dashboard.landlord_management') %></div>
-            <h2></h2>
-          </div>
+    <%= link_to edit_user_registration_path do %>
+      <div class="card text-white bg-dark ml-5 mb-3 mt-4 mr-4 col-sm-6" style="max-width: 18rem;">
+        <div class="card-header">Settings</div>
+        <div class="card-body">
+          <h5 class="card-title" style="color:white;">Manage your profile</h5>
+          <p class="card-text">Add/Edit/Delete</p>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
