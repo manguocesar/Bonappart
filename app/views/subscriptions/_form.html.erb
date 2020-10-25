@@ -1,24 +1,25 @@
-<%= form_with(model: subscription, remote: true, id: 'subscription_form') do |form| %>
+<%= form_with(model: subscription, local: true, id: 'subscription_form') do |form| %>
   <%= render 'shared/error_messages', target: subscription %>
-  <%= hidden_field_tag 'subscription[apartment_id]', current_user&.id %>
+  <%= hidden_field_tag 'subscription[apartment_id]', @apartment&.id %>
   <%= hidden_field_tag 'subscription[user_id]', @landlord&.id %>
+  <%= hidden_field_tag 'subscription[started_at]', Date.today %>
+  <%= hidden_field_tag 'subscription[expired_at]', expiration_date %>
 
   <div class='row'>
     <div class="form-group col-sm-12 mb-3">
-      <%= form.label 'Apartment Name', class:"col-form-label" %><br/>
+      <%= form.label 'Apartment Name:', class:"col-form-label" %>
       <%= @apartment.title %>
-      <%#= form.text_area :message, class: 'form-control' %>
     </div>
     <div class="form-group col-sm-12 mb-3">
-      <%= form.label 'Amount', class:"col-form-label" %><br/>
+      <%= form.label 'Amount:', class:"col-form-label" %>
       <%= 500 %>
     </div>
     <div class="form-group col-sm-12 mb-3">
-      <%= form.label 'Started at:', class:"col-form-label" %><br/>
+      <%= form.label 'Started at:', class:"col-form-label" %>
       <%= Date.today %>
     </div>
     <div class="form-group col-sm-12 mb-3">
-      <%= form.label 'Expired at:', class:"col-form-label" %><br/>
+      <%= form.label 'Expired at:', class:"col-form-label" %>
       <%= expiration_date %>
     </div>
     <div class="modal-footer">

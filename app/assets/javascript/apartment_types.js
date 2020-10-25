@@ -4,6 +4,5 @@
 //= require bootstrap.min.js
 //= require moment
 //= require jquery.validate
-//= require common/jquery.slimscroll.min
 //= require common/custom
 //= require login
