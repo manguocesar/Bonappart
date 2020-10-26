@@ -69,7 +69,7 @@ var Filter = {
         dataType: 'script',
         data: {
           search: {
-            apartment_type: $('#apartment_type').val(),
+            apartment_type: $('input[name="private"]:checked').val(),
             arrival_date: $('#at-startdate').val(),
             departure_date: $('#at-enddate').val(),
           },
