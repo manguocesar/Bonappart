@@ -2,26 +2,22 @@
 <div class="at-haslayout at-main-section">
   <div class="container">
     <div class="row">
-      <div id="at-twocolumns" class="at-twocolumns at-haslayout">
-        <div class='row col-md-12'>
-          <div class="col-md-6">
+      <div class="at-twocolumns at-haslayout">
+        <div class='at-properties-grid at-properties-map at-haslayout', id='apartmentCard'>
           <!-- Properties List Start -->
-            <div class="at-properties-listing", id='apartmentCard'>
-              <%= render 'apartments', apartments: @apartments %>
-            </div>
+            <%= render 'apartments', apartments: @apartments %>
           <!-- Properties List End -->
-          </div>
-          <div class='col-md-6'>
-            <!-- Display map start -->
-            <div id="map" class='apartments-map'></div>
-            <!-- Display map end -->
+          <!--<div class='col-md-6'>
+            Display map start
+             <div id="map" class='apartments-map'></div>
+            Display map end -->
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class='at-pagination apartments-pagination'>
+<div class='at-pagination d-flex justify-content-center mb-3 apartments-pagination'>
   <%= render 'apartments_pagination', apartments: @apartments %>
 </div>
 <script type="text/javascript">
@@ -32,12 +28,12 @@
     //   format: 'DD/MM/YYYY'
     // });
     Filter.result();
-    initilizeMap();
+    // initilizeMap();
   });
 
   // Generate map
-  function initilizeMap() {
-    const myLatLng = JSON.parse('<%= raw coordinates_hash(@apartments) %>');
-    DisplayMap.mapSettings(myLatLng);
-  }
+  // function initilizeMap() {
+  //   const myLatLng = JSON.parse('<%= raw coordinates_hash(@apartments) %>');
+  //   DisplayMap.mapSettings(myLatLng);
+  // }
 </script>

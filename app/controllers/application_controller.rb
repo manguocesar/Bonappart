@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   # For setting paginations in apartments page
   def pagination(data)
     updated_data = data.is_a?(Array) ? Kaminari.paginate_array(data) : data
-    updated_data.page(params[:page]).per(10)
+    updated_data.page(params[:page]).per(9)
   end
 
   def user_not_authorized(exception)
