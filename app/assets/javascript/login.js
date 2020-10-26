@@ -44,3 +44,8 @@ function disablePopover(elem) {
   $(elem).popover('disable');
   $(elem).popover('dispose');
 }
+
+$(document).ready(function () {
+  $(".preloader-outer").delay(500).fadeOut();
+  $(".at-preloader-holder").delay(200).fadeOut("slow");
+})

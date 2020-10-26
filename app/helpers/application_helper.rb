@@ -10,6 +10,10 @@ module ApplicationHelper
     end
   end
 
+  def active_inactive_header_class(name)
+    return 'at-navactive' if action_name.eql?(name)
+  end
+
   def resource_name
     :user
   end

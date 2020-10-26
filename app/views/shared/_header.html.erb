@@ -16,11 +16,11 @@
               </button>
               <div class="collapse navbar-collapse at-navigation" id="navbarNav">
                 <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a href="">About Us</a>
+                  <li class="nav-item <%= active_inactive_header_class('about_us') %>">
+                    <%= link_to 'About Us', about_us_path %>
                   </li>
-                  <li class="nav-item">
-                    <a href="">Contact Us</a>
+                  <li class="nav-item <%= active_inactive_header_class('contact_us') %>">
+                    <%= link_to 'Contact Us', contact_us_path %>
                   </li>
                 </ul>
               </div>
@@ -31,8 +31,8 @@
                 <%= link_to "Edit Profile", edit_user_registration_path, class: 'at-registeroption' %>
                 <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'at-registeroption' %>
               <% else %>
-                <a href="javascript:void(0);" class="at-loginoption" data-toggle="modal" data-target="#loginpopup">Login</a>
-              <a href="javascript:void(0);" class="at-registeroption" data-toggle="modal" data-target="#registerpopup">Register</a>
+                <a href="javascript:void(0);" class="at-registeroption" data-toggle="modal" data-target="#loginpopup">Login</a>
+                <a href="javascript:void(0);" class="at-registeroption" data-toggle="modal" data-target="#registerpopup">Register</a>
               <% end %>
               <div class="at-detailsbtn-topbar">
                 <a href="javascript:void(0);" class="at-btn at-btnactive">Became a Host</a>

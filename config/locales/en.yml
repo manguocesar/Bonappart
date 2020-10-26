@@ -122,3 +122,11 @@ en:
     city: City
     state: State
     country: Country
+  contact_us:
+    happy_to_serve: We’re Happy To Serve You
+    title: Contact
+    get_in_touch: Get In Touch With Us
+    support: We Offer 24/7 Support
+    form_content: Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation ullamco laboris nisiut aliquip
+  breadcrumbs:
+    main: Main
