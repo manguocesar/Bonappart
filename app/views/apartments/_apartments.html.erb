@@ -21,7 +21,7 @@
           <a href="<%= apartment_path(apartment) %>">Apartment</a>
         </div>
         <div class="at-featured-title">
-          <h3><%= apartment.title %><span>€ <%= apartment.rent_rate.net_rate %> <em></em></span></h3>
+          <h3><%= apartment.title %><span>€ <%= apartment.rent_rate&.net_rate %> <em></em></span></h3>
         </div>
         <ul class="at-room-featured">
           <%= apartment.description.truncate(50) %>

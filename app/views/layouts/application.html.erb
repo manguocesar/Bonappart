@@ -1,18 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ApartmentBooking</title>
+    <title>Bonapart</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag controller_name %>
     <%= javascript_include_tag controller_name %>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh015i50EB_Ol2dxNvgd11iJBYJhfpziI&callback=initMap"
-    async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh015i50EB_Ol2dxNvgd11iJBYJhfpziI"></script>
+    <link rel="apple-touch-icon" sizes="57x57" href=<%= asset_url("favicon-icons/apple-icon-57x57.png") %> >
+    <link rel="apple-touch-icon" sizes="60x60" href=<%= asset_url("favicon-icons/apple-icon-60x60.png") %> >
+    <link rel="apple-touch-icon" sizes="72x72" href=<%= asset_url("favicon-icons/apple-icon-72x72.png") %> >
+    <link rel="apple-touch-icon" sizes="76x76" href=<%= asset_url("favicon-icons/apple-icon-76x76.png") %> >
+    <link rel="apple-touch-icon" sizes="114x114" href=<%= asset_url("favicon-icons/apple-icon-114x114.png") %> >
+    <link rel="apple-touch-icon" sizes="120x120" href=<%= asset_url("favicon-icons/apple-icon-120x120.png") %> >
+    <link rel="apple-touch-icon" sizes="144x144" href=<%= asset_url("favicon-icons/apple-icon-144x144.png") %> >
+    <link rel="apple-touch-icon" sizes="152x152" href=<%= asset_url("favicon-icons/apple-icon-152x152.png") %> >
+    <link rel="apple-touch-icon" sizes="180x180" href=<%= asset_url("favicon-icons/apple-icon-180x180.png") %> >
+    <link rel="icon" type="image/png" sizes="192x192"  href=<%= asset_url("favicon-icons/android-icon-192x192.png") %> >
+    <link rel="icon" type="image/png" sizes="32x32" href=<%= asset_url("favicon-icons/favicon-32x32.png") %> >
+    <link rel="icon" type="image/png" sizes="96x96" href=<%= asset_url("favicon-icons/favicon-96x96.png") %> >
+    <link rel="icon" type="image/png" sizes="16x16" href=<%= asset_url("favicon-icons/favicon-16x16.png") %> >
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
   </head>
 
   <body>
+    <!-- Preloader Start -->
+    <div class="preloader-outer">
+      <div class="at-preloader-holder">
+        <%= image_tag 'loader.png', alt: "laoder img" %>
+        <div class="at-loader"></div>
+      </div>
+    </div>
+    <!-- Preloader End -->
     <div class="page-container">
       <div class="main-content">
         <%= render 'shared/header' %>
