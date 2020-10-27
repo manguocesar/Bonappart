@@ -21,6 +21,16 @@ class HomesController < ApplicationController
     end
   end
 
+  def popup_forms
+    return unless Constant::FORM_BASED_ON_LINKS.keys.include?(params[:name].to_sym)
+    
+    @title = Constant::FORM_BASED_ON_LINKS[params[:name].to_sym].first
+    @partial = Constant::FORM_BASED_ON_LINKS[params[:name].to_sym].last
+    if ['host', 'register'].include?(params[:name])
+      @role = params[:name].eql?('host') ? 'landlord' : 'student'
+    end
+  end
+
   private
 
   # Permit Contact Us Parameters

@@ -31,13 +31,13 @@
                 <%= link_to "Edit Profile", edit_user_registration_path, class: 'at-registeroption' %>
                 <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'at-registeroption' %>
               <% else %>
-                <a href="javascript:void(0);" class="at-registeroption" data-toggle="modal" data-target="#loginpopup">Login</a>
-                <a href="javascript:void(0);" class="at-registeroption" data-toggle="modal" data-target="#registerpopup">Register</a>
+                <%= link_to 'Login', popup_forms_path(name: 'login'), remote: true, class: 'at-registeroption' %>
+                <%= link_to 'Register', popup_forms_path(name: 'register'), remote: true, class: 'at-registeroption' %>
               <% end %>
               <div class="at-detailsbtn-topbar">
-                <a href="javascript:void(0);" class="at-btn at-btnactive">Became a Host</a>
-                <em>OR</em>
-                <a href="javascript:void(0);" class="at-btn at-btnactive at-btntwo" data-toggle="modal" data-target="#findproperty">Find Property</a>
+                <%= link_to 'Become a Host', popup_forms_path(name: 'host'), remote: true, class: 'at-btn at-btnactive' %>
+                <!--<em>OR</em>
+                <a href="javascript:void(0);" class="at-btn at-btnactive at-btntwo" data-toggle="modal" data-target="#findproperty">Find Property</a> -->
               </div>
             </div>
           </div>
@@ -47,33 +47,17 @@
   </div>
 </header>
 <!-- Header End -->
-<!-- Login Popup Start-->
-<div class="modal fade at-loginpopup" tabindex="-1" role="dialog" id="loginpopup" data-backdrop="static">
+<!-- Login/SignUp/Host/ForgotPassword/Confirmation Popup Forms Start-->
+<div class="modal fade at-loginpopup" tabindex="-1" role="dialog" id="deviseform" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="at-modalcontent modal-content">
       <div class="at-popuptitle">
-        <h4>Login</h4>
+        <h4 class='popup-heading'></h4>
         <a href="javascript:void(0);" class="at-closebtn close"><i class="lnr lnr-cross" data-dismiss="modal"></i></a>
       </div>
-      <div class="modal-body">
-        <%= render 'users/sessions/new' %>
+      <div class="modal-body" id='devise-forms'>
       </div>
     </div>
   </div>
 </div>
-<!-- Login Popup End-->
-<!-- Register Popup Start-->
-<div class="modal fade at-loginpopup" tabindex="-1" role="dialog" id="registerpopup" data-backdrop="static">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="at-modalcontent modal-content">
-      <div class="at-popuptitle">
-        <h4>Register</h4>
-        <a href="javascript:void(0);" class="at-closebtn close"><i class="lnr lnr-cross" data-dismiss="modal"></i></a>
-      </div>
-      <div class="modal-body">
-        <%= render 'users/registrations/new' %>
-        </div>
-    </div>
-  </div>
-</div>
-<!-- Register Popup End-->
+<!-- Login/SignUp/Host/ForgotPassword/Confirmation Popup Forms End-->

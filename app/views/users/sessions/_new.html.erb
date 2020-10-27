@@ -1,4 +1,4 @@
-<%= form_for(:user, url: session_path(:user), class: 'at-formtheme at-formlogin') do |f| %>
+<%= form_for(:user, url: session_path(:user), class: 'at-formtheme at-formlogin', html: {id: 'new_user'}) do |f| %>
   <%= devise_error_messages! %>
   <div class="row">
     <div class="form-group">
@@ -13,16 +13,21 @@
     <div class="form-footer text-center mt-4">
       <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
         <p class='text-muted'>
-          <%= link_to "Forgot Your Password?", new_password_path(resource_name) %>
+          <%= link_to "Forgot Your Password?", popup_forms_path(name: 'forgot_password'), remote: true %>
         </p>
       <% end %>
-
       <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
         <p class='text-muted'>
-          <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %>
+          <%= link_to "Didn't receive confirmation instructions?", popup_forms_path(name: 'resend_confirmation'), remote: true %>
         </p>
       <% end %>
       </p>
+      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <p class='text-muted'>
+          Don't have an account?
+          <%= link_to "Sign up", popup_forms_path(name: 'register'), remote: true %>
+        </p>
+      <% end %>
     </div>
   </div>
 <% end %>

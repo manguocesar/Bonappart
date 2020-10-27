@@ -1,26 +1,26 @@
 <%- if controller_name != 'sessions' %>
   <p class='text-muted'>
     Have an account?
-    <%= link_to "Sign in", new_session_path(resource_name) %>
+    <%= link_to "Sign in", popup_forms_path(name: 'login'), remote: true %>
   </p>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <p class='text-muted'>
     Don't have an account?
-    <%= link_to "Sign up", new_registration_path(resource_name) %>
+    <%= link_to "Sign up", popup_forms_path(name: 'register'), remote: true %>
   </p>
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <p class='text-muted'>
-    <%= link_to "Forgot Your Password?", new_password_path(resource_name) %>
+    <%= link_to "Forgot Your Password?", popup_forms_path(name: 'forgot_password'), remote: true %>
   </p>
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <p class='text-muted'>
-    <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %>
+    <%= link_to "Didn't receive confirmation instructions?", popup_forms_path(name: 'resend_confirmation'), remote: true %>
   </p>
 <% end %>
 
