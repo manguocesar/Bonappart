@@ -3,6 +3,7 @@
 # Homes controller
 class HomesController < ApplicationController
   def index
+    @latest_apartments = Apartment.last(7).group_by.with_index { |_, i| i % 3 }.values
   end
 
   # Get Contact Us Page

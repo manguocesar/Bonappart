@@ -46,102 +46,29 @@
           </div>
         </div>
         <div class="at-recommended-gallery at-haslayout">
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left">
-            <div class="tr-trip-imgs">
-              <figure>
-                <a href="javascript:void(0)">
-                  <%= image_tag image_path('trip-imgs/img-01.jpg') %>
-                </a>
-                <figcaption>
-                  <div class="at-trip-content">
-                    <h3>United Emirates</h3>
-                    <h4>$113 <span>(Starting From)</span></h4>
-                  </div>
-                </figcaption>
-              </figure>
-              <figure>
-                <a href="javascript:void(0)">
-                  <%= image_tag image_path('trip-imgs/img-02.jpg') %>
-                </a>
-                <figcaption>
-                  <div class="at-trip-content">
-                    <h3>China</h3>
-                    <h4>$168 <span>(Starting From)</span></h4>
-                  </div>
-                </figcaption>
-              </figure>
-              <figure>
-                <a href="javascript:void(0)">
-                  <%= image_tag image_path('trip-imgs/img-03.jpg') %>
-                </a>
-                <figcaption>
-                  <div class="at-trip-content">
-                    <h3>Sydney</h3>
-                    <h4>$140 <span>(Starting From)</span></h4>
-                  </div>
-                </figcaption>
-              </figure>
+          <% @latest_apartments.each_with_index do |apartments, all_index| %>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left">
+              <div class="tr-trip-imgs">
+                <% apartments.each_with_index do |apartment, index|%>
+                  <figure>
+                    <%= link_to apartment_path(apartment) do %>
+                      <% size = (all_index.eql?(1) && index.eql?(1) || all_index.eql?(2) && index.eql?(0)) ? '350x424' : '350x197' %>
+                      <%= image_tag url_for(apartment.images.last), size: size %>
+                    <% end %>
+                    <figcaption>
+                      <div class="at-trip-content">
+                        <h3><%= apartment.title.titleize %></h3>
+                        <h4>$<%= rand(100..1000) %> <span>(<%= apartment.apartment_type.titleize %>)</span></h4>
+                      </div>
+                    </figcaption>
+                  </figure>
+                <% end %>
+              </div>
             </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left">
-            <div class="tr-trip-imgs">
-              <figure>
-                <a href="javascript:void(0)">
-                  <%= image_tag image_path('trip-imgs/img-04.jpg') %>
-                </a>
-                <figcaption>
-                  <div class="at-trip-content">
-                    <h3>Chicago</h3>
-                    <h4>$120 <span>(Starting From)</span></h4>
-                  </div>
-                </figcaption>
-              </figure>
-              <figure>
-                <a href="javascript:void(0)">
-                  <%= image_tag image_path('trip-imgs/img-05.jpg') %>
-                </a>
-                <figcaption>
-                  <div class="at-trip-content">
-                    <h3>United Kingdom</h3>
-                    <h4>$240 <span>(Starting From)</span></h4>
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left">
-            <div class="tr-trip-imgs">
-              <figure>
-                <a href="javascript:void(0)">
-                  <%= image_tag image_path('trip-imgs/img-06.jpg') %>
-                </a>
-                <figcaption>
-                  <div class="at-trip-content">
-                    <h3>New York</h3>
-                    <h4>$170 <span>(Starting From)</span></h4>
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 mt-last-child float-left">
-            <div class="tr-trip-imgs">
-              <figure>
-                <a href="javascript:void(0)">
-                  <%= image_tag image_path('trip-imgs/img-07.jpg') %>
-                </a>
-                <figcaption>
-                  <div class="at-trip-content">
-                    <h3>Rome</h3>
-                    <h4>$180 <span>(Starting From)</span></h4>
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
+          <% end %>
           <div class="col-12 col-sm-12 col-md-12 at-btnarea-mt float-left">
             <div class="at-btnarea">
-              <a href="javascript:void(0);" class="at-btn">View All</a>
+              <%= link_to 'View All', apartments_path, class: 'at-btn' %>
             </div>
           </div>
         </div>
@@ -177,7 +104,7 @@
             <a href="javascript:void(0);">
               <figure class="at-category-img">
                 <%= image_tag image_path('category/img-02.jpg') %>
-                <figcaption><h3>Apartments</h3><span>12,568 Listings</span></figcaption>
+                <figcaption><h3>Rooms</h3><span>12,568 Listings</span></figcaption>
               </figure>
             </a>
           </div>
@@ -185,36 +112,12 @@
             <a href="javascript:void(0);">
               <figure class="at-category-img">
                 <%= image_tag image_path('category/img-03.jpg') %>
-                <figcaption><h3>Apartments</h3><span>12,568 Listings</span></figcaption>
-              </figure>
-            </a>
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left">
-            <a href="javascript:void(0);">
-              <figure class="at-category-img">
-                <%= image_tag image_path('category/img-04.jpg') %>
-                <figcaption><h3>Apartments</h3><span>12,568 Listings</span></figcaption>
-              </figure>
-            </a>
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left">
-            <a href="javascript:void(0);">
-              <figure class="at-category-img">
-                <%= image_tag image_path('category/img-05.jpg') %>
-                <figcaption><h3>Apartments</h3><span>12,568 Listings</span></figcaption>
-              </figure>
-            </a>
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left">
-            <a href="javascript:void(0);">
-              <figure class="at-category-img">
-                <%= image_tag image_path('category/img-06.jpg') %>
-                <figcaption><h3>Apartments</h3><span>12,568 Listings</span></figcaption>
+                <figcaption><h3>Studios</h3><span>12,568 Listings</span></figcaption>
               </figure>
             </a>
           </div>
           <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left at-btnarea">
-            <a href="javascript:void(0);" class="at-btn">View All</a>
+            <a href="javascript:void(0);" class="at-btn" title='This Feature Is Under Development' >View All</a>
           </div>
         </div>
       </div>
