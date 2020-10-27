@@ -14,6 +14,7 @@
 //= require jquery.validate
 //= require common/custom
 //= require login
+//= require bookings
 //= require apartments/custom
 
 $(document).ready(function () {
