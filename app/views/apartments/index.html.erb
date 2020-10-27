@@ -1,32 +1,39 @@
 <%= render 'search_header' %>
-<div class="card-area">
-  <div class='col-md-6'>
-    <div class="row", id='apartmentCard'>
-      <%= render 'apartments', apartments: @apartments %>
-    </div>
-    <div class='d-flex justify-content-center mt-3 dapartments-pagination'>
-      <%= render 'apartments_pagination', apartments: @apartments %>
+<div class="at-haslayout at-main-section">
+  <div class="container">
+    <div class="row">
+      <div class="at-twocolumns at-haslayout">
+        <div class='at-properties-grid at-properties-map at-haslayout', id='apartmentCard'>
+          <!-- Properties List Start -->
+            <%= render 'apartments', apartments: @apartments %>
+          <!-- Properties List End -->
+          <!--<div class='col-md-6'>
+            Display map start
+             <div id="map" class='apartments-map'></div>
+            Display map end -->
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class='col-md-6'>
-    <!-- Display map start -->
-    <div id="map" class='apartments-map'></div>
-    <!-- Display map end -->
-  </div>
+</div>
+<div class='at-pagination d-flex justify-content-center mb-3 apartments-pagination'>
+  <%= render 'apartments_pagination', apartments: @apartments %>
 </div>
 <script type="text/javascript">
   // Add datepicker
   $(document).ready(function (e) {
     $('.selectpicker').selectpicker('refresh');
-    $('#arrival-date, #departure-date').datetimepicker({
-      format: 'DD/MM/YYYY'
-    });
+    // $('#arrival-date, #departure-date').datetimepicker({
+    //   format: 'DD/MM/YYYY'
+    // });
     Filter.result();
+    // initilizeMap();
   });
 
   // Generate map
-  function initMap() {
-    const myLatLng = JSON.parse('<%= raw coordinates_hash(@apartments) %>');
-    DisplayMap.mapSettings(myLatLng);
-  }
+  // function initilizeMap() {
+  //   const myLatLng = JSON.parse('<%= raw coordinates_hash(@apartments) %>');
+  //   DisplayMap.mapSettings(myLatLng);
+  // }
 </script>

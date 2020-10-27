@@ -1,0 +1,53 @@
+<%= form_for(:user, url: registration_path(:user), html: { id: 'new_registration' }) do |form| %>
+  <%= devise_error_messages! %>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.text_field :firstname, id: '', class: 'form-control', placeholder: t('users.firstname') %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.text_field :lastname, id: '', class: 'form-control', placeholder: t('users.lastname') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.text_field :phone_no, id: '', class: 'form-control', placeholder: t('users.phone_no') %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.text_field :username, id: '', class: 'form-control', placeholder: t('users.username') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.text_field :email, id: '', class: 'form-control', placeholder: t('users.email') %>
+    </div>
+    <div class="form-group col-sm-6">
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> <%= t('users.min_character') %>)</em>
+      <% end %>
+      <%= form.password_field :password, autocomplete: "new-password",id: 'password', class: 'form-control', placeholder: t('users.password') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.password_field :password_confirmation, id: '', class: 'form-control', placeholder: t('users.confirm_password') %>
+    </div>
+    <%= form.hidden_field :role, value: @role  %>
+    <div class="form-group col-sm-6">
+      <%= form.file_field :image, multiple: false, class: "form-control select file-select", include_blank: t('users.profile_pic') %>
+    </div>
+  </div>
+  <div class="form-group at-btnarea text-center">
+    <button id="form_submit" type="submit" class="at-btn"><%= t('users.sign_up') %> </button>
+  </div>
+  <div class="form-footer text-center mt-5">
+    <p class="text-muted"></p>
+  </div>
+<% end %>
+<div class="form-footer text-center mt-4">
+  <%- if controller_name != 'sessions' %>
+    <p class='text-muted'>
+      Have an account?
+      <%= link_to "Sign in", popup_forms_path(name: 'login'), remote: true %>
+    </p>
+  <% end %>
+</div>

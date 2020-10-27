@@ -1,0 +1,27 @@
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { id: 'new_password', method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+  <%= render 'shared/messages' %>
+  <div class='row text-center'>
+    <div class="form-group">
+      <%= f.text_field :email, id: 'exampleInputEmail1', autocomplete: 'off', placeholder: 'Email' %>
+    </div>
+    <div class="at-btnarea">
+      <button id="form_submit" type="submit" class='at-btn mt-2'>Send me reset password instructions</button>
+    </div>
+  </div>
+<% end %>
+<div class="form-footer text-center mt-4">
+  <%- if controller_name != 'sessions' %>
+    <p class='text-muted'>
+      Have an account?
+      <%= link_to "Sign in", popup_forms_path(name: 'login'), remote: true %>
+    </p>
+  <% end %>
+
+  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <p class='text-muted'>
+      Don't have an account?
+      <%= link_to "Sign up", popup_forms_path(name: 'register'), remote: true %>
+    </p>
+  <% end %>
+</div>

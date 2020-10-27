@@ -1,34 +1,78 @@
-<div class='header-area header-bottom'>
-  <% if current_user&.administrative_role? %>
-    <%= link_to new_apartment_path, class: 'btn btn-outline-success btn-xs mr-3 pull-right' do %>
-      <i class="fa fa-plus left" aria-hidden="true"></i> <%= t('apartment.add_apartment') %>
-    <% end %>
-  <% end %>
-  <div class='row'>
-    <div class="search-box col-md-2">
-      <%= form_tag apartments_path, :method => 'get' do %>
-        <p>
-          <%= text_field_tag 'search[apartment_type]', params[:search].present? ? params[:search][:apartment_type] : '', id: 'apartment_type', placeholder: 'Apartment Type..'%>
-          <i class= 'ti-search'></i>
-        </p>
-      <% end %>
+<%= render 'shared/header_bg' %>
+<div class='container'>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-11 push-xl-1">
+      <div class="at-slider-content" style="max-width:1100px;">
+        <div class="at-title">
+          <h4>Start Your Search Here</h4>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-12 col-lg-6 float-left">
+            <form class="at-formtheme at-formbanner">
+              <fieldset class="at-datetime">
+                <div class="form-group">
+                  <div class="at-selectdate-holder">
+                    <div class="at-select">
+                      <label>Check-In:</label>
+                      <input class="form-control" id="at-startdate", placeholder="<%= t('apartment.arrival_date') %>">
+                    </div>
+                    <div class="at-select">
+                      <label>Check Out:</label>
+                      <input class="form-control" id="at-enddate", placeholder="<%= t('apartment.departure_date') %>">
+                    </div>
+                    <a href="javascript:void(0);" class="at-calendarbtn"><i class="ti-calendar"></i></a>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="at-select">
+                    <%= select_tag(:distance_from_university, options_for_select(Apartment.pluck(:distance_from_university).uniq), class: "form-control", "data-live-search" => "true", include_blank: t('apartment.distance_from_university')) %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="at-select">
+                    <%= select_tag(:net_rate, options_for_select(Constant::RENT_RATE_DROPDOWN, :net_rate), class: "form-control", "data-live-search" => "true", include_blank: t('apartment.rent')) %>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <div class="col-12 col-md-12 col-lg-6 float-left">
+            <form class="at-formtheme at-formbanner">
+              <fieldset class="at-roomform">
+                <legend class="at-formtitle">Accomodation Type</legend>
+                <div class="form-group">
+                  <div class="at-room-radioholder at-room-radiovtwo">
+                    <span class="at-radio">
+                      <input id="at-private" type="radio" name="private" value="villa">
+                      <label for="at-private">
+                        <%= image_tag url_for('radio-imgs/img-06.jpg') %>
+                        <span><em>Villa</em></span>
+                      </label>
+                    </span>
+                    <span class="at-radio">
+                      <input id="at-shared" type="radio" name="private" value="studios">
+                      <label for="at-shared">
+                        <%= image_tag url_for('radio-imgs/img-05.jpg') %>
+                        <span><em>Studios</em></span>
+                      </label>
+                    </span>
+                    <span class="at-radio">
+                      <input id="at-entire" type="radio" name="private" value="apartments">
+                      <label for="at-entire">
+                        <%= image_tag url_for('radio-imgs/img-06.jpg') %>
+                        <span><em>Apartments</em> </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group at-btnarea">
+                  <button type="button" class="at-btn at-btnactive sort-filter" ><%= t('filter_results') %></button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-    <% if !current_user.present? || current_user&.student? %>
-      <div class="col-md-2">
-        <input class="form-control" id="arrival-date", placeholder="<%= t('apartment.arrival_date') %>">
-      </div>
-      <div class="col-md-2">
-        <input class="form-control" id="departure-date", placeholder="<%= t('apartment.departure_date') %>">
-      </div>
-      <div class="col-md-2">
-        <%= select_tag(:distance_from_university, options_for_select(Apartment.pluck(:distance_from_university).uniq), class: "form-control selectpicker", "data-live-search" => "true", include_blank: t('apartment.distance_from_university')) %>
-      </div>
-      <div class="col-md-2">
-        <%= select_tag(:net_rate, options_for_select(Constant::RENT_RATE_DROPDOWN, :net_rate), class: "form-control selectpicker", "data-live-search" => "true", include_blank: t('apartment.rent')) %>
-      </div>
-      <div class="col-md-2">
-        <button type="button" class="btn btn-outline-success btn-xs sort-filter"  data-disable-with="false" ><%= t('filter') %></button>
-      </div>
-    <% end %>
   </div>
 </div>

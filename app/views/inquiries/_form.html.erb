@@ -1,7 +1,6 @@
 <%= form_with(model: inquiry, remote: true, id: 'inquiry_form') do |form| %>
   <%= render 'shared/error_messages', target: inquiry %>
   <%= hidden_field_tag 'inquiry[sender_id]', current_user&.id %>
-  <%= hidden_field_tag 'inquiry[email]', current_user&.email %>
   <%= hidden_field_tag 'inquiry[receiver_id]', @landlord&.id %>
 
   <div class='row'>
@@ -11,7 +10,7 @@
     </div>
     <div class="modal-footer">
       <%= link_to "Back", '', data: { dismiss: 'modal' }, class: 'btn btn-dark' %>
-      <%= button_tag 'Send', class:"btn btn-success", type: "submit" %>
+      <%= button_tag 'Send', class:"at-btn at-btnactive", type: "submit", style:"height: 40px;min-width:auto;" %>
     </div>
   </div>
 <% end %>

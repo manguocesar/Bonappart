@@ -49,13 +49,13 @@ var ApartmentForm = {
       "apartment[latitude]": 'Please enter latitude'
     },
 
-    errorPlacement: function (error, element) {
-      popoverPlacement (error, element);
-    }, 
+    // errorPlacement: function (error, element) {
+    //   popoverPlacement (error, element);
+    // },
 
-    success: function (label, element) {
-      disablePopover(element);
-    }
+    // success: function (label, element) {
+    //   disablePopover(element);
+    // }
   });
   }
 }
@@ -69,9 +69,9 @@ var Filter = {
         dataType: 'script',
         data: {
           search: {
-            apartment_type: $('#apartment_type').val(),
-            arrival_date: $('#arrival-date').val(),
-            departure_date: $('#departure-date').val(),
+            apartment_type: $('input[name="private"]:checked').val(),
+            arrival_date: $('#at-startdate').val(),
+            departure_date: $('#at-enddate').val(),
           },
           sort: {
             distance_from_university: $('#distance_from_university').val(),

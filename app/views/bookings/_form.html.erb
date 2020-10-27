@@ -9,23 +9,21 @@
     </div>
   </div>
   <div class='row'>
-    <div class="form-group col-sm-6">
-      <%= form.label t('booking.start_date'), class:"col-form-label" %><br/>
-      <%= form.text_field :start_date, class: 'form-control', id: 'start-date' %>
+    <div class="form-group at-checkin-holder at-datecheck col-sm-6">
+      <%= form.label t('booking.start_date'), class:"col-form-label" %>
+      <%= form.text_field :start_date, class: 'form-control', id: 'at-startdate' %>
     </div>
-    <div class="form-group col-sm-6">
-      <%= form.label t('booking.end_date'), class:"col-form-label" %><br/>
-      <%= form.text_field :end_date, class: 'form-control', id: 'end-date' %>
+    <div class="form-group at-checkout-holder at-datecheck col-sm-6">
+      <%= form.label t('booking.end_date'), class:"col-form-label" %>
+      <%= form.text_field :end_date, class: 'form-control', id: 'at-enddate' %>
     </div>
   </div>
   <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
-  <%= button_tag 'Save', class:"btn btn-success mt-4 pr-4 pl-4", type: "submit" %>
+  <%= button_tag 'Save', class:"at-btn at-btnactive mt-4 pr-4 pl-4", type: "submit", style:"height: 40px;min-width:auto;" %>
 <% end %>
 <script type="text/javascript">
   $(document).ready(function (e) {
     $('.selectpicker').selectpicker('refresh');
-    $('#start-date, #end-date').datetimepicker({
-      format: 'DD/MM/YYYY'
-    });
+    BookingForm.validate();
   });
 </script>

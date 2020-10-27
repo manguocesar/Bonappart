@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_one_attached :image
   has_many :apartments
   has_many :subscriptions
-  validates_presence_of :firstname, :lastname, :birthdate, :address, :gender
+  validates_presence_of :firstname, :lastname
   validates :phone_no, presence: true,
                        numericality: true,
                        length: { minimum: 10, maximum: 12 }
