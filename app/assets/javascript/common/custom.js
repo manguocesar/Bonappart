@@ -27,3 +27,8 @@ $(window).on('load', function () {
 		$('.page-container').toggleClass('sbar_collapsed');
 	});
 });
+DatePickerRange = {
+	init: function () {
+		new Lightpick({field:document.getElementById("at-startdate"),secondField:document.getElementById("at-enddate"),singleDate:!1,onSelect:function(e,a){e&&e.format("Do MMMM YYYY"),a&&a.format("Do MMMM YYYY")}});
+	}
+}
