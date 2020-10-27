@@ -5,10 +5,17 @@
       <div class="col-12 col-md-12">
         <div class="at-propertybannercontent">
           <div class="at-propertyholder">
-
+            <figure class="at-propertyuserimg at-verifieduser">
+              <%= image_tag url_for('blog-single/user-img/img-01.jpg') %>
+              <i class="fa fa-shield-alt"></i>
+            </figure>
             <div class="at-title">
-
+              <div class="at-tags">
+                <a href="javascript:void(0);" class="at-tag">Featured</a>
+                <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
+              </div>
               <div class="at-username">
+                <a href="javascript:void(0);"><%= @apartment.apartment_type %></a>
                 <h2><%= @apartment.title %></h2>
                 <address><i class="fa fa-location-arrow"></i><%= @apartment.area %></address>
               </div>
@@ -16,17 +23,7 @@
           </div>
           <div class="at-rightarea">
             <div class="at-singlerate">
-              <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
-              <% if current_user&.administrative_role? %>
-                <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'at-btn at-btnactive mt-4 pr-4 pl-4', style:"height: 40px;min-width:auto;" %>
-                <%= link_to  apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn btn-danger mt-4 pr-4 pl-4' do %>Delete
-                <% end %>
-              <% else %>
-                <%= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"at-btn at-btnactive mt-4 pr-4 pl-4", style:"height: 40px;min-width:auto;" %>
-              <% end %>
-            </div>
-            <div class="at-singlerate">
-              <span><em>€ <%= @apartment&.rent_rate&.net_rate %></em></span>
+              <span><em>€ <%= @apartment&.rent_rate&.net_rate %></em>/month</span>
             </div>
           </div>
         </div>
@@ -40,7 +37,7 @@
         <!-- Image box start -->
         <% @apartment.images.each do |image| %>
           <div class="carousel-item <%= @apartment.active_class(image) %>">
-            <%= image_tag url_for(image), class: "d-block w-100", style:"height:400px;" %>
+            <%= image_tag url_for(image), class: "d-block w-100", style:"height:420px;" %>
           </div>
         <% end %>
       </div>
@@ -81,8 +78,36 @@
                 <li><h4><%= t('rent.deposit_amount') %></h4><span><%= rent&.deposit_amount %></span></li>
               </ul>
             </div>
+            <div class="at-widgets-holder">
+              <div class="at-widgets-title">
+                <h2>About Host</h2>
+              </div>
+              <div class="at-widgets-content at-authorholder at-authorholdertwo">
+                <figure class="at-authorimg at-verifieduser">
+                <%= image_tag url_for('blog-single/user-img/img-07.jpg') %>
+                <i class="fa fa-shield-alt"></i>
+                </figure>
+                <div class="at-authordetails">
+                  <div class="at-featurerating">
+                    <h3>Landlord Name: <%= @apartment.user.firstname %> <%= @apartment.user.lastname %></h3>
+                    <h3>Contact: <%= @apartment.user.phone_no %></h3>
+                  </div>
+                </div>
+                <div class="at-btnarea row">
+                  <% if current_user&.administrative_role? %>
+                    <h3>Edit / Delete your Apartment details</h3>
+                    <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'at-btn col-sm-3', style:"height: 40px;min-width:auto;" %>
+                    <%= link_to  apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn btn-danger ml-3' do %>Delete
+                    <% end %>
+                  <% else %>
+                    <%= link_to 'View All My Ads', apartments_path, class: 'at-btn col-sm-3 col-sm-3 ml-1' %>
+                    <%= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"at-btn col-sm-3 ml-1" %>
+                    <%= render '/inquiries/inquiry_button' %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
             <!-- Send inquiry to the landlord button -->
-            <%= render '/inquiries/inquiry_button' %>
           </div>
           <%= render '/shared/modal_window', locals: { modelId: 'inuiryModal' } %>
           <div class="col-xs-12 col-sm-6 col-md-6 float-left">
@@ -90,8 +115,7 @@
               <a href="javascript:void(0);" id="at-btnopenclose" class="at-btnopenclose"><i class="ti-settings"></i></a>
             </div>
             <div class="at-propertylinkdetails at-haslayout">
-
-              <div id="at-about" class="at-propertydetails at-aboutproperty">
+              <div class="at-propertydetails at-aboutproperty">
                 <div class="at-propertytitle">
                   <h3>About Property</h3>
                 </div>
@@ -122,7 +146,17 @@
   <!-- Booking form modal -->
 <%= render '/shared/modal_window', locals: { modelId: 'booking_modal' } %>
 <!-- Similar apartments -->
-<%= render 'similar_apartments' %>
+<div class="at-haslayout at-main-section">
+  <div class="container">
+    <div class="row">
+      <div class="at-twocolumns at-haslayout">
+        <div class='at-properties-grid at-properties-map at-haslayout', id='apartmentCard'>
+          <%= render 'similar_apartments' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </main>
 <script>
   // Set coordinates and pass to the map
