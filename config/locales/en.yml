@@ -33,6 +33,9 @@
 en:
   hello: "Hello world"
   cannot_perform: "You can't perform this action."
+  thank_you:
+    title: Thank you for booking Accomodation.
+    message: Your Accomodation is booked successfully.
   users:
     sign_up: SIGN UP
     edit_user: Edit User
