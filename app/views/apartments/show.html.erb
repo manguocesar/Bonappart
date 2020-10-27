@@ -1,4 +1,4 @@
-<%= render 'search_header' %>
+<%= render 'shared/header_bg' %>
 <div class="at-haslayout at-propertybannerholder">
   <div class="container">
     <div class="row">
@@ -24,6 +24,7 @@
           <div class="at-rightarea">
             <div class="at-singlerate">
               <span><em>€ <%= @apartment&.rent_rate&.net_rate %></em>/month</span>
+              <span><em><%= @apartment&.departure_date_availabilty %></em>/Available at</span>
             </div>
           </div>
         </div>
