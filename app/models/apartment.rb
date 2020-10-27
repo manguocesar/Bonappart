@@ -14,7 +14,6 @@ class Apartment < ApplicationRecord
   has_many_attached :images
   belongs_to :user
   has_one :rent_rate, dependent: :destroy
-  has_one :apartment_type, dependent: :destroy
   belongs_to :booking, optional: true
   accepts_nested_attributes_for :rent_rate
 

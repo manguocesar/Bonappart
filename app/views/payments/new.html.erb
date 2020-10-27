@@ -1,3 +1,4 @@
+<%= render 'shared/header_bg' %>
 <% url = params[:booking_id].present? ? create_payment_method_path : create_subscription_payment_path  %>
 <%= form_with url: url,  id: 'stripe-form' do |form| %>
   <%= hidden_field_tag 'payment[booking_id]', params[:booking_id] %>

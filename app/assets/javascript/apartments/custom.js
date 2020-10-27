@@ -110,7 +110,6 @@ var DisplayMap = {
 
     for (i = 0; i < latlong.length; i++){
       marker = new google.maps.Marker({
-        draggable: true,
         animation: google.maps.Animation.DROP,
         position: new google.maps.LatLng(parseFloat(latlong[i][2]), parseFloat(latlong[i][3])),
         title: latlong[i][0],

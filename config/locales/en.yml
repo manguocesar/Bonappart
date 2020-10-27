@@ -128,7 +128,8 @@ en:
     country: Country
   admin:
     apartment_type:
-      add_apartment_type: Add New Apartment Type
+      title: Apartment Types
+      add_apartment_type: Add Apartment Type
   contact_us:
     happy_to_serve: We’re Happy To Serve You
     title: Contact

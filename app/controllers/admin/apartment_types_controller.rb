@@ -69,7 +69,7 @@ module Admin
 
     # Permit the parameters
     def apartment_type_params
-      params.require(:apartment_type).permit(:name, :amount)
+      params.require(:apartment_type).permit(Constant::APARTMENT_TYPE_PARAMS)
     end
   end
 end
