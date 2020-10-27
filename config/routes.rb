@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post 'create_contact_us', to: 'homes#create_contact_us'
   get '/contact_us', to: 'homes#contact_us'
   get '/about_us', to: 'homes#about_us'
+  get '/popup_forms', to: 'homes#popup_forms' 
   get 'cities/:state', to: 'payments#cities'
   get 'render_login', to: 'inquiries#render_login_page'
   root 'homes#index'
