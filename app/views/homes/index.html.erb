@@ -15,14 +15,7 @@
             </div>
           </div>
         </div>
-        <div class="at-innerbanner-search">
-          <form class="at-formtheme at-form-advancedsearch">
-            <fieldset>
-              <div class="text-center">
-                <%= link_to 'Start searching your Accomodation Instantly', apartments_path, class: 'at-btn at-btnactive' %>
-            </fieldset>
-          </form>
-        </div>
+        <%= render 'apartments/search_header' %>
       </div>
     </div>
   </div>
@@ -125,3 +118,8 @@
   </section>
 </main>
 <!-- Main End -->
+<script type="text/javascript">
+  $(document).ready(function (e) {
+    Filter.result();
+  });
+</script>
