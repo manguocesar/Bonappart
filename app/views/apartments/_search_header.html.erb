@@ -67,6 +67,11 @@
                 </div>
                 <div class="form-group at-btnarea">
                   <button type="button" class="at-btn at-btnactive sort-filter" ><%= t('filter_results') %></button>
+                  <% if current_user.administrative_role? %>
+                    <%= link_to new_apartment_path, class: 'at-btn at-btnactive' do %>
+                      <%= t('apartment.add_apartment') %>
+                    <% end %>
+                  <% end %>
                 </div>
               </fieldset>
             </form>
