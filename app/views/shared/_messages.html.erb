@@ -1,8 +1,7 @@
 <% unless flash.empty? %>
   <div id="error_explanation" class='alert-items'>
     <% flash.each do |f| %>
-      <% type = f.first.to_s.eql?('error') ? 'danger' : 'success' %>
-      <div class='<%= "alert alert-#{type} alert-dismiss fade show" %>' role="alert">
+      <div class='<%= "alert #{build_alert_classes(f.first.to_s)} alert-dismiss" %>' role="alert">
         <% if (f[1].is_a?Array) %>
           <%= f[1].join("<br />").html_safe %>
         <% else %>
