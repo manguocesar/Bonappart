@@ -8,7 +8,7 @@ class DashboardController < ApplicationController
     elsif current_user&.has_role? :landlord
       render 'landloard_dashboard'
     else
-      render 'index'
+      redirect_to controller: 'homes', action: 'index'
     end
   end
 end
