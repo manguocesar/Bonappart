@@ -2,7 +2,6 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap.min
-//= require common/bootstrap-select.min
 //= require common/owl.carousel.min
 //= require common/moment.min
 //= require common/fullcalendar.min

@@ -2,7 +2,6 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap.min
-//= require common/bootstrap-select.min
 //= require common/owl.carousel.min
 //= require common/moment.min
 //= require common/fullcalendar.min
@@ -28,7 +27,7 @@ $.validator.addMethod('PHONE_NUMBER', function (phoneNumber, element) {
 
 jQuery.validator.addMethod("lettersonly", function(value, element) {
   return this.optional(element) || /^[a-z]+$/i.test(value);
-}, "Enter characters only."); 
+}, "Enter characters only.");
 
 function popoverPlacement(error, element) {
   var elem = $(element);
