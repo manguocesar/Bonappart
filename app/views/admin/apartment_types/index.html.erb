@@ -14,13 +14,14 @@
               <% end %>
             <% end %>
         </div>
+        <%= render 'shared/messages' %>
         <div class="market-status-table mt-4">
           <div class="table-responsive">
             <table class="dbkit-table">
               <tr class="heading-td">
-                <td>Apartment Types</td>
-                <td>Amount</td>
-                <td colspan='2' class='actions'>Actions</td>
+                <td><%= t('admin.apartment_type.title') %></td>
+                <td><%= t('admin.apartment_type.amount') %></td>
+                <td colspan='2' class='actions'><%= t('admin.apartment_type.actions') %></td>
               </tr>
               <% @apartment_types.each do |apartment_type| %>
                 <tr>

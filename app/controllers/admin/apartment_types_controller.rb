@@ -5,6 +5,8 @@ module Admin
   # Class begin
   class ApartmentTypesController < ApplicationController
     before_action :load_apartment_type, only: %i[edit update destroy]
+    protect_from_forgery with: :null_session
+
 
     def index
       @apartment_types = ApartmentType.all
@@ -24,11 +26,12 @@ module Admin
     # Create apartment type
     def create
       @apartment_type = ApartmentType.new(apartment_type_params)
-      @apartment_type.save
-      respond_to do |format|
-        format.html
-        format.js
+      if @apartment_type.save
+        flash[:success] = t('admin.apartment_type.create.success')
+      else
+        flash[:error] = t('admin.apartment_type.create.failer')
       end
+      redirect_to admin_apartment_types_path
     end
 
     # GET

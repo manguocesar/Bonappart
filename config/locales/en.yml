@@ -130,6 +130,11 @@ en:
     apartment_type:
       title: Apartment Types
       add_apartment_type: Add Apartment Type
+      amount: Amount
+      actions: Actions
+      create:
+        success: Apartment type successfully created
+        failer: Apartment type has not been created
   contact_us:
     happy_to_serve: We’re Happy To Serve You
     title: Contact
