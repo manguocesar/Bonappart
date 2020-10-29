@@ -39,7 +39,7 @@
           <div class="at-featured-head">
             <div class="at-featured-tags"><a href="<%= apartment_path(apartment) %>"><%= apartment.apartment_type %></a> </div>
             <div class="at-featured-title">
-              <h3><%= apartment.title %><span>€ <%= apartment.rent_rate.net_rate %></span></h3>
+              <h3><%= apartment.title %><span>€ <%= apartment.rent_rate&.net_rate %></span></h3>
               <div class="at-userimg at-verifieduser">
                 <%= image_tag url_for('featured-img/user-img/img-06.jpg') %>
                 <i class="fa fa-shield-alt"></i>

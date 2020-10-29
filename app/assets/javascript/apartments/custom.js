@@ -70,8 +70,8 @@ var Filter = {
         data: {
           search: {
             apartment_type: $('input[name="private"]:checked').val(),
-            arrival_date: $('#at-startdate').val(),
-            departure_date: $('#at-enddate').val(),
+            arrival_date: $('.at-startdate').val(),
+            departure_date: $('.at-enddate').val(),
           },
           sort: {
             distance_from_university: $('#distance_from_university').val(),

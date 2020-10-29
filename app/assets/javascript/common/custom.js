@@ -31,6 +31,15 @@ $(window).on('load', function () {
 });
 DatePickerRange = {
 	init: function () {
-		new Lightpick({field:document.getElementById("at-startdate"),secondField:document.getElementById("at-enddate"),singleDate:!1,onSelect:function(e,a){e&&e.format("Do MMMM YYYY"),a&&a.format("Do MMMM YYYY")}});
+		startDate = document.getElementsByClassName("at-startdate");
+		endDate = document.getElementsByClassName("at-enddate");
+		for (let i = 0; i <= startDate.length; i++) {
+			if(null!= startDate[i])new Lightpick({field:startDate[i],secondField:endDate[i],singleDate:!1,onSelect:function(e,a){e&&e.format("Do MMMM YYYY"),a&&a.format("Do MMMM YYYY")}});
+		}
+		startDateTwo = document.getElementsByClassName("at-startdatetwo");
+		endDateTwo = document.getElementsByClassName("at-enddatetwo");
+		for (let i = 0; i < startDateTwo.length; i++) {
+			if(null!=startDateTwo[i])new Lightpick({field:startDateTwo[i],secondField:endDateTwo[i],singleDate:!1,onSelect:function(e,a){e&&e.format("Do MMMM YYYY"),a&&a.format("Do MMMM YYYY")}})
+		}
 	}
 }
