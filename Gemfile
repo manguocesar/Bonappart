@@ -25,6 +25,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'jquery-validation-rails', '~> 1.19'
 gem 'momentjs-rails', '>= 2.9.0'
+gem 'sidekiq' # for background jobs
 # gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -33,6 +34,7 @@ gem "pundit" # for authorization
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise', '~> 4.7', '>= 4.7.3' # for authentication
+gem "devise-async" # for sending devise emails in background
 gem 'kaminari' # for pagination
 gem 'geocoder' # For geocoding map
 gem 'stripe-rails' # For payment gateway
