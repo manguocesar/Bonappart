@@ -1,17 +1,4 @@
-//= require jquery
-//= require jquery_ujs
-//= require popper
-//= require bootstrap.min
-//= require common/owl.carousel.min
-//= require common/moment.min
-//= require common/fullcalendar.min
-//= require common/prettyPhoto
-//= require common/tipso
-//= require common/readmore
-//= require common/lightpick
-//= require common/main-min
-//= require jquery.validate
-//= require common/custom
+//= require common
 //= require devise_forms/validate
 
 $.validator.addMethod('CUSTOM_EMAIL', function (emailaddr, element) {

@@ -26,6 +26,8 @@ $(window).on('load', function () {
 	$('.nav-btn').on('click', function () {
 		$('.page-container').toggleClass('sbar_collapsed');
 	});
+
+	$('select, .selectpicker').selectpicker({ liveSearch: false });
 });
 DatePickerRange = {
 	init: function () {
