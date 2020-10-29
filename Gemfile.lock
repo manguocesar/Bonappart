@@ -83,6 +83,7 @@ GEM
       rubyzip (>= 1.1)
     coderay (1.1.3)
     concurrent-ruby (1.1.7)
+    connection_pool (2.2.3)
     crass (1.0.6)
     devise (4.7.3)
       bcrypt (~> 3.0)
@@ -90,6 +91,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-async (1.0.0)
+      activejob (>= 5.0)
+      devise (>= 4.0)
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.13.1)
@@ -186,6 +190,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.2.2)
     regexp_parser (1.7.1)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -205,6 +210,10 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sidekiq (6.1.2)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -258,6 +267,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   city-state
   devise (~> 4.7, >= 4.7.3)
+  devise-async
   geocoder
   jbuilder (~> 2.7)
   jquery-rails (~> 4.3, >= 4.3.5)
@@ -274,6 +284,7 @@ DEPENDENCIES
   rolify
   sass-rails (>= 6)
   selenium-webdriver
+  sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
   stripe-rails
