@@ -19,7 +19,7 @@ class InquiriesController < ApplicationController
   def create
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
-      InquiryMailer.send_inquiry(current_user, get_user, @inquiry).deliver_now
+      InquiryMailerWorker.perform_async(current_user&.id, get_user&.id, @inquiry&.id)
     end
     respond_to do |format|
       format.html

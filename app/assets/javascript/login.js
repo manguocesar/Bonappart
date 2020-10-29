@@ -1,18 +1,4 @@
-//= require jquery
-//= require jquery_ujs
-//= require popper
-//= require bootstrap.min
-//= require common/bootstrap-select.min
-//= require common/owl.carousel.min
-//= require common/moment.min
-//= require common/fullcalendar.min
-//= require common/prettyPhoto
-//= require common/tipso
-//= require common/readmore
-//= require common/lightpick
-//= require common/main-min
-//= require jquery.validate
-//= require common/custom
+//= require common
 //= require devise_forms/validate
 
 $.validator.addMethod('CUSTOM_EMAIL', function (emailaddr, element) {
@@ -28,7 +14,7 @@ $.validator.addMethod('PHONE_NUMBER', function (phoneNumber, element) {
 
 jQuery.validator.addMethod("lettersonly", function(value, element) {
   return this.optional(element) || /^[a-z]+$/i.test(value);
-}, "Enter characters only."); 
+}, "Enter characters only.");
 
 function popoverPlacement(error, element) {
   var elem = $(element);
@@ -38,7 +24,7 @@ function popoverPlacement(error, element) {
                   placement: function (context, source) {
                     var position = $(source).position();
                     if (window.innerWidth >= 500) {
-                      if($("input:odd" ).toArray().includes($(source)[0])){
+                      if($("input:even" ).toArray().includes($(source)[0])){
                         return "left";
                       }else{
                         return 'right';

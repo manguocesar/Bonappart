@@ -1,8 +1,8 @@
-<%= form_for(:user, url: session_path(:user), class: 'at-formtheme at-formlogin', html: {id: 'new_user'}) do |f| %>
+<%= form_for(:user, url: session_path(:user), class: 'at-formtheme at-formlogin', html: {id: 'new_user'}, remote: true) do |f| %>
   <%= devise_error_messages! %>
   <div class="row">
     <div class="form-group">
-      <%= f.text_field :email, autocomplete: 'off', class: 'form-control', placeholder: 'Your Email *' %>
+      <%= f.text_field :login, autocomplete: 'off', class: 'form-control', placeholder: 'Your Email *' %>
     </div>
     <div class="form-group">
       <%= f.password_field :password, class: 'form-control', placeholder: 'Password *' %>
@@ -31,8 +31,3 @@
     </div>
   </div>
 <% end %>
-<script>
-  $(document).ready(function () {
-    LoginForm.validate();
-  })
-</script>

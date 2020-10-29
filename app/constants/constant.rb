@@ -6,6 +6,8 @@ module Constant
 
   USER_UPDATE_FIELDS = USER_FIELDS + [:current_password].freeze
 
+  SIGN_IN_PARAMS = %i[login password password_confirmation].freeze
+
   RENT_RATE_DROPDOWN = ['All', 'Low to High', 'High to Low'].freeze
 
   CONTACT_US_PARAMS = %i[first_name last_name email subject message].freeze
