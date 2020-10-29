@@ -1,5 +1,19 @@
-<%= render 'shared/header_bg' %>
-<%= render 'search_header' %>
+<!-- Map Start -->
+<div class="at-haslayout at-gridmap-holder">
+  <div id="at-locationmap" class="at-locationmap"></div>
+  <div class="at-innerbanner-holder at-haslayout">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="at-innerbanner-search">
+            <%= render 'search_header' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Map End -->
 <div class="at-haslayout at-main-section">
   <div class="container">
     <div class="row">
@@ -25,12 +39,12 @@
   // Add datepicker
   $(document).ready(function (e) {
     Filter.result();
-    // initilizeMap();
+    initilizeMap();
   });
 
   // Generate map
-  // function initilizeMap() {
-  //   const myLatLng = JSON.parse('<%= raw coordinates_hash(@apartments) %>');
-  //   DisplayMap.mapSettings(myLatLng);
-  // }
+  function initilizeMap() {
+    const myLatLng = JSON.parse('<%= raw coordinates_hash(@apartments) %>');
+    DisplayMap.mapSettings(myLatLng);
+  }
 </script>

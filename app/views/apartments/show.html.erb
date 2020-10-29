@@ -55,7 +55,7 @@
   </div>
   <div class='col-sm-6'>
   <!-- Map container start -->
-    <div id="map"></div>
+    <div id="at-locationmap" class="at-locationmap"></div>
   <!-- Map container end -->
   </div>
 </div>
@@ -167,10 +167,11 @@
   });
   function initilizeMap() {
     var myLatLng = [
-      [ '100.00',
+      [ "<%= @apartment&.rent_rate&.net_rate %>",
         "<%= url_for(@apartment.images.first) %>",
         "<%= @apartment.latitude %>",
-        "<%= @apartment.longitude %>" ]
+        "<%= @apartment.longitude %>" ],
+        "<%= apartment_path(@apartment.id) %>"
     ];
     DisplayMap.mapSettings(myLatLng);
   }
