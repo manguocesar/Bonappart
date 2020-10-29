@@ -41,4 +41,14 @@ class Apartment < ApplicationRecord
   def departure_date_availabilty
     departure_date&.strftime('%d-%m-%Y')
   end
+
+  # Other amenities details
+  def other_amenities
+    Constant::APARTMENT_OTHER_AMENITIES.map { |field| [field, send(field)] unless send(field).to_i.zero? }
+  end
+
+  # Full Address with floor no.
+  def display_full_address
+    [floor, full_address].join(' ')
+  end
 end

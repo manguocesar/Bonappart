@@ -1,3 +1,5 @@
-<li class="page-item">
-  <%= link_to_unless current_page.first?, raw(t 'views.pagination.previous'), url, rel: 'prev', remote: remote, class: 'page-link' %>
+<li class="at-prevpage">
+  <%= link_to url, remote: remote do %>
+    <i class="ti-angle-left"></i>
+  <% end %>
 </li>

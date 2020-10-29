@@ -13,4 +13,8 @@ module ApartmentHelper
     end
     latlong
   end
+
+  def other_amenities_text(amenities)
+    "#{amenities.last} #{amenities.first.titleize.pluralize}"
+  end
 end

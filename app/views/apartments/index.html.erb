@@ -12,14 +12,15 @@
             Display map start
              <div id="map" class='apartments-map'></div>
             Display map end -->
-          </div>
+          <%= render 'apartments_pagination', apartments: @apartments %>
+        </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 <div class='at-pagination d-flex justify-content-center mb-3 apartments-pagination'>
-  <%= render 'apartments_pagination', apartments: @apartments %>
+  
 </div>
 <script type="text/javascript">
   // Add datepicker

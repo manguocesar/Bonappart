@@ -16,4 +16,6 @@ module Constant
                           'host': ['Become A Host', 'users/registrations/new'],
                           'forgot_password': ['Forgot Your Password?', 'users/passwords/new'],
                           'resend_confirmation': ['Resend Confirmation', 'users/confirmations/new'] }.freeze
+
+  APARTMENT_OTHER_AMENITIES = %w[shower_room total_bedrooms].freeze
 end
