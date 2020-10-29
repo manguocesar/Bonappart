@@ -29,6 +29,7 @@
     <div class="form-group col-sm-6">
       <%= form.label t('apartment.apartment_type'), class:"col-form-label" %>
       <%= form.text_field :apartment_type, class: 'form-control' %>
+      <%= select_tag 'apartment[apartment_type]', options_for_select(apartment_types_collection), class: 'form-control selectpicker', id: 'apartment_type', include_blank: 'Please select apartment type' %>
     </div>
   </div>
   <div class='row'>
@@ -90,7 +91,8 @@
   </div>
   <%= render partial: 'rent_rates' , locals: { form: form } %>
   <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
-  <%= button_tag 'Save', class:"at-btn at-btnactive mt-4 pr-4 pl-4", type: "submit", style:"height: 40px;min-width:auto;" %>
+  <%= button_tag 'Save', class:"btn btn-success mt-4 pr-4 pl-4", type: "submit" %>
+  <%= link_to 'Post', new_subscription_path(apartment_id: params[:id]), data: { remote: true }, class: 'btn btn-success mt-4 pr-4 pl-4' %>
 <% end %>
 <script type="text/javascript">
   $(document).ready(function (e) {

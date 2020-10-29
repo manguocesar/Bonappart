@@ -48,6 +48,13 @@ ActiveRecord::Schema.define(version: 2020_10_26_170546) do
     t.index ["payment_id"], name: "index_addresses_on_payment_id"
   end
 
+  create_table "apartment_types", force: :cascade do |t|
+    t.string "name"
+    t.float "amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "apartments", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -57,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_10_26_170546) do
     t.string "country"
     t.string "area"
     t.string "apartment_type"
-    t.boolean "availability"
+    t.boolean "availability", default: true
     t.datetime "arrival_date"
     t.datetime "departure_date"
     t.integer "total_bedrooms"
@@ -71,6 +78,9 @@ ActiveRecord::Schema.define(version: 2020_10_26_170546) do
     t.bigint "user_id", null: false
     t.bigint "booking_id"
     t.string "virtual_visit_link"
+    t.bigint "apartment_type_id"
+    t.boolean "subscribed", default: false
+    t.index ["apartment_type_id"], name: "index_apartments_on_apartment_type_id"
     t.index ["booking_id"], name: "index_apartments_on_booking_id"
     t.index ["user_id"], name: "index_apartments_on_user_id"
   end
@@ -113,7 +123,9 @@ ActiveRecord::Schema.define(version: 2020_10_26_170546) do
     t.bigint "booking_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "subscription_id"
     t.index ["booking_id"], name: "index_payments_on_booking_id"
+    t.index ["subscription_id"], name: "index_payments_on_subscription_id"
   end
 
   create_table "rent_rates", force: :cascade do |t|
@@ -138,6 +150,18 @@ ActiveRecord::Schema.define(version: 2020_10_26_170546) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "status", default: 0
+    t.datetime "started_at"
+    t.date "expired_at"
+    t.bigint "user_id", null: false
+    t.bigint "apartment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["apartment_id"], name: "index_subscriptions_on_apartment_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -173,6 +197,10 @@ ActiveRecord::Schema.define(version: 2020_10_26_170546) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "apartments", "apartment_types"
   add_foreign_key "apartments", "bookings"
   add_foreign_key "apartments", "users"
+  add_foreign_key "payments", "subscriptions"
+  add_foreign_key "subscriptions", "apartments"
+  add_foreign_key "subscriptions", "users"
 end

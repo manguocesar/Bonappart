@@ -12,8 +12,12 @@ module Constant
 
   CONTACT_US_PARAMS = %i[first_name last_name email subject message].freeze
 
-  FORM_BASED_ON_LINKS = { 'login': ['Login', 'users/sessions/new'], 'register': ['Register', 'users/registrations/new'],
-                          'host': ['Become A Host', 'users/registrations/new'],
-                          'forgot_password': ['Forgot Your Password?', 'users/passwords/new'],
-                          'resend_confirmation': ['Resend Confirmation', 'users/confirmations/new'] }.freeze
+  FORM_BASED_ON_LINKS = {'login': ['Login', 'users/sessions/new'], 'register': ['Register', 'users/registrations/new'],
+                         'host': ['Become A Host', 'users/registrations/new'], 'forgot_password': ['Forgot Your Password?', 'users/passwords/new'],
+                         'resend_confirmation': ['Resend Confirmation', 'users/confirmations/new'] }.freeze
+  APARTMENT_TYPE_PARAMS = %i[name amount image].freeze
+  BOOKING = 'booking'
+  SUBSCRIPTION = 'subscription'
+  AVAILABILITY = 'availability'
+  SUBSCRIBED = 'subscribed'
 end

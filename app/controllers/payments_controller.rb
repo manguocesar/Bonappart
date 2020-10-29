@@ -15,16 +15,30 @@ class PaymentsController < ApplicationController
   def create
     StripePayment.new(params, current_user).call
     @payment = Payment.new(payment_params).tap do |payment|
-                payment.stripe_token = params[:stripeToken]
-                address = payment.build_address
-                create_address(address)
-              end
-    @payment.save!
+                 payment.stripe_token = params[:stripeToken]
+                 address = payment.build_address
+                 create_address(address)
+               end
+    @payment.save
+    @payment.paid!
+    render 'thank_you'
+    rescue Stripe::CardError => e
+      redirect_to add_payment_method_path
+  end
+
+  def create_subscription_payment
+    StripePayment.new(params, current_user).call
+    payment = Payment.new(payment_params)
+    create_address(payment.build_address)
+    @payment = payment.tap do |pay|
+                 pay.stripe_token = params[:stripeToken]
+               end
+    @payment.save
     @payment.paid!
     render 'thank_you'
     rescue Stripe::CardError => e
       flash[:error] = e.message
-      redirect_to add_payment_method_path
+      redirect_to create_subscription_payment_path
   end
 
   def create_address(address)
@@ -40,7 +54,7 @@ class PaymentsController < ApplicationController
 
   def payment_params
     params.require(:payment).permit(
-      :payment_type, :amount, :status, :remarks, :stripe_token, :booking_id,
+      :payment_type, :amount, :status, :remarks, :stripe_token, :subscription_id, :booking_id,
       address_attributes: %i[area postal_code city country state]
     )
   end
