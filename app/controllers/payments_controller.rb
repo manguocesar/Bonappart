@@ -19,7 +19,7 @@ class PaymentsController < ApplicationController
                  address = payment.build_address
                  create_address(address)
                end
-    @payment.save!
+    @payment.save
     @payment.paid!
     render 'thank_you'
     rescue Stripe::CardError => e
@@ -33,9 +33,9 @@ class PaymentsController < ApplicationController
     @payment = payment.tap do |pay|
                  pay.stripe_token = params[:stripeToken]
                end
-    @payment.save!
+    @payment.save
     @payment.paid!
-    redirect_to edit_apartment_path(@payment.subscription.apartment), notice: t('apartment.subscription_success')
+    render 'thank_you'
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to create_subscription_payment_path

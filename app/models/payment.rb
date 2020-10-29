@@ -17,18 +17,20 @@ class Payment < ApplicationRecord
 
   # Update booking or subscription status when payment status is paid
   def update_status
-    booking.present? ? booking.paid! : subscription.paid!
     if booking.present?
-      booking.paid!
-      booking.apartment.update(availability: false)
+      update_apartment_status(Constant::BOOKING, Constant::AVAILABILITY, false)
     else
-      subscription.paid!
-      subscription.apartment.update(subscribed: true)
+      update_apartment_status(Constant::SUBSCRIPTION, Constant::SUBSCRIBED, true)
     end
+  end
+
+  def update_apartment_status(model_name, field_name, value)
+    send(model_name).paid!
+    send(model_name).apartment.update_attribute(field_name, value)
   end
 
   # Payment statuses dropdown
   def self.payment_statuses
-    Payment.statuses.map { |k, v| [k.humanize.capitalize, k] }
+    statuses.map { |k, v| [k.humanize.capitalize, k] }
   end
 end

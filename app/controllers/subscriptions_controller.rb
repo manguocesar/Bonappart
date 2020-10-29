@@ -10,9 +10,6 @@ class SubscriptionsController < ApplicationController
 
   def new
     @subscription = Subscription.new
-    respond_to do |format|
-      format.js
-    end
   end
 
   def create
