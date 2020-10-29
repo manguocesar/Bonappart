@@ -24,7 +24,7 @@ function popoverPlacement(error, element) {
                   placement: function (context, source) {
                     var position = $(source).position();
                     if (window.innerWidth >= 500) {
-                      if($("input:odd" ).toArray().includes($(source)[0])){
+                      if($("input:even" ).toArray().includes($(source)[0])){
                         return "left";
                       }else{
                         return 'right';

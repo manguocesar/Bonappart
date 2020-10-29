@@ -1,4 +1,4 @@
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { id: 'new_confirmation', method: :post }) do |f| %>
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { id: 'new_confirmation', method: :post }, remote: true) do |f| %>
   <%= devise_error_messages! %>
   <%= render 'shared/messages' %>
   <div class="row text-center">

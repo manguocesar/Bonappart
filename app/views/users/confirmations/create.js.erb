@@ -1,0 +1,2 @@
+<% flash.now[:alert] = resource.errors.full_messages.first %>
+$(".errors").html("<%= j (render "shared/messages") %>").hide().fadeIn();
