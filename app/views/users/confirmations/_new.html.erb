@@ -1,13 +1,12 @@
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { id: 'new_confirmation', method: :post }, remote: true) do |f| %>
   <%= devise_error_messages! %>
-  <%= render 'shared/messages' %>
   <div class="row text-center">
     <div class="form-group">
       <%= f.text_field :email, id: 'exampleInputEmail1', placeholder: 'email', value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
     </div>
-      <div class="at-btnarea">
-        <button id="form_submit" type="submit" class="at-btn mt-2">Resend Confirmation</button>
-      </div>
+    <div class="at-btnarea">
+      <button id="form_submit" type="submit" class="at-btn mt-2">Resend Confirmation</button>
+    </div>
     </div>
   </div>
 <% end %>
