@@ -93,7 +93,9 @@
   <%= render partial: 'rent_rates' , locals: { form: form } %>
   <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
   <%= button_tag 'Save', class:"btn btn-success mt-4 pr-4 pl-4", type: "submit" %>
-  <%= link_to 'Post', new_subscription_path(apartment_id: params[:id]), data: { remote: true }, class: 'btn btn-success mt-4 pr-4 pl-4' %>
+  <% if edit_action(action_name) && !apartment.subscribed? %>
+    <%= link_to 'Post', new_subscription_path(apartment_id: params[:id]), data: { remote: true }, class: 'btn btn-success mt-4 pr-4 pl-4' %>
+  <% end %>
 <% end %>
 <script type="text/javascript">
   $(document).ready(function (e) {

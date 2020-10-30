@@ -30,4 +30,8 @@ module ApartmentHelper
   def apartment_types_array
     ApartmentType.pluck(:name, :id).uniq
   end
+
+  def edit_action(name)
+    name == Constant::EDIT
+  end
 end
