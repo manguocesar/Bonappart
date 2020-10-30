@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'invoices/index'
   devise_for :users, controllers: { confirmations: 'users/confirmations', registrations: 'users/registrations',
                                     sessions: 'users/sessions', passwords: 'users/passwords' }
   resources :apartments
