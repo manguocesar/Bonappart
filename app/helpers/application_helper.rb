@@ -17,7 +17,7 @@ module ApplicationHelper
   def resource_name
     :user
   end
- 
+
   def resource
     @resource ||= User.new
   end
@@ -25,7 +25,11 @@ module ApplicationHelper
   def resource_class
     User
   end
- 
+
+  def apartment_type_collection
+    ApartmentType.order(:name)
+  end
+
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
