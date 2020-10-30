@@ -26,4 +26,8 @@ module ApartmentHelper
   def apartment_types_collection
     ApartmentType.pluck(:name).map(&:humanize)
   end
+
+  def apartment_types_array
+    ApartmentType.pluck(:name, :id).uniq
+  end
 end

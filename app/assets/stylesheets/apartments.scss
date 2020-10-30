@@ -1,3 +1,9 @@
 @import "common";
 @import "map_style";
 @import "common/bootstrap-select.min";
+
+.at-select{
+  .dropdown {
+    width: 100% !important;
+  }
+}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_29_193852) do
+ActiveRecord::Schema.define(version: 2020_10_29_194727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 2020_10_29_193852) do
     t.string "city"
     t.string "country"
     t.string "area"
-    t.string "apartment_type"
     t.boolean "availability", default: true
     t.datetime "arrival_date"
     t.datetime "departure_date"
@@ -78,8 +77,8 @@ ActiveRecord::Schema.define(version: 2020_10_29_193852) do
     t.bigint "user_id", null: false
     t.bigint "booking_id"
     t.string "virtual_visit_link"
-    t.bigint "apartment_type_id"
     t.boolean "subscribed", default: false
+    t.bigint "apartment_type_id"
     t.index ["apartment_type_id"], name: "index_apartments_on_apartment_type_id"
     t.index ["booking_id"], name: "index_apartments_on_booking_id"
     t.index ["user_id"], name: "index_apartments_on_user_id"
