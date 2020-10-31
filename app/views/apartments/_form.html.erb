@@ -27,9 +27,10 @@
       <%= form.text_field :postalcode, class: 'form-control' %>
     </div>
     <div class="form-group col-sm-6">
-      <%= form.label t('apartment.apartment_type'), class:"col-form-label" %>
-      <%= form.text_field :apartment_type, class: 'form-control' %>
-      <%= select_tag 'apartment[apartment_type]', options_for_select(apartment_types_collection), class: 'form-control selectpicker', id: 'apartment_type', include_blank: 'Please select apartment type' %>
+      <div class="at-select">
+        <%= form.label t('apartment.apartment_type'), class:"col-form-label" %>
+        <%= form.select(:apartment_type_id, apartment_types_array, class: "form-control apartment-type", include_blank: t('apartment.apartment_type')) %>
+      </div>
     </div>
   </div>
   <div class='row'>
@@ -92,7 +93,9 @@
   <%= render partial: 'rent_rates' , locals: { form: form } %>
   <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
   <%= button_tag 'Save', class:"btn btn-success mt-4 pr-4 pl-4", type: "submit" %>
-  <%= link_to 'Post', new_subscription_path(apartment_id: params[:id]), data: { remote: true }, class: 'btn btn-success mt-4 pr-4 pl-4' %>
+  <% if new_record? && !apartment.subscribed? %>
+    <%= link_to 'Post', new_subscription_path(apartment_id: params[:id]), data: { remote: true }, class: 'btn btn-success mt-4 pr-4 pl-4' %>
+  <% end %>
 <% end %>
 <script type="text/javascript">
   $(document).ready(function (e) {

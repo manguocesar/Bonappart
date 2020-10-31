@@ -92,6 +92,7 @@ en:
     next: Next
     booking_success: Accomodation booked successfully
     subscription_success: Accomodation subscribed successfully
+    edit_delete_apartments: Edit / Delete your Apartment details
   dashboard:
     count_of_ads: Count of Ads
     count_of_active_ads: Count of Active Ads
