@@ -14,8 +14,10 @@ class SubscriptionsController < ApplicationController
 
   def create
     @subscription = Subscription.new(subscription_params)
+    @invoice = @subscription.build_invoice(invoice_params)
     if @subscription.save
-      redirect_to add_payment_method_path(subscription: @subscription&.id)
+      @invoice.save
+      redirect_to invoice_details_path(invoice: @invoice&.id)
     else
       render :new
     end
@@ -33,5 +35,9 @@ class SubscriptionsController < ApplicationController
 
   def subscription_params
     params.require(:subscription).permit(%i[started_at expired_at user_id apartment_id])
+  end
+
+  def invoice_params
+    params.require(:invoice).permit(%i[invoice_number date amount])
   end
 end

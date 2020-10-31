@@ -1,0 +1,50 @@
+<!-- Inner Banner Start -->
+<div class="at-haslayout at-innerbannerholder">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-12">
+        <div class="at-innerbannercontent">
+          <div class="at-title"><h2><%= t('thank_you.title') %></h2></div>
+          <ol class="at-breadcrumb">
+            <li><%= t('thank_you.message') %></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Home Slider End -->
+<!-- Invoice details start -->
+<%= render 'invoice' %>
+<!-- Invoice details end -->
+<!-- Main Start -->
+<main id="at-main" class="at-main at-haslayout">
+  <div class="at-haslayout">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="at-contactus-details">
+            <figure class="at-contactbg">
+              <%= image_tag 'contactus/bg-img.png', alt:"img description" %>
+            </figure>
+            <div class="at-contactinfo">
+              <%= image_tag 'contactus/img-01.jpg', alt:"img description" %>
+              <span>Talk To Us</span>
+              <h3>(+1) 2345 67 89 00</h3>
+            </div>
+            <div class="at-contactinfo">
+              <%= image_tag 'contactus/img-02.jpg', alt:"img description" %>
+              <span>Send Us Email</span>
+              <h3>info@yourdomain.com</h3>
+            </div>
+            <div class="at-contactinfo">
+              <%= image_tag 'contactus/img-03.jpg', alt:"img description" %>
+              <span>Our Open Location</span>
+              <h3>44-46 Brightside Road, Scotland, EH10 4BF</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

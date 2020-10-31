@@ -44,4 +44,9 @@ class User < ApplicationRecord
   def landlord?
     has_role? :landlord
   end
+
+  # User full name
+  def fullname
+    "#{firstname} #{lastname}"
+  end
 end

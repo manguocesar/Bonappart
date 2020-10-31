@@ -1,17 +1,18 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'invoices/index'
   devise_for :users, controllers: { confirmations: 'users/confirmations', registrations: 'users/registrations',
                                     sessions: 'users/sessions', passwords: 'users/passwords' }
   resources :apartments
   resources :bookings
   resources :payments
   resources :inquiries
+  resources :invoices, only: %i[index show]
   resources :subscriptions, only: %i[index new create]
   namespace :admin do
     resources :apartment_types
   end
+  get '/new_invoice' => 'invoices#new', as: :add_invoice
   get '/card/new' => 'payments#new', as: :add_payment_method
   post '/card' => 'payments#create', as: :create_payment_method
   post '/subscription_payment' => 'payments#create_subscription_payment', as: :create_subscription_payment
@@ -21,8 +22,9 @@ Rails.application.routes.draw do
   post 'create_contact_us', to: 'homes#create_contact_us'
   get '/contact_us', to: 'homes#contact_us'
   get '/about_us', to: 'homes#about_us'
-  get '/popup_forms', to: 'homes#popup_forms' 
+  get '/popup_forms', to: 'homes#popup_forms'
   get 'cities/:state', to: 'payments#cities'
   get 'render_login', to: 'inquiries#render_login_page'
+  get 'invoice_details', to: 'invoices#invoice_details'
   root 'homes#index'
 end

@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="text-xs-center">
+        <h2><%= "#{t('invoice.invoice_for_booking')} ##{@invoice.invoice_number}" %></h2>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12 col-md-6 col-lg-6 float-xs-left">
+          <div class="card height">
+            <div class="card-header"><%= t('invoice.billing_details') %></div>
+            <div class="card-block">
+              <strong><%= @user.fullname %>:</strong><br>
+              <%= @address.area %><br>
+              <%= @address.city %><br>
+              <%= @address.state %><br>
+              <strong><%= @address.postal_code %></strong><br>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-6 float-xs-left">
+          <div class="card height">
+            <div class="card-header"><%= t('invoice.customer_details') %></div>
+            <div class="card-block">
+              <strong><%= @user.fullname %>:</strong><br>
+              <%= @user.email %><br>
+              <%= date_format(@invoice.date) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header">
+          <h3 class="text-xs-center"><strong><%= invoice_sumary_title(@invoice) %></strong></h3>
+        </div>
+        <div class="card-block">
+          <div class="table-responsive">
+            <% if @invoice.booking.present? %>
+              <%= render 'booking_summary' %>
+            <% else %>
+              <%= render 'subscription_summary' %>
+            <% end %>
+            <div class='text-center'>
+              <%= link_to 'Back to Home page', apartments_path, class: 'at-btn text-center mb-3' %>
+              <%= link_to 'Download PDF', invoices_path, class: 'at-btn text-center mb-3' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

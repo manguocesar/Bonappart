@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_29_194727) do
+ActiveRecord::Schema.define(version: 2020_10_30_125239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,19 @@ ActiveRecord::Schema.define(version: 2020_10_29_194727) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "invoices", force: :cascade do |t|
+    t.integer "invoice_number"
+    t.datetime "date"
+    t.float "amount"
+    t.integer "status", default: 0
+    t.bigint "booking_id"
+    t.bigint "subscription_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_invoices_on_booking_id"
+    t.index ["subscription_id"], name: "index_invoices_on_subscription_id"
+  end
+
   create_table "payments", force: :cascade do |t|
     t.integer "payment_type"
     t.float "amount"
@@ -199,6 +212,8 @@ ActiveRecord::Schema.define(version: 2020_10_29_194727) do
   add_foreign_key "apartments", "apartment_types"
   add_foreign_key "apartments", "bookings"
   add_foreign_key "apartments", "users"
+  add_foreign_key "invoices", "bookings"
+  add_foreign_key "invoices", "subscriptions"
   add_foreign_key "payments", "subscriptions"
   add_foreign_key "subscriptions", "apartments"
   add_foreign_key "subscriptions", "users"
