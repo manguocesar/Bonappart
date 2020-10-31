@@ -32,13 +32,15 @@
                         <span class="at-navmorecontent">MyInfo</span>
                       </a>
                       <ul class="sub-menu">
-                      	<li>
-						  <% if current_user.student? %>
-			                <%= link_to 'My Bookings', student_bookings_path, class: 'at-loginoption' %>
-			              <% else %>
-			                <%= link_to 'My Dashboard', dashboard_index_path, class: 'at-loginoption' %>
-			              <% end %>
-                        </li>
+                        <% if current_user.student? %>
+                      	  <li>
+			                      <%= link_to 'My Bookings', student_bookings_path %>
+                          </li>
+                        <% else %>
+                          <li>
+                            <%= link_to 'My Dashboard', dashboard_index_path %>
+                          </li>
+                        <% end %>
                         <li>
                           <%= link_to "Edit Profile", edit_user_registration_path %>
                         </li>
