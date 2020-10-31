@@ -20,4 +20,5 @@ module Constant
   SUBSCRIPTION = 'subscription'
   AVAILABILITY = 'availability'
   SUBSCRIBED = 'subscribed'
+  EDIT = 'edit'
 end

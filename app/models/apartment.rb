@@ -3,7 +3,7 @@
 # Apartment model
 class Apartment < ApplicationRecord
   # scopes for filters
-  scope :filter_by_type,-> (apartment_type) { where("apartment_type ILIKE :apartment_type", apartment_type: "%#{apartment_type.downcase}%") }
+  scope :filter_by_type,-> (apartment_type) { joins(:apartment_type).where('apartment_types.name ILIKE :apartment_type', apartment_type: "%#{apartment_type.downcase}%") }
   scope :filter_by_distance_from_university, ->(distance_from_university) { where distance_from_university: distance_from_university }
   scope :filter_by_rent_asc, -> { includes(:rent_rate).order('rent_rates.net_rate ASC') }
   scope :filter_by_rent_desc, -> { includes(:rent_rate).order('rent_rates.net_rate DESC') }
@@ -14,6 +14,7 @@ class Apartment < ApplicationRecord
   has_many_attached :images
   belongs_to :user
   has_one :rent_rate, dependent: :destroy
+  belongs_to :apartment_type
   belongs_to :booking, optional: true
   accepts_nested_attributes_for :rent_rate
 
@@ -45,5 +46,10 @@ class Apartment < ApplicationRecord
   # Booked apartment availability date
   def apartment_availability_date
     booking.end_date&.strftime('%d-%m-Y')
+  end
+
+  # For getting apartment type of apartment
+  def apartment_type_name
+    apartment_type.name.titleize
   end
 end
