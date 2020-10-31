@@ -20,3 +20,20 @@ var BookingForm = {
   });
   }
 }
+
+var FilterBooking = {
+  result: function (){
+    $('.filter-bookings').click(function () {
+      $.ajax({
+        type: "GET",
+        url: '/student_bookings',
+        dataType: 'script',
+        data: {
+          status: $('#status').val(),
+          start_date: $('.at-startdate').val(),
+          end_date: $('.at-enddate').val(),
+        }
+      });
+    });
+  }
+}

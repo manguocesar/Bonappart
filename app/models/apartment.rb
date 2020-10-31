@@ -41,4 +41,9 @@ class Apartment < ApplicationRecord
   def departure_date_availabilty
     departure_date&.strftime('%d-%m-%Y')
   end
+
+  # landlord full name
+  def landlord_name
+    "#{user&.firstname} #{user&.lastname}"
+  end
 end

@@ -26,7 +26,11 @@
             </nav>
             <div class="at-loginarea float-right">
               <% if current_user.present? %>
-                <%= link_to 'My Dashboard', dashboard_index_path, class: 'at-loginoption' %>
+                <% if current_user.student? %>
+                  <%= link_to 'My Bookings', student_bookings_path, class: 'at-loginoption' %>
+                <% else %>
+                  <%= link_to 'My Dashboard', dashboard_index_path, class: 'at-loginoption' %>
+                <% end %>
                 <%= link_to "Edit Profile", edit_user_registration_path, class: 'at-registeroption' %>
                 <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'at-registeroption' %>
               <% else %>

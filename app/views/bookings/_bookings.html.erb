@@ -1,0 +1,19 @@
+<% @bookings.each do |booking| %>
+<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+  <div class="at-article">
+    <div class="at-article-content">
+      <div class="at-featured-tags"></div>
+      <div class="at-title">
+        <h4>Accomodation: <a href="<%= apartment_path(booking&.apartment) %>"><%= booking&.apartment&.title&.humanize %></a></h4>
+        <span><i class="ti-calendar"></i> Booked On: <%= booking&.created_at&.strftime('%d-%m-%Y') %></span>
+      </div>
+      <div class="at-description">
+        <span><i class='ti-stats-up'></i> Booking Status: <%= booking&.status&.humanize %></span><br>
+        <span><i class="ti-calendar"></i> Booking From: <%= booking&.start_date&.strftime('%d-%m-%Y') %> To: <%= booking&.end_date&.strftime('%d-%m-%Y') %></span><br>
+        <span><i class='ti-user'></i> Landlord Name: <%= booking&.apartment&.landlord_name %></span><br>
+        <span><i class='ti-mobile'></i> Landlord Contact: <%= booking&.apartment&.user&.phone_no %></span>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
