@@ -1,42 +1,48 @@
 <div class='header-area header-bottom'>
   <%= render 'shared/header_bg' %>
 </div>
-<div class="row mt-5 mb-5">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-sm-flex justify-content-between align-items-center">
-          <h4 class="header-title mb-0"><%= t('admin.apartment_type.title') %></h4>
+<!-- Main Start -->
+<main id="at-main" class="at-main at-haslayout">
+  <!-- Apartment type table start -->
+  <section class="at-haslayout at-main-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-12 push-md-0 col-lg-10 push-lg-1 col-xl-8 push-xl-2">
+          <div class="at-sectionhead">
+            <h4 class="header-title"><%= t('admin.apartment_type.title') %></h4>
             <!-- Add new apartment type button -->
-            <% if current_user&.administrative_role? %>
-              <%= link_to new_admin_apartment_type_path, remote:true, class: 'btn btn-outline-success btn-xs mr-3 pull-right left' do %>
-                <i class="fa fa-plus right" aria-hidden="true"></i> <%= t('admin.apartment_type.add_apartment_type') %>
+            <% if !current_user&.administrative_role? %>
+              <%= link_to new_admin_apartment_type_path, remote:true, class: 'btn btn-outline-success btn-xs' do %>
+                <i class="fa fa-plus" aria-hidden="true"></i> <%= t('admin.apartment_type.add_apartment_type') %>
               <% end %>
             <% end %>
-        </div>
-        <%= render 'shared/messages' %>
-        <div class="market-status-table mt-4">
-          <div class="table-responsive">
-            <table class="dbkit-table">
-              <tr class="heading-td">
-                <td><%= t('admin.apartment_type.title') %></td>
-                <td><%= t('admin.apartment_type.amount') %></td>
-                <td colspan='2' class='actions'><%= t('admin.apartment_type.actions') %></td>
-              </tr>
-              <% @apartment_types.each do |apartment_type| %>
-                <tr>
-                  <td><%= apartment_type.name %></td>
-                  <td><%= apartment_type.amount %></td>
-                  <td><%= link_to 'Edit', edit_admin_apartment_type_path(apartment_type), remote: true %></td>
-                  <td><%= link_to 'Delete', admin_apartment_type_path(apartment_type), method: :delete, data: { confirm: t('confirmation') } %></td>
-                </tr>
-              <% end %>
-            </table>
           </div>
+        </div>
+        <div class="col-12">
+            <div class="market-status-table mt-4">
+              <div class="table-responsive">
+                <table class="dbkit-table">
+                  <tr class="heading-td">
+                    <td><%= t('admin.apartment_type.title') %></td>
+                    <td><%= t('admin.apartment_type.amount') %></td>
+                    <td colspan='2' class='actions'><%= t('admin.apartment_type.actions') %></td>
+                  </tr>
+                  <% @apartment_types.each do |apartment_type| %>
+                    <tr>
+                      <td><%= apartment_type.name %></td>
+                      <td><%= apartment_type.amount %></td>
+                      <td><%= link_to 'Edit', edit_admin_apartment_type_path(apartment_type), remote: true %></td>
+                      <td><%= link_to 'Delete', admin_apartment_type_path(apartment_type), method: :delete, data: { confirm: t('confirmation') } %></td>
+                    </tr>
+                  <% end %>
+                </table>
+              </div>
+            </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
+</main>
+<!-- Main End -->
 <!-- Apartment Types area end -->
 <%= render '/shared/modal_window', locals: { modelId: 'apartmentTypeModal' } %>
