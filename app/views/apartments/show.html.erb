@@ -16,7 +16,7 @@
                 <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
               </div>
               <div class="at-username">
-                <a href="javascript:void(0);"><%= @apartment.apartment_type %></a>
+                <a href="javascript:void(0);"><%= @apartment.apartment_type_name %></a>
                 <h2><%= @apartment.title %></h2>
                 <address><i class="fa fa-location-arrow"></i><%= @apartment.area %></address>
               </div>
@@ -97,9 +97,12 @@
                 </div>
                 <div class="at-btnarea row">
                   <% if current_user&.administrative_role? %>
-                    <h3>Edit / Delete your Apartment details</h3>
-                    <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'at-btn col-sm-3', style:"height: 40px;min-width:auto;" %>
-                    <%= link_to  apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn btn-danger ml-3' do %>Delete
+                    <h3><%= t('apartment.edit_delete_apartments') %></h3>
+                    <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'at-btn col-sm-3 edit-btn', style:"height: 40px;min-width:auto;" %>
+                    <% if !@apartment.subscribed? %>
+                      <%= link_to 'Post', new_subscription_path(apartment_id: params[:id]), data: { remote: true }, class: 'at-btn col-sm-3 post-btn' %>
+                    <% end %>
+                    <%= link_to  apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn col-sm-3 btn-danger delete-btn' do %>Delete
                     <% end %>
                   <% else %>
                     <%= link_to 'View All My Ads', apartments_path, class: 'at-btn col-sm-3 col-sm-3 ml-1' %>
@@ -147,6 +150,8 @@
   </div>
   <!-- Booking form modal -->
 <%= render '/shared/modal_window', locals: { modelId: 'booking_modal' } %>
+<%= render '/shared/modal_window', locals: { modelId: 'inuiryModal' } %>
+
 <!-- Similar apartments -->
 <div class="at-haslayout at-main-section">
   <div class="container">

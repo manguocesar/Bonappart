@@ -38,30 +38,18 @@
           <div class="col-12 col-md-12 col-lg-6 float-left">
             <form class="at-formtheme at-formbanner">
               <fieldset class="at-roomform">
-                <legend class="at-formtitle">Accomodation Type</legend>
+                <legend class="at-formtitle"><%= t('admin.apartment_type.title') %></legend>
                 <div class="form-group">
                   <div class="at-room-radioholder at-room-radiovtwo">
-                    <span class="at-radio">
-                      <input id="at-private" type="radio" name="private" value="villa">
-                      <label for="at-private">
-                        <%= image_tag url_for('radio-imgs/img-06.jpg') %>
-                        <span><em>Villa</em></span>
-                      </label>
-                    </span>
-                    <span class="at-radio">
-                      <input id="at-shared" type="radio" name="private" value="studios">
-                      <label for="at-shared">
-                        <%= image_tag url_for('radio-imgs/img-05.jpg') %>
-                        <span><em>Studios</em></span>
-                      </label>
-                    </span>
-                    <span class="at-radio">
-                      <input id="at-entire" type="radio" name="private" value="apartments">
-                      <label for="at-entire">
-                        <%= image_tag url_for('radio-imgs/img-06.jpg') %>
-                        <span><em>Apartments</em> </span>
-                      </label>
-                    </span>
+                    <% apartment_type_collection.each do |apartment_type| %>
+                      <span class="at-radio">
+                        <input id="at-private-<%= apartment_type.id %>" type="radio" name="private" value="<%= apartment_type.name %>">
+                        <label for="at-private-<%= apartment_type.id %>">
+                          <%= image_tag url_for(apartment_type&.image) %>
+                          <span><em><%= apartment_type.name %></em></span>
+                        </label>
+                      </span>
+                    <% end %>
                   </div>
                 </div>
                 <div class="form-group at-btnarea">

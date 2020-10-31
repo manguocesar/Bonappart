@@ -21,28 +21,47 @@
                   <li class="nav-item <%= active_inactive_header_class('contact_us') %>">
                     <%= link_to 'Contact Us', contact_us_path %>
                   </li>
+                  <% if current_user.present? %>
+                    <li class="menu-item-has-children page_item_has_children"><span class="at-dropdowarrow"><i class="lnr lnr-chevron-right"></i></span>
+                      <a href="javascript:void(0);" class="at-menu-icon">
+                        <span>
+                          <i></i>
+                          <i></i>
+                          <i></i>
+                        </span>
+                        <span class="at-navmorecontent">MyInfo</span>
+                      </a>
+                      <ul class="sub-menu">
+                      	<li>
+						  <% if current_user.student? %>
+			                <%= link_to 'My Bookings', student_bookings_path, class: 'at-loginoption' %>
+			              <% else %>
+			                <%= link_to 'My Dashboard', dashboard_index_path, class: 'at-loginoption' %>
+			              <% end %>
+                        </li>
+                        <li>
+                          <%= link_to "Edit Profile", edit_user_registration_path %>
+                        </li>
+                        <li>
+                          <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+                        </li>
+                      </ul>
+                    </li>
+                  <% end %>
                 </ul>
               </div>
             </nav>
-            <div class="at-loginarea float-right">
-              <% if current_user.present? %>
-                <% if current_user.student? %>
-                  <%= link_to 'My Bookings', student_bookings_path, class: 'at-loginoption' %>
-                <% else %>
-                  <%= link_to 'My Dashboard', dashboard_index_path, class: 'at-loginoption' %>
-                <% end %>
-                <%= link_to "Edit Profile", edit_user_registration_path, class: 'at-registeroption' %>
-                <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'at-registeroption' %>
-              <% else %>
-                <%= link_to 'Login', popup_forms_path(name: 'login'), remote: true, class: 'at-registeroption' %>
-                <%= link_to 'Register', popup_forms_path(name: 'register'), remote: true, class: 'at-registeroption' %>
-              <% end %>
-              <div class="at-detailsbtn-topbar">
-                <%= link_to 'Become a Host', popup_forms_path(name: 'host'), remote: true, class: 'at-btn at-btnactive' %>
-                <!--<em>OR</em>
-                <a href="javascript:void(0);" class="at-btn at-btnactive at-btntwo" data-toggle="modal" data-target="#findproperty">Find Property</a> -->
+            <% unless current_user.present? %>
+              <div class="at-loginarea float-right">
+                  <%= link_to 'Login', popup_forms_path(name: 'login'), remote: true, class: 'at-registeroption' %>
+                  <%= link_to 'Register', popup_forms_path(name: 'register'), remote: true, class: 'at-registeroption' %>
+                <div class="at-detailsbtn-topbar">
+                  <%= link_to 'Become a Host', popup_forms_path(name: 'host'), remote: true, class: 'at-btn at-btnactive' %>
+                  <!--<em>OR</em>
+                  <a href="javascript:void(0);" class="at-btn at-btnactive at-btntwo" data-toggle="modal" data-target="#findproperty">Find Property</a> -->
+                </div>
               </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>

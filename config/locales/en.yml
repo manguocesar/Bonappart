@@ -84,13 +84,15 @@ en:
     latitude: Latitude
     images: Images
     virtual_visit_link: Virtual visit link
-    select_images: Upload only .jpg, .jpeg, .png files 
+    select_images: Upload only .jpg, .jpeg, .png files
     create: Apartment added successfully
     update: Apartment updated successfully
     delete: Apartment deleted successfully
     previous: Previous
     next: Next
     booking_success: Accomodation booked successfully
+    subscription_success: Accomodation subscribed successfully
+    edit_delete_apartments: Edit / Delete your Apartment details
   dashboard:
     count_of_ads: Count of Ads
     count_of_active_ads: Count of Active Ads
@@ -118,13 +120,22 @@ en:
     status: Status
     start_date: Start date
     end_date: End date
-    book_now: Book Now    
+    book_now: Book Now
   address:
     area: Area
     postal_code: Postal code
     city: City
     state: State
     country: Country
+  admin:
+    apartment_type:
+      title: Apartment Types
+      add_apartment_type: Add Apartment Type
+      amount: Amount
+      actions: Actions
+      create:
+        success: Apartment type successfully created
+        failer: Apartment type has not been created
   contact_us:
     happy_to_serve: We’re Happy To Serve You
     title: Contact
