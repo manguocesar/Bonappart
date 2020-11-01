@@ -62,12 +62,9 @@ var ApartmentForm = {
 
 var Filter = {
   result: function (){
-    $('.sort-filter').click(function () {
-      $.ajax({
-        type: "GET",
-        url: '/apartments',
-        dataType: 'script',
-        data: {
+    if (location.pathname == '/') {
+      $('.sort-filter').click(function () {
+        data = {
           search: {
             apartment_type: $('input[name="private"]:checked').val(),
             arrival_date: $('.at-startdate').val(),
@@ -76,10 +73,11 @@ var Filter = {
           sort: {
             distance_from_university: $('#distance_from_university').val(),
             rent: $('#net_rate').val(),
-          }
-        }
+          },
+        },
+        window.location.replace("/apartments" + (/\?.+$/, "?" + jQuery.param(data)));
       });
-    });
+    }
   }
 }
 
