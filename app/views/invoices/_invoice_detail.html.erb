@@ -14,10 +14,10 @@
       <%= "#{t('invoice.apartment_name')}: #{@invoice.apartment_title}" %>
     </div>
     <div class="col-sm-12 mb-3">
-      <%= "#{t('invoice.arrival_date')}: #{date_format(@invoice.arrival)}" %>
+      <%= "#{t('invoice.start_date')}: #{date_format(@invoice.start_date)}" %>
     </div>
     <div class="col-sm-12 mb-3">
-      <%= "#{t('invoice.departure_date')}: #{date_format(@invoice.departure)}" %>
+      <%= "#{t('invoice.end_date')}: #{date_format(@invoice.end_date)}" %>
     </div>
     <div class="col-sm-12 mb-3">
       <%= "#{t('invoice.amount')}: #{@invoice.apartment_rent}" %>
@@ -27,7 +27,7 @@
     </div>
     <div class="modal-footer">
       <%= link_to "Back", '', data: { dismiss: 'modal' }, class: 'btn btn-dark' %>
-      <%= link_to 'Confirm', add_payment_method_path(booking_id: @invoice.booking&.id), class: 'btn btn-success' %>
+      <%= link_to 'Confirm', invoice_payment_path(@invoice), class: 'btn btn-success' %>
     </div>
   </div>
 </div>

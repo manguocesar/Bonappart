@@ -60,6 +60,6 @@ class PaymentsController < ApplicationController
   end
 
   def invoice
-    @payment.booking.invoice
+    @payment&.booking&.invoice || @payment&.subscription&.invoice
   end
 end

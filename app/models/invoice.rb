@@ -1,6 +1,6 @@
 class Invoice < ApplicationRecord
-  belongs_to :booking
-  belongs_to :subscription
+  belongs_to :booking, optional: true
+  belongs_to :subscription, optional: true
 
   # Validations
   validates_presence_of :invoice_number, :amount, :date
@@ -9,19 +9,19 @@ class Invoice < ApplicationRecord
   enum status: { unpaid: 0, paid: 1 }
 
   def apartment_rent
-    booking.rent_amount
+    booking.present? ? booking.rent_amount : subscription.subscription_amount
   end
 
   def apartment_title
-    booking.apartment_title
+    booking.present? ? booking.apartment_title : subscription.apartment_title
   end
 
-  def arrival
-    booking.start_date
+  def start_date
+    booking.present? ? booking.start_date : subscription.started_at
   end
 
-  def departure
-    booking.end_date
+  def end_date
+    booking.present? ? booking.end_date : subscription.expired_at
   end
 
   def address

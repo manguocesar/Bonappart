@@ -144,3 +144,27 @@ en:
     form_content: Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation ullamco laboris nisiut aliquip
   breadcrumbs:
     main: Main
+  invoice:
+    title: Invoice
+    invoice_number: Invoice Number
+    date: Date
+    apartment_name: Apartment Name
+    amount: Amount
+    arrival_date: Arrival Date
+    departure_date: Departure Date
+    status: Status
+    invoice_for_booking: Invoice for Booking
+    billing_details: Billing Details
+    booking_summary: Booking Summary
+    payment_type: Payment Type
+    total: Total
+    payment_status: Payment Status
+    subtotal: Subtotal
+    paid: Paid
+    balance_due: Balance Due
+    customer_details: Customer Details
+    subscription_date: Subscription Date
+    expiration_date: Expiration Date
+    subscription_summary: Subscription Summary
+    start_date: Start Date
+    end_date: End Date

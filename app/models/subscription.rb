@@ -22,4 +22,12 @@ class Subscription < ApplicationRecord
   def payment_status
     payments.last.status
   end
+
+  def apartment_title
+    apartment&.title
+  end
+
+  def subscription_amount
+    apartment.apartment_type.amount
+  end
 end

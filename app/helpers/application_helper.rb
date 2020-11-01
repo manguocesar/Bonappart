@@ -37,4 +37,8 @@ module ApplicationHelper
   def date_format(date)
     date.strftime('%B %d, %Y')
   end
+
+  def random_invoice_number
+    rand.to_s[2, 8]
+  end
 end
