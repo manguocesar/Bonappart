@@ -5,13 +5,13 @@
       <div class="at-featured-tags"></div>
       <div class="at-title">
         <h4>Accomodation: <a href="<%= apartment_path(booking&.apartment) %>"><%= booking&.apartment&.title&.humanize %></a></h4>
-        <span><i class="ti-calendar"></i> Booked On: <%= booking&.created_at&.strftime('%d-%m-%Y') %></span>
+        <span><i class="ti-calendar"></i> Booked On: <%= display_date(booking.created_at) %></span>
       </div>
       <div class="at-description">
         <span><i class='ti-stats-up'></i> Booking Status: <%= booking&.status&.humanize %></span><br>
-        <span><i class="ti-calendar"></i> Booking From: <%= booking&.start_date&.strftime('%d-%m-%Y') %> To: <%= booking&.end_date&.strftime('%d-%m-%Y') %></span><br>
+        <span><i class="ti-calendar"></i> Booking From: <%= display_date(booking&.start_date) %> To: <%= display_date(booking&.end_date) %></span><br>
         <span><i class='ti-user'></i> Landlord Name: <%= booking&.apartment&.landlord_name %></span><br>
-        <span><i class='ti-mobile'></i> Landlord Contact: <%= booking&.apartment&.user&.phone_no %></span>
+        <span><i class='ti-mobile'></i> Landlord Contact: <%= booking&.apartment&.user_phone_no %></span>
       </div>
     </div>
   </div>

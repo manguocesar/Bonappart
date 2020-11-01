@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="at-innerbanner-search">
-          <form class="at-formtheme at-form-advancedsearch">
+          <%= form_tag(student_bookings_path, method: :get, remote: true, class: 'at-formtheme at-form-advancedsearch') do |form| %>
             <fieldset>
               <div class="form-group">
                 <div class="at-select">
@@ -12,16 +12,16 @@
                 </div>
               </div>
               <div class="form-group at-checkin-holder at-datecheck">
-                <input type="text" class="at-startdate" class="form-control" placeholder="Date from">
+                <input type="text" class="at-startdate" name="start_date" class="form-control" placeholder="Date from">
               </div>
               <div class="form-group at-checkout-holder at-datecheck">
-                <input type="text" class="at-enddate" class="form-control" placeholder="Date To">
+                <input type="text" class="at-enddate" name="end_date" class="form-control" placeholder="Date To">
               </div>
               <div class="at-btnarea">
-                <button type="button" class="at-btn at-btnactive filter-bookings" >Filter Bookings</button>
+                <%= button_tag 'Filter Bookings', class:"at-btn at-btnactive", type: "submit" %>
               </div>
             </fieldset>
-          </form>
+          <% end %>
         </div>
       </div>
     </div>
@@ -56,6 +56,3 @@
   </div>
   <!-- Two Columns End -->
 </main>
-<script>
-  FilterBooking.result();
-</script>

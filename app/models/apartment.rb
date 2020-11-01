@@ -18,6 +18,9 @@ class Apartment < ApplicationRecord
   belongs_to :booking, optional: true
   accepts_nested_attributes_for :rent_rate
 
+  # Delegation
+  delegate :phone_no, to: :user, prefix: :user
+
   # validates presence of fields
   validates_presence_of :title, :description, :postalcode, :floor,
                         :city, :country, :area, :apartment_type,

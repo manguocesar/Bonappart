@@ -33,4 +33,8 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def display_date(date)
+    date&.strftime('%d-%m-%Y')
+  end
 end
