@@ -3,7 +3,7 @@
 # Invoices Controller
 class InvoicesController < ApplicationController
   before_action :load_booking, only: :new
-  before_action :set_invoice_details, only: :show
+  before_action :set_invoice_details, only: %i[show download_invoice]
 
   # GET
   # Invoice listings
@@ -32,6 +32,17 @@ class InvoicesController < ApplicationController
 
   def invoice_details
     @invoice = Invoice.find_by(id: params['invoice'])
+  end
+
+  def download_invoice
+    respond_to do |format|
+      format.js
+      format.pdf do
+        render pdf: 'invoice',
+               template: 'invoices/download_invoice.pdf.erb',
+               locals: { invoice: @invoice }
+      end
+    end
   end
 
   private

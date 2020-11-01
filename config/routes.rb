@@ -26,5 +26,6 @@ Rails.application.routes.draw do
   get 'cities/:state', to: 'payments#cities'
   get 'render_login', to: 'inquiries#render_login_page'
   get 'invoice_details', to: 'invoices#invoice_details'
+  get '/invoice/:id/download_invoice', to: 'invoices#download_invoice', as: :download
   root 'homes#index'
 end
