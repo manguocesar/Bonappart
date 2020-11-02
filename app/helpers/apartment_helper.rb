@@ -38,6 +38,6 @@ module ApartmentHelper
   end
 
   def apartment_type_image(apartment_type)
-    apartment_type.image || 'radio-imgs/img-06.jpg'
+    apartment_type.image.attached? ? url_for(apartment_type.image) : image_url('radio-imgs/img-06.jpg')
   end
 end
