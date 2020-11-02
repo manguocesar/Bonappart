@@ -75,4 +75,8 @@ class Apartment < ApplicationRecord
   def display_full_address
     [floor, full_address].join(' ')
   end
+
+  def user_image
+    user.image
+  end
 end

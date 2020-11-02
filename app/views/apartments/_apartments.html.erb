@@ -12,7 +12,7 @@
                 <div class="at-slider-details">
                   <a href="javascript:void(0);" class="at-tag">Featured</a>
                   <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
-                  <span class="at-photolayer"><i class="fas fa-layer-group"></i><%= apartment.images.count %> Photos</span>
+                  <span class="at-photolayer"><i class="fas fa-layer-group"></i><%= apartment.images.count %>Photos</span>
                 </div>
               </figcaption>
             </figure>
@@ -20,12 +20,14 @@
         </div>
         <div class="at-featured-content">
           <div class="at-featured-head">
-            <div class="at-featured-tags"><a href="javascript:void(0);"><%= apartment.apartment_type.titleize %></a> </div>
+            <div class="at-featured-tags"><a href="javascript:void(0);"><%= apartment.apartment_type_name %></a> </div>
             <div class="at-featured-title">
-              <h3><%= apartment.title.titleize %> <span>$<%= apartment.rent_rate&.net_rate %> <em>/ night</em></span></h3>
+              <h3><%= apartment.title.titleize %> <span>$<%= apartment.net_rent %> <em>/ night</em></span></h3>
               <div class="at-userimg at-verifieduser">
-                <%= image_tag url_for(apartment.user.image), size: '50x50', alt: "img description" %>
-                <i class="fa fa-shield-alt"></i>
+                <% if apartment.user_image.present? %>
+                  <%= image_tag url_for(apartment.user_image), size: '50x50', alt: "img description" %>
+                  <i class="fa fa-shield-alt"></i>
+                <% end %>
               </div>
             </div>
             <ul class="at-room-featured">
