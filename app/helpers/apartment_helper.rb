@@ -32,4 +32,8 @@ module ApartmentHelper
   def apartment_types_array
     ApartmentType.pluck(:name, :id).uniq
   end
+
+  def other_amenities_text(amenities)
+    "#{amenities.last} #{amenities.first.titleize.pluralize}"
+  end
 end

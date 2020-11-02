@@ -65,4 +65,14 @@ class Apartment < ApplicationRecord
   def net_rent
     rent_rate&.net_rate&.to_i if rent_rate.present?
   end
+
+  # Other amenities details
+  def other_amenities
+    Constant::APARTMENT_OTHER_AMENITIES.map { |field| [field, send(field)] unless send(field).to_i.zero? }
+  end
+
+  # Full Address with floor no.
+  def display_full_address
+    [floor, full_address].join(' ')
+  end
 end
