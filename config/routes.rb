@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   resources :payments
   resources :inquiries
   resources :invoices, only: %i[index show]
-  resources :subscriptions, only: %i[index new create]
   namespace :admin do
     resources :apartment_types
+  end
+  scope '/landlord' do
+    resources :subscriptions, only: %i[index new create]
   end
   get '/new_invoice' => 'invoices#new', as: :add_invoice
   get '/card/new' => 'payments#new', as: :add_payment_method

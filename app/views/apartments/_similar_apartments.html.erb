@@ -46,8 +46,12 @@
               </div>
             </div>
             <ul class="at-room-featured">
-              <li><span><i><%= image_tag url_for('featured-img/icons/img-02.jpg') %></i> <%= apartment.total_bedrooms %> Bedrooms</span></li>
-              <li><span><i><%= image_tag url_for('featured-img/icons/img-03.jpg') %></i> <%= apartment.shower_room %> Shower room</span></li>
+              <% apartment.other_amenities.each do |amenities| %>
+                <% if amenities %>
+                  <li><span><i><%= image_tag asset_url("featured-img/icons/#{amenities&.first}"), alt: "img description" %></i><%= other_amenities_text(amenities) %></span></li>
+                <% end %>
+              <% end %>
+              
             </ul>
           </div>
           <div class="at-featured-footer">
