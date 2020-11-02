@@ -1,0 +1,6 @@
+<% devise_error_messages! %>
+if(<%= flash[:notice].present? || flash[:success].present? %>){
+  location.reload();
+}else{
+  $(".errors").html('').html("<%= j (render "shared/messages") %>").hide().fadeIn();
+}

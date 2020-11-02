@@ -1,16 +1,4 @@
-@import "bootstrap";
-@import "common/normalize.scss";
-@import "common/fontawesome-all.min";
-@import "common/linearicons";
-@import "common/themify-icons";
-@import "common/owl.carousel.min";
-@import "common/fullcalendar.min";
-@import "common/prettyPhoto";
-@import "common/tipso";
-@import "common/lightpick";
-@import "common/main-min";
-@import "common/transitions.scss";
-@import "common/responsive-min.scss";
+@import "common";
 
 .is-invalid-popover {
   background-color: #ffdde0;

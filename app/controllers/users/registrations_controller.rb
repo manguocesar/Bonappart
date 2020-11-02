@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  respond_to :html, :js
+
   # POST /resource
   # Override from devise for add roles for authorizations
   def create

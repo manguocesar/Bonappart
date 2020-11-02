@@ -1,4 +1,4 @@
-<%= form_for(:user, url: registration_path(:user), html: { id: 'new_registration' }) do |form| %>
+<%= form_for(:user, url: registration_path(:user), html: { id: 'new_registration' }, remote: true) do |form| %>
   <%= devise_error_messages! %>
   <div class="row">
     <div class="form-group col-sm-6">
@@ -31,7 +31,7 @@
     <div class="form-group col-sm-6">
       <%= form.password_field :password_confirmation, id: '', class: 'form-control', placeholder: t('users.confirm_password') %>
     </div>
-    <%= form.hidden_field :role, value: @role  %>
+    <%= hidden_field_tag :roles, @role  %>
     <div class="form-group col-sm-6">
       <%= form.file_field :image, multiple: false, class: "form-control select file-select", include_blank: t('users.profile_pic') %>
     </div>

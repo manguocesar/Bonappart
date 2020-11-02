@@ -64,7 +64,7 @@ class ApartmentsController < ApplicationController
   def apartment_params
     params.require(:apartment).permit(
       :title, :description, :postalcode, :floor,
-      :city, :country, :area, :apartment_type, :availability,
+      :city, :country, :area, :availability, :apartment_type_id,
       :arrival_date, :departure_date, :total_bedrooms,
       :shower_room, :distance_from_university, :other_facilities,
       :longitude, :latitude, :user_id, :virtual_visit_link, images: [],

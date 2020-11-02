@@ -62,24 +62,22 @@ var ApartmentForm = {
 
 var Filter = {
   result: function (){
-    $('.sort-filter').click(function () {
-      $.ajax({
-        type: "GET",
-        url: '/apartments',
-        dataType: 'script',
-        data: {
+    if (location.pathname == '/') {
+      $('.sort-filter').click(function () {
+        data = {
           search: {
             apartment_type: $('input[name="private"]:checked').val(),
-            arrival_date: $('#at-startdate').val(),
-            departure_date: $('#at-enddate').val(),
+            arrival_date: $('.at-startdate').val(),
+            departure_date: $('.at-enddate').val(),
           },
           sort: {
             distance_from_university: $('#distance_from_university').val(),
             rent: $('#net_rate').val(),
-          }
-        }
+          },
+        },
+        window.location.replace("/apartments" + (/\?.+$/, "?" + jQuery.param(data)));
       });
-    });
+    }
   }
 }
 
@@ -110,7 +108,6 @@ var DisplayMap = {
 
     for (i = 0; i < latlong.length; i++){
       marker = new google.maps.Marker({
-        draggable: true,
         animation: google.maps.Animation.DROP,
         position: new google.maps.LatLng(parseFloat(latlong[i][2]), parseFloat(latlong[i][3])),
         title: latlong[i][0],

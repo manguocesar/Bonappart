@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::ConfirmationsController < Devise::RegistrationsController
+  respond_to :html, :js
+
   # POST /resource
   # Override from devise for after confirmation to rooot_path
   def show

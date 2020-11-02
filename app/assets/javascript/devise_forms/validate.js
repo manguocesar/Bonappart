@@ -2,9 +2,8 @@ LoginForm = {
   validate: function () {
     $('#new_user').validate({
       rules: {
-        "user[email]": {
+        "user[login]": {
           required: true,
-          CUSTOM_EMAIL: true
         },
         "user[password]": {
           required: true,

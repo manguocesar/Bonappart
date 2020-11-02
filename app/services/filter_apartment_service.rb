@@ -13,7 +13,7 @@ class FilterApartmentService
   # User specific apartments
   def apartment_for_user(current_user)
     return current_user&.apartments if current_user.present? && current_user.landlord?
-  
+
     Apartment.all
   end
 

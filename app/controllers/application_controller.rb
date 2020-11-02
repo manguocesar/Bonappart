@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
 
   # Add customized/new signup params for permit
   def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(Constant::SIGN_IN_PARAMS) }
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(Constant::USER_FIELDS) }
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(Constant::USER_UPDATE_FIELDS) }
   end
