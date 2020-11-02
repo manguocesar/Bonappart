@@ -41,4 +41,9 @@ class Apartment < ApplicationRecord
   def departure_date_availabilty
     departure_date&.strftime('%d-%m-%Y')
   end
+
+  # Return net amount of apartment
+  def net_rent
+    rent_rate&.net_rate&.to_i if rent_rate.present?
+  end
 end

@@ -4,7 +4,7 @@ module ApartmentHelper
   def coordinates_hash(apartments)
     latlong = []
     apartments.each do |apartment|
-      amount = apartment&.rent_rate&.net_rate.to_i
+      amount = apartment.net_rent
       latlong << [
         amount,
         url_for(apartment.images.first),

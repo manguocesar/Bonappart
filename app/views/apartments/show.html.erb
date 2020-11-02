@@ -167,7 +167,7 @@
   });
   function initilizeMap() {
     var myLatLng = [
-      [ "<%= @apartment&.rent_rate&.net_rate %>",
+      [ "<%= @apartment.net_rate %>",
         "<%= url_for(@apartment.images.first) %>",
         "<%= @apartment.latitude %>",
         "<%= @apartment.longitude %>" ],
