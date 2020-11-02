@@ -1,9 +1,12 @@
-<%= form_with(model: subscription, local: true, id: 'subscription_form') do |form| %>
+<%= form_with(model: subscription, remote: true, id: 'subscription_form') do |form| %>
   <%= render 'shared/error_messages', target: subscription %>
   <%= hidden_field_tag 'subscription[apartment_id]', @apartment&.id %>
   <%= hidden_field_tag 'subscription[user_id]', @landlord&.id %>
   <%= hidden_field_tag 'subscription[started_at]', Date.today %>
   <%= hidden_field_tag 'subscription[expired_at]', expiration_date %>
+  <%= hidden_field_tag 'invoice[invoice_number]', random_invoice_number %>
+  <%= hidden_field_tag 'invoice[date]', Date.today %>
+  <%= hidden_field_tag 'invoice[amount]', @apartment&.rent_rate&.net_rate %>
 
   <div class='row'>
     <div class="form-group col-sm-12 mb-3">

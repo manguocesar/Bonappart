@@ -34,6 +34,14 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def date_format(date)
+    date.strftime('%B %d, %Y')
+  end
+
+  def random_invoice_number
+    rand.to_s[2, 8]
+  end
+
   def display_date(date)
     date&.strftime('%d-%m-%Y')
   end

@@ -21,7 +21,7 @@ class PaymentsController < ApplicationController
                end
     @payment.save
     @payment.paid!
-    render 'thank_you'
+    redirect_to invoice_path(invoice)
     rescue Stripe::CardError => e
       redirect_to add_payment_method_path
   end
@@ -35,7 +35,7 @@ class PaymentsController < ApplicationController
                end
     @payment.save
     @payment.paid!
-    render 'thank_you'
+    redirect_to invoice_path(invoice)
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to create_subscription_payment_path
@@ -57,5 +57,9 @@ class PaymentsController < ApplicationController
       :payment_type, :amount, :status, :remarks, :stripe_token, :subscription_id, :booking_id,
       address_attributes: %i[area postal_code city country state]
     )
+  end
+
+  def invoice
+    @payment&.booking&.invoice || @payment&.subscription&.invoice
   end
 end

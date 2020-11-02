@@ -3,6 +3,7 @@
 # Bookings controller
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
+  before_action :set_apartment, only: :new
   before_action :authenticate_user!, only: %i[create edit update]
 
   def index
@@ -13,6 +14,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @invoice = @booking.build_invoice
     respond_to do |format|
       format.html
       format.js
@@ -23,9 +25,11 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @invoice = @booking.build_invoice(invoice_params)
     @booking.apartment = Apartment.find_by(id: params[:apartment])
     if @booking.save
-      redirect_to add_payment_method_path(booking_id: @booking&.id)
+      @invoice.save
+      redirect_to invoice_details_path(invoice: @invoice&.id)
     else
       render :new
     end
@@ -63,7 +67,15 @@ class BookingsController < ApplicationController
     @booking = Booking.find_by(id: params[:id])
   end
 
+  def set_apartment
+    @apartment = Apartment.find_by(id: params[:apartment_id])
+  end
+
   def booking_params
     params.require(:booking).permit(%i[status start_date end_date user_id apartment])
+  end
+
+  def invoice_params
+    params.require(:invoice).permit(%i[invoice_number date amount])
   end
 end

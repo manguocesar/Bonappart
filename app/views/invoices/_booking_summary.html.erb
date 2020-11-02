@@ -1,0 +1,60 @@
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <td><strong><%= t('invoice.apartment_name') %></strong></td>
+      <td class="text-xs-center"><strong><%= t('invoice.arrival_date') %></strong></td>
+      <td class="text-xs-center"><strong><%= t('invoice.departure_date') %></strong></td>
+      <td class="text-xs-center"><strong><%= t('invoice.amount') %></strong></td>
+      <td class="text-xs-center"><strong><%= t('invoice.payment_type') %></strong></td>
+      <td class="text-xs-center"><strong><%= t('invoice.payment_status') %></strong></td>
+      <td class="text-xs-right"><strong><%= t('invoice.total') %></strong></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @invoice.apartment_title %></td>
+      <td class="text-xs-center"><%= date_format(@booking.start_date) %></td>
+      <td class="text-xs-center"><%= date_format(@booking.end_date) %></td>
+      <td class="text-xs-center"><%= @invoice.amount %></td>
+      <td class="text-xs-center"><%= @booking.payment_type %></td>
+      <td class="text-xs-center"><%= @booking.payment_status %></td>
+      <td class="text-xs-right"><%= @invoice.amount %></td>
+    </tr>
+    <tr>
+      <td class="highrow"></td>
+      <td class="highrow"></td>
+      <td class="highrow"></td>
+      <td class="highrow"></td>
+      <td class="highrow"></td>
+      <td class="highrow text-xs-center"><strong><%= t('invoice.subtotal') %></strong></td>
+      <td class="highrow text-xs-right"><%= @invoice.amount %></td>
+    </tr>
+    <tr>
+      <td class="emptyrow"></td>
+      <td class="emptyrow"></td>
+      <td class="emptyrow"></td>
+      <td class="emptyrow"></td>
+      <td class="emptyrow"></td>
+      <td class="emptyrow text-xs-center"><strong><%= t('invoice.total') %></strong></td>
+      <td class="emptyrow text-xs-right"><%= @invoice.amount %></td>
+    </tr>
+    <tr>
+      <td class="emptyrow"></td>
+      <td class="emptyrow"></td>
+      <td class="emptyrow"></td>
+      <td class="emptyrow"></td>
+      <td class="emptyrow"></td>
+      <td class="emptyrow text-xs-center"><strong><%= t('invoice.paid') %></strong></td>
+      <td class="emptyrow text-xs-right"><%= @invoice.amount %></td>
+    </tr>
+    <tr>
+      <td class="emptyrow"></td>
+      <td class="emptyrow"></td>
+      <td class="emptyrow"></td>
+      <td class="emptyrow"></td>
+      <td class="emptyrow"></td>
+      <td class="emptyrow text-xs-center"><strong><%= t('invoice.balance_due') %></strong></td>
+      <td class="emptyrow text-xs-right"><%= @invoice.amount %></td>
+    </tr>
+  </tbody>
+</table>
