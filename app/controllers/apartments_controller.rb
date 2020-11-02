@@ -15,6 +15,7 @@ class ApartmentsController < ApplicationController
 
   def new
     @apartment = Apartment.new
+    authorize @apartment
     @apartment.build_rent_rate
   end
 
