@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   get '/popup_forms', to: 'homes#popup_forms' 
   get 'cities/:state', to: 'payments#cities'
   get 'render_login', to: 'inquiries#render_login_page'
+  get '/student_bookings', to: 'bookings#student_bookings'
   root 'homes#index'
 end
