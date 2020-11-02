@@ -58,7 +58,7 @@ class Apartment < ApplicationRecord
 
   # For getting apartment type of apartment
   def apartment_type_name
-    apartment_type.name.titleize
+    apartment_type&.name&.titleize
   end
 
    # Return net amount of apartment
