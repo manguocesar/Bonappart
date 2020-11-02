@@ -55,7 +55,7 @@
   </div>
   <div class='col-sm-6'>
   <!-- Map container start -->
-    <div id="map"></div>
+    <div id="at-locationmap" class="at-locationmap"></div>
   <!-- Map container end -->
   </div>
 </div>
@@ -106,7 +106,9 @@
                     <% end %>
                   <% else %>
                     <%= link_to 'View All My Ads', apartments_path, class: 'at-btn col-sm-3 col-sm-3 ml-1' %>
-                    <%= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"at-btn col-sm-3 ml-1" %>
+                    <% unless @apartment&.booking&.paid? %>
+                      <%= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"at-btn col-sm-3 ml-1" %>
+                    <% end %>
                     <%= render '/inquiries/inquiry_button' %>
                   <% end %>
                 </div>
@@ -173,10 +175,11 @@
   });
   function initilizeMap() {
     var myLatLng = [
-      [ '100.00',
+      [ "<%= @apartment.net_rate %>",
         "<%= url_for(@apartment.images.first) %>",
         "<%= @apartment.latitude %>",
-        "<%= @apartment.longitude %>" ]
+        "<%= @apartment.longitude %>" ],
+        "<%= apartment_path(@apartment.id) %>"
     ];
     DisplayMap.mapSettings(myLatLng);
   }

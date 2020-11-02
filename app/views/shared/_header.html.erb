@@ -32,8 +32,9 @@
                         <span class="at-navmorecontent">MyInfo</span>
                       </a>
                       <ul class="sub-menu">
+                        <% title_and_url = mydashboard_or_mybookings %>
                         <li>
-                          <%= link_to 'My Dashboard', dashboard_index_path %>
+                          <%= link_to title_and_url.first, title_and_url.last %>
                         </li>
                         <li>
                           <%= link_to "Edit Profile", edit_user_registration_path %>

@@ -43,6 +43,24 @@ class BookingsController < ApplicationController
     end
   end
 
+  # Bookings of student
+  def student_bookings
+    @bookings = current_user.bookings
+    @bookings = if params[:start_date].present? && params[:end_date].present?
+                  filter_by_status(@bookings).created_between(params[:start_date], params[:end_date])
+                else
+                  filter_by_status(@bookings)
+                end
+    @bookings = pagination(@bookings)                
+  end
+
+  # Filter student bookings by status
+  def filter_by_status(bookings)
+    return bookings if params[:status].blank?
+    
+    bookings.filter_by_status(params[:status])
+  end
+
   private
 
   def set_booking

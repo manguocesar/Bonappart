@@ -62,12 +62,9 @@ var ApartmentForm = {
 
 var Filter = {
   result: function (){
-    $('.sort-filter').click(function () {
-      $.ajax({
-        type: "GET",
-        url: '/apartments',
-        dataType: 'script',
-        data: {
+    if (location.pathname == '/') {
+      $('.sort-filter').click(function () {
+        data = {
           search: {
             apartment_type: $('input[name="private"]:checked').val(),
             arrival_date: $('.at-startdate').val(),
@@ -76,10 +73,11 @@ var Filter = {
           sort: {
             distance_from_university: $('#distance_from_university').val(),
             rent: $('#net_rate').val(),
-          }
-        }
+          },
+        },
+        window.location.replace("/apartments" + (/\?.+$/, "?" + jQuery.param(data)));
       });
-    });
+    }
   }
 }
 
@@ -87,7 +85,7 @@ var Filter = {
 var DisplayMap = {
   mapSettings: function (latlong) {
     // latlong - coordinates and apartment price
-    const map = new google.maps.Map(document.getElementById("map"), {
+    const map = new google.maps.Map(document.getElementById("at-locationmap"), {
       zoom: 12,
       center: new google.maps.LatLng(parseFloat(latlong[0][2]), parseFloat(latlong[0][3])),
       panControl: true,
@@ -118,7 +116,7 @@ var DisplayMap = {
       google.maps.event.addListener(marker, 'click', (function (marker, i) {
         return function () {
           infowindow.setContent(latlong[i][0]);
-          infowindow.setContent("<img src="+ latlong[i][1] +" style=height:60px;width:100px><br/><br/><b>Price:</b>"+ latlong[i][0]);
+          infowindow.setContent("<a href="+latlong[i][4]+"><img src="+ latlong[i][1] +" style=height:60px;width:100px></a><br/><br/><b>Price:</b>"+ latlong[i][0]);
           infowindow.open(map, marker);
           DisplayMap.toggleBounce;
         }

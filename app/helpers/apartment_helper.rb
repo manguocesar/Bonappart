@@ -5,11 +5,13 @@ module ApartmentHelper
   def coordinates_hash(apartments)
     latlong = []
     apartments.each do |apartment|
+      amount = apartment.net_rent
       latlong << [
-        "500",
+        amount,
         url_for(apartment.images.first),
         apartment.latitude,
-        apartment.longitude
+        apartment.longitude,
+        apartment_path(apartment)
       ]
     end
     latlong

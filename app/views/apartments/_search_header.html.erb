@@ -7,61 +7,57 @@
         </div>
         <div class="row">
           <div class="col-12 col-md-12 col-lg-6 float-left">
-            <form class="at-formtheme at-formbanner">
+            <%= form_tag(apartments_path, method: :get, remote: params[:remote_flag], class: 'at-formtheme at-formbanner') do |form| %>
               <fieldset class="at-datetime">
                 <div class="form-group">
                   <div class="at-selectdate-holder">
                     <div class="at-select">
                       <label>Check-In:</label>
-                      <input class="form-control at-startdate" placeholder="<%= t('apartment.arrival_date') %>">
+                      <input class="form-control at-startdate" name="<%= 'search[arrival_date]' %>" placeholder="<%= t('apartment.arrival_date') %>">
                     </div>
                     <div class="at-select">
                       <label>Check Out:</label>
-                      <input class="form-control at-enddate" placeholder="<%= t('apartment.departure_date') %>">
+                      <input class="form-control at-enddate" name="<%= 'search[departure_date]' %>" placeholder="<%= t('apartment.departure_date') %>">
                     </div>
                     <a href="javascript:void(0);" class="at-calendarbtn"><i class="ti-calendar"></i></a>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="at-select">
-                    <%= select_tag(:distance_from_university, options_for_select(Apartment.pluck(:distance_from_university).uniq), class: "form-control", "data-live-search" => "true", include_blank: t('apartment.distance_from_university')) %>
+                    <%= select_tag('sort[distance_from_university]', options_for_select(Apartment.pluck(:distance_from_university).uniq), class: "form-control", "data-live-search" => "true", include_blank: t('apartment.distance_from_university')) %>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="at-select">
-                    <%= select_tag(:net_rate, options_for_select(Constant::RENT_RATE_DROPDOWN, :net_rate), class: "form-control", "data-live-search" => "true", include_blank: t('apartment.rent')) %>
+                    <%= select_tag('sort[net_rate]', options_for_select(Constant::RENT_RATE_DROPDOWN, :net_rate), class: "form-control", "data-live-search" => "true", include_blank: t('apartment.rent')) %>
                   </div>
                 </div>
               </fieldset>
-            </form>
-          </div>
-          <div class="col-12 col-md-12 col-lg-6 float-left">
-            <form class="at-formtheme at-formbanner">
-              <fieldset class="at-roomform">
-                <legend class="at-formtitle"><%= t('admin.apartment_type.title') %></legend>
-                <div class="form-group">
-                  <div class="at-room-radioholder at-room-radiovtwo">
-                    <% apartment_type_collection.each do |apartment_type| %>
-                      <span class="at-radio">
-                        <input id="at-private-<%= apartment_type.id %>" type="radio" name="private" value="<%= apartment_type.name %>">
-                        <label for="at-private-<%= apartment_type.id %>">
-                          <%= image_tag url_for(apartment_type&.image) %>
-                          <span><em><%= apartment_type.name %></em></span>
-                        </label>
-                      </span>
-                    <% end %>
-                  </div>
-                </div>
-                <div class="form-group at-btnarea">
-                  <button type="button" class="at-btn at-btnactive sort-filter" ><%= t('filter_results') %></button>
-                  <% if current_user.present? && current_user.administrative_role? %>
-                    <%= link_to new_apartment_path, class: 'at-btn at-btnactive' do %>
-                      <%= t('apartment.add_apartment') %>
-                    <% end %>
+            </div>
+            <div class="col-12 col-md-12 col-lg-6 float-left">
+              <legend class="at-formtitle"><%= t('admin.apartment_type.title') %></legend>
+              <div class="form-group">
+                <div class="at-room-radioholder at-room-radiovtwo">
+                  <% apartment_type_collection.each do |apartment_type| %>
+                    <span class="at-radio">
+                      <input id="at-private-<%= apartment_type.id %>" type="radio" name="<%= 'search[apartment_type]' %>" value="<%= apartment_type.name %>">
+                      <label for="at-private-<%= apartment_type.id %>">
+                        <%= image_tag url_for(apartment_type&.image) %>
+                        <span><em><%= apartment_type.name %></em></span>
+                      </label>
+                    </span>
                   <% end %>
                 </div>
-              </fieldset>
-            </form>
+              </div>
+              <div class="form-group at-btnarea">
+                <%= button_tag t('filter_results'), class:"at-btn sort-filter", type: "submit" %>
+                <% if current_user.present? && current_user.administrative_role? %>
+                  <%= link_to new_apartment_path, class: 'at-btn at-btnactive' do %>
+                    <%= t('apartment.add_apartment') %>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

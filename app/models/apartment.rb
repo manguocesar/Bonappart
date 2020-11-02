@@ -18,6 +18,9 @@ class Apartment < ApplicationRecord
   belongs_to :booking, optional: true
   accepts_nested_attributes_for :rent_rate
 
+  # Delegation
+  delegate :phone_no, to: :user, prefix: :user
+
   # validates presence of fields
   validates_presence_of :title, :description, :postalcode, :floor,
                         :city, :country, :area, :apartment_type,
@@ -43,6 +46,11 @@ class Apartment < ApplicationRecord
     departure_date&.strftime('%d-%m-%Y')
   end
 
+  # landlord full name
+  def landlord_name
+    "#{user&.firstname} #{user&.lastname}"
+  end
+
   # Booked apartment availability date
   def apartment_availability_date
     booking.end_date&.strftime('%d-%m-Y')
@@ -51,5 +59,10 @@ class Apartment < ApplicationRecord
   # For getting apartment type of apartment
   def apartment_type_name
     apartment_type.name.titleize
+  end
+
+   # Return net amount of apartment
+  def net_rent
+    rent_rate&.net_rate&.to_i if rent_rate.present?
   end
 end
