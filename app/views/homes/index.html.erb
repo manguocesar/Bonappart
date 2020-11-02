@@ -15,7 +15,7 @@
             </div>
           </div>
         </div>
-        <%= render 'apartments/search_header' %>
+        <%= render 'apartments/search_header', params: { remote_flag: false } %>
       </div>
     </div>
   </div>
@@ -51,7 +51,7 @@
                     <figcaption>
                       <div class="at-trip-content">
                         <h3><%= apartment.title.titleize %></h3>
-                        <h4>$<%= rand(100..1000) %> <span>(<%= apartment.apartment_type.titleize %>)</span></h4>
+                        <h4>$<%= rand(100..1000) %> <span>(<%= apartment.apartment_type_name %>)</span></h4>
                       </div>
                     </figcaption>
                   </figure>

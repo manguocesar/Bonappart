@@ -3,10 +3,10 @@
 # Apartment model
 class Apartment < ApplicationRecord
   # scopes for filters
-  scope :filter_by_type,-> (apartment_type) {where("apartment_type ILIKE :apartment_type", apartment_type: "%#{apartment_type.downcase}%") }
+  scope :filter_by_type,-> (apartment_type) { joins(:apartment_type).where('apartment_types.name ILIKE :apartment_type', apartment_type: "%#{apartment_type.downcase}%") }
   scope :filter_by_distance_from_university, ->(distance_from_university) { where distance_from_university: distance_from_university }
-  scope :filter_by_rent_asc, -> { includes(:rent_rate).order("rent_rates.net_rate ASC") }
-  scope :filter_by_rent_desc, -> { includes(:rent_rate).order("rent_rates.net_rate DESC") }
+  scope :filter_by_rent_asc, -> { includes(:rent_rate).order('rent_rates.net_rate ASC') }
+  scope :filter_by_rent_desc, -> { includes(:rent_rate).order('rent_rates.net_rate DESC') }
   scope :filter_by_departure_date, ->(departure_date) { where departure_date:  DateTime.parse(departure_date) }
   scope :similar_apartments, ->(distance_from_university) { where distance_from_university: distance_from_university }
 
@@ -14,15 +14,19 @@ class Apartment < ApplicationRecord
   has_many_attached :images
   belongs_to :user
   has_one :rent_rate, dependent: :destroy
+  belongs_to :apartment_type
   belongs_to :booking, optional: true
   accepts_nested_attributes_for :rent_rate
 
+  # Delegation
+  delegate :phone_no, to: :user, prefix: :user
+
   # validates presence of fields
   validates_presence_of :title, :description, :postalcode, :floor,
-						:city, :country, :area, :apartment_type,
-						:departure_date,:total_bedrooms,
-						:shower_room, :other_facilities,
-						:distance_from_university, :longitude, :latitude
+                        :city, :country, :area, :apartment_type,
+                        :departure_date,:total_bedrooms,
+                        :shower_room, :other_facilities,
+                        :distance_from_university
 
   geocoded_by :full_address
   after_validation :geocode # , if: ->(obj){ obj.address.present? and obj.address_changed? }
@@ -40,5 +44,20 @@ class Apartment < ApplicationRecord
   # departure date availabilty with date format
   def departure_date_availabilty
     departure_date&.strftime('%d-%m-%Y')
+  end
+
+  # landlord full name
+  def landlord_name
+    "#{user&.firstname} #{user&.lastname}"
+  end
+
+  # Booked apartment availability date
+  def apartment_availability_date
+    booking.end_date&.strftime('%d-%m-Y')
+  end
+
+  # For getting apartment type of apartment
+  def apartment_type_name
+    apartment_type.name.titleize
   end
 end
