@@ -91,10 +91,10 @@
     </div>
   </div>
   <%= render partial: 'rent_rates' , locals: { form: form } %>
-  <%= link_to 'Back', apartments_path, class: 'btn btn-dark mt-4 pr-4 pl-4' %>
-  <%= button_tag 'Save', class:"btn btn-success mt-4 pr-4 pl-4", type: "submit" %>
+  <%= link_to 'Back', apartments_path, class: 'at-btn' %>
+  <%= button_tag 'Save', class:"at-btn at-btnactive", type: "submit" %>
   <% if apartment.new_record? && !apartment.subscribed? %>
-    <%= link_to 'Post', new_subscription_path(apartment_id: params[:id]), data: { remote: true }, class: 'btn btn-success mt-4 pr-4 pl-4' %>
+    <%= link_to 'Post', new_subscription_path(apartment_id: params[:id]), data: { remote: true }, class: 'at-btn at-btnactive' %>
   <% end %>
 <% end %>
 <script type="text/javascript">

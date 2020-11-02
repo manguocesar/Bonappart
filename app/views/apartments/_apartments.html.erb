@@ -20,7 +20,7 @@
         </div>
         <div class="at-featured-content">
           <div class="at-featured-head">
-            <div class="at-featured-tags"><a href="javascript:void(0);"><%= apartment.apartment_type_name %></a> </div>
+            <div class="at-featured-tags"><%= link_to apartment.apartment_type_name, apartment_path(apartment) %></div>
             <div class="at-featured-title">
               <h3><%= apartment.title.titleize %> <span>$<%= apartment.net_rent %> <em>/ night</em></span></h3>
               <div class="at-userimg at-verifieduser">
@@ -40,9 +40,6 @@
           </div>
           <div class="at-featured-footer">
             <address><%= apartment.display_full_address %></address>
-            <div class="at-share-holder">
-              <a href="javascript:void(0);"><i class="ti-more-alt"></i></a>
-            </div>
           </div>
         </div>
       </div>
