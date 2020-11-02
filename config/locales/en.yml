@@ -168,3 +168,10 @@ en:
     subscription_summary: Subscription Summary
     start_date: Start Date
     end_date: End Date
+    fullname: Name
+    area: Area
+    city: City
+    state: State
+    postal_code: Postal code
+    email: Email
+    date: Date

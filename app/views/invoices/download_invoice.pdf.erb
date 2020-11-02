@@ -10,11 +10,11 @@
           <div class="card height">
             <div class="card-header"><%= t('invoice.billing_details') %></div>
             <div class="card-block">
-              <strong><%= @user.fullname %>:</strong><br>
-              <%= @address.area %><br>
-              <%= @address.city %><br>
-              <%= @address.state %><br>
-              <strong><%= @address.postal_code %></strong><br>
+              <strong><%= t('invoice.fullname') %>: </strong><%= @user.fullname %><br>
+              <strong><%= t('invoice.area') %>: </strong><%= @address.area %><br>
+              <strong><%= t('invoice.city') %>: </strong><%= @address.city %><br>
+              <strong><%= t('invoice.state') %>: </strong><%= @address.state %><br>
+              <strong><%= t('invoice.postal_code') %>: </strong><%= @address.postal_code %><br>
             </div>
           </div>
         </div>
@@ -22,9 +22,10 @@
           <div class="card height">
             <div class="card-header"><%= t('invoice.customer_details') %></div>
             <div class="card-block">
-              <strong><%= @user.fullname %>:</strong><br>
-              <%= @user.email %><br>
-              <%= date_format(@invoice.date) %>
+              <strong><%= t('invoice.fullname') %>: </strong><%= @user.fullname %><br>
+              <strong><%= t('invoice.email') %>: </strong><%= @user.email %><br>
+              <strong><%= t('invoice.date') %>: </strong><%= date_format(@invoice.date) %>
+              <strong><%= t('invoice.date') %>: </strong><%= date_format(@invoice.date) %>
             </div>
           </div>
         </div>

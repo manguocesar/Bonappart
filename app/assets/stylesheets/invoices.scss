@@ -4,6 +4,13 @@
   min-height: 200px;
 }
 
+.card {
+  margin-bottom: 20px;
+  .card-block {
+    padding: 20px;
+  }
+}
+
 .icon {
   font-size: 47px;
   color: #5CB85C;
