@@ -22,11 +22,11 @@ module ApartmentBooking
     config.active_job.queue_adapter = :sidekiq
 
     config.action_mailer.smtp_settings = {
-      address: 'mail.bonapart.a2hosted.com',
-      port: 465,
-      domain: 'bonapart.a2hosted.com',
-      user_name: 'accomodation_booking@bonapart.a2hosted.com',
-      password: 'YMz_ZkfRmHra',
+      address: 'smtp.gmail.com',
+      port: 587,
+      domain: 'gmail.com',
+      user_name: 'kenan3patel@gmail.com',
+      password: 'jigarshah8000',
       authentication: :plain,
       enable_starttls_auto: true
     }

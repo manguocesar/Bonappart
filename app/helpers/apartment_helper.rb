@@ -36,4 +36,8 @@ module ApartmentHelper
   def other_amenities_text(amenities)
     "#{amenities.last} #{amenities.first.titleize.pluralize}"
   end
+
+  def apartment_type_image(apartment_type)
+    apartment_type.image.attached? ? url_for(apartment_type.image) : image_url('radio-imgs/img-06.jpg')
+  end
 end
