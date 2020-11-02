@@ -41,7 +41,7 @@
         <div class="card-block">
           <div class="table-responsive">
             <% if @invoice.booking.present? %>
-              <%= render 'invoices/booking_summary' %>
+              <%= render 'invoices/booking_summary.html.erb' %>
             <% else %>
               <%= render 'invoices/subscription_summary.html.erb' %>
             <% end %>

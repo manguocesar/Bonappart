@@ -42,7 +42,7 @@
                     <span class="at-radio">
                       <input id="at-private-<%= apartment_type.id %>" type="radio" name="<%= 'search[apartment_type]' %>" value="<%= apartment_type.name %>">
                       <label for="at-private-<%= apartment_type.id %>">
-                        <%= image_tag url_for(apartment_type&.image) %>
+                        <%= image_tag url_for(apartment_type_image(apartment_type)) %>
                         <span><em><%= apartment_type.name %></em></span>
                       </label>
                     </span>
