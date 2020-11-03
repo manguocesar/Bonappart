@@ -33,7 +33,7 @@ class ApartmentsController < ApplicationController
 
   def update
     if @apartment.update(apartment_params)
-      redirect_to apartments_path, notice: t('apartment.update')
+      redirect_to landlord_apartments_path, notice: t('apartment.update')
     else
       render :edit
     end
