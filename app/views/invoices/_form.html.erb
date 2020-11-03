@@ -21,8 +21,8 @@
       <%= "Departure Date: #{date_format(@booking.end_date)}" %>
     </div>
     <div class="modal-footer">
-      <%= link_to "Back", '', data: { dismiss: 'modal' }, class: 'btn btn-dark' %>
-      <%= button_tag 'Confirm', class:"btn btn-success", type: "submit" %>
+      <%= link_to "Back", '', data: { dismiss: 'modal' }, class: 'at-btn' %>
+      <%= button_tag 'Confirm', class:"at-btn at-btnactive", type: "submit" %>
     </div>
   </div>
 <% end %>
