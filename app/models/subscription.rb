@@ -28,7 +28,7 @@ class Subscription < ApplicationRecord
   end
 
   def apartment_title
-    apartment&.title
+    apartment&.title&.humanize
   end
 
   def subscription_amount

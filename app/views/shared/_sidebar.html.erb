@@ -1,0 +1,39 @@
+<aside id="left-panel" class="left-panel">
+  <nav class="navbar navbar-expand-sm navbar-default">
+
+    <div class="navbar-header">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu"
+        aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars"></i>
+      </button>
+      <%= link_to root_url, class: "navbar-brand" do%>
+        <%= image_tag image_path('logo-dashboard.png') %>
+      <% end %>
+      <%= link_to root_url, class: "navbar-brand hidden" do%>
+        <%= image_tag image_path('logo-small.png') %>
+      <% end %>
+    </div>
+
+    <div id="main-menu" class="main-menu collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <%= link_to landlord_dashboard_path do %>
+            <i class="menu-icon fa fa-dashboard"></i>Dashboard
+          <% end %>
+        </li>
+        <h3 class="menu-title">Apartments</h3><!-- /.menu-title -->
+        <li>
+          <%= link_to landlord_apartments_path do %> 
+            <i class="menu-icon ti-home"></i>My Ads
+          <% end %>
+          <%= link_to new_landlord_apartment_path do %> 
+            <i class="menu-icon ti-plus"></i>Add new Apartment
+          <% end %>
+          <%= link_to landlord_subscriptions_path do %>
+            <i class="menu-icon ti-bookmark"></i>My subscriptions
+          <% end %>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+</aside>

@@ -10,7 +10,7 @@ class ApartmentPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user.eql?(user) && allow_admin_or_landlord?
+    allow_admin_or_landlord?
   end
 
   def edit?
@@ -22,7 +22,7 @@ class ApartmentPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user.eql?(user) && allow_admin_or_landlord?
+    allow_admin_or_landlord?
   end
 
   def destroy?

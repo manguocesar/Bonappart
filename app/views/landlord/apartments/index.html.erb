@@ -1,0 +1,17 @@
+<div class="animated fadeIn">
+  <% @apartments.each do |apartment| %>
+    <div class="col-md-4">
+      <%= link_to landlord_apartment_path(apartment) do %>
+        <div class="card">
+          <%= image_tag url_for(apartment.images.last), size: '260x200' ,class: 'card-img-top' %>
+          <div class="card-body">
+            <h4 class="card-title mb-3"><%= apartment.title %></h4>
+            <p class="card-text"><%= apartment.description %></p>
+            <strong><% apartment.apartment_type_name %></strong>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <%= paginate @apartments %>
+</div>

@@ -50,4 +50,9 @@ class User < ApplicationRecord
   def fullname
     "#{firstname} #{lastname}"
   end
+
+  # display user's available apartments
+  def available_apartments
+    apartments.where(availability: false)
+  end
 end

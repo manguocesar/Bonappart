@@ -58,7 +58,7 @@ class Apartment < ApplicationRecord
 
   # For getting apartment type of apartment
   def apartment_type_name
-    apartment_type.name.titleize
+    apartment_type&.name&.titleize
   end
 
    # Return net amount of apartment
@@ -74,5 +74,9 @@ class Apartment < ApplicationRecord
   # Full Address with floor no.
   def display_full_address
     [floor, full_address].join(' ')
+  end
+
+  def user_image
+    user.image
   end
 end

@@ -4,7 +4,7 @@
     <div class="at-article-content">
       <div class="at-featured-tags"></div>
       <div class="at-title">
-        <h4>Accomodation: <a href="<%= apartment_path(subscription&.apartment) %>"><%= subscription&.apartment&.title&.humanize %></a></h4>
+        <h4>Accomodation: <a href="<%= apartment_path(subscription&.apartment) %>"><%= subscription&.apartment_title %></a></h4>
       </div>
       <div class="at-description">
         <span><i class='ti-stats-up'></i> Subscription Status: <%= subscription&.status&.humanize %></span><br>
