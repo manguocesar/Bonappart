@@ -12,12 +12,16 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :apartment_types
   end
+  namespace :landlord do
+    get '/dashboard', to: 'dashboard#index'
+    resources :apartments
+    resources :subscriptions, only: %i[index new create]
+  end
   get '/new_invoice' => 'invoices#new', as: :add_invoice
   get '/card/new' => 'payments#new', as: :add_payment_method
   post '/card' => 'payments#create', as: :create_payment_method
   post '/subscription_payment' => 'payments#create_subscription_payment', as: :create_subscription_payment
   get 'sort_result', to: 'apartments#sort_result'
-  get 'dashboard/index'
   get 'homes/index'
   post 'create_contact_us', to: 'homes#create_contact_us'
   get '/contact_us', to: 'homes#contact_us'

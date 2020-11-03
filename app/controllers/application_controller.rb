@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
   private
 
   def layout_by_resource
-    if devise_controller?
-      'login'
+    if request.url.include?('landlord' || 'admin') && current_user.administrative_role?
+      'dashboard'
     else
       'application'
     end
