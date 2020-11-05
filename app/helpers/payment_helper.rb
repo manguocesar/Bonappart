@@ -16,4 +16,9 @@ module PaymentHelper
   def find_deposit_amount
     find_rent_rate&.deposit_amount
   end
+
+  # Set payment URL for booking and subscription object
+  def payment_url(params)
+    params[:booking_id].present? ? create_payment_method_path : create_subscription_payment_path
+  end
 end

@@ -51,13 +51,13 @@ class BookingsController < ApplicationController
                 else
                   filter_by_status(@bookings)
                 end
-    @bookings = pagination(@bookings)                
+    @bookings = pagination(@bookings)
   end
 
   # Filter student bookings by status
   def filter_by_status(bookings)
     return bookings if params[:status].blank?
-    
+
     bookings.filter_by_status(params[:status])
   end
 

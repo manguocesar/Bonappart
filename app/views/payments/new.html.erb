@@ -1,8 +1,9 @@
 <%= render 'shared/header_bg' %>
-<% url = params[:booking_id].present? ? create_payment_method_path : create_subscription_payment_path  %>
+<% url = payment_url(params)  %>
 <%= form_with url: url,  id: 'stripe-form' do |form| %>
   <%= hidden_field_tag 'payment[booking_id]', params[:booking_id] %>
   <%= hidden_field_tag 'payment[subscription_id]', params[:subscription] %>
+  <%= hidden_field_tag 'payment[amount]', params[:amount] %>
   <h2 class='offset-md-4 mt-2 mb-2'>Payment details</h2>
   <div class='row ml-4 mr-4'>
     <div class="form-group col-sm-4">
@@ -11,7 +12,7 @@
     </div>
     <div class="form-group col-sm-4">
       <%= form.label 'amount', class:"col-form-label" %>
-      <%= form.text_field 'payment[amount]', class: 'form-control', id: 'amount' %>
+      <%= form.text_field 'payment[amount]', value: params[:amount], class: 'form-control', disabled: true %>
     </div>
     <div class="form-group col-sm-4">
       <%= form.label 'remarks', class:"col-form-label" %>
