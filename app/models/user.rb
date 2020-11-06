@@ -55,4 +55,24 @@ class User < ApplicationRecord
   def available_apartments
     apartments.where(availability: false)
   end
+
+  # Get the total subscribed/Live apartments
+  def subscribed_apartment
+    apartments.select(&:subscribed)
+  end
+
+  # Get the total Unsubscribed/Pending apartments
+  def unsubscribed_apartment
+    apartments.reject(&:subscribed)
+  end
+
+  # Get the total Available apartments
+  def available_apartments
+    apartments.select(&:availability)
+  end
+
+  # Get the total Booked apartments
+  def unavailable_apartments
+    apartments.reject(&:availability)
+  end
 end
