@@ -7,7 +7,6 @@ module Admin
     before_action :load_apartment_type, only: %i[edit update destroy]
     protect_from_forgery with: :null_session
 
-
     def index
       @apartment_types = ApartmentType.all
       # authorize @apartments

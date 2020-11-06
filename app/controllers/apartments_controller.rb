@@ -6,7 +6,6 @@ class ApartmentsController < ApplicationController
 
   def index
     @apartments = pagination(filtered_apartments)
-    authorize @apartments
   end
 
   def show
