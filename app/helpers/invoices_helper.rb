@@ -8,9 +8,9 @@ module InvoicesHelper
 
   def invoice_payment_path(invoice)
     if invoice.booking.present?
-      add_payment_method_path(booking_id: @invoice.booking&.id)
+      add_payment_method_path(booking_id: invoice.booking&.id, amount: invoice.amount)
     else
-      add_payment_method_path(subscription: @invoice.subscription&.id)
+      add_payment_method_path(subscription: invoice.subscription&.id, amount: invoice.amount)
     end
   end
 end

@@ -1,4 +1,5 @@
 <div class="animated fadeIn">
+  <%= render 'shared/messages' %>
   <% @apartments.each do |apartment| %>
     <div class="col-md-4">
       <%= link_to landlord_apartment_path(apartment) do %>
