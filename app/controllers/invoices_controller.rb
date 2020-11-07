@@ -24,7 +24,7 @@ class InvoicesController < ApplicationController
   def create
     @invoice = Booking.new(invoice_params)
     if @invoice.save
-      redirect_to add_payment_method_path(booking_id: @booking&.id)
+      redirect_to add_payment_method_path(booking_id: @booking&.id,amount: booking&.amount)
     else
       render :new
     end

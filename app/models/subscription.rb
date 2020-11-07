@@ -20,7 +20,7 @@ class Subscription < ApplicationRecord
   end
 
   def payment_type
-    payments.paid.last.payment_type.titleize
+    payments.paid.last&.payment_type&.titleize
   end
 
   def payment_status

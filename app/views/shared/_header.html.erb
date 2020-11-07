@@ -50,8 +50,8 @@
             </nav>
             <% unless current_user.present? %>
               <div class="at-loginarea float-right">
-                  <%= link_to 'Login', popup_forms_path(name: 'login'), remote: true, class: 'at-registeroption' %>
-                  <%= link_to 'Register', popup_forms_path(name: 'register'), remote: true, class: 'at-registeroption' %>
+                  <%= link_to 'Login', popup_forms_path(name: 'login'), remote: true, class: 'at-registeroption', style: "font-size: medium;" %>
+                  <%= link_to 'Register', popup_forms_path(name: 'register'), remote: true, class: 'at-registeroption', style: "font-size: medium;" %>
                 <div class="at-detailsbtn-topbar">
                   <%= link_to 'Become a Host', popup_forms_path(name: 'host'), remote: true, class: 'at-btn at-btnactive' %>
                   <!--<em>OR</em>
