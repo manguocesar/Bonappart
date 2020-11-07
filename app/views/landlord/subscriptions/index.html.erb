@@ -22,7 +22,7 @@
                   <tbody>
                     <% @subscriptions.each do |subscription| %>
                       <tr role="row" class="odd">
-                        <td><%= subscription.apartment.title %></td>
+                        <td><%= subscription&.apartment_title %></td>
                         <td><%= date_format(subscription.started_at) %></td>
                         <td><%= date_format(subscription.expired_at) %></td>
                         <td><%= subscription.status.titleize %></td>
