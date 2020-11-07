@@ -9,6 +9,10 @@ class Apartment < ApplicationRecord
   scope :filter_by_rent_desc, -> { includes(:rent_rate).order('rent_rates.net_rate DESC') }
   scope :filter_by_departure_date, ->(departure_date) { where departure_date:  DateTime.parse(departure_date) }
   scope :similar_apartments, ->(distance_from_university) { where distance_from_university: distance_from_university }
+  scope :subscribed, -> { select(&:subscribed) }
+  scope :unsubscribed, -> { reject(&:subscribed) }
+  scope :available, -> { select(&:availability) }
+  scope :unavailable, -> { reject(&:availability) }
 
   # Associations
   has_many_attached :images
