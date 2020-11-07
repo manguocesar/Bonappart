@@ -1,0 +1,58 @@
+<%= render 'shared/header_bg' %>
+<div class="at-innerbanner-holder at-haslayout at-innerbannersearch">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="at-innerbanner-search">
+          <%= form_tag(subscriptions_path, method: :get, remote: true, class: 'at-formtheme at-form-advancedsearch') do |form| %>
+            <fieldset>
+              <div class="form-group">
+                <div class="at-select">
+                  <%= select_tag(:status, options_for_select(Subscription.statuses.map {|k, v| [k.humanize.capitalize, k]}), class: "form-control", id: 'status', include_blank: 'Status') %>
+                </div>
+              </div>
+              <div class="form-group at-checkin-holder at-datecheck">
+                <input type="text" class="at-startdate" name="start_date" class="form-control" placeholder="Date from">
+              </div>
+              <div class="form-group at-checkout-holder at-datecheck">
+                <input type="text" class="at-enddate" name="end_date" class="form-control" placeholder="Date To">
+              </div>
+              <div class="at-btnarea">
+                <%= button_tag 'Filter Subscriptions', class:"at-btn at-btnactive", type: "submit" %>
+              </div>
+            </fieldset>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<main id="at-main" class="at-main at-haslayout">
+  <!-- Two Columns Start -->
+  <div class="at-haslayout at-main-section">
+    <div class="container">
+      <div class="row">
+        <div id="at-twocolumns" class="at-twocolumns at-haslayout">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+          <!-- Subscriptions List Start -->
+            <div class="at-showresult-holder">
+              <div class="at-resulttitle">
+                <h3>Your Subscriptions</h3>
+              </div>
+            </div>
+            <div class="at-blog-grid at-haslayout">
+              <div class="row" id='subscriptionCard'>
+                <%= render 'subscriptions', subscriptions: @subscriptions %>
+              </div>
+            </div>
+          <!-- Properties List End -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='at-pagination d-flex justify-content-center mb-3 subscriptions-pagination'>
+    <%= render 'subscriptions_pagination', subscriptions: @subscriptions %>
+  </div>
+  <!-- Two Columns End -->
+</main>

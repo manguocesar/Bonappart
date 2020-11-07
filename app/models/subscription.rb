@@ -2,6 +2,10 @@
 
 # Subscription model
 class Subscription < ApplicationRecord
+  # scope for filter by status
+  scope :filter_by_status, ->(status) { where status: status }
+  scope :created_between, ->(start_date, end_date) {where("started_at >= ? AND started_at <= ?", start_date, end_date )}
+
   # Enums
   enum status: { pending: 0, failed: 1, paid: 2 }
 
@@ -24,7 +28,7 @@ class Subscription < ApplicationRecord
   end
 
   def apartment_title
-    apartment&.title
+    apartment&.title&.humanize
   end
 
   def subscription_amount

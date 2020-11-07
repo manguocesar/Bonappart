@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :payments
   resources :inquiries
   resources :invoices, only: %i[index show]
-  resources :subscriptions, only: %i[index new create]
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
     resources :apartment_types

@@ -4,8 +4,22 @@
 class SubscriptionsController < ApplicationController
   before_action :load_apartment, :load_landlord, only: :new
 
+  # Subscription of Landlord
   def index
-    @subscriptions = pagination(Subscription.all)
+    @subscriptions = current_user.subscriptions
+    @subscriptions = if params[:start_date].present? && params[:end_date].present?
+                      filter_by_status(@subscriptions).created_between(params[:start_date], params[:end_date])
+                    else
+                      filter_by_status(@subscriptions)
+                    end
+    @subscriptions = pagination(@subscriptions)
+  end
+
+  # Filter subscriptions by status
+  def filter_by_status(subscriptions)
+    return subscriptions if params[:status].blank?
+    
+    subscriptions.filter_by_status(params[:status])
   end
 
   def new
