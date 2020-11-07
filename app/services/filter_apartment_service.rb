@@ -30,17 +30,25 @@ class FilterApartmentService
 
     @apartments = case field
                   when :distance_from_university
-                    search_apartments.filter_by_distance_from_university(field_params)
+                    filter_apartments_by_distance(field_params)
                   when :rent
-                    filter_by_rent(field_params)
+                    filter_apartments_by_rent(field_params)
                   end
     @apartments
   end
 
-  def filter_by_rent(rent_params)
-    return search_apartments if rent_params.eql?('All')
+  def filter_apartments_by_distance(distance_params)
+    return search_apartments if distance_params.include?('I do not mind')
 
-    rent_params.eql?('Low to High') ? search_apartments.filter_by_rent_asc : search_apartments.filter_by_rent_desc
+    search_apartments.filter_by_distance_from_university(distance_params)
+  end
+
+  def filter_apartments_by_rent(rent_params)
+    return search_apartments if rent_params.blank?
+
+    low_rent = rent_params.split('-').first.squish.delete('€')
+    high_rent = rent_params.split('-').last.squish.delete('€')
+    search_apartments.filter_by_rent(low_rent, high_rent)
   end
 
   def search_apartments

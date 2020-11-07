@@ -60,7 +60,15 @@
     </div>
     <div class="form-group col-sm-6">
       <%= form.label t('apartment.distance_from_university'), class:"col-form-label" %>
-      <%= form.text_field :distance_from_university, class: 'form-control' %>
+      <div class="popup" data-toggle="popover" title="Add Distance from below options" 
+        data-content="
+          <p><10 minutes’ walk from campus</p>
+          <p>>10 minutes’ walk from campus</p>
+          <p>Outside Fontainebleau in nearby houses</p>
+          <p>I do not mind</p>
+          ">
+        <%= form.text_field :distance_from_university, class: 'form-control distanceExample' %>
+      </div>
     </div>
   </div>
   <div class='row'>
@@ -99,9 +107,7 @@
 <% end %>
 <script type="text/javascript">
   $(document).ready(function (e) {
-    // $('#departure-date').datetimepicker({
-    //   format: 'DD/MM/YYYY'
-    // });
+    $('[data-toggle="popover"]').popover({html:true,placement:'top'});
     ApartmentForm.validate();
   });
 </script>
