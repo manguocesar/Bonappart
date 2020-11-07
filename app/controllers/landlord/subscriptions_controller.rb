@@ -6,7 +6,7 @@ module Landlord
     before_action :load_apartment, :load_landlord, only: :new
 
     def index
-      @subscriptions = pagination(Subscription.all)
+      @subscriptions = pagination(Subscription.all.order("created_at DESC"))
     end
 
     def new

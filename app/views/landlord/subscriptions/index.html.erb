@@ -13,19 +13,21 @@
                   role="grid" aria-describedby="bootstrap-data-table_info">
                   <thead>
                     <tr role="row">
-                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1">Apartment</th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1">Start Date</th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1">End Date</th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1">Status</th>
+                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('subscription.apartment') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('subscription.amount') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('subscription.start_date') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('subscription.end_date') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('subscription.status') %></th>
                     </tr>
                   </thead>
                   <tbody>
                     <% @subscriptions.each do |subscription| %>
                       <tr role="row" class="odd">
-                        <td><%= subscription&.apartment_title %></td>
+                        <td><%= subscription.apartment.title %></td>
+                        <td><%= subscription&.invoice&.amount %></td>
                         <td><%= date_format(subscription.started_at) %></td>
                         <td><%= date_format(subscription.expired_at) %></td>
-                        <td><%= subscription.status.titleize %></td>
+                        <td><%= subscription_status(subscription) %></td>
                       </tr>
                     <% end %>
                     </tr>
