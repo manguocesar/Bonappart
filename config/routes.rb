@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'dashboard#index'
     resources :apartments
     resources :apartment_types
+    resources :apartments
+    resources :subscriptions, only: %i[index new create]
   end
   namespace :landlord do
     get '/dashboard', to: 'dashboard#index'
