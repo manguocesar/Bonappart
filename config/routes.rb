@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   resources :invoices, only: %i[index show]
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
+    get '/manage_users', to: 'dashboard#manage_users'
     resources :apartments
+    resources :users
     resources :apartment_types
   end
   namespace :landlord do

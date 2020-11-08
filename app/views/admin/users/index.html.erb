@@ -1,0 +1,61 @@
+<div class="animated fadeIn">
+  <%= render 'shared/messages' %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <strong class="card-title">All Users</strong>
+          <%= link_to new_admin_user_path, class: 'btn at-btn pull-right' do %>
+            <i class="menu-icon ti-plus"> Add New Landlord</i>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="bootstrap-data-table" class="table table-striped table-bordered dataTable no-footer"
+                  role="grid" aria-describedby="bootstrap-data-table_info">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('users.firstname') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('users.lastname') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('users.email') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('users.username') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('users.phone_no') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="2">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @users.each do |user| %>
+                      <tr role="row" class="odd">
+                        <td><%= user.firstname %></td>
+                        <td><%= user.lastname %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.username %></td>
+                        <td><%= user.phone_no %></td>
+                        <td>
+                          <%= link_to edit_admin_user_path(user) do %>
+                            <i class="menu-icon ti-pencil"></i>
+                          <% end %>
+                        </td>
+                        <td>
+                          <%= link_to admin_user_path(user), method: :delete, data: { confirm: t('confirmation') }  do %>
+                            <i class="menu-icon ti-trash"></i>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <%= paginate @users %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
