@@ -24,12 +24,24 @@
                 </div>
                 <div class="form-group">
                   <div class="at-select">
-                    <%= select_tag('sort[distance_from_university]', options_for_select(Apartment.pluck(:distance_from_university).uniq), class: "form-control", "data-live-search" => "true", include_blank: t('apartment.distance_from_university')) %>
+                    <%= select_tag('sort[distance_from_university]', options_for_select(Constant::DISTANCE_FROM_UNIVERSITY), class: "form-control", "data-live-search" => "true", include_blank: t('apartment.distance_from_university')) %>
                   </div>
                 </div>
-                <div class="form-group">
-                  <div class="at-select">
-                    <%= select_tag('sort[net_rate]', options_for_select(Constant::RENT_RATE_DROPDOWN, :net_rate), class: "form-control", "data-live-search" => "true", include_blank: t('apartment.rent')) %>
+                <div class="at-widget">
+                  <div class="at-widgettitle at-collapsetitle" id="heading5" data-toggle="collapse" data-target="#collapse5" role="heading">
+                    <h3>Price Range:</h3>
+                  </div>
+                  <div class="at-collapseholder collapse show" id="collapse5" aria-labelledby="heading5">
+                    <div class="at-widgetcontent">
+                      <div class="at-areasizebox">
+                        <input type="text" id="at-rangeamount" name="<%= 'sort[rent]' %>" readonly="">
+                      </div>
+                      <div id="at-rangeslider" class="at-rangeslider at-themerangeslider ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                        <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 12%; width: 68%;"></div>
+                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 12%;"></span>
+                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 80%;"></span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </fieldset>

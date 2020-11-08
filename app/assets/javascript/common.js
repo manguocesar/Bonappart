@@ -10,6 +10,7 @@
 //= require common/readmore
 //= require common/lightpick
 //= require common/main-min
+//= require common/jquery-ui
 //= require common/bootstrap-select.min
 //= require jquery.validate
 //= require common/custom

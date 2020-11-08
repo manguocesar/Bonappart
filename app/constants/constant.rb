@@ -24,4 +24,7 @@ module Constant
   AVAILABILITY = 'availability'
   SUBSCRIBED = 'subscribed'
   EDIT = 'edit'
+
+  DISTANCE_FROM_UNIVERSITY = ['<10 minutes’ walk from campus', '>10 minutes’ walk from campus',
+                              'Outside Fontainebleau in nearby houses', 'I do not mind'].freeze
 end
