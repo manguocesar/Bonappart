@@ -32,7 +32,11 @@ class ApartmentsController < ApplicationController
 
   def update
     if @apartment.update(apartment_params)
-      redirect_to landlord_apartments_path, notice: t('apartment.update')
+      if current_user.admin?
+        redirect_to admin_apartments_path, notice: t('apartment.update')
+      else
+        redirect_to landlord_apartments_path, notice: t('apartment.update')
+      end
     else
       render :edit
     end
@@ -40,7 +44,11 @@ class ApartmentsController < ApplicationController
 
   def destroy
     if @apartment.destroy
-      redirect_to apartments_path, notice: t('apartment.delete')
+      if current_user.admin?
+        redirect_to admin_apartments_path, notice: t('apartment.delete')
+      else
+        redirect_to landlord_apartments_path, notice: t('apartment.delete')
+      end
     else
       redirect_to apartments_path
     end

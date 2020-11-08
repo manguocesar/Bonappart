@@ -101,6 +101,23 @@ en:
     count_of_contacts: Count of contacts
     count_of_members: Count of members
     landlord_management: Landlords management
+    dashboard: Dashboard
+    apartments: Apartments
+    all_apartments: All Apartments
+    bookings: Bookings
+    add_apartment: Add Apartment
+    apartment_types: Apartment Types
+    booked_apartment: Booked Apartments
+    subscriptions: Subscriptions
+    paid_subacriptions: Paid Subscriptions
+    unpaid_subscriptions: Unpaid Subscriptions
+    invoices: Invoices
+    paid_invoices: Paid Invoices
+    unpaid_invoices: Unpaid Invoices
+    settings: Settings
+    profile: Profile
+    logout: Logout
+    my_ads: My Ads
   inquiry:
     instructions: Instructions
     login_message: You need to login to contact with landlord

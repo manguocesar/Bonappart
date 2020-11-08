@@ -1,0 +1,70 @@
+<div class='row'>
+  <div class="col-sm-12">
+    <div id="carouselExampleControls" class="carousel slide ml-4" data-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+        <!-- Image box start -->
+        <% @apartment.images.each do |image| %>
+          <div class="carousel-item <%= @apartment.active_class(image) %>">
+            <%= image_tag url_for(image), class: "d-block w-100", style:"height:420px;" %>
+          </div>
+        <% end %>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+  <div class='col-sm-6'>
+  <!-- Map container start -->
+    <div id="at-locationmap" class="at-locationmap"></div>
+  <!-- Map container end -->
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div id="at-twocolumns" class="at-twocolumns at-haslayout">
+      <div class="col-xs-12 col-sm-12 col-md-12 float-right">
+        <div class="at-propertydetails at-detailsproperty">
+          <div class="at-propertytitle">
+            <h3><%= t('apartment.rent_details') %></h3>
+          </div>
+          <div class="row">
+            <% rent = @apartment.rent_rate %>
+            <div class='col-md-6'><h5><%= t('rent.net_rate') %>:</h5><span><%= rent&.net_rate %></span></div>
+            <div class='col-md-6'><h5><%= t('rent.water_charge') %>:</h5><span><%= rent&.water_charge %></span></div>
+            <div class='col-md-6'><h5><%= t('rent.heating_charge') %>:</h5><span><%= rent&.heating_charge %></span></div>
+            <div class='col-md-6'><h5><%= t('rent.electricity_charge') %>:</h5><span><%= rent&.electricity_charge %></span></div>
+            <div class='col-md-6'><h5><%= t('rent.internet_charge') %>:</h5><span><%= rent&.internet_charge %></span></div>
+            <div class='col-md-6'><h5><%= t('rent.deposit_amount') %>:</h5><span><%= rent&.deposit_amount %></span></div>
+          </div>
+        </div>
+        <div class="col-md-6 mt-5">
+          <div class="card">
+            <%= image_tag url_for('blog-single/user-img/img-07.jpg'), size: '260x130', class: "card-img-top" %>
+            <div class="card-body">
+              <h4 class="card-title mb-3">About Host</h4>
+              <p class="card-text">Landlord Name: <%= @apartment.user.firstname %> <%= @apartment.user.lastname %></p>
+            </div>
+          </div>
+        </div>
+        <div class='col-md-3'></div>
+        <div class="col-md-6 mt-5">
+          <h3><%= t('apartment.edit_delete_apartments') %></h3>
+          <%= link_to 'Edit', edit_admin_apartment_path(@apartment), class: 'at-btn col-sm-3 edit-btn', style:"height: 40px;min-width:auto;" %>
+          <% if !@apartment.subscribed? %>
+            <%= link_to 'Post', new_admin_subscription_path(apartment_id: params[:id]), data: { remote: true }, class: 'at-btn col-sm-3 post-btn' %>
+          <% end %>
+          <%= link_to admin_apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn col-sm-3 btn-danger delete-btn' do %>Delete
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render '/shared/modal_window', locals: { modelId: 'subscriptionModal' } %>
+<%= render '/shared/modal_window', locals: { modelId: 'booking_modal' } %>

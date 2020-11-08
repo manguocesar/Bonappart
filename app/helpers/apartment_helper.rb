@@ -17,6 +17,22 @@ module ApartmentHelper
     latlong
   end
 
+  def back_to_apartments
+    if current_user.admin?
+      admin_apartments_path
+    elsif current_user.landlord?
+      landlord_apartments_path
+    else
+      apartments_path
+    end
+  end
+
+  def subscription_url_for_user(apartment_id)
+    current_user.landlord? ?
+      new_landlord_subscription_path(apartment_id: apartment_id) :
+      new_admin_subscription_path(apartment_id: apartment_id)
+  end
+
   def check_availability(apartment)
     if apartment.availability?
       "Available by #{apartment.departure_date_availabilty}"
