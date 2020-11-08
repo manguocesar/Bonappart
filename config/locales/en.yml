@@ -116,6 +116,8 @@ en:
     profile: Profile
     logout: Logout
     my_ads: My Ads
+    landlord_management: Landlord Management
+    all_landlords: All Landlord Users
   inquiry:
     instructions: Instructions
     login_message: You need to login to contact with landlord

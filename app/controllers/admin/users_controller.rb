@@ -5,7 +5,14 @@ module Admin
     before_action :set_user, only: %i[edit update destroy]
 
     def index
-      @users = pagination(User.with_role(:student).order('created_at DESC'))
+      @users = pagination(filter_users)
+    end
+
+    def filter_users
+      @users = User.with_role(:student).order('created_at DESC')
+      return @users.search_by_name_or_email(params[:search]) if params[:search].present?
+
+      @users
     end
 
     def new
