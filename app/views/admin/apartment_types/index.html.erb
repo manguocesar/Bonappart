@@ -5,45 +5,40 @@
 <main id="at-main" class="at-main at-haslayout">
   <!-- Apartment type table start -->
   <section class="at-haslayout at-main-section">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-sm-12 col-md-12 push-md-0 col-lg-10 push-lg-1 col-xl-8 push-xl-2">
-          <div class="at-sectionhead">
-            <h4 class="header-title"><%= t('admin.apartment_type.title') %></h4>
+    <div class="col-12">
+      <%= render 'shared/messages' %>
+      <!-- Add new apartment type table start -->
+      <div class="container">
+        <div class="get-quote">
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <h4 class="header-title"><%= t('admin.apartment_type.title') %></h4>
+            </div>
             <!-- Add new apartment type button start -->
-            <% if !current_user&.administrative_role? %>
+            <div class="col-sm-2 col-12">
               <%= link_to new_admin_apartment_type_path, remote:true, class: 'btn btn-outline-success btn-xs' do %>
                 <i class="fa fa-plus" aria-hidden="true"></i> <%= t('admin.apartment_type.add_apartment_type') %>
               <% end %>
-            <% end %>
-            <!-- Add new apartment type button end -->
-          </div>
-        </div>
-        <div class="col-12">
-          <%= render 'shared/messages' %>
-          <!-- Add new apartment type table start -->
-          <div class="market-status-table mt-4">
-            <div class="table-responsive">
-              <table class="dbkit-table">
-                <tr class="heading-td">
-                  <td><%= t('admin.apartment_type.title') %></td>
-                  <td><%= t('admin.apartment_type.amount') %></td>
-                  <td colspan='2' class='actions'><%= t('admin.apartment_type.actions') %></td>
-                </tr>
-                <% @apartment_types.each do |apartment_type| %>
-                  <tr>
-                    <td><%= apartment_type.name %></td>
-                    <td><%= apartment_type.amount %></td>
-                    <td><%= link_to 'Edit', edit_admin_apartment_type_path(apartment_type), remote: true %></td>
-                    <td><%= link_to 'Delete', admin_apartment_type_path(apartment_type), method: :delete, data: { confirm: t('confirmation') } %></td>
-                  </tr>
-                <% end %>
-              </table>
             </div>
-            <!-- Add new apartment type table end -->
           </div>
         </div>
+        <table class="table table-hover">
+          <tr class="heading-td">
+            <td><%= t('admin.apartment_type.title') %></td>
+            <td><%= t('admin.apartment_type.amount') %></td>
+            <td colspan='2' class='actions text-center'><%= t('admin.apartment_type.actions') %></td>
+          </tr>
+          <% @apartment_types.each do |apartment_type| %>
+            <tr>
+              <td><%= apartment_type.name %></td>
+              <td><%= apartment_type.amount %></td>
+              <td><%= link_to 'Edit', edit_admin_apartment_type_path(apartment_type), remote: true %></td>
+              <td><%= link_to 'Delete', admin_apartment_type_path(apartment_type), method: :delete, data: { confirm: t('confirmation') } %></td>
+            </tr>
+          <% end %>
+        </table>
       </div>
+      <!-- Add new apartment type table end -->
     </div>
   </section>
 </main>
