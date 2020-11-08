@@ -10,7 +10,13 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   layout :layout_by_resource
 
+  helper_method :logged_in?
+
   private
+
+  def logged_in?
+    current_user.present?
+  end
 
   def layout_by_resource
     if administrative_request? && current_user.administrative_role?

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :bookings
   resources :payments
   resources :inquiries
+  resources :messages
+  resources :rooms
   resources :invoices, only: %i[index show]
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
     resources :apartments
     resources :subscriptions, only: %i[index new create]
   end
+
   get '/new_invoice' => 'invoices#new', as: :add_invoice
   get '/card/new' => 'payments#new', as: :add_payment_method
   post '/card' => 'payments#create', as: :create_payment_method

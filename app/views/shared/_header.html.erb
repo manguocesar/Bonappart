@@ -1,4 +1,4 @@
-<header id="at-header" class="at-header at-headervtwo at-haslayout">
+<header id="at-header" class="at-header at-headervtwo at-haslayout purpleBg">
   <div class="at-navigationarea">
     <div class="container-fluid">
       <div class="row">
@@ -35,6 +35,9 @@
                         <% title_and_url = mydashboard_or_mybookings %>
                         <li>
                           <%= link_to title_and_url.first, title_and_url.last %>
+                        </li>
+                        <li>
+                          <%= link_to "Messages", rooms_path %>
                         </li>
                         <li>
                           <%= link_to "Edit Profile", edit_user_registration_path %>
