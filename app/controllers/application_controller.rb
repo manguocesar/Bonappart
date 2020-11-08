@@ -13,11 +13,15 @@ class ApplicationController < ActionController::Base
   private
 
   def layout_by_resource
-    if request.url.include?('landlord' || 'admin') && current_user.administrative_role?
+    if administrative_request? && current_user.administrative_role?
       'dashboard'
     else
       'application'
     end
+  end
+
+  def administrative_request?
+    (request.url.include?('landlord') || request.url.include?('admin'))
   end
 
   protected

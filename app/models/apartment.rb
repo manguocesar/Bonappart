@@ -9,6 +9,10 @@ class Apartment < ApplicationRecord
   scope :filter_by_rent, ->(low_rate, high_rate) { joins(:rent_rate).where('rent_rates.net_rate >= ? AND rent_rates.net_rate <= ?', low_rate, high_rate) }
   scope :filter_by_departure_date, ->(departure_date) { where departure_date:  DateTime.parse(departure_date) }
   scope :similar_apartments, ->(distance_from_university) { where distance_from_university: distance_from_university }
+  scope :subscribed, -> { select(&:subscribed) }
+  scope :unsubscribed, -> { reject(&:subscribed) }
+  scope :available, -> { select(&:availability) }
+  scope :unavailable, -> { reject(&:availability) }
 
   # Associations
   has_many_attached :images
