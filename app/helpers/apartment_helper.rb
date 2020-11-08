@@ -28,8 +28,8 @@ module ApartmentHelper
   end
 
   def subscription_url_for_user(apartment_id)
-    current_user.landlord? ? 
-      new_landlord_subscription_path(apartment_id: apartment_id) : 
+    current_user.landlord? ?
+      new_landlord_subscription_path(apartment_id: apartment_id) :
       new_admin_subscription_path(apartment_id: apartment_id)
   end
 
