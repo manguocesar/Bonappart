@@ -33,6 +33,7 @@
 en:
   hello: "Hello world"
   cannot_perform: "You can't perform this action."
+  actions: Actions
   thank_you:
     title: Thank you for booking Accomodation.
     message: Your Accomodation is booked successfully.
@@ -60,6 +61,7 @@ en:
   confirmation: Are you sure?
   apartments: Accomodations
   apartment:
+    available_date: Available Date
     add_apartment: Add apartment
     edit_apartment: Edit apartment
     title: Title
@@ -93,6 +95,8 @@ en:
     booking_success: Accomodation booked successfully
     subscription_success: Accomodation subscribed successfully
     edit_delete_apartments: Edit / Delete your Apartment details
+    rent_details: Rent Details
+    property_details: Property Details
   dashboard:
     count_of_ads: Count of Ads
     count_of_active_ads: Count of Active Ads
@@ -198,3 +202,6 @@ en:
     start_date: Start Date
     end_date: End Date
     status: Status
+  landlord:
+    apartments: Apartments
+    add_apartment: Add Apartment
