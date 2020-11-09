@@ -8,46 +8,46 @@
     <h3 class="menu-title"><%= t('dashboard.apartments') %></h3><!-- /.menu-title -->
     <li>
       <%= link_to admin_apartments_path do %>
-        <i class="menu-icon ti-home"></i><%= t('dashboard.all_apartments') %>
+        <i class="menu-icon fa fa-home"></i><%= t('dashboard.all_apartments') %>
       <% end %>
       <%= link_to new_landlord_apartment_path do %>
-        <i class="menu-icon ti-plus"></i><%= t('dashboard.add_apartments') %>
+        <i class="menu-icon fa fa-plus"></i><%= t('dashboard.add_apartments') %>
       <% end %>
       <%= link_to admin_apartment_types_path do %>
-        <i class="menu-icon ti-home"></i><%= t('dashboard.apartment_types') %>
+        <i class="menu-icon fa fa-home"></i><%= t('dashboard.apartment_types') %>
       <% end %>
     </li>
     <h3 class="menu-title"><%= t('dashboard.bookings') %></h3><!-- /.menu-title -->
     <li>
       <%= link_to 'javascript:void(0);' do %>
-        <i class="menu-icon ti-bookmark"></i><%= t('dashboard.booked_apartments') %>
+        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.booked_apartments') %>
       <% end %>
     </li>
     <h3 class="menu-title"><%= t('dashboard.subscriptions') %></h3><!-- /.menu-title -->
     <li>
       <%= link_to admin_subscriptions_path do %>
-        <i class="menu-icon ti-bookmark"></i><%= t('dashboard.paid_subscriptions') %>
+        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.paid_subscriptions') %>
       <% end %>
       <%= link_to admin_subscriptions_path do %>
-        <i class="menu-icon ti-bookmark"></i><%= t('dashboard.unpaid_subscriptions') %>
+        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.unpaid_subscriptions') %>
       <% end %>
     </li>
     <h3 class="menu-title"><%= t('dashboard.invoices') %></h3><!-- /.menu-title -->
     <li>
       <%= link_to 'javascript:void(0);' do %>
-        <i class="menu-icon ti-bookmark"></i><%= t('dashboard.paid_invoices') %>
+        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.paid_invoices') %>
       <% end %>
       <%= link_to 'javascript:void(0);' do %>
-        <i class="menu-icon ti-bookmark"></i><%= t('dashboard.unpaid_invoices') %>
+        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.unpaid_invoices') %>
       <% end %>
     </li>
     <h3 class="menu-title"><%= t('dashboard.settings') %></h3><!-- /.menu-title -->
     <li>
       <%= link_to edit_user_registration_path do %>
-        <i class="menu-icon ti-user"></i><%= t('dashboard.profile') %>
+        <i class="menu-icon fa fa-user"></i><%= t('dashboard.profile') %>
       <% end %>
-      <%= link_to destroy_user_session_path do %>
-        <i class="menu-icon ti-user"></i><%= t('dashboard.logout') %>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <i class="menu-icon fa fa-user"></i><%= t('dashboard.logout') %>
       <% end %>
     </li>
   </ul>
