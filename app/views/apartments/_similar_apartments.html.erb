@@ -36,7 +36,7 @@
             <ul class="at-room-featured">
               <% apartment.other_amenities.each do |amenities| %>
                 <% if amenities %>
-                  <li><span><i><%= image_tag asset_url("featured-img/icons/#{amenities&.first}"), alt: "img description" %></i><%= other_amenities_text(amenities) %></span></li>
+                  <li><span><i><%= image_tag asset_url("featured-img/icons/#{amenities&.first}.jpg"), alt: "img description" %></i><%= other_amenities_text(amenities) %></span></li>
                 <% end %>
               <% end %>
             </ul>
