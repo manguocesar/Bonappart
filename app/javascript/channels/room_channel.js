@@ -1,12 +1,12 @@
 import consumer from "./consumer"
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbolinks:load', (event) => {
   const room_element = document.getElementById('room-id');
   const room_id = room_element.getAttribute('data-room-id');
 
-  consumer.subscriptions.forEach((subscription) => {
-    consumer.subscriptions.remove(subscription)
-  })
+  // consumer.subscriptions.forEach(function(subscription){
+  //   consumer.subscriptions.remove(subscription)
+  // })
 
   consumer.subscriptions.create({ channel: "RoomChannel", room_id: room_id }, {
     connected() {
@@ -34,4 +34,3 @@ document.addEventListener('turbolinks:load', () => {
     }
   });
 })
-
