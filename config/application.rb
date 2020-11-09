@@ -19,7 +19,7 @@ module ApartmentBooking
     config.action_mailer.perform_deliveries = true
     config.action_mailer.delivery_method = :smtp
     config.assets.initialize_on_precompile = false
-    # config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_adapter = :sidekiq
 
     config.action_mailer.smtp_settings = {
       address: 'smtp.gmail.com',
