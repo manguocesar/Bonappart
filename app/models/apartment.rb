@@ -42,7 +42,7 @@ class Apartment < ApplicationRecord
 
   # For apply geocoding using full address
   def full_address
-    [country, city, area].compact.join(', ')
+    [area, city, country].compact.join(', ')
   end
 
   # departure date availabilty with date format
