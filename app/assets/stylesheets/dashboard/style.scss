@@ -1280,11 +1280,11 @@ header .form-inline {
   position: relative; }
   .user-area .user-menu {
     background: #fff;
-    border: none;
+    border: solid 1px;
     font-family: 'Open Sans';
     left: inherit !important;
     right: 0;
-    top: 55px !important;
+    top: 40px !important;
     margin: 0;
     max-width: 150px;
     padding: 5px 10px;
@@ -2243,4 +2243,5 @@ img{object-fit: contain;}
 .at-btn {
   background-color: #20c997;
   border-color: #20c997;
+  color: white;
 }
