@@ -3,7 +3,11 @@
 # Homes controller
 class HomesController < ApplicationController
   def index
-    @latest_apartments = Apartment.last(7).group_by.with_index { |_, i| i % 3 }.values
+    if root_url_as_per_role.present?
+      redirect_to root_url_as_per_role
+    else
+      @latest_apartments = Apartment.last(7).group_by.with_index { |_, i| i % 3 }.values
+    end
   end
 
   # Get Contact Us Page
@@ -15,7 +19,7 @@ class HomesController < ApplicationController
   def about_us; end
 
   # Create Contact Us Inquiry
-  def create_contact_us 
+  def create_contact_us
     @contact_us = ContactUs.new(contact_us_params)
     if @contact_us.save
       redirect_to contact_us_path, notice: 'Thank You For Contacting Us.'
@@ -24,7 +28,7 @@ class HomesController < ApplicationController
 
   def popup_forms
     return unless Constant::FORM_BASED_ON_LINKS.keys.include?(params[:name].to_sym)
-    
+
     @title = Constant::FORM_BASED_ON_LINKS[params[:name].to_sym].first
     @partial = Constant::FORM_BASED_ON_LINKS[params[:name].to_sym].last
     if ['host', 'register'].include?(params[:name])
