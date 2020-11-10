@@ -9,7 +9,7 @@ class ApartmentsController < ApplicationController
   end
 
   def show
-    @similar_apartments = @apartment.nearbys(30).where.not(id: @apartment&.id)
+    @similar_apartments = @apartment.nearbys(30)&.where&.not(id: @apartment&.id)
   end
 
   def new
