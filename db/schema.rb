@@ -75,11 +75,13 @@ ActiveRecord::Schema.define(version: 2020_11_10_122922) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.bigint "booking_id"
     t.string "virtual_visit_link"
     t.boolean "subscribed", default: false
     t.bigint "apartment_type_id"
     t.string "campus"
     t.index ["apartment_type_id"], name: "index_apartments_on_apartment_type_id"
+    t.index ["booking_id"], name: "index_apartments_on_booking_id"
     t.index ["user_id"], name: "index_apartments_on_user_id"
   end
 
@@ -90,8 +92,6 @@ ActiveRecord::Schema.define(version: 2020_11_10_122922) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "apartment_id"
-    t.index ["apartment_id"], name: "index_bookings_on_apartment_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -211,6 +211,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_122922) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "apartments", "apartment_types"
+  add_foreign_key "apartments", "bookings"
   add_foreign_key "apartments", "users"
   add_foreign_key "invoices", "bookings"
   add_foreign_key "invoices", "subscriptions"
