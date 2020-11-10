@@ -114,7 +114,8 @@ en:
     unpaid_invoices: Unpaid Invoices
     settings: Settings
     profile: Profile
-    logout: Logout
+    edit_profile: Edit Profile
+    signout: Sign Out
     my_ads: My Ads
   inquiry:
     instructions: Instructions

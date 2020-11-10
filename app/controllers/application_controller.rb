@@ -10,7 +10,17 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   layout :layout_by_resource
 
+  helper_method :root_url_as_per_role
+
   private
+
+  def root_url_as_per_role
+    if current_user && current_user.landlord?
+      landlord_dashboard_path
+    elsif current_user && current_user.admin?
+      admin_dashboard_path
+    end
+  end
 
   def layout_by_resource
     if administrative_request? && current_user.administrative_role?
