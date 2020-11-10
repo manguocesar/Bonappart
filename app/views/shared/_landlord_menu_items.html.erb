@@ -38,14 +38,5 @@
         <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.unpaid_invoices') %>
       <% end %>
     </li>
-    <h3 class="menu-title"><%= t('dashboard.settings') %></h3><!-- /.menu-title -->
-    <li>
-      <%= link_to edit_user_registration_path do %>
-        <i class="menu-icon fa fa-user"></i><%= t('dashboard.profile') %>
-      <% end %>
-      <%= link_to destroy_user_session_path, method: :delete do %>
-        <i class="menu-icon fa fa-user"></i><%= t('dashboard.logout') %>
-      <% end %>
-    </li>
   </ul>
 </div>
