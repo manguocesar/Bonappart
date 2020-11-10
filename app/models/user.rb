@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :apartments
   has_many :subscriptions
   has_many :bookings
+  has_many :invoices, through: :subscriptions
   validates_presence_of :firstname, :lastname
   validates :username, presence: true, uniqueness: true
   validates :phone_no, presence: true,

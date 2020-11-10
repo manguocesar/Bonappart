@@ -20,22 +20,9 @@
         <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.booked_apartments') %>
       <% end %>
     </li>
-    <h3 class="menu-title"><%= t('dashboard.subscriptions') %></h3><!-- /.menu-title -->
     <li>
-      <%= link_to landlord_subscriptions_path do %>
-        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.paid_subscriptions') %>
-      <% end %>
-      <%= link_to landlord_subscriptions_path do %>
-        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.unpaid_subscriptions') %>
-      <% end %>
-    </li>
-    <h3 class="menu-title"><%= t('dashboard.invoices') %></h3><!-- /.menu-title -->
-    <li>
-      <%= link_to 'javascript:void(0);' do %>
-        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.paid_invoices') %>
-      <% end %>
-      <%= link_to 'javascript:void(0);' do %>
-        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.unpaid_invoices') %>
+      <%= link_to landlord_invoices_path do %>
+        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.invoices') %>
       <% end %>
     </li>
   </ul>
