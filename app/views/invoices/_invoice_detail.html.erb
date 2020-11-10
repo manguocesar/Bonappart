@@ -26,8 +26,8 @@
       <%= "#{t('invoice.status')}: #{@invoice.status}" %>
     </div>
     <div class="modal-footer">
-      <%= link_to "Back", '', data: { dismiss: 'modal' }, class: 'at-btn' %>
-      <%= link_to 'Confirm', invoice_payment_path(@invoice), class: 'at-btn at-btnactive' %>
+      <%= link_to "Back", '', data: { dismiss: 'modal' }, class: 'btn btn-secondary' %>
+      <%= link_to 'Confirm', invoice_payment_path(@invoice), class: 'btn at-btn' %>
     </div>
   </div>
 </div>
