@@ -32,13 +32,13 @@
                         <td><%= apartment&.rent_rate&.deposit_amount %></td>
                         <td>
                           <%= link_to landlord_apartment_path(apartment) do %>
-                            <i class='ti ti-eye ml-2'></i>
+                            <i class='fa fa-eye ml-2'></i>
                           <% end %>
                           <%= link_to edit_landlord_apartment_path(apartment) do %>
-                            <i class='ti ti-pencil ml-2'></i>
+                            <i class='fa fa-pencil ml-2'></i>
                           <% end %>
                           <%= link_to landlord_apartment_path(apartment), method: :delete, data: { confirm: t('confirmation') } do %>
-                            <i class='ti ti-trash ml-2'></i>
+                            <i class='fa fa-trash ml-2'></i>
                           <% end %>
                         </td>
                       </tr>

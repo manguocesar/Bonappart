@@ -61,6 +61,8 @@ en:
   confirmation: Are you sure?
   apartments: Accomodations
   apartment:
+    apartment_title: Apartment Title
+    address: Address
     available_date: Available Date
     add_apartment: Add apartment
     edit_apartment: Edit apartment
@@ -97,6 +99,7 @@ en:
     edit_delete_apartments: Edit / Delete your Apartment details
     rent_details: Rent Details
     property_details: Property Details
+    campus: Campus
   dashboard:
     count_of_ads: Count of Ads
     count_of_active_ads: Count of Active Ads

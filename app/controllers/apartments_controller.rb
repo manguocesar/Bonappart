@@ -5,7 +5,7 @@ class ApartmentsController < ApplicationController
   before_action :set_apartment, only: %i[show edit update destroy]
 
   def index
-    @apartments = pagination(filtered_apartments)
+    @apartments = pagination(filtered_apartments).order(created_at: 'DESC')
   end
 
   def show
@@ -70,7 +70,7 @@ class ApartmentsController < ApplicationController
   # Permit the apartment parameters
   def apartment_params
     params.require(:apartment).permit(
-      :title, :description, :postalcode, :floor,
+      :title, :description, :postalcode, :floor, :campus,
       :city, :country, :area, :availability, :apartment_type_id,
       :arrival_date, :departure_date, :total_bedrooms,
       :shower_room, :distance_from_university, :other_facilities,
