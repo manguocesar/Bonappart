@@ -5,24 +5,19 @@
         <i class="menu-icon fa fa-dashboard"></i><%= t('dashboard.dashboard') %>
       <% end %>
     </li>
-    <h3 class="menu-title"><%= t('dashboard.all_apartments') %></h3><!-- /.menu-title -->
     <li>
       <%= link_to landlord_apartments_path do %>
-        <i class="menu-icon fa fa-home"></i><%= t('dashboard.my_ads') %>
-      <% end %>
-      <%= link_to new_landlord_apartment_path do %>
-        <i class="menu-icon fa fa-plus"></i><%= t('dashboard.add_apartments') %>
+        <i class="menu-icon fa fa-home"></i><%= t('dashboard.my_properties') %>
       <% end %>
     </li>
-    <h3 class="menu-title"><%= t('dashboard.bookings') %></h3><!-- /.menu-title -->
     <li>
-      <%= link_to 'javascript:void(0);' do %>
-        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.booked_apartments') %>
+      <%= link_to landlord_bookings_path do %>
+        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.my_bookings') %>
       <% end %>
     </li>
     <li>
       <%= link_to landlord_invoices_path do %>
-        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.invoices') %>
+        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.my_invoices') %>
       <% end %>
     </li>
   </ul>

@@ -120,6 +120,9 @@ en:
     edit_profile: Edit Profile
     signout: Sign Out
     my_ads: My Ads
+    my_properties: My Properties
+    my_bookings: My Bookings
+    my_invoices: My Invoices
   inquiry:
     instructions: Instructions
     login_message: You need to login to contact with landlord
@@ -142,6 +145,7 @@ en:
     start_date: Start date
     end_date: End date
     book_now: Book Now
+    property_name: Property Name
   address:
     area: Area
     postal_code: Postal code
