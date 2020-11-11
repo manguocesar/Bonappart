@@ -27,6 +27,16 @@ module ApartmentHelper
     end
   end
 
+  def show_page_apartments
+    if current_user.admin?
+      admin_apartment_path
+    elsif current_user.landlord?
+      landlord_apartment_path
+    else
+      apartment_path
+    end
+  end
+
   def subscription_url_for_user(apartment_id)
     current_user.landlord? ?
       new_landlord_subscription_path(apartment_id: apartment_id) :

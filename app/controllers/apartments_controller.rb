@@ -33,9 +33,9 @@ class ApartmentsController < ApplicationController
   def update
     if @apartment.update(apartment_params)
       if current_user.admin?
-        redirect_to admin_apartments_path, notice: t('apartment.update')
+        redirect_to admin_apartment_path, notice: t('apartment.update')
       else
-        redirect_to landlord_apartments_path, notice: t('apartment.update')
+        redirect_to landlord_apartment_path, notice: t('apartment.update')
       end
     else
       render :edit
