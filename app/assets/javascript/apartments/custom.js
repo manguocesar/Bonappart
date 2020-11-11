@@ -21,7 +21,7 @@ var ApartmentForm = {
       errorPlacement: function (error, element) {
         if (element.is('select')) {
           var parentDiv = element.parent('div');
-          error.insertAfter(error.insertAfter(parentDiv));
+          error.insertAfter(parentDiv);
           parentDiv.addClass("is-invalid text-danger");
         } else {
           error.insertAfter(element);

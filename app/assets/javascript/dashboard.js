@@ -10,4 +10,5 @@
 //= require dashboard/widgets
 //= require apartments/custom
 //= require apartment_types/validate
+//= require admin/users_validate
 var $ = jQuery

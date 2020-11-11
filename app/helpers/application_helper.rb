@@ -35,7 +35,7 @@ module ApplicationHelper
   end
 
   def date_format(date)
-    date.strftime('%B %d, %Y')
+    date.strftime('%B %d, %Y') if date.present?
   end
 
   def random_invoice_number

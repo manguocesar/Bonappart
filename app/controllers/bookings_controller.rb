@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
   before_action :set_apartment, only: :new
   before_action :authenticate_user!, only: %i[create edit update]
+  before_action :logged_in_user?, only: :student_bookings
 
   def index
     @bookings = pagination(Booking.all)

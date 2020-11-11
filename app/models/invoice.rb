@@ -13,18 +13,18 @@ class Invoice < ApplicationRecord
   end
 
   def apartment_title
-    booking.present? ? booking.apartment_title : subscription.apartment_title
+    booking.present? ? booking&.apartment_title : subscription&.apartment_title
   end
 
   def start_date
-    booking.present? ? booking.start_date : subscription.started_at
+    booking.present? ? booking&.start_date : subscription&.started_at
   end
 
   def end_date
-    booking.present? ? booking.end_date : subscription.expired_at
+    booking.present? ? booking&.end_date : subscription&.expired_at
   end
 
   def address
-    booking.present? ? booking.payment_address : subscription.payment_address
+    booking.present? ? booking&.payment_address : subscription&.payment_address
   end
 end

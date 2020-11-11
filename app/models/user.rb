@@ -2,7 +2,7 @@ class User < ApplicationRecord
   attr_accessor :login
 
   # Scope
-  scope :search_by_name_or_email, ->(search) { where 'firstname ILIKE ? OR email ILIKE ?', search.downcase, search.downcase }
+  scope :search_by_name_or_email, ->(search) { where 'firstname ILIKE :search_query OR lastname ILIKE   :search_query OR username ILIKE :search_query OR phone_no ILIKE :search_query OR email ILIKE :search_query', search_query: search.downcase }
 
   rolify
   # Include default devise modules. Others available are:

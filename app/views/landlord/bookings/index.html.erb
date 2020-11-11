@@ -22,10 +22,10 @@
                   <tbody>
                     <% @bookings.each do |booking| %>
                       <tr role="row" class="odd">
-                        <td><%= booking.apartment_title %></td>
-                        <td><%= date_format(booking.start_date) %></td>
-                        <td><%= date_format(booking.end_date) %></td>
-                        <td><%= booking.status %></td>
+                        <td><%= booking&.apartment_title %></td>
+                        <td><%= date_format(booking&.start_date) %></td>
+                        <td><%= date_format(booking&.end_date) %></td>
+                        <td><%= booking&.status %></td>
                       </tr>
                     <% end %>
                     </tr>

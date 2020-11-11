@@ -7,16 +7,14 @@
       <%= form.text_field :title, class: 'form-control' %>
     </div>
     <div class="form-group col-sm-6">
-      <%= form.label t('apartment.address'), class:"col-form-label" %>
-      <%= form.text_field :area, class: 'form-control' %>
+      <%= form.label t('apartment.description'), class:"col-form-label" %>
+      <%= form.text_field :description, class: 'form-control' %>
     </div>
   </div>
   <div class='row'>
     <div class="form-group col-sm-6">
-      <div class="at-select">
-        <%= form.label t('apartment.campus'), class:"col-form-label" %>
-        <%= select_tag 'apartment[campus]', options_for_select(Constant::CAMPUS, apartment&.campus),  class: 'form-control selectpicker', include_blank: t('apartment.select_campus') %>
-      </div>
+      <%= form.label t('apartment.address'), class:"col-form-label" %>
+      <%= form.text_field :area, class: 'form-control' %>
     </div>
     <div class="form-group col-sm-6">
       <%= form.label t('apartment.postalcode'), class:"col-form-label" %>
@@ -36,13 +34,15 @@
   <div class='row'>
     <div class="form-group col-sm-6">
       <div class="at-select">
-        <%= form.label t('apartment.apartment_type'), class:"col-form-label" %>
-        <%= select_tag 'apartment[apartment_type_id]', options_for_select(apartment_types_array), class: "form-control selectpicker apartment-type", include_blank: t('apartment.select_accomodation_type') %>
+        <%= form.label t('apartment.campus'), class:"col-form-label" %>
+        <%= select_tag 'apartment[campus]', options_for_select(Constant::CAMPUS, apartment&.campus),  class: 'form-control selectpicker', include_blank: t('apartment.select_campus') %>
       </div>
     </div>
     <div class="form-group col-sm-6">
-      <%= form.label t('apartment.description'), class:"col-form-label" %>
-      <%= form.text_field :description, class: 'form-control' %>
+      <div class="at-select">
+        <%= form.label t('apartment.apartment_type'), class:"col-form-label" %>
+        <%= select_tag 'apartment[apartment_type_id]', options_for_select(apartment_types_array), class: "form-control selectpicker apartment-type", include_blank: t('apartment.select_accomodation_type') %>
+      </div>
     </div>
   </div>
   <div class='row'>
