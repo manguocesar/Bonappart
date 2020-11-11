@@ -55,7 +55,17 @@ class FilterApartmentService
   def filter_apartments_by_distance(distance_params)
     return search_apartments if distance_params.include?('I do not mind')
 
-    search_apartments.filter_by_distance_from_university(distance_params)
+    # search_apartments.filter_by_distance_from_university(distance_params)
+    case distance_params
+    when distance?(distance_params, Constant::LESS_THAN_TEN)
+      search_apartments.near(Constant::UNIVERSITY_ADDRESS, 10)
+    when distance?(distance_params, Constant::GREATER_THAN_TEN)
+      search_apartments.near(Constant::UNIVERSITY_ADDRESS, 20)
+    when distance?(distance_params, Constant::OUTSIDE_FONTAINEBLEAU)
+      search_apartments.near(Constant::UNIVERSITY_ADDRESS, 55, units: :km)
+    else
+      search_apartments
+    end
   end
 
   def filter_apartments_by_rent(rent_params)
@@ -87,5 +97,11 @@ class FilterApartmentService
                     @apartments.filter_by_departure_date(field_params)
                   end
     @apartments
+  end
+
+  private
+
+  def distance?(distance_params, distance)
+    distance_params.include?(distance)
   end
 end

@@ -101,7 +101,7 @@ var DisplayMap = {
   mapSettings: function (latlong) {
     // latlong - coordinates and apartment price
     const map = new google.maps.Map(document.getElementById("at-locationmap"), {
-      zoom: 12,
+      zoom: 10,
       center: new google.maps.LatLng(parseFloat(latlong[0][2]), parseFloat(latlong[0][3])),
       panControl: true,
       zoomControl: true,

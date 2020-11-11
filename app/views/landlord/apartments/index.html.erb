@@ -16,8 +16,8 @@
                   role="grid" aria-describedby="bootstrap-data-table_info">
                   <thead>
                     <tr role="row">
-                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('apartment.title') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('apartment.distance_from_university') %></th>
+                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('apartment.property_name') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('apartment.campus') %></th>
                       <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('apartment.availability') %></th>
                       <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('rent.deposit_amount') %></th>
                       <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="3" style="width:120px;"><%= t('actions') %></th>
@@ -27,7 +27,7 @@
                     <% @apartments.each do |apartment| %>
                       <tr role="row" class="odd">
                         <td><%= apartment&.title %></td>
-                        <td><%= apartment&.distance_from_university %></td>
+                        <td><%= apartment&.campus %></td>
                         <td><%= apartment&.departure_date_availabilty %></td>
                         <td><%= apartment&.rent_rate&.deposit_amount %></td>
                         <td>
