@@ -30,4 +30,8 @@ module Constant
                               'Outside Fontainebleau in nearby houses', 'I do not mind'].freeze
 
   CAMPUS = %w[Fontainebleau Singapore].freeze
+  UNIVERSITY_ADDRESS = 'Boulevard de Constance 77305 Fontainebleau'
+  LESS_THAN_TEN = '<10 minutes'
+  GREATER_THAN_TEN = '>10 minutes'
+  OUTSIDE_FONTAINEBLEAU = 'Outside Fontainebleau'
 end

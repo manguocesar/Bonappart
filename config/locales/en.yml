@@ -102,6 +102,8 @@ en:
     property_details: Property Details
     campus: Campus
     select_campus: Select campus
+    property_name: Property Name
+    campus: Campus
   dashboard:
     count_of_ads: Count of Ads
     count_of_active_ads: Count of Active Ads
