@@ -18,3 +18,15 @@ body {
   letter-spacing: normal !important;
   font-weight: 700 !important;
 }
+
+.bootstrap-select > .dropdown-toggle{
+  position: relative;
+  width: 100%;
+  text-align: right;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  background-color: #eeeeee;
+}
