@@ -41,7 +41,6 @@ gem 'stripe-rails' # For payment gateway
 gem 'city-state' # For city and state selection
 gem 'wicked_pdf', '~> 1.1' # For generate PDF
 gem 'wkhtmltopdf-binary' # For generate PDF
-gem 'mini_racer'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
