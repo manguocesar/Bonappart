@@ -27,7 +27,7 @@ module ApplicationHelper
   end
 
   def apartment_type_collection
-    ApartmentType.order(:name)
+    ApartmentType.all
   end
 
   def devise_mapping

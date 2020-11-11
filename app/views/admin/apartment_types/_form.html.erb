@@ -12,7 +12,7 @@
     <div class="form-group col-sm-12 mb-3">
       <%= form.label 'Apartment Image', class:"col-form-label" %><br/>
       <div class="custom-file">
-        <%= form.file_field :image, class: "custom-file-input", id:"customFile" , required: true %>
+        <%= form.file_field :image, class: "custom-file-input", id:"customFile" , required: apartment_type.new_object? %>
         <label class="custom-file-label" for="customFile"><%= t('apartment.select_images') %></label>
       </div>
     </div>
