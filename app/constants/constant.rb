@@ -28,4 +28,6 @@ module Constant
 
   DISTANCE_FROM_UNIVERSITY = ['<10 minutes’ walk from campus', '>10 minutes’ walk from campus',
                               'Outside Fontainebleau in nearby houses', 'I do not mind'].freeze
+
+  CAMPUS = %w[Fontainebleau Singapore].freeze
 end

@@ -5,6 +5,7 @@ class Apartment < ApplicationRecord
   # scopes for filters
   scope :filter_by_type, ->(apartment_type) { joins(:apartment_type).where('apartment_types.name ILIKE :apartment_type', apartment_type: "%#{apartment_type.downcase}%") }
   scope :filter_by_distance_from_university, ->(distance_from_university) { where 'distance_from_university ILIKE ?', distance_from_university.downcase }
+  scope :filter_by_campus, ->(campus) { where campus: campus }
   scope :filter_by_rent_asc, -> { includes(:rent_rate).order('rent_rates.net_rate ASC') }
   scope :filter_by_rent, ->(low_rate, high_rate) { joins(:rent_rate).where('rent_rates.net_rate >= ? AND rent_rates.net_rate <= ?', low_rate, high_rate) }
   scope :filter_by_departure_date, ->(departure_date) { where departure_date:  DateTime.parse(departure_date) }
@@ -29,8 +30,7 @@ class Apartment < ApplicationRecord
   validates_presence_of :title, :description, :postalcode, :floor,
                         :city, :country, :area, :apartment_type,
                         :departure_date,:total_bedrooms,
-                        :shower_room, :other_facilities,
-                        :distance_from_university
+                        :shower_room, :other_facilities
 
   geocoded_by :full_address
   after_validation :geocode # , if: ->(obj){ obj.address.present? and obj.address_changed? }

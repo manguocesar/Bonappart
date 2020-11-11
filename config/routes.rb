@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
     resources :apartments
+    resources :users
     resources :apartment_types
     resources :apartments
     resources :subscriptions, only: %i[index new create]

@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   attr_accessor :login
 
+  # Scope
+  scope :search_by_name_or_email, ->(search) { where 'firstname ILIKE ? OR email ILIKE ?', search.downcase, search.downcase }
+
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
