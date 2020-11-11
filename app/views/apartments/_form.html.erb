@@ -15,7 +15,7 @@
     <div class="form-group col-sm-6">
       <div class="at-select">
         <%= form.label t('apartment.campus'), class:"col-form-label" %>
-        <%= select_tag 'apartment[campus]', options_for_select(Constant::CAMPUS, apartment&.campus),  class: 'form-control selectpicker', include_blank: t('apartment.campus') %>
+        <%= select_tag 'apartment[campus]', options_for_select(Constant::CAMPUS, apartment&.campus),  class: 'form-control selectpicker', include_blank: t('apartment.select_campus') %>
       </div>
     </div>
     <div class="form-group col-sm-6">
@@ -37,7 +37,7 @@
     <div class="form-group col-sm-6">
       <div class="at-select">
         <%= form.label t('apartment.apartment_type'), class:"col-form-label" %>
-        <%= select_tag 'apartment[apartment_type_id]', options_for_select(apartment_types_array), class: "form-control selectpicker apartment-type", include_blank: t('apartment.apartment_type') %>
+        <%= select_tag 'apartment[apartment_type_id]', options_for_select(apartment_types_array), class: "form-control selectpicker apartment-type", include_blank: t('apartment.select_accomodation_type') %>
       </div>
     </div>
     <div class="form-group col-sm-6">

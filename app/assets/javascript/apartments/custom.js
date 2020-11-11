@@ -4,12 +4,12 @@ var ApartmentForm = {
       required: true
     };
 
-    $('#apartment_apartment_type_id').on('change', function () {
+    $('#apartment_apartment_type_id, #apartment_campus').on('change', function () {
       if ($(this).val() == "") {
         $(this).valid();
       } else {
         $(this).parent('div').removeClass('is-invalid text-danger');
-        $('#apartment_apartment_type_id-error').remove();
+        $(`#${$(this).attr('id')}-error`).remove();
       }
     });
 
@@ -45,8 +45,8 @@ var ApartmentForm = {
         "apartment[other_facilities]": requiredRule,
         "apartment[longitude]": requiredRule,
         "apartment[latitude]": requiredRule,
-        "apartment[apartment_type_id]": requiredRule
-
+        "apartment[apartment_type_id]": requiredRule,
+        "apartment[campus]": requiredRule
       },
 
       messages: {
@@ -67,7 +67,8 @@ var ApartmentForm = {
         "apartment[other_facilities]": 'Please enter other facilities',
         "apartment[longitude]": 'Please enter longtitude',
         "apartment[latitude]": 'Please enter latitude',
-        "apartment[apartment_type_id]": 'Please select accomodation type'
+        "apartment[apartment_type_id]": 'Please select accomodation type',
+        "apartment[campus]": 'Please select campus'
       },
     });
   }

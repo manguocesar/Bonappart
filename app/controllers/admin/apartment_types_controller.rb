@@ -65,7 +65,7 @@ module Admin
 
     # Load apartment type
     def load_apartment_type
-      @apartment_type = Apartment.find_by(id: params[:id])
+      @apartment_type = ApartmentType.find_by(id: params[:id])
       # authorize @apartment_type
     end
 
