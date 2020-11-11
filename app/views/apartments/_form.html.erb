@@ -79,7 +79,7 @@
     <div class="form-group col-sm-12">
       <%= form.label t('apartment.images'), class:"col-form-label " %>
       <div class="custom-file">
-        <%= form.file_field :images, class: "custom-file-input", id:"customFile" , required: true, multiple: true %>
+        <%= form.file_field :images, class: "custom-file-input", id:"customFile" , required: apartment.new_record?, multiple: true %>
         <label class="custom-file-label" for="customFile"><%= t('apartment.select_images') %></label>
       </div>
     </div>
