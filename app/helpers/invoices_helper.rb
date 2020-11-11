@@ -13,4 +13,12 @@ module InvoicesHelper
       add_payment_method_path(subscription: invoice.subscription&.id, amount: invoice.amount)
     end
   end
+
+  def paid_amount(invoice)
+    invoice.paid? ? invoice.amount : Constant::ZERO
+  end
+
+  def balance_due_amount(invoice)
+    invoice.paid? ? Constant::ZERO : invoice.amount
+  end
 end

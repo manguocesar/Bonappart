@@ -114,8 +114,7 @@ en:
     apartment_types: Apartment Types
     booked_apartment: Booked Apartments
     subscriptions: Subscriptions
-    paid_subacriptions: Paid Subscriptions
-    unpaid_subscriptions: Unpaid Subscriptions
+    my_invoice: My Invoice
     invoices: Invoices
     paid_invoices: Paid Invoices
     unpaid_invoices: Unpaid Invoices
@@ -124,6 +123,9 @@ en:
     edit_profile: Edit Profile
     signout: Sign Out
     my_ads: My Ads
+    my_properties: My Properties
+    my_bookings: My Bookings
+    my_invoices: My Invoices
     landlord_management: Landlord Management
     all_landlords: All Landlord Users
   inquiry:
@@ -148,6 +150,7 @@ en:
     start_date: Start date
     end_date: End date
     book_now: Book Now
+    property_name: Property Name
   address:
     area: Area
     postal_code: Postal code
@@ -176,6 +179,7 @@ en:
     invoice_number: Invoice Number
     date: Date
     apartment_name: Apartment Name
+    property_name: Property Name
     amount: Amount
     arrival_date: Arrival Date
     departure_date: Departure Date
@@ -201,7 +205,8 @@ en:
     state: State
     postal_code: Postal code
     email: Email
-    date: Date
+    my_invoice: My Invoices
+    invoice: Invoice
   subscription:
     apartment: Apartment
     amount: Amount

@@ -1,0 +1,74 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4><strong class="card-title"><%= t('invoice.my_invoice') %></strong></h4>
+        </div>
+        <div class="card-body">
+          <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="bootstrap-data-table" class="table table-striped table-bordered dataTable no-footer"
+                  role="grid" aria-describedby="bootstrap-data-table_info">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.invoice_number') %></th>
+                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.property_name') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.amount') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.date') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.status') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.total') %></th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                      <tr>
+                        <td><%= @invoice.invoice_number %></td>
+                        <td><%= @invoice.apartment_title %></td>
+                        <td class="text-xs-center"><%= @invoice.amount %></td>
+                        <td class="text-xs-center"><%= date_format(@invoice.date) %></td>
+                        <td class="text-xs-center"><%= @subscription.payment_status %></td>
+                        <td class="text-xs-right"><%= @invoice.amount %></td>
+                      </tr>
+                      <tr>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow text-xs-center"><strong><%= t('invoice.subtotal') %></strong></td>
+                        <td class="emptyrow text-xs-right"><%= @invoice.amount %></td>
+                      </tr>
+                      <tr>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow text-xs-center"><strong><%= t('invoice.total') %></strong></td>
+                        <td class="emptyrow text-xs-right"><%= @invoice.amount %></td>
+                      </tr>
+                      <tr>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow text-xs-center"><strong><%= t('invoice.paid') %></strong></td>
+                        <td class="emptyrow text-xs-right"><%= paid_amount(@invoice) %></td>
+                      </tr>
+                      <tr>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow"></td>
+                        <td class="emptyrow text-xs-center"><strong><%= t('invoice.balance_due') %></strong></td>
+                        <td class="emptyrow text-xs-right"><%= balance_due_amount(@invoice) %></td>
+                      </tr>
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
