@@ -4,59 +4,72 @@ var ApartmentForm = {
       required: true
     };
 
-  $('#apartments_form').validate({
-    errorElement: 'div',
-    errorClass: 'is-invalid text-danger',
+    $('#apartment_apartment_type_id').on('change', function () {
+      if ($(this).val() == "") {
+        $(this).valid();
+      } else {
+        $(this).parent('div').removeClass('is-invalid text-danger');
+        $('#apartment_apartment_type_id-error').remove();
+      }
+    });
 
-    rules: {
-      "apartment[title]": requiredRule,
-      "apartment[description]": requiredRule,
-      "apartment[postalcode]": requiredRule,
-      "apartment[floor]": requiredRule,
-      "apartment[city]": requiredRule,
-      "apartment[country]": requiredRule,
-      "apartment[area]": requiredRule,
-      "apartment[apartment_type]": requiredRule,
-      "apartment[availability]": requiredRule,
-      "apartment[arrival_date]": requiredRule,
-      "apartment[departure_date]": requiredRule,
-      "apartment[total_bedrooms]": requiredRule,
-      "apartment[shower_room]": requiredRule,
-      "apartment[distance_from_university]": requiredRule,
-      "apartment[other_facilities]": requiredRule,
-      "apartment[longitude]": requiredRule,
-      "apartment[latitude]": requiredRule
+    $('#apartments_form').validate({
+      errorElement: 'div',
+      errorClass: 'is-invalid text-danger',
 
-    },
+      errorPlacement: function (error, element) {
+        if (element.is('select')) {
+          var parentDiv = element.parent('div');
+          error.insertAfter(error.insertAfter(parentDiv));
+          parentDiv.addClass("is-invalid text-danger");
+        } else {
+          error.insertAfter(element);
+        }
+      },
 
-    messages: {
-      "apartment[title]": 'Please enter title',
-      "apartment[description]": 'Please enter description',
-      "apartment[postalcode]": 'Please enter postalcode',
-      "apartment[floor]": 'Please enter floor',
-      "apartment[city]": 'Please enter city',
-      "apartment[country]": 'Please enter country',
-      "apartment[area]": 'Please enter area',
-      "apartment[apartment_type]": 'Please enter accomodation type',
-      "apartment[availability]": 'Please enter availability',
-      "apartment[arrival_date]": 'Please enter arrival date',
-      "apartment[departure_date]": 'Please enter departure date',
-      "apartment[total_bedrooms]": 'Please enter total bedrooms',
-      "apartment[shower_room]": 'Please enter shower room',
-      "apartment[distance_from_university]": 'Please enter distance from university',
-      "apartment[other_facilities]": 'Please enter other facilities',
-      "apartment[longitude]": 'Please enter longtitude',
-      "apartment[latitude]": 'Please enter latitude'
-    },
+      rules: {
+        "apartment[title]": requiredRule,
+        "apartment[description]": requiredRule,
+        "apartment[postalcode]": requiredRule,
+        "apartment[floor]": requiredRule,
+        "apartment[city]": requiredRule,
+        "apartment[country]": requiredRule,
+        "apartment[area]": requiredRule,
+        "apartment[apartment_type]": requiredRule,
+        "apartment[availability]": requiredRule,
+        "apartment[arrival_date]": requiredRule,
+        "apartment[departure_date]": requiredRule,
+        "apartment[total_bedrooms]": requiredRule,
+        "apartment[shower_room]": requiredRule,
+        "apartment[distance_from_university]": requiredRule,
+        "apartment[other_facilities]": requiredRule,
+        "apartment[longitude]": requiredRule,
+        "apartment[latitude]": requiredRule,
+        "apartment[apartment_type_id]": requiredRule
 
-    // errorPlacement: function (error, element) {
-    //   popoverPlacement (error, element);
-    // },
+      },
 
-    // success: function (label, element) {
-    //   disablePopover(element);
-    // }
-  });
+      messages: {
+        "apartment[title]": 'Please enter title',
+        "apartment[description]": 'Please enter description',
+        "apartment[postalcode]": 'Please enter postalcode',
+        "apartment[floor]": 'Please enter floor',
+        "apartment[city]": 'Please enter city',
+        "apartment[country]": 'Please enter country',
+        "apartment[area]": 'Please enter area',
+        "apartment[apartment_type]": 'Please enter accomodation type',
+        "apartment[availability]": 'Please enter availability',
+        "apartment[arrival_date]": 'Please enter arrival date',
+        "apartment[departure_date]": 'Please enter departure date',
+        "apartment[total_bedrooms]": 'Please enter total bedrooms',
+        "apartment[shower_room]": 'Please enter shower room',
+        "apartment[distance_from_university]": 'Please enter distance from university',
+        "apartment[other_facilities]": 'Please enter other facilities',
+        "apartment[longitude]": 'Please enter longtitude',
+        "apartment[latitude]": 'Please enter latitude',
+        "apartment[apartment_type_id]": 'Please select accomodation type'
+      },
+    });
   }
 }
 

@@ -72,6 +72,7 @@ en:
     country: Country
     area: Area
     apartment_type: Accomodation type
+    select_accomodation_type: Select accomodation type
     availability: Availability
     arrival_date: Arrival date
     departure_date: Departure date
