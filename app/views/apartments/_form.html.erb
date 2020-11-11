@@ -3,12 +3,24 @@
   <%= hidden_field_tag 'apartment[user_id]', current_user&.id %>
   <div class='row'>
     <div class="form-group col-sm-6">
-      <%= form.label t('apartment.title'), class:"col-form-label" %>
+      <%= form.label t('apartment.apartment_title'), class:"col-form-label" %>
       <%= form.text_field :title, class: 'form-control' %>
     </div>
     <div class="form-group col-sm-6">
-      <%= form.label t('apartment.area'), class:"col-form-label" %>
+      <%= form.label t('apartment.address'), class:"col-form-label" %>
       <%= form.text_field :area, class: 'form-control' %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class="form-group col-sm-6">
+      <div class="at-select">
+        <%= form.label t('apartment.campus'), class:"col-form-label" %>
+        <%= select_tag 'apartment[campus]', options_for_select(Constant::CAMPUS, apartment&.campus),  class: 'form-control selectpicker', include_blank: t('apartment.campus') %>
+      </div>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.label t('apartment.postalcode'), class:"col-form-label" %>
+      <%= form.text_field :postalcode, class: 'form-control' %>
     </div>
   </div>
   <div class='row'>
@@ -23,52 +35,34 @@
   </div>
   <div class='row'>
     <div class="form-group col-sm-6">
-      <%= form.label t('apartment.postalcode'), class:"col-form-label" %>
-      <%= form.text_field :postalcode, class: 'form-control' %>
-    </div>
-    <div class="form-group col-sm-6">
       <div class="at-select">
         <%= form.label t('apartment.apartment_type'), class:"col-form-label" %>
-        <%= select_tag 'apartment[apartment_type_id]', options_for_select(apartment_types_array), class: "form-control selectpicker apartment-type", include_blank: t('apartment.select_accomodation_type') %>
+        <%= select_tag 'apartment[apartment_type_id]', options_for_select(apartment_types_array), class: "form-control selectpicker apartment-type", include_blank: t('apartment.apartment_type') %>
       </div>
-      </div>
-  </div>
-  <div class='row'>
+    </div>
     <div class="form-group col-sm-6">
       <%= form.label t('apartment.description'), class:"col-form-label" %>
       <%= form.text_field :description, class: 'form-control' %>
     </div>
+  </div>
+  <div class='row'>
     <div class="form-group col-sm-6">
       <%= form.label t('apartment.floor'), class:"col-form-label" %>
       <%= form.text_field :floor, class: 'form-control' %>
     </div>
-  </div>
-  <div class='row'>
     <div class="form-group at-datetime col-sm-6">
       <%= form.label t('apartment.available_date'), class:"col-form-label" %>
       <%= form.text_field :departure_date, class: 'form-control at-startdate' %>
     </div>
+  </div>
+  <div class='row'>
     <div class="form-group col-sm-6">
       <%= form.label t('apartment.total_bedrooms'), class:"col-form-label" %>
       <%= form.text_field :total_bedrooms, class: 'form-control' %>
     </div>
-  </div>
-  <div class='row'>
     <div class="form-group col-sm-6">
       <%= form.label t('apartment.shower_room'), class:"col-form-label" %>
       <%= form.text_field :shower_room, class: 'form-control' %>
-    </div>
-    <div class="form-group col-sm-6">
-      <%= form.label t('apartment.distance_from_university'), class:"col-form-label" %>
-      <div class="popup" data-toggle="popover" title="Add Distance from below options"
-        data-content="
-          <p><10 minutes’ walk from campus</p>
-          <p>>10 minutes’ walk from campus</p>
-          <p>Outside Fontainebleau in nearby houses</p>
-          <p>I do not mind</p>
-          ">
-        <%= form.text_field :distance_from_university, class: 'form-control distanceExample' %>
-      </div>
     </div>
   </div>
   <div class='row'>
@@ -77,27 +71,20 @@
       <%= form.text_field :other_facilities, class: 'form-control' %>
     </div>
     <div class="form-group col-sm-6">
-      <%= form.label t('apartment.images'), class:"col-form-label " %>
-      <div class="custom-file">
-        <%= form.file_field :images, class: "custom-file-input", id:"customFile" , required: true, multiple: true %>
-        <label class="custom-file-label" for="customFile"><%= t('apartment.select_images') %></label>
-      </div>
-    </div>
-  </div>
-  <div class='row'>
-    <div class="form-group col-sm-4">
-      <%= form.label t('apartment.longitude'), class:"col-form-label" %>
-      <%= form.text_field :longitude, class: 'form-control' %>
-    </div>
-     <div class="form-group col-sm-4">
-      <%= form.label t('apartment.latitude'), class:"col-form-label" %>
-      <%= form.text_field :latitude, class: 'form-control' %>
-    </div>
-    <div class="form-group col-sm-4">
       <%= form.label t('apartment.virtual_visit_link'), class:"col-form-label" %>
       <%= form.text_field :virtual_visit_link, class: 'form-control' %>
     </div>
   </div>
+  <div class='row'>
+    <div class="form-group col-sm-12">
+      <%= form.label t('apartment.images'), class:"col-form-label " %>
+      <div class="custom-file">
+        <%= form.file_field :images, class: "custom-file-input", id:"customFile" , required: apartment.new_record?, multiple: true %>
+        <label class="custom-file-label" for="customFile"><%= t('apartment.select_images') %></label>
+      </div>
+    </div>
+  </div><br>
+  <h3><%= t('apartment.rent_details') %></h3><br>
   <%= render partial: 'rent_rates' , locals: { form: form } %>
   <%= link_to 'Back', back_to_apartments, class: 'btn btn-secondary' %>
   <%= button_tag 'Save', class:"btn at-btn", type: "submit" %>

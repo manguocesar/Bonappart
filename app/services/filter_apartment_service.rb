@@ -30,6 +30,7 @@ class FilterApartmentService
   end
 
   def sort_apartments
+    sort_filter(:campus)
     sort_filter(:distance_from_university)
     sort_filter(:rent)
     search_apartments
@@ -41,6 +42,8 @@ class FilterApartmentService
     return if field_params.blank?
 
     @apartments = case field
+                  when :campus
+                    search_apartments.filter_by_campus(field_params)
                   when :distance_from_university
                     filter_apartments_by_distance(field_params)
                   when :rent

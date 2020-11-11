@@ -1,0 +1,21 @@
+# frozen_string_literal: true
+
+module Landlord
+  # Bookings controller
+  class BookingsController < BookingsController
+
+    def index
+      @bookings = pagination(bookings).per(12)
+    end
+
+    private
+
+    def bookings
+      if current_user.present? && current_user.apartments.present?
+        current_user.apartments.map(&:booking)
+      else
+        []
+      end
+    end
+  end
+end
