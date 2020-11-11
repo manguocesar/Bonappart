@@ -14,13 +14,6 @@ LoginForm = {
         }
       },
 
-      // errorPlacement: function (error, element) {
-      //   popoverPlacement (error, element);
-      // },
-
-      // success: function (label, element) {
-      //   disablePopover(element);
-      // }
     });
   }
 }
@@ -37,13 +30,6 @@ ForgotPasswordForm = {
         },
       },
 
-      // errorPlacement: function (error, element) {
-      //   popoverPlacement (error, element);
-      // },
-
-      // success: function (label, element) {
-      //   disablePopover(element);
-      // }
     });
   }
 }
@@ -60,13 +46,6 @@ ResendConfirmationForm = {
         },
       },
 
-      // errorPlacement: function (error, element) {
-      //   popoverPlacement (error, element);
-      // },
-
-      // success: function (label, element) {
-      //   disablePopover(element);
-      // }
     });
   }
 }
@@ -107,13 +86,6 @@ RegisterForm = {
         }
       },
 
-      // errorPlacement: function (error, element) {
-      //   popoverPlacement (error, element);
-      // },
-
-      // success: function (label, element) {
-      //   disablePopover(element);
-      // }
     });
   }
 }

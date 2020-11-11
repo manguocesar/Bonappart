@@ -9,7 +9,8 @@ var ApartmentForm = {
         $(this).valid();
       } else {
         $(this).parent('div').removeClass('is-invalid text-danger');
-        $(`#${$(this).attr('id')}-error`).remove();
+        const selector = $(this).attr('id');
+        $(`#${selector}-error`).remove();
       }
     });
 
