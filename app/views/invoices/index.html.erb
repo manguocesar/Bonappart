@@ -23,11 +23,11 @@
                   <tbody>
                     <% @invoices.each do |invoice| %>
                       <tr role="row" class="odd">
-                        <td><%= link_to "##{invoice.invoice_number}", invoice_path(invoice) %></td>
+                        <td><%= link_to "##{invoice.invoice_number}", invoice_show_path(invoice) %></td>
                         <td><%= invoice.apartment_title %></td>
                         <td><%= invoice&.amount %></td>
                         <td><%= date_format(invoice.date) %></td>
-                        <td><%= link_to invoice.status, landlord_invoice_path(invoice) %></td>
+                        <td><%= link_to invoice.status, invoice_show_path(invoice) %></td>
                       </tr>
                     <% end %>
                     </tr>

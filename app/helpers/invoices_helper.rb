@@ -21,4 +21,16 @@ module InvoicesHelper
   def balance_due_amount(invoice)
     invoice.paid? ? Constant::ZERO : invoice.amount
   end
+
+  def invoice_show_path(invoice)
+    if current_user.present?
+      if current_user.landlord?
+        landlord_invoice_path(invoice)
+      elsif current_user.admin?
+        admin_invoice_path(invoice)
+      else
+        invoice_path(invoice)
+      end
+    end
+  end
 end
