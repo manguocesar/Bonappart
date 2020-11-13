@@ -6,7 +6,7 @@ var UserForm = {
 
     var confirmRules = {
       required: true,
-      equalTo: '#user_password'
+      equalTo: '#password'
     };
 
     $('#new_user').validate({

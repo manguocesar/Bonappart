@@ -1,18 +1,59 @@
 <div class="animated fadeIn">
-  <%= render 'shared/messages' %>
-  <% @apartments.each do |apartment| %>
-    <div class="col-md-4">
-      <%= link_to admin_apartment_path(apartment) do %>
-        <div class="card">
-          <%= image_tag url_for(apartment.images.last), size: '260x200' ,class: 'card-img-top' %>
-          <div class="card-body">
-            <h4 class="card-title mb-3"><%= apartment.title %></h4>
-            <p class="card-text"><%= apartment.description %></p>
-            <strong><% apartment.apartment_type_name %></strong>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <strong class="card-title"><%= t('landlord.apartments') %></strong>
+          <%= link_to new_admin_apartment_path, class: 'btn at-btn pull-right' do %>
+            <i class="menu-icon fa fa-plus"><%= t('landlord.add_apartment') %></i>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="bootstrap-data-table" class="table table-striped table-bordered dataTable no-footer"
+                  role="grid" aria-describedby="bootstrap-data-table_info">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('apartment.property_name') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('apartment.campus') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('apartment.availability') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('rent.deposit_amount') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="3" style="width:120px;"><%= t('actions') %></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @apartments.each do |apartment| %>
+                      <tr role="row" class="odd">
+                        <td><%= apartment&.title %></td>
+                        <td><%= apartment&.campus %></td>
+                        <td><%= apartment&.departure_date_availabilty %></td>
+                        <td><%= apartment&.rent_rate&.deposit_amount %></td>
+                        <td>
+                          <%= link_to admin_apartment_path(apartment) do %>
+                            <i class='fa fa-eye ml-2'></i>
+                          <% end %>
+                          <%= link_to edit_admin_apartment_path(apartment) do %>
+                            <i class='fa fa-pencil ml-2'></i>
+                          <% end %>
+                          <%= link_to admin_apartment_path(apartment), method: :delete, data: { confirm: t('confirmation') } do %>
+                            <i class='fa fa-trash ml-2'></i>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <%= paginate @apartments %>
+            </div>
           </div>
         </div>
-      <% end %>
+      </div>
     </div>
-  <% end %>
-  <%= paginate @apartments %>
+  </div>
 </div>

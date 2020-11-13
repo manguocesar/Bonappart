@@ -20,12 +20,12 @@
         <td><%= user.phone_no %></td>
         <td>
           <%= link_to edit_admin_user_path(user) do %>
-            <i class="menu-icon ti-pencil"></i>
+            <i class="fa fa-pencil"></i>
           <% end %>
         </td>
         <td>
           <%= link_to admin_user_path(user), method: :delete, data: { confirm: t('confirmation') }  do %>
-            <i class="menu-icon ti-trash"></i>
+            <i class="fa fa-trash"></i>
           <% end %>
         </td>
       </tr>
