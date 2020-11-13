@@ -8,11 +8,16 @@ module Admin
     end
 
     def create
-      @apartment = Apartment.new(apartment_params)
-      if @apartment.save
-        redirect_to admin_apartments_path, notice: t('apartment.create')
-      else
-        render :new
+      begin
+        @apartment = Apartment.new(apartment_params)
+        if @apartment.save
+          aparment_index_or_show_page(is_index: false, action: 'create')
+        else
+          render :new
+        end
+      rescue => exception
+        puts "#{exception.inspect}"
+        aparment_index_or_show_page(is_index: true, action: 'create')
       end
     end
   end

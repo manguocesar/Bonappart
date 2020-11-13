@@ -23,38 +23,55 @@ class ApartmentsController < ApplicationController
   def create
     @apartment = Apartment.new(apartment_params)
     authorize @apartment
-    if @apartment.save
-      redirect_to apartments_path, notice: t('apartment.create')
-    else
-      render :new
-    end
-  end
-
-  def update
-    if @apartment.update(apartment_params)
-      if current_user.admin?
-        redirect_to admin_apartment_path, notice: t('apartment.update')
+    begin
+      if @apartment.save
+        aparment_index_or_show_page(is_index: false, action: 'create')
       else
-        redirect_to landlord_apartment_path, notice: t('apartment.update')
+        render :new
       end
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    if @apartment.destroy
-      if current_user.admin?
-        redirect_to admin_apartments_path, notice: t('apartment.delete')
-      else
-        redirect_to landlord_apartments_path, notice: t('apartment.delete')
-      end
-    else
+    rescue => exception
+      puts "#{exception.inspect}"
       redirect_to apartments_path
     end
   end
 
+  def update
+    begin
+      if @apartment.update(apartment_params)
+        aparment_index_or_show_page(is_index: false, action: 'update')
+      else
+        render :edit
+      end
+    rescue => exception
+      puts "#{exception.inspect}"
+      redis_error = exception.kind_of?(Redis::CannotConnectError)
+      aparment_index_or_show_page(is_index: !redis_error, action: 'update')
+    end
+  end
+
+  def destroy
+    begin
+      if @apartment.destroy
+        aparment_index_or_show_page(is_index: true, action: 'delete')
+      else
+        redirect_to apartments_path
+      end
+    rescue => exception
+      puts "#{exception.inspect}"
+      aparment_index_or_show_page(is_index: true, action: 'delete')
+    end
+  end
+
   private
+
+  def aparment_index_or_show_page(is_index: true, action: 'update')
+    index_or_show_path = is_index ? 's_path' : '_path'
+    if current_user.admin?
+      redirect_to send("admin_apartment#{index_or_show_path}".to_sym), notice: t("apartment.#{action}")
+    else
+      redirect_to send("landlord_apartment#{index_or_show_path}".to_sym), notice: t("apartment.#{action}")
+    end
+  end
 
   # call filter apartments service for sorting and searching
   def filtered_apartments
