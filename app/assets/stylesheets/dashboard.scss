@@ -1,7 +1,8 @@
 @import "dashboard/normalize";
 @import "dashboard/bootstrap.min";
 @import "dashboard/font-awesome.min";
-@import "dashboard/themify-icons";
+// @import "dashboard/themify-icons";
+@import "dashboard/nunito.scss";
 @import "dashboard/flag-icon.min";
 @import "dashboard/cs-skin-elastic";
 @import "dashboard/animate";
@@ -10,4 +11,22 @@
 
 .card {
   border-radius: 4px;
+}
+
+body {
+  font-family: 'Nunito', sans-serif !important;
+  letter-spacing: normal !important;
+  font-weight: 700 !important;
+}
+
+.bootstrap-select > .dropdown-toggle{
+  position: relative;
+  width: 100%;
+  text-align: right;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  background-color: #eeeeee;
 }

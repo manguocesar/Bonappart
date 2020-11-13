@@ -13,8 +13,8 @@
   <tbody>
     <tr>
       <td><%= @invoice.apartment_title %></td>
-      <td class="text-xs-center"><%= date_format(@booking.start_date) %></td>
-      <td class="text-xs-center"><%= date_format(@booking.end_date) %></td>
+      <td class="text-xs-center"><%= date_format(@booking&.start_date) %></td>
+      <td class="text-xs-center"><%= date_format(@booking&.end_date) %></td>
       <td class="text-xs-center"><%= @invoice.amount %></td>
       <td class="text-xs-center"><%= @booking.payment_type %></td>
       <td class="text-xs-center"><%= @booking.payment_status %></td>

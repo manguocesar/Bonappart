@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
     resources :apartments
+    resources :users
     resources :apartment_types
     resources :apartments
     resources :subscriptions, only: %i[index new create]
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'dashboard#index'
     resources :apartments
     resources :subscriptions, only: %i[index new create]
+    resources :bookings, only: %i[index show]
+    resources :invoices, only: %i[index show]
   end
 
   get '/new_invoice' => 'invoices#new', as: :add_invoice

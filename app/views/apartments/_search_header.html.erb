@@ -24,7 +24,12 @@
                 </div>
                 <div class="form-group">
                   <div class="at-select">
-                    <%= select_tag('sort[distance_from_university]', options_for_select(Constant::DISTANCE_FROM_UNIVERSITY), class: "form-control", "data-live-search" => "true", include_blank: t('apartment.distance_from_university')) %>
+                    <%= select_tag('sort[campus]', options_for_select(Constant::CAMPUS), class: "form-control", include_blank: t('apartment.campus')) %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="at-select">
+                    <%= select_tag('sort[distance_from_university]', options_for_select(Constant::DISTANCE_FROM_UNIVERSITY), class: "form-control", include_blank: t('apartment.distance_from_university')) %>
                   </div>
                 </div>
                 <div class="at-widget">
@@ -37,7 +42,7 @@
                         <input type="text" id="at-rangeamount" name="<%= 'sort[rent]' %>" readonly="">
                       </div>
                       <div id="at-rangeslider" class="at-rangeslider at-themerangeslider ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                        <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 12%; width: 68%;"></div>
+                        <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
                         <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 12%;"></span>
                         <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 80%;"></span>
                       </div>
@@ -63,11 +68,6 @@
               </div>
               <div class="form-group at-btnarea">
                 <%= button_tag t('filter_results'), class:"at-btn sort-filter", type: "submit" %>
-                <% if current_user.present? && current_user.administrative_role? %>
-                  <%= link_to new_apartment_path, class: 'at-btn at-btnactive' do %>
-                    <%= t('apartment.add_apartment') %>
-                  <% end %>
-                <% end %>
               </div>
             <% end %>
           </div>

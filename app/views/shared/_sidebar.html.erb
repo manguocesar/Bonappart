@@ -8,10 +8,10 @@
         <i class="fa fa-bars"></i>
       </button>
       <!-- /.sidebar logo -->
-      <%= link_to root_url, class: "navbar-brand" do%>
+      <%= link_to root_url_as_per_role, class: "navbar-brand" do%>
         <%= image_tag image_path('logo-dashboard.png') %>
       <% end %>
-      <%= link_to root_url, class: "navbar-brand hidden" do%>
+      <%= link_to root_url_as_per_role, class: "navbar-brand hidden" do%>
         <%= image_tag image_path('logo-small.png') %>
       <% end %>
     </div>

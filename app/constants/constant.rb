@@ -24,7 +24,14 @@ module Constant
   AVAILABILITY = 'availability'
   SUBSCRIBED = 'subscribed'
   EDIT = 'edit'
+  ZERO = '0.0'
 
   DISTANCE_FROM_UNIVERSITY = ['<10 minutes’ walk from campus', '>10 minutes’ walk from campus',
                               'Outside Fontainebleau in nearby houses', 'I do not mind'].freeze
+
+  CAMPUS = %w[Fontainebleau Singapore].freeze
+  UNIVERSITY_ADDRESS = 'Boulevard de Constance 77305 Fontainebleau'
+  LESS_THAN_TEN = '<10 minutes'
+  GREATER_THAN_TEN = '>10 minutes'
+  OUTSIDE_FONTAINEBLEAU = 'Outside Fontainebleau'
 end

@@ -27,7 +27,7 @@ module ApplicationHelper
   end
 
   def apartment_type_collection
-    ApartmentType.order(:name)
+    ApartmentType.all
   end
 
   def devise_mapping
@@ -35,7 +35,7 @@ module ApplicationHelper
   end
 
   def date_format(date)
-    date.strftime('%B %d, %Y')
+    date.strftime('%B %d, %Y') if date.present?
   end
 
   def random_invoice_number

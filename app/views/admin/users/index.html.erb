@@ -1,0 +1,35 @@
+<div class="animated fadeIn">
+  <%= render 'shared/messages' %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <strong class="card-title"><%= t('dashboard.all_landlords') %></strong>
+          <%= link_to new_admin_user_path, class: 'btn at-btn pull-right' do %>
+            <i class="menu-icon fa fa-plus"> Add New Landlord</i>
+          <% end %>
+        </div>
+        <%= form_tag(admin_users_path, method: :get, remote: true ) do |form| %>
+          <div class="input-group">
+            <div class="input-group-append col-sm-10 mt-3 ml-3">
+              <input type="text"  name="search" class="form-control" placeholder="Search Landlord by First name, Last name, User name, Email, Phone No... ">
+            </div>
+            <%= button_tag 'Search', class:"at-btn form-control mt-3 col-sm-1", type: "submit" %>
+          </div>
+        <% end %>
+        <div class="card-body">
+          <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+            <div class="row">
+              <div class="col-sm-12 userTable">
+                <%= render 'users', users: @users %>
+              </div>
+            </div>
+            <div class="row users-pagination">
+              <%= render 'users_pagination', users: @users %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

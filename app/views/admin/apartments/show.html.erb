@@ -54,13 +54,16 @@
         </div>
         <div class='col-md-3'></div>
         <div class="col-md-6 mt-5">
-          <h3><%= t('apartment.edit_delete_apartments') %></h3>
-          <%= link_to 'Edit', edit_admin_apartment_path(@apartment), class: 'at-btn col-sm-3 edit-btn', style:"height: 40px;min-width:auto;" %>
-          <% if !@apartment.subscribed? %>
-            <%= link_to 'Post', new_admin_subscription_path(apartment_id: params[:id]), data: { remote: true }, class: 'at-btn col-sm-3 post-btn' %>
-          <% end %>
-          <%= link_to admin_apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn col-sm-3 btn-danger delete-btn' do %>Delete
-          <% end %>
+          <div class="card">
+            <div class="card-body">
+              <%= link_to 'Edit', edit_admin_apartment_path(@apartment), class: 'btn at-btn col-sm-3 ml-4' %>
+              <% if !@apartment.subscribed? %>
+                <%= link_to 'Post', new_admin_subscription_path(apartment_id: params[:id]), data: { remote: true }, class: 'btn at-btn col-sm-3 ml-4 post-btn' %>
+              <% end %>
+              <%= link_to admin_apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn col-sm-3 btn-danger ml-4 delete-btn' do %>Delete
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>

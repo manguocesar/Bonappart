@@ -1,5 +1,10 @@
 @import "common";
 
+
+.remove-flex.row {
+  display: block;
+}
+
 .height {
   min-height: 200px;
 }

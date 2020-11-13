@@ -10,12 +10,26 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   layout :layout_by_resource
 
-  helper_method :logged_in?
+  helper_method :root_url_as_per_role, :logged_in_user?, :logged_in?
 
   private
 
   def logged_in?
     current_user.present?
+  end
+
+  def logged_in_user?
+    if current_user.blank?
+      redirect_to root_path
+    end
+  end
+
+  def root_url_as_per_role
+    if current_user && current_user.landlord?
+      landlord_dashboard_path
+    elsif current_user && current_user.admin?
+      admin_dashboard_path
+    end
   end
 
   def layout_by_resource
