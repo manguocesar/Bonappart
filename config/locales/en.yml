@@ -220,3 +220,7 @@ en:
   landlord:
     apartments: Apartments
     add_apartment: Add Apartment
+  user:
+    create: User Added Successfully
+    update: User Updated Succsessfully
+    delete: User Deleted Succsessfully

@@ -25,46 +25,69 @@
   <!-- Map container end -->
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div id="at-twocolumns" class="at-twocolumns at-haslayout">
-      <div class="col-xs-12 col-sm-12 col-md-12 float-right">
-        <div class="at-propertydetails at-detailsproperty">
-          <div class="at-propertytitle">
-            <h3><%= t('apartment.rent_details') %></h3>
-          </div>
+<div class="row">
+  <div class="col-md-6 mt-5">
+    <div class="card">
+      <div class="card-header">
+        <strong class="card-title"><%= t('apartment.property_details') %></strong>
+      </div>
+      <div class="card-body">
+        <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
           <div class="row">
-            <% rent = @apartment.rent_rate %>
-            <div class='col-md-6'><h5><%= t('rent.net_rate') %>:</h5><span><%= rent&.net_rate %></span></div>
-            <div class='col-md-6'><h5><%= t('rent.water_charge') %>:</h5><span><%= rent&.water_charge %></span></div>
-            <div class='col-md-6'><h5><%= t('rent.heating_charge') %>:</h5><span><%= rent&.heating_charge %></span></div>
-            <div class='col-md-6'><h5><%= t('rent.electricity_charge') %>:</h5><span><%= rent&.electricity_charge %></span></div>
-            <div class='col-md-6'><h5><%= t('rent.internet_charge') %>:</h5><span><%= rent&.internet_charge %></span></div>
-            <div class='col-md-6'><h5><%= t('rent.deposit_amount') %>:</h5><span><%= rent&.deposit_amount %></span></div>
-          </div>
-        </div>
-        <div class="col-md-6 mt-5">
-          <div class="card">
-            <%= image_tag url_for('blog-single/user-img/img-07.jpg'), size: '260x130', class: "card-img-top" %>
-            <div class="card-body">
-              <h4 class="card-title mb-3">About Host</h4>
-              <p class="card-text">Landlord Name: <%= @apartment.user.firstname %> <%= @apartment.user.lastname %></p>
+            <div class="col-sm-12">
+              <table id="bootstrap-data-table" class="table table-striped table-bordered dataTable no-footer"
+                role="grid" aria-describedby="bootstrap-data-table_info">
+                <tbody>
+                  <tr><li><%= t('apartment.description') %>: <span><%= @apartment.description %></span></li></tr>
+                  <tr><li><%= t('apartment.shower_room') %>: <span><%= @apartment.shower_room %></span></li></tr>
+                  <tr><li><%= t('apartment.floor') %>: <span><%= @apartment.floor %></span></li></tr>
+                  <tr><li><%= t('apartment.total_bedrooms') %>: <span><%= @apartment.total_bedrooms %></span></li></tr>
+                  <tr><li><%= t('apartment.area') %>: <span><%= @apartment.area %></li></tr>
+                  <tr><li><%= t('apartment.distance_from_university') %>: <span><%= @apartment.distance_from_university %></span></li></tr>
+                  <tr><li><%= t('apartment.other_facilities') %>: <span><%= @apartment.other_facilities %></span></li></tr>
+                  <tr><li><%= t('apartment.virtual_visit_link') %>: <span><a href="<%= @apartment.virtual_visit_link %>"><%= @apartment.virtual_visit_link %></a></span></li></tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-        <div class='col-md-3'></div>
-        <div class="col-md-6 mt-5">
-          <div class="card">
-            <div class="card-body">
-              <%= link_to 'Edit', edit_admin_apartment_path(@apartment), class: 'btn at-btn col-sm-3 ml-4' %>
-              <% if !@apartment.subscribed? %>
-                <%= link_to 'Post', new_admin_subscription_path(apartment_id: params[:id]), data: { remote: true }, class: 'btn at-btn col-sm-3 ml-4 post-btn' %>
-              <% end %>
-              <%= link_to admin_apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn col-sm-3 btn-danger ml-4 delete-btn' do %>Delete
-              <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mt-5">
+    <div class="card">
+      <div class="card-header">
+        <strong class="card-title"><%= t('apartment.rent_details') %></strong>
+      </div>
+      <div class="card-body">
+        <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+          <div class="row">
+            <div class="col-sm-12">
+              <table id="bootstrap-data-table" class="table table-striped table-bordered dataTable no-footer"
+                role="grid" aria-describedby="bootstrap-data-table_info">
+                <tbody>
+                  <% rent = @apartment.rent_rate %>
+                  <tr><li><%= t('rent.net_rate') %>: <span><%= rent&.net_rate %></span></li></tr>
+                  <tr><li><%= t('rent.water_charge') %>: <span><%= rent&.water_charge %></span></li></tr>
+                  <tr><li><%= t('rent.heating_charge') %>: <span><%= rent&.heating_charge %></span></li></tr>
+                  <tr><li><%= t('rent.electricity_charge') %>: <span><%= rent&.electricity_charge %></span></li></tr>
+                  <tr><li><%= t('rent.internet_charge') %>: <span><%= rent&.internet_charge %></span></li></tr>
+                  <tr><li><%= t('rent.deposit_amount') %>: <span><%= rent&.deposit_amount %></span></li></tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <%= link_to 'Edit', edit_admin_apartment_path(@apartment), class: 'btn at-btn col-sm-3 ml-4' %>
+        <% if !@apartment.subscribed? %>
+          <%= link_to 'Post', new_admin_subscription_path(apartment_id: params[:id]), data: { remote: true }, class: 'btn at-btn col-sm-3 ml-4 post-btn' %>
+        <% end %>
+        <%= link_to admin_apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn col-sm-3 btn-danger ml-4 delete-btn' do %>Delete
+        <% end %>
       </div>
     </div>
   </div>

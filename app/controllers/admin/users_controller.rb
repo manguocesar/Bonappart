@@ -9,7 +9,7 @@ module Admin
     end
 
     def filter_users
-      @users = User.with_role(:student).order('created_at DESC')
+      @users = User.with_role(:landlord).order('created_at DESC')
       return @users.search_by_name_or_email(params[:search]) if params[:search].present?
 
       @users
@@ -25,7 +25,7 @@ module Admin
       @user = User.new(user_params)
       @user.add_role(params[:roles])
       if @user.save
-        redirect_to admin_users_path, notice: 'User Added Successfully'
+        redirect_to admin_users_path, notice: t('user.create')
       else
         render :new
       end
@@ -33,7 +33,7 @@ module Admin
 
     def update
       if @user.update(user_params)
-        redirect_to admin_users_path, notice: 'User Update Succsessfully'
+        redirect_to admin_users_path, notice: t('user.update')
       else
         render :edit
       end
@@ -41,7 +41,7 @@ module Admin
 
     def destroy
       @user.destroy
-      redirect_to admin_users_path, notice: 'User Deleted Succsessfully'
+      redirect_to admin_users_path, notice: t('user.delete')
     end
 
     private
