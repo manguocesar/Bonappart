@@ -12,12 +12,17 @@
     </li>
     <li>
       <%= link_to landlord_bookings_path do %>
-        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.my_bookings') %>
+        <i class="menu-icon fa fa-th-list"></i><%= t('dashboard.my_bookings') %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to landlord_rooms_path do %>
+        <i class="menu-icon fa fa-commenting-o"></i><%= t('dashboard.my_inquiries') %>
       <% end %>
     </li>
     <li>
       <%= link_to landlord_invoices_path do %>
-        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.my_invoices') %>
+        <i class="menu-icon fa fa-file-text-o"></i><%= t('dashboard.my_invoices') %>
       <% end %>
     </li>
   </ul>

@@ -134,6 +134,7 @@ en:
     my_properties: My Properties
     my_bookings: My Bookings
     my_invoices: My Invoices
+    my_inquiries: 'My Inquiries'
     landlord_management: Landlord Management
     all_landlords: All Landlord Users
   inquiry:

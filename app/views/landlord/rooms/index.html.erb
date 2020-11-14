@@ -1,0 +1,52 @@
+<div id="room-id" data-room-id="<%= @room.try(:id) %>"></div>
+<div id="user-id" data-user-id="<%= current_user.try(:id) %>"></div>
+<% if @rooms.present? %>
+  <div id="frame">
+    <div id="sidepanel">
+      <div id="contacts">
+        <ul>
+          <% @rooms.each do |room| %>
+            <% active_class = (@room == room) ? 'active' : '' %>
+            <%= link_to landlord_room_path(room) do %>
+              <li class="contact <%= active_class %>">
+                <div class="wrap">
+                  <div class="meta">
+                    <p class="name"><%= display_name_as_user_role(room) %></p>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <% if @room.present? %>
+      <div class="content">
+        <div class="contact-profile">
+          <p class="pt-3 pl-3"><%= display_name_as_user_role(@room) %></p>
+        </div>
+        <div class="messages">
+          <ul>
+            <div id="messages">
+              <% @room.messages.ascending_order.each do |message| %>
+                <%= render 'message', message: message %>
+              <% end %>
+            </div>
+          </ul>
+        </div>
+        <div class="message-input">
+          <div class="wrap">
+            <%= render 'messages/form', message: Message.new, room: @room %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="text-center pt-80">
+    <div class="nodata-in-table">
+      <i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i>
+      <h3><%= current_user.student? ? t('no_inquire') : t('no_inquiry') %></h3>
+    </div>
+  </div>
+<% end %>

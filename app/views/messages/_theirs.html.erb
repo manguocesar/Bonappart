@@ -1,10 +1,16 @@
-<div class="message mb-2">
-  <div class="content-container">
-    <div class="content">
-      <%= message&.content %>
-    </div>
-    <div class="author">
-      <%= message&.user&.username %>
+<% if from_landlord %>
+  <div class="message mb-2">
+    <div class="content-container">
+      <div class="content">
+        <%= message&.content %>
+      </div>
+      <!-- <div class="author">
+        <%#= message&.user&.username %>
+      </div> -->
     </div>
   </div>
-</div>
+<% else %>
+  <li class="sent" %>
+    <p><%= message&.content %></p>
+  </li>
+<% end %>

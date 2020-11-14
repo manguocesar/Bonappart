@@ -4,13 +4,13 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.all
+    find_rooms
   end
 
   # GET /rooms/1
   # GET /rooms/1.json
   def show
-    @rooms = Room.all
+    find_rooms
     render 'index'
   end
 
@@ -33,5 +33,11 @@ class RoomsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def room_params
     params.require(:room).permit(:name_for_landlord, :name_for_student, :inquiry_id)
+  end
+
+  def find_rooms
+    column_name = current_user.student? ? 'sender_id' : 'receiver_id'
+    @inquiries = Inquiry.where("#{column_name}=#{current_user&.id}")
+    @rooms = @inquiries.map(&:rooms).flatten.compact
   end
 end

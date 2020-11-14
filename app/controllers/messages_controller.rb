@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   def create
     message = current_user.messages.build(message_params)
     if message.save
-      SendMessageWorker.perform_async(message.id)
+      SendMessageWorker.perform_async(message.id, params.dig('message', 'msg_from_landlord'))
     end
   end
 

@@ -10,12 +10,21 @@
       </ul>
     </div>
   <% end %>
-  <%= form.hidden_field :room_id, value: @room.id %>
+  <% call_from_landlord = controller_path == "landlord/rooms" %>
+  <%= form.hidden_field :room_id, value: @room&.id %>
+  <%= form.hidden_field :msg_from_landlord, value: true if call_from_landlord %>
 
-  <div class="input-group">
-    <%= form.text_field :content, placeholder: "Type your message here...", class: 'form-control', id: 'message_content' %>
-    <div class="input-group-append">
-      <%= form.submit "Add Message", class: "btn btn-primary", id: 'chatBtn' %>
+  <% if call_from_landlord %>
+    <%= form.text_field :content, placeholder: "Type your message here...", id: 'message_content' %>
+    <%= button_tag "Send", class: "submit", type: 'submit', id: 'chatBtn' do %>
+      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+    <% end %>
+  <% else %>
+    <div class="input-group">
+      <%= form.text_field :content, placeholder: "Type your message here...", class: 'form-control', id: 'message_content' %>
+      <div class="input-group-append">
+        <%= form.submit "Add Message", class: "btn btn-primary", id: 'chatBtn' %>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>

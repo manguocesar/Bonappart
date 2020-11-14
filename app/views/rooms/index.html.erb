@@ -1,62 +1,65 @@
 <div id="room-id" data-room-id="<%= @room.try(:id) %>"></div>
 <div id="user-id" data-user-id="<%= current_user.try(:id) %>"></div>
 <!-- All Messages By Rooms -->
-<div class="container-fluid">
-  <div class="row">
-    <%= render 'shared/header_bg' %>
-    <div class="col-3 rooms-sidebar">
-      <!-- Logged in User Details -->
-      <div class="card no-outline">
-        <div class="card-body">
-          <small>Logged in as</small><br>
-          <b><%= current_user.username %><br></b>
-        </div>
-      </div>
-      <hr>
-      <% if @rooms.present? %>
+<% if @rooms.present? %>
+  <div class="container-fluid">
+    <div class="row">
+      <%#= render 'shared/header_bg' %>
+      <div class="col-3 rooms-sidebar">
+        <!-- Logged in User Details
+        <div class="card no-outline">
+          <div class="card-body">
+            <small>Logged in as</small><br>
+            <b><%#= current_user.username %><br></b>
+          </div>
+        </div>-->
+        <br>
+        <hr class="pt-5">
         <% @rooms.each do |room| %>
           <%= link_to room, class: 'room-link' do %>
             <% active_class = (@room == room) ? 'active' : '' %>
             <div class="card no-outline mb-2 room-card <%= active_class %>">
               <div class="card-body">
                 <span class='name'><%= display_name_as_user_role(room) %><span><br>
-                <!-- <span class='member-count'>
-                  <small><%#= room.users.uniq.count %> Members</small>
-                </span>
+                <!--
+                  <span class='member-count'>
+                    <small><%#= room.users.uniq.count %> Members</small>
+                  </span>
                 -->
               </div>
             </div>
           <% end %>
         <% end %>
-      <% else %>
-        <div class="text-center">
-          <div class="nodata-in-table">
-            <i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i>
-            <h3><%= current_user.student? ? t('no_inquire') : t('no_inquiry') %></h3>
+      </div>
+      <div class="col-9">
+        <% if @room.present? %>
+          <div class="chat-room pt-80">
+            <nav class="navbar navbar-light">
+              <!-- Room or Inquiry Name -->
+              <span class="navbar-brand" href="#">
+                <b><%= display_name_as_user_role(@room) %></b>
+              </span>
+              <!-- <small><%#= @room.users.uniq.count %> Members</small>  -->
+            </nav>
+            <div id="messages">
+              <% @room.messages.ascending_order.each do |message| %>
+                <%= render 'messages/message', message: message %>
+              <% end %>
+            </div>
+            <div class="chat-box">
+              <%= render 'messages/form', message: Message.new, room: @room %>
+            </div>
           </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-9">
-      <% if @room.present? %>
-        <div class="chat-room">
-          <nav class="navbar navbar-light">
-            <!-- Room or Inquiry Name -->
-            <span class="navbar-brand" href="#">
-              <b><%= display_name_as_user_role(@room) %></b>
-            </span>
-            <small><%= @room.users.uniq.count %> Members</small>
-          </nav>
-          <div id="messages">
-            <% @room.messages.each do |message| %>
-              <%= render 'messages/message', message: message %>
-            <% end %>
-          </div>
-          <div class="chat-box">
-            <%= render 'messages/form', message: Message.new, room: @room %>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="text-center pt-80">
+    <div class="nodata-in-table">
+      <i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i>
+      <h3><%= current_user.student? ? t('no_inquire') : t('no_inquiry') %></h3>
+    </div>
+  </div>
+<% end %>
+
