@@ -55,7 +55,8 @@ en:
     profile_pic: Profile Picture
     select_role: Select Role
     sign_up_as: Sign Up As
-    min_character: characters minimum
+    min_character: 6 characters minimum
+    leave_blank: Leave blank if you don't want to change password
   filter_results: Filter
   search: Seacrh
   confirmation: Are you sure?
@@ -225,3 +226,4 @@ en:
     create: User Added Successfully
     update: User Updated Succsessfully
     delete: User Deleted Succsessfully
+    profile_update: Profile Updated Successfully
