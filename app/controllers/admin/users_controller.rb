@@ -9,7 +9,7 @@ module Admin
     end
 
     def filter_users
-      @users = User.with_role(:landlord).order('created_at DESC')
+      @users = User.with_role(params[:type]).order('created_at DESC')
       return @users.search_by_name_or_email(params[:search]) if params[:search].present?
 
       @users
