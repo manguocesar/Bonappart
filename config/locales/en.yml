@@ -131,6 +131,7 @@ en:
     my_bookings: My Bookings
     my_invoices: My Invoices
     landlord_management: Landlord Management
+    student_management: Student Management
     all_landlords: All Landlord Users
   inquiry:
     instructions: Instructions
