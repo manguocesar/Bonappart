@@ -14,6 +14,7 @@
             <div class="input-group-append col-sm-10 mt-3 ml-3">
               <input type="text"  name="search" class="form-control" placeholder="Search Landlord by First name, Last name, User name, Email, Phone No... ">
             </div>
+            <%= hidden_field_tag 'type', params[:type] %>
             <%= button_tag 'Search', class:"at-btn form-control mt-3 col-sm-1", type: "submit" %>
           </div>
         <% end %>

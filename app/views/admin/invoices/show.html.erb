@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="remove-flex row">
+    <div class="col-md-12">
+      <div class="text-xs-center">
+        <h2><%= "#{t('invoice.invoice_for_booking')} ##{@invoice.invoice_number}" %></h2>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12 col-md-6 col-lg-6 float-xs-left">
+          <div class="card height">
+            <div class="card-header"><%= t('invoice.billing_details') %></div>
+            <div class="card-block ml-3">
+              <strong><%= t('invoice.fullname') %>: </strong><%= @user.fullname %><br>
+              <strong><%= t('invoice.area') %>: </strong><%= @address.area %><br>
+              <strong><%= t('invoice.city') %>: </strong><%= @address.city %><br>
+              <strong><%= t('invoice.state') %>: </strong><%= @address.state %><br>
+              <strong><%= t('invoice.postal_code') %>: </strong><%= @address.postal_code %><br>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-6 float-xs-left">
+          <div class="card height">
+            <div class="card-header"><%= t('invoice.customer_details') %></div>
+            <div class="card-block ml-3">
+              <strong><%= t('invoice.fullname') %>: </strong><%= @user.fullname %><br>
+              <strong><%= t('invoice.email') %>: </strong><%= @user.email %><br>
+              <strong><%= t('invoice.date') %>: </strong><%= date_format(@invoice.date) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header">
+          <h3 class="text-xs-center"><strong><%= invoice_sumary_title(@invoice) %></strong></h3>
+        </div>
+        <div class="card-block">
+          <div class="table-responsive">
+            <% if @invoice.booking.present? %>
+              <%= render 'invoices/booking_summary' %>
+            <% else %>
+              <%= render 'invoices/subscription_summary' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class='text-center'>
+        <%= link_to 'Back', invoices_path, class: 'btn at-btn' %>
+        <%= link_to 'Download PDF', download_path(format: :pdf), class: 'btn at-btn' %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -212,6 +212,10 @@ en:
     email: Email
     my_invoice: My Invoices
     invoice: Invoice
+    all_invoice: All Invoices
+    edit_invoice: Edit Invoice
+    add_invoice: Add Invoice
+    select_status: Select status
   subscription:
     apartment: Apartment
     amount: Amount
