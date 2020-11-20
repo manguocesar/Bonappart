@@ -63,7 +63,6 @@ en:
   apartment:
     apartment_title: Apartment Title
     address: Address
-    available_date: Available Date
     add_apartment: Add apartment
     edit_apartment: Edit apartment
     title: Title
@@ -78,7 +77,8 @@ en:
     availability: Availability
     arrival_date: Arrival date
     departure_date: Departure date
-    available_date: Available date
+    available_date: Available Date
+    available_from: Available From
     status: Status
     rent: Rent
     total_bedrooms: Total bedrooms
@@ -104,6 +104,8 @@ en:
     select_campus: Select campus
     property_name: Property Name
     campus: Campus
+    month: Month
+    year: Year
   dashboard:
     count_of_ads: Count of Ads
     count_of_active_ads: Count of Active Ads
