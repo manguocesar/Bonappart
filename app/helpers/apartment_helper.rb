@@ -66,4 +66,21 @@ module ApartmentHelper
   def apartment_type_image(apartment_type)
     apartment_type.image.attached? ? url_for(apartment_type.image) : image_url('radio-imgs/img-06.jpg')
   end
+
+  def active_link_to_tab
+    case controller_name
+    when 'dashboard'
+      'dashboard'
+    when 'apartments'
+      'apartments'
+    when 'apartment_types'
+      'apartment_types'
+    when 'bookings'
+      'bookings'
+    when 'invoices'
+      'invoices'
+    when 'users'
+      params['type'] == 'landlord' ? 'landlord' : 'student'
+    end
+  end
 end
