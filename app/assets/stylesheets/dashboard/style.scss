@@ -729,19 +729,19 @@
         font-size: 18px; }
 
 .bg-flat-color-1 {
-  background: #20a8d8; }
+  background: #2196F3; }
 
 .bg-flat-color-2 {
-  background: #63c2de; }
+  background: #ffc721; }
 
 .bg-flat-color-3 {
-  background: #ffc107; }
+  background: #d066e2; }
 
 .bg-flat-color-4 {
-  background: #f86c6b; }
+  background: #ff6b68; }
 
 .bg-flat-color-5 {
-  background: #4dbd74; }
+  background: #20c997; }
 
 .transition {
   -webkit-transition: all 0.3s ease;
@@ -753,16 +753,16 @@
 body {
   background: #f1f2f7;
   display: table;
-  font-family: 'Open Sans' sans-serif !important;
   font-size: 16px;
-  width: 100%; }
+  width: 100%;
+  color: #555555;
+ }
 
 div[class*="col-"] {
   float: left; }
 
 p {
   font-size: 16px;
-  font-family: 'Open Sans' sans-serif;
   font-weight: 400;
   line-height: 24px;
   color: #878787; }
@@ -774,7 +774,7 @@ p:focus {
 a, button {
   text-decoration: none;
   outline: none !important;
-  color: #878787;
+  color: #20c997;
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
   -ms-transition: all 0.25s ease;
@@ -825,17 +825,16 @@ textarea {
   width: 100%; }
 
 aside.left-panel {
-  background: #272c33;
+  background: #20c997;
   display: table-cell;
   height: 100vh;
   min-height: 100%;
-  padding: 0 25px;
+  padding:0px;
   vertical-align: top;
   width: 280px;
   transition: width 0.3s ease; }
 
 .navbar {
-  background: #272c33;
   border-radius: 0;
   border: none;
   display: block;
@@ -845,19 +844,20 @@ aside.left-panel {
   .navbar .navbar-header {
     float: none;
     text-align: center;
-    width: 100%; }
+    width: 100%;
+    background: #ffffff;
+   }
   .navbar .navbar-brand {
-    border-bottom: 1px solid #4e4e52;
     color: #f1f2f7 !important;
     font-family: 'Open Sans';
     font-size: 22px;
     float: none;
-    line-height: 50px;
+    
     margin: 0;
     text-align: left;
     text-transform: capitalize;
     display: block;
-    min-height: 69px;
+    
     padding: 0;
     display: flex;
     justify-content: center;
@@ -866,7 +866,9 @@ aside.left-panel {
     .navbar .navbar-brand span {
       font-weight: 600; }
     .navbar .navbar-brand img {
-      max-width: 160px; }
+      height:60px;
+      width: auto;
+     }
     .navbar .navbar-brand.hidden {
       display: none; }
   .navbar .menu-title {
@@ -888,33 +890,28 @@ aside.left-panel {
       width: 100%; }
       .navbar .navbar-nav li.active .menu-icon, .navbar .navbar-nav li:hover .toggle_nav_button:before,
       .navbar .navbar-nav li .toggle_nav_button.nav-open:before {
-        color: #fff !important; }
+        color: #ffffff !important; }
       .navbar .navbar-nav li .dropdown-toggle:after {
         display: none; }
       .navbar .navbar-nav li > a {
-        background: none !important;
-        color: #c8c9ce !important;
-        display: inline-block;
-        font-family: 'Open Sans';
-        font-size: 14px;
-        line-height: 30px;
-        padding: 10px 0;
-        position: relative;
-        width: 100%; }
-        .navbar .navbar-nav li > a:hover, .navbar .navbar-nav li > a:hover .menu-icon {
-          color: #fff !important; }
+        color: #ffffff !important;
+display: inline-block;
+padding:15px 20px;
+position: relative;
+width: 100%; }
+        .navbar .navbar-nav li > a:hover, .navbar .navbar-nav li > a:focus {
+          color: #fff !important;
+          background: rgba(0, 0, 0, 0.2);
+        }
         .navbar .navbar-nav li > a .menu-icon {
-          color: #8b939b;
-          float: left;
-          margin-top: 8px;
-          width: 55px;
+          color: #ffffff;
+          margin-right: 20px;
           text-align: left;
           z-index: 9; }
         .navbar .navbar-nav li > a .menu-title-text {
           font-size: 14px; }
         .navbar .navbar-nav li > a .badge {
           border-radius: 0;
-          font-family: 'Open Sans';
           font-weight: 600;
           float: right;
           margin: 6px 0 0 0;
@@ -974,7 +971,7 @@ aside.left-panel {
 .navbar .navbar-nav > .active > a,
 .navbar .navbar-nav > .active > a:focus,
 .navbar .navbar-nav > .active > a:hover {
-  color: #d7d9e3 !important; }
+  background: rgba(0,0,0,0.2); }
 
 .navbar-nav li span.count {
   background: #a9d86e;
@@ -994,8 +991,8 @@ body.open .navbar .navbar-brand.hidden {
   display: block; }
 
 .open aside.left-panel {
-  max-width: 70px;
-  width: 70px; }
+  max-width:60px;
+  width:60px; }
   .open aside.left-panel .navbar .navbar-brand {
     display: none; }
     .open aside.left-panel .navbar .navbar-brand.hidden {
@@ -1023,8 +1020,9 @@ body.open .navbar .navbar-brand.hidden {
       z-index: 0;
       transition: none; }
       .open aside.left-panel .navbar .navbar-nav li a .menu-icon {
-        font-size: 20px;
+        font-size:18px;
         z-index: -1;
+        margin: 0;
         width: inherit; }
       .open aside.left-panel .navbar .navbar-nav li a .menu-title-text {
         font-size: 0; }
@@ -1032,7 +1030,7 @@ body.open .navbar .navbar-brand.hidden {
         display: none; }
     .open aside.left-panel .navbar .navbar-nav li > a {
       max-width: 60px;
-      padding-left: 0; }
+      }
     .open aside.left-panel .navbar .navbar-nav li.menu-item-has-children {
       overflow: hidden; }
       .open aside.left-panel .navbar .navbar-nav li.menu-item-has-children a:before {
@@ -1106,13 +1104,14 @@ body.open .navbar .navbar-brand.hidden {
       color: #ccc;
       content: "/\00a0"; }
 
-.right-panel header.header {
-  background: #fff;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
-  clear: both;
-  display: inline-block;
-  padding: 15px 20px 13px 20px;
-  width: 100%; }
+      .right-panel header.header {
+        background: #fff;
+        clear: both;
+        display: inline-block;
+        padding: 18px 15px;
+        width: 100%;
+        line-height: normal;
+      }
 
 .open .right-panel {
   margin-left: -210px; }
@@ -1124,17 +1123,13 @@ header.fixed-top {
 .header-menu .col-sm-7 {
   position: inherit; }
 
-.menutoggle {
-  background: #20c997;
-  border-radius: 50%;
-  color: #fff !important;
-  cursor: pointer;
-  font-size: 18px;
-  height: 43px;
-  line-height: 44px;
-  margin: -2px 20px 0 -57px;
-  text-align: center;
-  width: 43px; }
+  .menutoggle {
+    border-radius: 50%;
+    color: #222222 !important;
+    cursor: pointer;
+    font-size: 18px;
+    text-align: center;
+  }
 
 .open .menutoggle i:before {
   content: "\f0a4"; }
@@ -1280,24 +1275,28 @@ header .form-inline {
   position: relative; }
   .user-area .user-menu {
     background: #fff;
-    border: solid 1px;
-    font-family: 'Open Sans';
+    border: 0;
     left: inherit !important;
     right: 0;
-    top: 40px !important;
+    top: 42px !important;
     margin: 0;
     max-width: 150px;
     padding: 5px 10px;
     position: absolute;
     width: 100%;
     z-index: 999;
-    min-width: 150px; }
-    .user-area .user-menu .nav-link {
-      color: #272c33;
-      display: block;
-      font-size: 14px;
-      line-height: 22px;
-      padding: 5px 0; }
+  }
+  .user-area .user-menu .nav-link {
+    color: #272c33;
+    display: block;
+    font-size: 14px;
+    line-height: 26px;
+    padding: 5px 0;
+    font-weight: 400;
+  }
+  .user-area .user-menu .nav-link i {
+    margin-right: 5px;
+  }
   .user-area .user-avatar {
     float: right;
     margin-top: 4px;
@@ -1360,8 +1359,9 @@ header .form-inline {
 
 .content {
   float: left;
-  padding: 0 20px;
-  width: 100%; }
+  padding:20px;
+  width: 100%;
+margin:0 !important }
 
 .card {
   margin-bottom: 1.5rem;
@@ -1518,7 +1518,7 @@ header .form-inline {
   white-space: nowrap;
   vertical-align: middle;
   transition: all .15s ease-in-out;
-  border-radius: 0;
+  border-radius:5px;
   cursor: pointer; }
 
 /* Icons */
@@ -2152,26 +2152,27 @@ header .form-inline {
     display: block;
     height: auto;
     min-height: inherit;
-    padding: 0 15px;
-    width: 100%; }
+    padding:0px;
+    width: 100%;
+    border-bottom:1px solid #dddddd;
+   }
     aside.left-panel .navbar {
       margin-bottom: 0; }
       aside.left-panel .navbar .navbar-header {
-        height: 50px; }
+        height: 60px; }
       aside.left-panel .navbar .navbar-brand {
         border-bottom: none;
         display: inline-block;
         float: left;
         line-height: 1;
-        margin-top: 11px;
         min-height: inherit; }
         aside.left-panel .navbar .navbar-brand.hidden {
           display: none; }
       aside.left-panel .navbar .navbar-toggler {
         float: right;
-        margin-top: 8px; }
+        }
       aside.left-panel .navbar .navbar-nav li > a {
-        padding: 5px 0; }
+        padding:10px 15px; }
       aside.left-panel .navbar .navbar-nav li.menu-item-has-children a:before {
         top: 5px; }
       aside.left-panel .navbar .menu-title {
@@ -2184,7 +2185,7 @@ header .form-inline {
   .right-panel {
     display: block; }
     .right-panel header.header {
-      padding: 5px 10px 1px 5px; }
+      padding:10px 30px; }
       .right-panel header.header div[class*="col"] {
         padding: 0;
         width: initial; }
@@ -2208,11 +2209,11 @@ header .form-inline {
           .right-panel .breadcrumbs .page-header.float-right .breadcrumb {
             padding: 0; }
     .right-panel .content {
-      padding: 0 10px; }
+      padding: 15px; }
       .right-panel .content .card .card-title {
         margin-bottom: 0; }
       .right-panel .content .card .card-footer {
-        padding: 15px 5px; }
+         }
         .right-panel .content .card .card-footer ul {
           margin: 0; }
           .right-panel .content .card .card-footer ul li {
@@ -2220,10 +2221,8 @@ header .form-inline {
             margin: 5px 0;
             padding: 0 10px;
             width: 33.33%; }
-      .right-panel .content div[class*="col"] {
-        padding: 0; }
-      .right-panel .content .row div[class*="col"] {
-        padding: 0 10px; }
+      
+     
       .right-panel .content .nav-tabs .nav-link,
       .right-panel .content .nav-pills .nav-link {
         padding: .5rem; }
@@ -2245,3 +2244,130 @@ img{object-fit: contain;}
   border-color: #20c997;
   color: white;
 }
+.infobox {
+	background: #ffffff;
+  color: #222;
+  text-align: center;
+	border: 1px solid #20c997;
+}
+.infobox h4 .count {
+	background: #20c997;
+	color: #ffffff;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	display: block;
+	text-align: center;
+	margin: 0 auto 1rem auto;
+	line-height: 50px;
+	font-size: 26px;
+	font-weight: 700;
+}
+.card-title {
+	margin-bottom: 0;
+	font-size: 1.2rem;
+	display: inline-block;
+	font-weight: 700;
+	line-height: 31px;
+	color: #222222;
+}
+.card-header {
+	padding: .5rem 1.25rem;
+	background-color: #ffffff;
+	border-bottom: 3px solid #eeeeee;
+}
+.box {
+	border: 1px solid #dddddd;
+	border-radius: 5px;
+	padding: 20px;
+	margin-bottom: 1.25rem;
+}
+.box h4 {
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 1rem;
+}
+.box p {
+	line-height: 30px;
+}
+.box p strong {
+	color: #222222;
+	width: 100px;
+	display: inline-block;
+}
+.table td, .table th {
+	padding: .5rem;
+	vertical-align:middle;
+	font-size: 15px;
+	font-weight: 400;
+}
+.table thead th {
+	vertical-align: middle;
+	border-bottom: 2px solid #dee2e6;
+	color: #222222;
+	font-weight: 600;
+}
+.col-form-label {
+	padding-top:0;
+	padding-bottom: calc(.375rem + 1px);
+	margin-bottom: 0;
+	font-size: 16px;
+	color: #222222;
+	font-weight: 600;
+	line-height: normal;
+}
+.form-control {
+	padding: .5rem .75rem;
+	color: #222;
+	border: 1px solid #cccccc;
+	font-weight: 400;
+}
+.modal-header {
+	padding: 10px 1rem;
+	border-bottom:0px solid #e9ecef;
+	background: #20c997;
+}
+.modal-title {
+	color: #ffffff;
+	font-weight: 600;
+  font-size: 18px;
+  line-height: 30px;
+}
+.modal-header .close {
+	padding: 0;
+	margin: 0;
+	background: #ffffff;
+	color: #222222;
+	opacity: 1;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+}
+.input-group .form-control {
+	padding-top: .375rem;
+	padding-bottom: .375rem;
+}
+
+/*
+=============================================================
+  responsive css here
+=============================================================
+*/
+@media only screen and (max-width:767px) {
+
+.navbar-toggler {
+	padding: 17px .75rem;
+	font-size: 1.5rem;
+	color: #222222;
+}
+.navbar .navbar-nav {
+	display: block;
+}
+.card-title {
+	font-size: 1rem;
+}
+
+}
+

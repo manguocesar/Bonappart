@@ -1,55 +1,51 @@
 <!-- Invoice details start -->
-<div class="container">
+<div class="content">
+<div class="card">
+<div class="card-header">
+  <h3 class="card-title">
+  <%= "#{t('invoice.invoice')} ##{@invoice.invoice_number}" %>
+  </h3>
+</div>
+<div class="card-body">
   <div class="row">
     <div class="col-md-12">
-      <div class="text-xs-center">
-        <h2><%= "#{t('invoice.invoice')} ##{@invoice.invoice_number}" %></h2>
-      </div>
-      <hr>
+     
       <div class="row">
-        <div class="col-xs-12 col-md-6 col-lg-6 float-xs-left customer-details">
-          <div class="card height">
-            <div class="card-header"><%= t('invoice.billing_details') %></div>
-            <div class="card-block">
-              <strong><%= t('invoice.fullname') %>: </strong><%= @user.fullname %><br>
+        <div class="col-md-6 customer-details">
+          <div class="box">
+            <h4><%= t('invoice.billing_details') %></h4>
+            <div class="box-content">
+              <p class="mb-0"><strong><%= t('invoice.fullname') %>: </strong><%= @user.fullname %><br>
               <strong><%= t('invoice.area') %>: </strong><%= @address&.area %><br>
               <strong><%= t('invoice.city') %>: </strong><%= @address&.city %><br>
               <strong><%= t('invoice.state') %>: </strong><%= @address&.state %><br>
-              <strong><%= t('invoice.postal_code') %>: </strong><%= @address&.postal_code %><br>
+              <strong><%= t('invoice.postal_code') %>: </strong><%= @address&.postal_code %></p>
             </div>
           </div>
         </div>
-        <div class="col-xs-12 col-md-6 col-lg-6 float-xs-left">
-          <div class="card height">
-            <div class="card-header"><%= t('invoice.customer_details') %></div>
-            <div class="card-block">
-              <strong><%= t('invoice.fullname') %>: </strong><%= @user.fullname %><br>
+        <div class="col-md-6">
+          <div class="box">
+            <h4><%= t('invoice.customer_details') %></h4>
+            <div class="box-content">
+              <p class="mb-0"><strong><%= t('invoice.fullname') %>: </strong><%= @user.fullname %><br>
               <strong><%= t('invoice.email') %>: </strong><%= @user.email %><br>
-              <strong><%= t('invoice.date') %>: </strong><%= date_format(@invoice.date) %>
+              <strong><%= t('invoice.date') %>: </strong><%= date_format(@invoice.date) %></p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card ">
-        <div class="card-header">
-          <h3 class="text-xs-center"><strong><%= 'Summary' %></strong></h3>
-        </div>
-        <div class="card-block">
-          <div class="table-responsive">
-            <%= render 'summary' %>
-            <div class='text-center'>
-              <%= link_to 'Back to Home page', landlord_dashboard_path, class: 'btn btn-outline-success btn-xs' %>
-              <%= link_to 'Download PDF', download_path(format: :pdf), class: 'btn btn-outline-success btn-xs' %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  <h3 class="form-group"><%= 'Summary' %></h3>
+  
+  <%= render 'summary' %>
+  <div class='text-right'>
+    <%= link_to 'Back to Home page', landlord_dashboard_path, class: 'btn btn-dark btn-xs' %>
+    <%= link_to 'Download PDF', download_path(format: :pdf), class: 'btn btn-success btn-xs' %>
+  
+</div>
+</div>
 </div>
 
 <!-- Invoice details end -->

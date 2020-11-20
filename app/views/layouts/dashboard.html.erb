@@ -10,6 +10,7 @@
     <%= javascript_include_tag 'dashboard' %>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh015i50EB_Ol2dxNvgd11iJBYJhfpziI"></script>
     <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet"> 
     <link rel="apple-touch-icon" sizes="57x57" href=<%= asset_url("favicon-icons/apple-icon-57x57.png") %> >
     <link rel="apple-touch-icon" sizes="60x60" href=<%= asset_url("favicon-icons/apple-icon-60x60.png") %> >
     <link rel="apple-touch-icon" sizes="72x72" href=<%= asset_url("favicon-icons/apple-icon-72x72.png") %> >
@@ -34,9 +35,9 @@
     <!-- Right Panel -->
     <div id="right-panel" class="right-panel">
       <%= render 'shared/sidebar_header' %>
-      <div class='content mt-3'>
+      
         <%= yield %>
-      </div>
+      
     </div>
     <!-- Right Panel -->
   </body>
