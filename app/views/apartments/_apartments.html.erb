@@ -1,48 +1,124 @@
-<div class='row'>
-  <% @apartments.each do |apartment| %>
-    <div class="col-6 col-md-4 col-lg-6 col-xl-4">
-      <div class="at-featured-holder">
-        <div class="at-featuredslider owl-carousel">
-          <% apartment.images.each do |image| %>
-            <figure class="item">
-              <a href="javascript:void(0);">
-                <%= image_tag url_for(image), size: '350x230', alt:"img description", class: "item" %>
-              </a>
-              <figcaption>
-                <div class="at-slider-details">
-                  <a href="javascript:void(0);" class="at-tag">Featured</a>
-                  <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
-                  <span class="at-photolayer"><i class="fas fa-layer-group"></i><%= apartment.images.count %>Photos</span>
+<div class="row">
+  <div id="at-twocolumns" class="at-twocolumns at-haslayout">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <!-- Properties List Start -->
+      <div class="at-properties-listing">
+        <% @apartments.each do |apartment| %>
+          <div class="at-featured-holder">
+            <div class="at-featuredslider owl-carousel owl-loaded owl-drag">
+              <% apartment.images.each do |image| %>
+                <div class="owl-stage" style="transform: translate3d(-570px, 0px, 0px); transition: all 0s ease 0s; width: 1710px;"><div class="owl-item cloned" style="width: 285px;"><figure class="item">
+                  <a href="javascript:void(0);"><img src="images/featured-img/listing/img-01.jpg" alt="img description"></a>
+                  <figcaption>
+                    <div class="at-slider-details">
+                      <a href="javascript:void(0);" class="at-tag">Featured</a>
+                      <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
+                      <span class="at-photolayer"><i class="fas fa-layer-group"></i>04 Photos</span>
+                      <a href="javascript:void(0);" class="at-like at-liked">Saved<i class="far fa-heart"></i></a>
+                    </div>
+                  </figcaption>
+                  </figure></div><div class="owl-item cloned" style="width: 285px;"><figure class="item">
+                    <a href="javascript:void(0);">
+                      <img src="images/featured-img/listing/img-02.jpg" alt="img description">
+                    </a>
+                    <figcaption>
+                      <div class="at-slider-details">
+                        <a href="javascript:void(0);" class="at-tag">Featured</a>
+                        <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
+                        <span class="at-photolayer"><i class="fas fa-layer-group"></i>19 Photos</span>
+                        <a href="javascript:void(0);" class="at-like">Saved<i class="far fa-heart"></i></a>
+                      </div>
+                    </figcaption>
+                  </figure>
+                  </div><div class="owl-item active" style="width: 285px;"><figure class="item">
+                    <a href="javascript:void(0);"><img src="images/featured-img/listing/img-01.jpg" alt="img description"></a>
+                    <figcaption>
+                      <div class="at-slider-details">
+                        <a href="javascript:void(0);" class="at-tag">Featured</a>
+                        <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
+                        <span class="at-photolayer"><i class="fas fa-layer-group"></i>04 Photos</span>
+                        <a href="javascript:void(0);" class="at-like at-liked">Saved<i class="far fa-heart"></i></a>
+                      </div>
+                    </figcaption>
+                  </figure></div><div class="owl-item" style="width: 285px;"><figure class="item">
+                    <a href="javascript:void(0);">
+                      <img src="images/featured-img/listing/img-02.jpg" alt="img description">
+                    </a>
+                    <figcaption>
+                      <div class="at-slider-details">
+                        <a href="javascript:void(0);" class="at-tag">Featured</a>
+                        <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
+                        <span class="at-photolayer"><i class="fas fa-layer-group"></i>19 Photos</span>
+                        <a href="javascript:void(0);" class="at-like">Saved<i class="far fa-heart"></i></a>
+                      </div>
+                    </figcaption>
+                  </figure></div><div class="owl-item cloned" style="width: 285px;"><figure class="item">
+                    <a href="javascript:void(0);"><img src="images/featured-img/listing/img-01.jpg" alt="img description"></a>
+                    <figcaption>
+                      <div class="at-slider-details">
+                        <a href="javascript:void(0);" class="at-tag">Featured</a>
+                        <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
+                        <span class="at-photolayer"><i class="fas fa-layer-group"></i>04 Photos</span>
+                        <a href="javascript:void(0);" class="at-like at-liked">Saved<i class="far fa-heart"></i></a>
+                      </div>
+                    </figcaption>
+                  </figure></div><div class="owl-item cloned" style="width: 285px;"><figure class="item">
+                    <a href="javascript:void(0);">
+                      <img src="images/featured-img/listing/img-02.jpg" alt="img description">
+                    </a>
+                    <figcaption>
+                      <div class="at-slider-details">
+                        <a href="javascript:void(0);" class="at-tag">Featured</a>
+                        <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
+                        <span class="at-photolayer"><i class="fas fa-layer-group"></i>19 Photos</span>
+                        <a href="javascript:void(0);" class="at-like">Saved<i class="far fa-heart"></i></a>
+                      </div>
+                    </figcaption>
+                  </figure>
                 </div>
-              </figcaption>
-            </figure>
-          <% end %>
-        </div>
-        <div class="at-featured-content">
-          <div class="at-featured-head">
-            <div class="at-featured-tags"><%= link_to apartment.apartment_type_name, apartment_path(apartment) %></div>
-            <div class="at-featured-title">
-              <h3><%= apartment.title.titleize %> <span>$<%= apartment.net_rent %> <em>/ night</em></span></h3>
-              <div class="at-userimg at-verifieduser">
-                <% if apartment.user_image.present? %>
-                  <%= image_tag url_for(apartment.user_image), size: '50x50', alt: "img description" %>
-                  <i class="fa fa-shield-alt"></i>
-                <% end %>
+                </div>
+                <figure class="item">
+                  <a href="javascript:void(0);">
+                    <%= image_tag url_for(image), size: '350x230', alt:"img description" %>
+                  </a>
+                  <figcaption>
+                    <div class="at-slider-details">
+                      <a href="javascript:void(0);" class="at-tag">Featured</a>
+                      <a href="javascript:void(0);" class="at-tag at-rated">Top Rated</a>
+                      <span class="at-photolayer"><i class="fas fa-layer-group"></i><%= apartment.images.count %>Photos</span>
+                    </div>
+                  </figcaption>
+                </figure>
+              <% end %>
+            </div>
+            <div class="at-featured-content">
+              <div class="at-featured-head">
+                <div class="at-featured-tags"><%= link_to apartment.apartment_type_name, apartment_path(apartment) %></div>
+                <div class="at-featured-title">
+                  <h3><%= apartment.title.titleize %> <span>$<%= apartment.net_rent %> <em>/ night</em></span></h3>
+                  <div class="at-userimg at-verifieduser">
+                    <% if apartment.user_image.present? %>
+                      <%= image_tag url_for(apartment.user_image), size: '50x50', alt: "img description" %>
+                      <i class="fa fa-shield-alt"></i>
+                    <% end %>
+                  </div>
+                </div>
+                <ul class="at-room-featured">
+                  <% apartment.other_amenities.each do |amenities| %>
+                    <% if amenities %>
+                      <li><span><i><%= image_tag image_url("featured-img/icons/#{amenities&.first}.jpg"), alt: "img description" %></i><%= other_amenities_text(amenities) %></span></li>
+                    <% end %>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="at-featured-footer">
+                <address><%= apartment.display_full_address %></address>
               </div>
             </div>
-            <ul class="at-room-featured">
-              <% apartment.other_amenities.each do |amenities| %>
-                <% if amenities %>
-                  <li><span><i><%= image_tag image_url("featured-img/icons/#{amenities&.first}.jpg"), alt: "img description" %></i><%= other_amenities_text(amenities) %></span></li>
-                <% end %>
-              <% end %>
-            </ul>
           </div>
-          <div class="at-featured-footer">
-            <address><%= apartment.display_full_address %></address>
-          </div>
-        </div>
+        <% end %>
       </div>
+    <!-- Properties List End -->
     </div>
-  <% end %>
+  </div>
 </div>

@@ -24,6 +24,9 @@
           <% end %>
         </div>
       </div>
+      <%= link_to destroy_user_session_path, class: "nav-link", method: :delete do %>
+        <i class="fa fa-power-off"></i> <%= t('dashboard.signout') %>
+      <% end %>
     </div>
   </div>
 </header>

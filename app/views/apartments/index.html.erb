@@ -1,12 +1,12 @@
 <!-- Map Start -->
 <div class="at-haslayout at-gridmap-holder">
-  <div id="at-locationmap" class="at-locationmap"></div>
+  <!-- <div id="at-locationmap" class="at-locationmap"></div> -->
   <div class="at-innerbanner-holder at-haslayout">
     <div class="container">
       <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
           <div class="at-innerbanner-search">
-            <%= render 'search_header', params: { remote_flag: true } %>
+            <%#= render 'search_header', params: { remote_flag: true } %>
           </div>
         </div>
       </div>
@@ -14,25 +14,25 @@
   </div>
 </div>
 <!-- Map End -->
-<div class="at-haslayout at-main-section">
-  <div class="container">
-    <div class="row">
-      <div class="at-twocolumns at-haslayout">
-        <div class='at-properties-grid at-properties-map at-haslayout', id='apartmentCard'>
-          <!-- Properties List Start -->
-            <%= render 'apartments', apartments: @apartments %>
-          <!-- Properties List End -->
-          <!--<div class='col-md-6'>
-            Display map start
-             <div id="map" class='apartments-map'></div>
-            Display map end -->
-          <%= render 'apartments_pagination', apartments: @apartments %>
-        </div>
-        </div>
+<!-- Main Start -->
+<div id="at-wrapper" class="at-wrapper at-haslayout">
+  <main id="at-main" class="at-main at-haslayout">
+    <!-- Two Columns Start -->
+    <div class="at-haslayout at-main-section">
+      <div class="container">
+        <!-- Properties List Start -->
+          <%= render 'apartments', apartments: @apartments %>
+        <!-- Properties List End -->
+        <!--<div class='col-md-6'>
+          Display map start
+            <div id="map" class='apartments-map'></div>
+          Display map end -->
+        <%#= render 'apartments_pagination', apartments: @apartments %>
       </div>
     </div>
-  </div>
+  </main>
 </div>
+<!-- Main End -->
 <div class='at-pagination d-flex justify-content-center mb-3 apartments-pagination'>
 
 </div>
