@@ -1,21 +1,24 @@
-<div class="content mt-3">
+<div class="content">
   <div class="col-sm-12">
     <%= render 'shared/dashboard_error_messages' %>
   </div>
   <% @cards.each_with_index do |card, index| %>
+    <div class="col col-6 col-lg-3">
     <%= link_to admin_apartments_path(type: change_string_to_param(card.first)) do %>
-      <div class="col-sm-6 col-lg-3">
-        <div class="card text-white bg-flat-color-<%= index + 1 %>">
-          <div class="card-body pb-0">
+      
+        <div class="card infobox bg-flat-color-<%= index + 1 %>">
+          <div class="card-body">
             <h4 class="mb-0">
               <span class="count"><%= card.last %></span>
             </h4>
-            <p class="text-light"><%= card.first %></p>
-            <div class="chart-wrapper px-0" style="height:70px;" height="70">
-            </div>
+            <div><%= card.first %></div>
+            
           </div>
         </div>
-      </div>
+     
     <% end %>
+    </div>
   <% end %>
-</div> <!-- .content -->
+
+  </div>
+

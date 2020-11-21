@@ -1,4 +1,4 @@
-<div class="animated fadeIn">
+<div class="content">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
@@ -6,17 +6,17 @@
           <h4><strong class="card-title"><%= t('dashboard.bookings') %></strong></h4>
         </div>
         <div class="card-body">
-          <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
-            <div class="row">
-              <div class="col-sm-12">
-                <table id="bootstrap-data-table" class="table table-striped table-bordered dataTable no-footer"
+          <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+            
+              <div class="table-responsive">
+                <table id="bootstrap-data-table" class="table table-bordered dataTable no-footer"
                   role="grid" aria-describedby="bootstrap-data-table_info">
                   <thead>
                     <tr role="row">
-                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('booking.property_name') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('booking.start_date') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('booking.end_date') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('booking.status') %></th>
+                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"><%= t('booking.property_name') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('booking.start_date') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('booking.end_date') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:150px; text-align:center;"><%= t('booking.status') %></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -25,14 +25,14 @@
                         <td><%= booking&.apartment_title %></td>
                         <td><%= date_format(booking&.start_date) %></td>
                         <td><%= date_format(booking&.end_date) %></td>
-                        <td><%= booking&.status %></td>
+                        <td align="center"><%= booking&.status %></td>
                       </tr>
                     <% end %>
                     </tr>
                   </tbody>
                 </table>
               </div>
-            </div>
+            
             <div class="row">
               <%= paginate @bookings %>
             </div>

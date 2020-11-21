@@ -70,9 +70,9 @@
       <%= select_tag(:roles, options_for_select(Role.all.pluck(:name)), class: "form-control selectpicker", include_blank: t('user.select_role')) %>
     </div>
   </div>
-  <div class="actions">
-    <%= link_to 'Back', admin_users_path, class: 'btn at-btn' %>
-    <%= form.submit "Save", class:"btn at-btn" %>
+  <div class="actions text-right">
+    <%= link_to 'Back', admin_users_path, class: 'btn btn-dark' %>
+    <%= form.submit "Save", class:"btn btn-success" %>
   </div>
 <% end %>
 <script type="text/javascript">
