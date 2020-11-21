@@ -107,6 +107,7 @@ en:
     campus: Campus
     month: Month
     year: Year
+    distance_from_campus: Distance From Campus
   dashboard:
     count_of_ads: Count of Ads
     count_of_active_ads: Count of Active Ads

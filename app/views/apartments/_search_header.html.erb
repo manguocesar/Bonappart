@@ -10,26 +10,13 @@
             <%= form_tag(apartments_path, method: :get, remote: params[:remote_flag], class: 'at-formtheme at-formbanner') do |form| %>
               <fieldset class="at-datetime">
                 <div class="form-group">
-                  <div class="at-selectdate-holder">
-                    <div class="at-select">
-                      <label>Check-In:</label>
-                      <input class="form-control at-startdate" name="<%= 'search[arrival_date]' %>" placeholder="<%= t('apartment.arrival_date') %>">
-                    </div>
-                    <div class="at-select">
-                      <label>Check Out:</label>
-                      <input class="form-control at-enddate" name="<%= 'search[departure_date]' %>" placeholder="<%= t('apartment.departure_date') %>">
-                    </div>
-                    <a href="javascript:void(0);" class="at-calendarbtn"><i class="ti-calendar"></i></a>
-                  </div>
+                  <h6>Available From</h6>
+                  <%= select_tag 'search[month]', options_for_select(Constant::MONTH_ARRAY), class: 'form-control col-sm-5 selectpicker', include_blank: t('apartment.month') %>
+                  <%= select_tag 'search[year]', options_for_select(Constant::YEAR_ARRAY), class: 'form-control col-sm-5 selectpicker', include_blank: t('apartment.year') %>
                 </div>
                 <div class="form-group">
                   <div class="at-select">
-                    <%= select_tag('sort[campus]', options_for_select(Constant::CAMPUS), class: "form-control", include_blank: t('apartment.campus')) %>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="at-select">
-                    <%= select_tag('sort[distance_from_university]', options_for_select(Constant::DISTANCE_FROM_UNIVERSITY), class: "form-control", include_blank: t('apartment.distance_from_university')) %>
+                    <%= select_tag('sort[distance_from_university]', options_for_select(Constant::DISTANCE_FROM_UNIVERSITY), class: "form-control", include_blank: t('apartment.distance_from_campus')) %>
                   </div>
                 </div>
                 <div class="at-widget">
