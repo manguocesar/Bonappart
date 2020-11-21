@@ -6,7 +6,7 @@
         <div class="card-header">
           <h3 class="card-title"><%= params['type'] == 'student' ? t('dashboard.all_students') : t('dashboard.all_landlords') %></h3>
           <%= link_to new_admin_user_path, class: 'btn at-btn btn-sm pull-right' do %>
-            <i class="menu-icon fa fa-plus"></i> Add New Landlord
+            <i class="menu-icon fa fa-plus"></i> <%= params['type'] == 'student' ? t('dashboard.add_new_student') : t('dashboard.add_new_landlord') %>
           <% end %>
         </div>
         <div class="card-body">

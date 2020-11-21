@@ -137,6 +137,8 @@ en:
     student_management: Student Management
     all_landlords: All Landlord Users
     all_students: All Student Users
+    add_new_landlord: Add New Landlord
+    add_new_student: Add New Student
   inquiry:
     instructions: Instructions
     login_message: You need to login to contact with landlord

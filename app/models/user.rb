@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :subscriptions
   has_many :bookings
   has_many :invoices, through: :subscriptions
+  validates :terms_of_service, acceptance: true
   validates_presence_of :firstname, :lastname
   validates :username, presence: true, uniqueness: true
   validates :phone_no, presence: true,
