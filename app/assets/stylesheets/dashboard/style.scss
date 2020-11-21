@@ -852,12 +852,12 @@ aside.left-panel {
     font-family: 'Open Sans';
     font-size: 22px;
     float: none;
-    
+
     margin: 0;
     text-align: left;
     text-transform: capitalize;
     display: block;
-    
+
     padding: 0;
     display: flex;
     justify-content: center;
@@ -2221,8 +2221,8 @@ margin:0 !important }
             margin: 5px 0;
             padding: 0 10px;
             width: 33.33%; }
-      
-     
+
+
       .right-panel .content .nav-tabs .nav-link,
       .right-panel .content .nav-pills .nav-link {
         padding: .5rem; }
@@ -2250,7 +2250,7 @@ img{object-fit: contain;}
   text-align: center;
 	border: 1px solid #20c997;
 }
-.infobox h4 .count {
+.infobox h4 .count, .infobox h4 .apartment_block {
 	background: #20c997;
 	color: #ffffff;
 	border-radius: 50%;
