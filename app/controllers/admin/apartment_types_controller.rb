@@ -55,9 +55,9 @@ module Admin
     # Delete apartment type
     def destroy
       if @apartment_type.destroy
-        redirect_to apartment_types_path, notice: t('apartment.delete')
+        redirect_to admin_apartment_types_path, notice: t('apartment.delete')
       else
-        redirect_to apartment_types_path
+        redirect_to admin_apartment_types_path
       end
     end
 

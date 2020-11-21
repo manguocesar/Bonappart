@@ -92,12 +92,7 @@
 
         </div>
       </div>
-    </div>
-
-  </div>
-</div>
-
-      <div class="text-right">
+      <div class="card-footer">
         <%= link_to 'Edit', edit_admin_apartment_path(@apartment), class: 'btn at-btn' %>
         <% if !@apartment.subscribed? %>
           <%= link_to 'Post', new_admin_subscription_path(apartment_id: params[:id]), data: { remote: true }, class: 'btn at-btn post-btn' %>
@@ -105,6 +100,9 @@
         <%= link_to admin_apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn btn-danger delete-btn' do %>Delete
         <% end %>
       </div>
+    </div>
+  </div>
+</div>
 
 </div>
 <%= render '/shared/modal_window', locals: { modelId: 'subscriptionModal' } %>

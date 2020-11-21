@@ -76,7 +76,7 @@
     </div>
   </div>
   <div class='row'>
-    <div class="form-group col-sm-6">
+    <div class="form-group col-sm-12">
       <%= form.label t('apartment.images'), class:"col-form-label " %>
       <div class="custom-file">
         <%= form.file_field :images, class: "custom-file-input", id:"customFile" , required: apartment.new_record?, multiple: true, onchange: "previewFile(this);" %>
