@@ -2,6 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :html, :js
+  skip_before_action :verify_authenticity_token, only: :create
 
   # POST /resource
   # Override from devise for add roles for authorizations

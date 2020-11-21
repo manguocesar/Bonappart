@@ -8,7 +8,8 @@ class Apartment < ApplicationRecord
   scope :filter_by_campus, ->(campus) { where campus: campus }
   scope :filter_by_rent_asc, -> { includes(:rent_rate).order('rent_rates.net_rate ASC') }
   scope :filter_by_rent, ->(low_rate, high_rate) { joins(:rent_rate).where('rent_rates.net_rate >= ? AND rent_rates.net_rate <= ?', low_rate, high_rate) }
-  scope :filter_by_departure_date, ->(departure_date) { where departure_date:  DateTime.parse(departure_date) }
+  scope :filter_by_month, ->(month) { where month: month }
+  scope :filter_by_year, ->(year) { where year: year }
   scope :similar_apartments, ->(distance_from_university) { where distance_from_university: distance_from_university }
   scope :subscribed, -> { select(&:subscribed) }
   scope :unsubscribed, -> { reject(&:subscribed) }
@@ -81,7 +82,7 @@ class Apartment < ApplicationRecord
 
   # Full Address with floor no.
   def display_full_address
-    [floor, full_address].join(', ')
+    [floor, full_address].join(' ')
   end
 
   # Get user image..

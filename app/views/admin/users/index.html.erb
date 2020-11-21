@@ -4,9 +4,9 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title"><%= t('dashboard.all_landlords') %></h3>
+          <h3 class="card-title"><%= params['type'] == 'student' ? t('dashboard.all_students') : t('dashboard.all_landlords') %></h3>
           <%= link_to new_admin_user_path, class: 'btn at-btn btn-sm pull-right' do %>
-            <i class="menu-icon fa fa-plus"></i> Add New Landlord
+            <i class="menu-icon fa fa-plus"></i> <%= params['type'] == 'student' ? t('dashboard.add_new_student') : t('dashboard.add_new_landlord') %>
           <% end %>
         </div>
         <div class="card-body">
@@ -15,7 +15,8 @@
             <div class="form-group">
             <%= form_tag(admin_users_path, method: :get, remote: true ) do |form| %>
               <div class="input-group">
-                <input type="text"  name="search" class="form-control" placeholder="Search Landlord by First name, Last name, User name, Email, Phone No... ">                
+                <input type="text"  name="search" class="form-control" placeholder="Search Landlord by First name, Last name, User name, Email, Phone No... ">
+                <%= hidden_field_tag :type, params['type'] %>
                 <div class="input-group-append">
                 <%= button_tag 'Search', class:"at-btn btn btn-success", type: "submit" %>
                 </div>

@@ -2,7 +2,7 @@
 
 module Constant
   USER_FIELDS = %i[firstname lastname username phone_no birthdate
-                   gender address email password password_confirmation image].freeze
+                   gender address email password password_confirmation image terms_of_service].freeze
 
   USER_UPDATE_FIELDS = USER_FIELDS + [:current_password].freeze
 
@@ -17,7 +17,7 @@ module Constant
                           'forgot_password': ['Forgot Your Password?', 'users/passwords/new'],
                           'resend_confirmation': ['Resend Confirmation', 'users/confirmations/new'] }.freeze
 
-  APARTMENT_OTHER_AMENITIES = %w[shower_room total_bedrooms floor].freeze
+  APARTMENT_OTHER_AMENITIES = %w[shower_room total_bedrooms].freeze
   APARTMENT_TYPE_PARAMS = %i[name amount image].freeze
   BOOKING = 'booking'
   SUBSCRIPTION = 'subscription'
