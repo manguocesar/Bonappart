@@ -34,4 +34,8 @@ module Constant
   LESS_THAN_TEN = '<10 minutes'
   GREATER_THAN_TEN = '>10 minutes'
   OUTSIDE_FONTAINEBLEAU = 'Outside Fontainebleau'
+
+  MONTH_ARRAY = ('1'..'12').to_a
+
+  YEAR_ARRAY = ('2020'..'2030').to_a
 end

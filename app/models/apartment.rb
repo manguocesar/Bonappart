@@ -28,12 +28,16 @@ class Apartment < ApplicationRecord
 
   # validates presence of fields
   validates_presence_of :title, :description, :postalcode, :floor,
-                        :city, :country, :area, :apartment_type,
-                        :departure_date,:total_bedrooms,
-                        :shower_room, :other_facilities
+                        :city, :area, :apartment_type, :total_bedrooms, :shower_room
+
+  validate :maximum_image_uploadation
 
   geocoded_by :full_address
   after_validation :geocode # , if: ->(obj){ obj.address.present? and obj.address_changed? }
+
+  def maximum_image_uploadation
+    errors.add(:base, 'maximum 20 images can allowed to upload') if images.count > 20
+  end
 
   # Set active class to first attachment
   def active_class(image)

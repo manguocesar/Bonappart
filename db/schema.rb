@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_11_192045) do
+ActiveRecord::Schema.define(version: 2020_11_20_175343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 2020_11_11_192045) do
     t.boolean "subscribed", default: false
     t.bigint "apartment_type_id"
     t.string "campus"
+    t.string "month"
+    t.string "year"
     t.index ["apartment_type_id"], name: "index_apartments_on_apartment_type_id"
     t.index ["booking_id"], name: "index_apartments_on_booking_id"
     t.index ["user_id"], name: "index_apartments_on_user_id"
@@ -152,6 +154,7 @@ ActiveRecord::Schema.define(version: 2020_11_11_192045) do
     t.bigint "apartment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "included_in_net_rate", default: [], array: true
     t.index ["apartment_id"], name: "index_rent_rates_on_apartment_id"
   end
 

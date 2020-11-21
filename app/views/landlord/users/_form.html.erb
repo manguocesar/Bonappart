@@ -1,6 +1,6 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |form| %>
-  <%= devise_error_messages! %>
+<%= form_for(user, url: url, method: method) do |form| %>
   <%= render 'shared/messages' %>
+  <%= devise_error_messages! %>
   <div class="row">
     <div class="form-group col-sm-6">
       <%= form.label t('users.firstname'), class:"col-form-label" %>
@@ -23,7 +23,7 @@
   </div>
   <div class="row">
     <div class="form-group col-sm-6">
-      <%= form.label t('users.gender'), class:"col-form-label" %>
+      <%= form.label t('users.gender'), class:"col-form-label" %><br>
       <div class="custom-control custom-radio custom-control-inline">
         <%= form.label :male %>
         <%= form.radio_button :gender, "Male", id: 'customRadio1', class: 'custom-control-input' %>
@@ -52,28 +52,22 @@
   </div>
   <div class="row">
     <div class="form-group col-sm-6">
-      <%= form.label t('users.new_password'), class:"col-form-label" %>
+      <%= form.label t('users.password'), class:"col-form-label" %>
       <em>(<%= t('users.leave_blank') %>)</em>
-      <%= form.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: t('users.min_character') %>
+      <%= form.password_field :password, autocomplete: "new-password",id: 'password', class: 'form-control', placeholder: t('users.min_character') %>
     </div>
-    <div class="form-group col-sm-6 mt-4">
+    <div class="form-group col-sm-6">
       <%= form.label t('users.confirm_password'), class:"col-form-label" %>
-      <%= form.password_field :password_confirmation, class: 'form-control' %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="form-group col-sm-12">
-      <%= form.label t('users.profile_pic'), class:"col-form-label" %>
-      <%= form.file_field :image, multiple: false, class: "form-control select" %>
+      <%= form.password_field :password_confirmation, id: '', class: 'form-control' %>
     </div>
   </div>
   <div class="actions">
-    <%= link_to 'Back', root_path, class: 'at-btn' %>
-    <%= form.submit "Update", class:"at-btn at-btnactive" %>
+    <%= link_to 'Back', admin_users_path, class: 'btn at-btn' %>
+    <%= form.submit "Save", class:"btn at-btn" %>
   </div>
 <% end %>
 <script type="text/javascript">
   $(document).ready(function (e) {
-    EditUserForm.validate();
+    UserForm.validate();
   });
 </script>
