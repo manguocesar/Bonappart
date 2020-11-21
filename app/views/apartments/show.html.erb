@@ -104,14 +104,14 @@
                     <% end %>
                     <%= link_to  apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn col-sm-3 btn-danger delete-btn' do %>Delete
                     <% end %>
-                  <% else %>
-                    <% if current_user&.student? %>
-                      <%= link_to 'View All My Ads', apartments_path, class: 'at-btn col-sm-3 ml-1' %>
-                    <% end %>
-                    <% unless @apartment&.booking&.paid? %>
-                      <%= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"at-btn col-sm-3 ml-1" %>
-                    <% end %>
-                    <%= render '/inquiries/inquiry_button' %>
+                  <%# else %>
+                    <%# if current_user&.student? %>
+                      <%#= link_to 'View All My Ads', apartments_path, class: 'at-btn col-sm-3 ml-1' %>
+                    <%# end %>
+                    <%# unless @apartment&.booking&.paid? %>
+                      <%#= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"at-btn col-sm-3 ml-1" %>
+                    <%# end %>
+                    <%#= render '/inquiries/inquiry_button' %>
                   <% end %>
                 </div>
               </div>
