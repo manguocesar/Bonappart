@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   namespace :landlord do
     get '/dashboard', to: 'dashboard#index'
     resources :apartments
+    resources :users, only: %i[edit update]
     resources :subscriptions, only: %i[index new create]
     resources :bookings, only: %i[index show]
     resources :invoices, only: %i[index show]
