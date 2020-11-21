@@ -17,7 +17,7 @@ module Constant
                           'forgot_password': ['Forgot Your Password?', 'users/passwords/new'],
                           'resend_confirmation': ['Resend Confirmation', 'users/confirmations/new'] }.freeze
 
-  APARTMENT_OTHER_AMENITIES = %w[shower_room total_bedrooms].freeze
+  APARTMENT_OTHER_AMENITIES = %w[shower_room total_bedrooms floor].freeze
   APARTMENT_TYPE_PARAMS = %i[name amount image].freeze
   BOOKING = 'booking'
   SUBSCRIPTION = 'subscription'
@@ -34,4 +34,8 @@ module Constant
   LESS_THAN_TEN = '<10 minutes'
   GREATER_THAN_TEN = '>10 minutes'
   OUTSIDE_FONTAINEBLEAU = 'Outside Fontainebleau'
+
+  MONTH_ARRAY = ('1'..'12').to_a
+
+  YEAR_ARRAY = ('2020'..'2030').to_a
 end

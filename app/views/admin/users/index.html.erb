@@ -1,27 +1,35 @@
-<div class="animated fadeIn">
+<div class="content">
   <%= render 'shared/messages' %>
   <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <strong class="card-title"><%= t('dashboard.all_landlords') %></strong>
-          <%= link_to new_admin_user_path, class: 'btn at-btn pull-right' do %>
-            <i class="menu-icon fa fa-plus"> Add New Landlord</i>
+          <h3 class="card-title"><%= t('dashboard.all_landlords') %></h3>
+          <%= link_to new_admin_user_path, class: 'btn at-btn btn-sm pull-right' do %>
+            <i class="menu-icon fa fa-plus"></i> Add New Landlord
           <% end %>
         </div>
-        <%= form_tag(admin_users_path, method: :get, remote: true ) do |form| %>
-          <div class="input-group">
-            <div class="input-group-append col-sm-10 mt-3 ml-3">
-              <input type="text"  name="search" class="form-control" placeholder="Search Landlord by First name, Last name, User name, Email, Phone No... ">
-            </div>
-            <%= button_tag 'Search', class:"at-btn form-control mt-3 col-sm-1", type: "submit" %>
-          </div>
-        <% end %>
         <div class="card-body">
-          <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+          <div class="row">
+            <div class="col-sm-6 ml-auto">
+            <div class="form-group">
+            <%= form_tag(admin_users_path, method: :get, remote: true ) do |form| %>
+              <div class="input-group">
+                <input type="text"  name="search" class="form-control" placeholder="Search Landlord by First name, Last name, User name, Email, Phone No... ">                
+                <div class="input-group-append">
+                <%= button_tag 'Search', class:"at-btn btn btn-success", type: "submit" %>
+                </div>
+              </div>
+            <% end %>
+            </div>
+            </div>
+          </div>
+          <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
             <div class="row">
               <div class="col-sm-12 userTable">
+                <div class="table-responsive">
                 <%= render 'users', users: @users %>
+                </div>
               </div>
             </div>
             <div class="row users-pagination">

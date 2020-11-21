@@ -5,7 +5,7 @@ class ApartmentsController < ApplicationController
   before_action :set_apartment, only: %i[show edit update destroy]
 
   def index
-    @apartments = pagination(filtered_apartments)
+    @apartments = pagination(filtered_apartments).per(12)
   end
 
   def show
@@ -88,14 +88,12 @@ class ApartmentsController < ApplicationController
   def apartment_params
     params.require(:apartment).permit(
       :title, :description, :postalcode, :floor, :campus,
-      :city, :country, :area, :availability, :apartment_type_id,
+      :city, :country, :area, :month, :year, :availability, :apartment_type_id,
       :arrival_date, :departure_date, :total_bedrooms,
       :shower_room, :distance_from_university, :other_facilities,
       :longitude, :latitude, :user_id, :virtual_visit_link, images: [],
-      rent_rate_attributes: %i[
-        net_rate water_charge heating_charge
-        electricity_charge internet_charge
-        insurance_charge deposit_amount
+      rent_rate_attributes: [
+        :net_rate, :water_charge, :heating_charge, :electricity_charge, :internet_charge, :insurance_charge, :deposit_amount, included_in_net_rate: []
       ]
     )
   end

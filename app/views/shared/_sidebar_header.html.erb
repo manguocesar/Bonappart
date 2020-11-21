@@ -1,6 +1,6 @@
 <!-- Header-->
 <header id="header" class="header">
-  <div class="header-menu">
+  <div class="header-menu row">
     <div class="col-sm-7">
       <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
     </div>
@@ -16,7 +16,7 @@
           <%= current_user&.fullname %>
         </a>
         <div class="user-menu dropdown-menu">
-          <%= link_to edit_user_registration_path, class: "nav-link" do %>
+          <%= link_to edit_profile_url, class: "nav-link" do %>
             <i class="fa fa-user"></i> <%= t('dashboard.edit_profile') %>
           <% end %>
           <%= link_to destroy_user_session_path, class: "nav-link", method: :delete do %>

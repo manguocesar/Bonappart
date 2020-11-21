@@ -53,10 +53,11 @@
   <div class="row">
     <div class="form-group col-sm-6">
       <%= form.label t('users.password'), class:"col-form-label" %>
+      <em>(<%= t('users.leave_blank') %>)</em>
       <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> <%= t('users.min_character') %>)</em>
       <% end %>
-      <%= form.password_field :password, autocomplete: "new-password",id: 'password', class: 'form-control' %>
+      <%= form.password_field :password, autocomplete: "new-password",id: 'password', class: 'form-control', placeholder: t('users.min_character') %>
     </div>
     <div class="form-group col-sm-6">
       <%= form.label t('users.confirm_password'), class:"col-form-label" %>
@@ -69,9 +70,9 @@
       <%= select_tag(:roles, options_for_select(Role.all.pluck(:name)), class: "form-control selectpicker", include_blank: t('user.select_role')) %>
     </div>
   </div>
-  <div class="actions">
-    <%= link_to 'Back', admin_users_path, class: 'btn at-btn' %>
-    <%= form.submit "Save", class:"btn at-btn" %>
+  <div class="actions text-right">
+    <%= link_to 'Back', admin_users_path, class: 'btn btn-dark' %>
+    <%= form.submit "Save", class:"btn btn-success" %>
   </div>
 <% end %>
 <script type="text/javascript">

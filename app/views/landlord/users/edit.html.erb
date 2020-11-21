@@ -1,14 +1,12 @@
-<div class="content">
 <div class="row">
   <div class="col-xs-12 col-sm-12">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><%= t('user.new') %></h3>
+        <strong class="card-title"><%= t('user.edit') %></strong>
       </div>
       <div class="card-body">
-        <%= render 'form', user: @user, url: admin_users_path, method: :post %>
+        <%= render 'form', user: @user, url: landlord_user_path, method: :put %>
       </div>
     </div>
   </div>
-</div>
 </div>

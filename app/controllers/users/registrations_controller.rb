@@ -33,7 +33,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
-    resource_updated = update_resource(resource, account_update_params)
+    resource_updated = update_record(resource, account_update_params)
     yield resource if block_given?
     if resource_updated
       current_user.add_role(params[:roles]) if params[:roles].present?
@@ -45,6 +45,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       set_minimum_password_length
       respond_with resource
+    end
+  end
+
+  def update_record(resource, account_update_params)
+    if account_update_params[:password].blank?
+      resource.update_without_password(account_update_params)
+    else
+      resource.update_attributes(account_update_params)
+      bypass_sign_in(resource)
     end
   end
 end
