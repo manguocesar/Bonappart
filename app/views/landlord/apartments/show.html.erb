@@ -67,11 +67,21 @@
                 role="grid" aria-describedby="bootstrap-data-table_info">
                 <tbody>
                   <% rent = @apartment.rent_rate %>
-                  <tr><li><%= t('rent.net_rate') %>: <span><%= rent&.net_rate %></span></li></tr>
-                  <tr><li><%= t('rent.water_charge') %>: <span><%= rent&.water_charge %></span></li></tr>
-                  <tr><li><%= t('rent.heating_charge') %>: <span><%= rent&.heating_charge %></span></li></tr>
-                  <tr><li><%= t('rent.electricity_charge') %>: <span><%= rent&.electricity_charge %></span></li></tr>
-                  <tr><li><%= t('rent.internet_charge') %>: <span><%= rent&.internet_charge %></span></li></tr>
+                  <tr>
+                    <li><%= t('rent.net_rate') %>:
+                      <span>
+                        <%= rent&.net_rate %>
+                        <% if rent&.included_in_net_rate.present? %>
+                          (Included with <%= rent&.included_in_net_rate&.join(', ') %>)
+                        <% end %>
+                      </span>
+                    </li>
+                  </tr>
+                  <% RentRate::INCLUDED_IN_NET_RATE_FIELDS.each do |field| %>
+                    <% if !is_included_in_net_rate?(rent&.included_in_net_rate, field) %>
+                      <tr><li><%= t("rent.#{field}") %>: <span><%= rent&.send(field) %></span></li></tr>
+                    <% end %>
+                  <% end %>
                   <tr><li><%= t('rent.deposit_amount') %>: <span><%= rent&.deposit_amount %></span></li></tr>
                 </tbody>
               </table>
