@@ -6,19 +6,19 @@
         <i class="menu-icon fa fa-dashboard"></i><%= t('dashboard.dashboard') %>
       <% end %>
     </li>
-    <li class=<%= "active" if active_tab == 'apartments' %>>
-      <%= link_to landlord_apartments_path do %>
-        <i class="menu-icon fa fa-home"></i><%= t('dashboard.my_properties') %>
-      <% end %>
-    </li>
     <li class=<%= "active" if active_tab == 'bookings' %>>
       <%= link_to landlord_bookings_path do %>
-        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.my_bookings') %>
+        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.bookings') %>
       <% end %>
     </li>
     <li class=<%= "active" if active_tab == 'invoices' %>>
       <%= link_to landlord_invoices_path do %>
-        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.my_invoices') %>
+        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.invoices') %>
+      <% end %>
+    </li>
+    <li class=<%= "active" if active_tab == 'apartments' %>>
+      <%= link_to landlord_apartments_path do %>
+        <i class="menu-icon fa fa-home"></i><%= t('dashboard.properties') %>
       <% end %>
     </li>
   </ul>

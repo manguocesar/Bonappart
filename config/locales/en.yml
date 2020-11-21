@@ -130,12 +130,13 @@ en:
     edit_profile: Edit Profile
     signout: Sign Out
     my_ads: My Ads
-    my_properties: My Properties
-    my_bookings: My Bookings
-    my_invoices: My Invoices
+    properties: Properties
+    bookings: Bookings
+    invoices: Invoices
     landlord_management: Landlord Management
     student_management: Student Management
     all_landlords: All Landlord Users
+    all_students: All Student Users
   inquiry:
     instructions: Instructions
     login_message: You need to login to contact with landlord
@@ -213,7 +214,7 @@ en:
     state: State
     postal_code: Postal code
     email: Email
-    my_invoice: My Invoices
+    my_invoice: Invoices
     invoice: Invoice
   subscription:
     apartment: Apartment

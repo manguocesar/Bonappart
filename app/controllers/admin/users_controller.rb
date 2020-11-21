@@ -46,7 +46,7 @@ module Admin
 
     def update_user
       if user_params[:password].blank?
-        @user.update_without_password(user_params) 
+        @user.update_without_password(user_params)
       else
         @user.update(user_params)
       end
