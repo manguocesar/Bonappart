@@ -78,8 +78,8 @@ class FilterApartmentService
 
   def search_apartments
     search_filter(:apartment_type)
-    search_filter(:arrival_date)
-    search_filter(:departure_date)
+    search_filter(:month)
+    search_filter(:year)
     @apartments
   end
 
@@ -91,10 +91,10 @@ class FilterApartmentService
     @apartments = case field
                   when :apartment_type
                     @apartments.filter_by_type(field_params)
-                  when :arrival_date
-                    @apartments.filter_by_departure_date(field_params)
-                  when :departure_date
-                    @apartments.filter_by_departure_date(field_params)
+                  when :month
+                    @apartments.filter_by_month(field_params)
+                  when :year
+                    @apartments.filter_by_year(field_params)
                   end
     @apartments
   end
