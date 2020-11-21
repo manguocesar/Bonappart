@@ -1,23 +1,32 @@
 <div id="main-menu" class="main-menu collapse navbar-collapse">
   <ul class="nav navbar-nav">
-    <li class="active">
+    <% active_tab = active_link_to_tab %>
+    <li class=<%= "active" if active_tab == 'dashboard' %>>
       <%= link_to admin_dashboard_path do %>
         <i class="menu-icon fa fa-dashboard"></i><%= t('dashboard.dashboard') %>
       <% end %>
     </li>
-    <li>
+    <li class=<%= "active" if active_tab == 'apartments' %>>
       <%= link_to admin_apartments_path do %>
         <i class="menu-icon fa fa-home"></i><%= t('dashboard.all_apartments') %>
       <% end %>
+    </li>
+    <li class=<%= "active" if active_tab == 'apartment_types' %>>
       <%= link_to admin_apartment_types_path do %>
         <i class="menu-icon fa fa-home"></i><%= t('dashboard.apartment_types') %>
       <% end %>
+    </li>
+    <li class=<%= "active" if active_tab == 'landlord' %>>
       <%= link_to admin_users_path(type: 'landlord') do %>
         <i class="menu-icon fa fa-user"></i><%= t('dashboard.landlord_management') %>
       <% end %>
+    </li>
+    <li class=<%= "active" if active_tab == 'student' %>>
       <%= link_to admin_users_path(type: 'student') do %>
         <i class="menu-icon fa fa-user"></i><%= t('dashboard.student_management') %>
       <% end %>
+    </li>
+    <li class=<%= "active" if active_tab == 'bookings' %>>
       <%= link_to admin_bookings_path do %>
         <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.bookings') %>
       <% end %>

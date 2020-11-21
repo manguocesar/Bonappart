@@ -76,7 +76,7 @@
     </div>
   </div>
   <div class='row'>
-    <div class="form-group col-sm-12">
+    <div class="form-group col-sm-6">
       <%= form.label t('apartment.images'), class:"col-form-label " %>
       <div class="custom-file">
         <%= form.file_field :images, class: "custom-file-input", id:"customFile" , required: apartment.new_record?, multiple: true, onchange: "previewFile(this);" %>
@@ -102,11 +102,13 @@
   <br>
   <h3><%= t('apartment.rent_details') %></h3><br>
   <%= render partial: 'rent_rates' , locals: { form: form } %>
-  <%= link_to 'Back', back_to_apartments, class: 'btn btn-secondary' %>
+<div class='text-right'>
+  <%= link_to 'Back', back_to_apartments, class: 'btn btn-dark' %>
   <%= button_tag 'Save', class:"btn at-btn", type: "submit" %>
   <% if !apartment.new_record? && !apartment.subscribed? %>
     <%= link_to 'Post', subscription_url_for_user(params[:id]), data: { remote: true }, class: 'btn at-btn' %>
   <% end %>
+</div>
 <% end %>
 <script type="text/javascript">
   $(document).ready(function (e) {
