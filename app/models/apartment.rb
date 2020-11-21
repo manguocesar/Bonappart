@@ -82,7 +82,7 @@ class Apartment < ApplicationRecord
 
   # Full Address with floor no.
   def display_full_address
-    [floor, full_address].join(', ')
+    [floor, full_address].join(' ')
   end
 
   # Get user image..

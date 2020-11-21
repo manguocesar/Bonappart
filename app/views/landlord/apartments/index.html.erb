@@ -26,7 +26,7 @@
                   <tbody>
                     <% @apartments.each do |apartment| %>
                       <tr role="row" class="odd">
-                        <td><%= apartment&.title %></td>
+                        <td><%= link_to apartment&.title, landlord_apartment_path(apartment), style: "color:#212529;" %></td>
                         <td><%= apartment&.campus %></td>
                         <td><%= apartment&.departure_date_availabilty %></td>
                         <td><%= apartment&.rent_rate&.deposit_amount %></td>

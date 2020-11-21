@@ -1,5 +1,5 @@
 <div id="at-homesilder-holder" class="at-homeslider-holder at-haslayout">
-  <div class="at-homeslidervideo">
+  <div class="at-homeslidervideo homesliderimg">
     <%= image_tag image_path('slider-imgs/img-02.jpg') %>
   </div>
   <div class="at-home-banner at-home-banner-two at-haslayout">
@@ -15,7 +15,10 @@
             </div>
           </div>
         </div>
-        <%= render 'apartments/search_header', params: { remote_flag: false } %>
+        <%#= render 'apartments/search_header', params: { remote_flag: false } %>
+        <div class="col-12 all_properties at-btnarea">
+          <%= link_to 'Search for your place', apartments_path, class: 'at-btn' %>
+        </div>
       </div>
     </div>
   </div>
