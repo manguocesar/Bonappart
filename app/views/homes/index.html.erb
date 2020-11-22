@@ -88,32 +88,23 @@
           </div>
         </div>
         <div class="at-category-gallery at-haslayout">
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left">
-            <a href="javascript:void(0);">
-              <figure class="at-category-img">
-                <%= image_tag image_path('category/img-01.jpg') %>
-                <figcaption><h3>Apartments</h3><span>12,568 Listings</span></figcaption>
-              </figure>
-            </a>
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left">
-            <a href="javascript:void(0);">
-              <figure class="at-category-img">
-                <%= image_tag image_path('category/img-02.jpg') %>
-                <figcaption><h3>Rooms</h3><span>12,568 Listings</span></figcaption>
-              </figure>
-            </a>
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left">
-            <a href="javascript:void(0);">
-              <figure class="at-category-img">
-                <%= image_tag image_path('category/img-03.jpg') %>
-                <figcaption><h3>Studios</h3><span>12,568 Listings</span></figcaption>
-              </figure>
-            </a>
-          </div>
-          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left at-btnarea">
-            <a href="javascript:void(0);" class="at-btn" title='This Feature Is Under Development' >View All</a>
+          <% apartment_type_collection.each do |type| %>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left">
+              <a href="javascript:void(0);">
+                <figure class="at-category-img">
+                  <%= link_to apartments_path do %>
+                    <%= image_tag image_path('category/img-01.jpg') %>
+                    <%#= image_tag url_for(image), alt:"img description", class: "item" %>
+                  <% end %>
+                  <figcaption><h3><%= apartment_type_name(type) %></h3><span><%= "#{type&.apartments&.count} Listings" %></span></figcaption>
+                </figure>
+              </a>
+            </div>
+          <% end %>
+          <div class="col-12 col-sm-12 col-md-12 at-btnarea-mt float-left">
+            <div class="at-btnarea">
+              <%= link_to 'View All', apartments_path, class: 'at-btn' %>
+            </div>
           </div>
         </div>
       </div>
