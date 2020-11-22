@@ -100,7 +100,8 @@ en:
     next: Next
     booking_success: Accomodation booked successfully
     subscription_success: Accomodation subscribed successfully
-    edit_delete_apartments: Edit / Delete your Apartment details
+    edit_delete_apartments: Edit/Delete your Apartment details
+    edit_post_apartments: Edit/Post your Apartment details
     rent_details: Rent Details
     property_details: Property Details
     campus: Campus

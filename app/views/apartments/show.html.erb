@@ -77,10 +77,9 @@
       </div>
   </div>
   <div class='col-sm-6'>
-  <!-- Map container start -->
+    <!-- Map container start -->
     <div id="at-locationmap" class="at-locationmap"></div>
-  <!-- Map container end -->
-
+    <!-- Map container end -->
     <div class="at-propertydetails at-detailsproperty mt-3">
       <div class="at-filtersoptions">
           <h3><span>Rent: <em>€ <%= @apartment&.rent_rate&.net_rate %></em>/month</span></h3>
@@ -102,7 +101,9 @@
         </li>
         <% RentRate::INCLUDED_IN_NET_RATE_FIELDS.each do |field| %>
           <% if !is_included_in_net_rate?(rent&.included_in_net_rate, field) %>
-            <li><h4><%= t("rent.#{field}") %></h4> <span><%= rent&.send(field) %></span></li>
+            <% if rent&.send(field).present? %>
+              <li><h4><%= t("rent.#{field}") %></h4> <span><%= rent&.send(field) %></span></li>
+            <% end %>
           <% end %>
         <% end %>
         <li><h4><%= t('rent.deposit_amount') %></h4><span><%= rent&.deposit_amount %></span></li>
@@ -124,44 +125,49 @@
           </div>
         </div>
         <div class="at-btnarea row">
-          <% if current_user&.administrative_role? %>
-            <h3><%= t('apartment.edit_delete_apartments') %></h3>
-            <%= link_to 'Edit', edit_apartment_path(@apartment), class: 'at-btn col-sm-3 edit-btn', style:"height: 40px;min-width:auto;" %>
-            <%= link_to  apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn col-sm-3 btn-danger delete-btn' do %>Delete
-            <% end %>
-          <%# else %>
-            <%# if current_user&.student? %>
-              <%#= link_to 'View All My Ads', apartments_path, class: 'at-btn col-sm-3 ml-1' %>
-            <%# end %>
+          <%# if current_user&.student? %>
+            <%#= link_to 'View All My Ads', apartments_path, class: 'at-btn col-sm-3 ml-1' %>
             <%# unless @apartment&.booking&.paid? %>
               <%#= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"at-btn col-sm-3 ml-1" %>
             <%# end %>
             <%#= render '/inquiries/inquiry_button' %>
-          <% end %>
+          <%# end %>
         </div>
       </div>
     </div>
     <!-- Send inquiry to the landlord button -->
   </div>
 </div>
+<br/>
+<div class='text-right'>
+  <% if current_user&.administrative_role? %>
+    <%= link_to 'Edit', "#{show_page_apartments}/edit", class: 'at-btn' %>
+    <% if !@apartment.new_record? && !@apartment.subscribed? %>
+      <%= link_to 'Post', subscription_url_for_user(@apartment&.id), data: { remote: true }, class: 'at-btn' %>
+    <% end %>
+  <% end %>
+</div>
+<br/>
 <main id="at-main" class="at-main at-haslayout">
   <!-- Booking form modal -->
   <%= render '/shared/modal_window', locals: { modelId: 'booking_modal' } %>
   <%= render '/shared/modal_window', locals: { modelId: 'inuiryModal' } %>
   <%= render '/shared/modal_window', locals: { modelId: 'subscriptionModal' } %>
 
-  <!-- Similar apartments -->
-  <div class="at-haslayout at-main-section">
-    <div class="container">
-      <div class="row">
-        <div class="at-twocolumns at-haslayout">
-          <div class='at-properties-grid at-properties-map at-haslayout', id='apartmentCard'>
-            <%= render 'similar_apartments' %>
+  <% if !current_user&.administrative_role? %>
+    <!-- Similar apartments -->
+    <div class="at-haslayout at-main-section">
+      <div class="container">
+        <div class="row">
+          <div class="at-twocolumns at-haslayout">
+            <div class='at-properties-grid at-properties-map at-haslayout', id='apartmentCard'>
+              <%= render 'similar_apartments' %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </main>
 <script>
   // Set coordinates and pass to the map
