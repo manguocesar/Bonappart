@@ -45,7 +45,7 @@ module ApartmentHelper
 
   def check_availability(apartment)
     if apartment.availability?
-      "Available by #{apartment.departure_date_availabilty}"
+      "Available by #{apartment.display_proper_availability_date}"
     else
       'Not Available'
     end
