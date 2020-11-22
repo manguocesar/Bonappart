@@ -71,11 +71,20 @@
               </div>
               <ul class="at-detailslisting">
                 <% rent = @apartment.rent_rate %>
-                <li><h4><%= t('rent.net_rate') %></h4><span><%= rent&.net_rate %></span></li>
-                <li><h4><%= t('rent.water_charge') %></h4><span><%= rent&.water_charge %></span></li>
-                <li><h4><%= t('rent.heating_charge') %></h4><span><%= rent&.heating_charge %></span></li>
-                <li><h4><%= t('rent.electricity_charge') %></h4><span><%= rent&.electricity_charge %></span></li>
-                <li><h4><%= t('rent.internet_charge') %></h4><span><%= rent&.internet_charge %></span></li>
+                <li>
+                  <h4><%= t('rent.net_rate') %></h4>
+                  <span class="w_280">
+                    <%= rent&.net_rate %>
+                    <% if rent&.included_in_net_rate.present? %>
+                      (Included with <%= rent&.included_in_net_rate&.map(&:humanize)&.join(', ') %>)
+                    <% end %>
+                  </span>
+                </li>
+                <% RentRate::INCLUDED_IN_NET_RATE_FIELDS.each do |field| %>
+                  <% if !is_included_in_net_rate?(rent&.included_in_net_rate, field) %>
+                    <li><h4><%= t("rent.#{field}") %></h4> <span><%= rent&.send(field) %></span></li>
+                  <% end %>
+                <% end %>
                 <li><h4><%= t('rent.deposit_amount') %></h4><span><%= rent&.deposit_amount %></span></li>
               </ul>
             </div>
@@ -139,10 +148,12 @@
                   <li><h4><%= t('apartment.shower_room') %></h4><span><%= @apartment.shower_room %></span></li>
                   <li><h4><%= t('apartment.floor') %></h4><span><%= @apartment.floor %></span></li>
                   <li><h4><%= t('apartment.total_bedrooms') %></h4><span><%= @apartment.total_bedrooms %></span></li>
-                  <li><h4><%= t('apartment.area') %></h4><span><%= @apartment.area %></li>
+                  <li><h4><%= t('apartment.area') %></h4><span class="w_280"><%= @apartment.area %></li>
                   <li><h4><%= t('apartment.distance_from_university') %></h4><span><%= @apartment.distance_from_university %></span></li>
-                  <li><h4><%= t('apartment.other_facilities') %></h4><span><%= @apartment.other_facilities %></span></li>
-                  <li><h4><%= t('apartment.virtual_visit_link') %></h4><span><a href="<%= @apartment.virtual_visit_link %>"><%= @apartment.virtual_visit_link %></a></span></li>
+                  <li><h4><%= t('apartment.other_facilities') %></h4><span class="w_280"><%= @apartment.other_facilities %></span></li>
+                  <% if @apartment.virtual_visit_link.present? %>
+                    <li><h4><%= t('apartment.virtual_visit_link') %></h4><span><a href="<%= @apartment.virtual_visit_link %>"><%= @apartment.virtual_visit_link %></a></span></li>
+                  <% end %>
                 </ul>
               </div>
             </div>
