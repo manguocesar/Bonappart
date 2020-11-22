@@ -72,7 +72,7 @@
                         <span>
                           <%= rent&.net_rate %>
                           <% if rent&.included_in_net_rate.present? %>
-                            (Included with <%= rent&.included_in_net_rate&.join(', ') %>)
+                            (Included with <%= rent&.included_in_net_rate&.map(&:humanize)&.join(', ') %>)
                           <% end %>
                         </span>
                       </td>
