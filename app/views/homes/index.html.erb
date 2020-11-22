@@ -88,7 +88,7 @@
           </div>
         </div>
         <div class="at-category-gallery at-haslayout">
-          <% ApartmentType.all.each do |type| %>
+          <% apartment_type_collection.each do |type| %>
             <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left">
               <a href="javascript:void(0);">
                 <figure class="at-category-img">
@@ -96,7 +96,7 @@
                     <%= image_tag image_path('category/img-01.jpg') %>
                     <%#= image_tag url_for(image), alt:"img description", class: "item" %>
                   <% end %>
-                  <figcaption><h3><%= type.name.humanize.pluralize %></h3><span><%= "#{type&.apartments&.count} Listings" %></span></figcaption>
+                  <figcaption><h3><%= apartment_type_name(type) %></h3><span><%= "#{type&.apartments&.count} Listings" %></span></figcaption>
                 </figure>
               </a>
             </div>
