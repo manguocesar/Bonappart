@@ -1,141 +1,133 @@
 <div class="at-haslayout at-propertybannerholder">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-12">
-      </div>
-    </div>
-  </div>
-<div class='row'>
-  <div class="col-sm-6">
-    <!--Carousel Wrapper-->
-      <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
-        <!--Slides-->
-        <div class="carousel-inner" role="listbox">
-          <% @apartment.images.each do |image| %>
-            <div class="carousel-item <%= @apartment.active_class(image) %>">
-              <%= image_tag url_for(image), class: "d-block w-100", style:"height:420px;" %>
-            </div>
-          <% end %>
+  <div class='row'>
+    <div class="col-sm-6">
+      <!--Carousel Wrapper-->
+        <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
+          <!--Slides-->
+          <div class="carousel-inner" role="listbox">
+            <% @apartment.images.each do |image| %>
+              <div class="carousel-item <%= @apartment.active_class(image) %>">
+                <%= image_tag url_for(image), class: "d-block w-100", style:"height:420px;" %>
+              </div>
+            <% end %>
+          </div>
+          <!--/.Slides-->
+          <!--Controls-->
+          <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+          <!--/.Controls-->
+          <ol class="carousel-indicators">
+            <% @apartment.images.each_with_index do |image, index| %>
+              <li data-target="#carousel-thumb" data-slide-to="<%= index %>" class="<%= @apartment.active_class(image) %>">
+                <%= image_tag url_for(image), class: "d-block w-100 img-fluids", style:"height:100px;" %>
+              </li>
+            <% end %>
+          </ol>
         </div>
-        <!--/.Slides-->
-        <!--Controls-->
-        <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-        <!--/.Controls-->
-        <ol class="carousel-indicators">
-          <% @apartment.images.each_with_index do |image, index| %>
-            <li data-target="#carousel-thumb" data-slide-to="<%= index %>" class="<%= @apartment.active_class(image) %>">
-              <%= image_tag url_for(image), class: "d-block w-100 img-fluids", style:"height:100px;" %>
-            </li>
-          <% end %>
-        </ol>
-      </div>
-      <!--/.Carousel Wrapper-->
-      <div class="at-gridlist-option at-option-mt">
-        <a href="javascript:void(0);" id="at-btnopenclose" class="at-btnopenclose"><i class="ti-settings"></i></a>
-      </div>
-      <div class="at-propertylinkdetails at-haslayout ml-4 mt-5">
-        <h3><%= "Accomodation: #{@apartment.apartment_type_name} in #{@apartment.campus}" %></h3>
-        <h4><%= "#{@apartment.title}, #{@apartment.area}" %></h4>
-        <div class="at-propertydetails at-aboutproperty">
-          <div class="at-widgets-title">
-            <ul class="at-room-featured">
-            <% @apartment.other_amenities.each do |amenities| %>
-              <% if amenities %>
-                <li><span><i><%= image_tag image_url("featured-img/icons/#{amenities&.first}.jpg"), alt: "img description" %></i><%= other_amenities_text(amenities) %></span></li>
+        <!--/.Carousel Wrapper-->
+        <div class="at-propertylinkdetails at-haslayout ml-4 mt-5">
+          <h3><%= "Accomodation: #{@apartment.apartment_type_name} in #{@apartment.campus}" %></h3>
+          <h4><%= @apartment.title %></h4>
+          <div class="at-propertydetails at-aboutproperty">
+            <div class="at-widgets-title">
+              <ul class="at-room-featured">
+              <% @apartment.other_amenities.each do |amenities| %>
+                <% if amenities %>
+                  <li><span><i><%= image_tag image_url("featured-img/icons/#{amenities&.first}.jpg"), alt: "img description" %></i><%= other_amenities_text(amenities) %></span></li>
+                <% end %>
+              <% end %>
+            </ul>
+            </div>
+            <div class="at-propertytitle mt-4 ml-2">
+              <h3>About Property</h3>
+            </div>
+            <div class="at-description ml-2">
+              <p><%= @apartment.description %></p>
+            </div>
+          </div>
+          <div class="at-propertydetails at-detailsproperty">
+            <div class="at-propertytitle">
+              <h3>Property Details</h3>
+            </div>
+            <ul class="at-detailslisting">
+              <li><h4><%= t('apartment.floor') %></h4><span class="w_280"><%= @apartment.floor %></li>
+              <li><h4><%= t('apartment.area') %></h4><span class="w_280"><%= @apartment.area %></li>
+              <li><h4><%= t('apartment.distance_from_university') %></h4><span><%= @apartment.distance_from_university %></span></li>
+              <% if @apartment.virtual_visit_link.present? %>
+                <li><h4><%= t('apartment.virtual_visit_link') %></h4><span><a href="<%= @apartment.virtual_visit_link %>"><%= @apartment.virtual_visit_link %></a></span></li>
+              <% end %>
+              <li><h4><%= t('apartment.other_facilities') %></h4><span class="w_280"><%= @apartment.other_facilities %></span></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    <div class='col-sm-6'>
+      <!-- Map container start -->
+        <div id="at-locationmap" class="at-locationmap"></div>
+      <!-- Map container end -->
+      <div class="at-propertydetails at-detailsproperty mt-3">
+        <div class="at-filtersoptions">
+            <h3>Rent: <em>€ <%= @apartment&.rent_rate&.net_rate %></em>/month</h3>
+            <h3><%= @apartment&.available_date %></h3>
+        </div>
+        <div class="at-propertytitle">
+          <h3><%= t('apartment.rent_details') %></h3>
+        </div>
+        <ul class="at-detailslisting">
+          <% rent = @apartment.rent_rate %>
+          <li>
+            <h4><%= t('rent.net_rate') %></h4>
+            <span class="w_280">
+              <%= rent&.net_rate %>
+              <% if rent&.included_in_net_rate.present? %>
+                (Included with <%= rent&.included_in_net_rate&.map(&:humanize)&.join(', ') %>)
+              <% end %>
+            </span>
+          </li>
+          <% RentRate::INCLUDED_IN_NET_RATE_FIELDS.each do |field| %>
+            <% if !is_included_in_net_rate?(rent&.included_in_net_rate, field) %>
+              <% if rent&.send(field).present? %>
+                <li><h4><%= t("rent.#{field}") %></h4> <span><%= rent&.send(field) %></span></li>
               <% end %>
             <% end %>
-          </ul>
-          </div>
-          <div class="at-propertytitle mt-4 ml-2">
-            <h3>About Property</h3>
-          </div>
-          <div class="at-description ml-2">
-            <p><%= @apartment.description %></p>
-          </div>
-        </div>
-        <div class="at-propertydetails at-detailsproperty">
-          <div class="at-propertytitle">
-            <h3>Property Details</h3>
-          </div>
-          <ul class="at-detailslisting">
-            <li><h4><%= t('apartment.floor') %></h4><span class="w_280"><%= @apartment.floor %></li>
-            <li><h4><%= t('apartment.area') %></h4><span class="w_280"><%= @apartment.area %></li>
-            <li><h4><%= t('apartment.distance_from_university') %></h4><span><%= @apartment.distance_from_university %></span></li>
-            <% if @apartment.virtual_visit_link.present? %>
-              <li><h4><%= t('apartment.virtual_visit_link') %></h4><span><a href="<%= @apartment.virtual_visit_link %>"><%= @apartment.virtual_visit_link %></a></span></li>
-            <% end %>
-            <li><h4><%= t('apartment.other_facilities') %></h4><span class="w_280"><%= @apartment.other_facilities %></span></li>
-          </ul>
-        </div>
-      </div>
-  </div>
-  <div class='col-sm-6'>
-    <!-- Map container start -->
-    <div id="at-locationmap" class="at-locationmap"></div>
-    <!-- Map container end -->
-    <div class="at-propertydetails at-detailsproperty mt-3">
-      <div class="at-filtersoptions">
-          <h3><span>Rent: <em>€ <%= @apartment&.rent_rate&.net_rate %></em>/month</span></h3>
-          <h3><span>Available From: <%= @apartment&.display_proper_availability_date %></span></h3>
-      </div>
-      <div class="at-propertytitle">
-        <h3><%= t('apartment.rent_details') %></h3>
-      </div>
-      <ul class="at-detailslisting">
-        <% rent = @apartment.rent_rate %>
-        <li>
-          <h4><%= t('rent.net_rate') %></h4>
-          <span class="w_280">
-            <%= rent&.net_rate %>
-            <% if rent&.included_in_net_rate.present? %>
-              (Included with <%= rent&.included_in_net_rate&.map(&:humanize)&.join(', ') %>)
-            <% end %>
-          </span>
-        </li>
-        <% RentRate::INCLUDED_IN_NET_RATE_FIELDS.each do |field| %>
-          <% if !is_included_in_net_rate?(rent&.included_in_net_rate, field) %>
-            <% if rent&.send(field).present? %>
-              <li><h4><%= t("rent.#{field}") %></h4> <span><%= rent&.send(field) %></span></li>
-            <% end %>
           <% end %>
-        <% end %>
-        <li><h4><%= t('rent.deposit_amount') %></h4><span><%= rent&.deposit_amount %></span></li>
-      </ul>
-    </div>
-    <div class="at-widgets-holder">
-      <div class="at-widgets-title">
-        <h2>About Host</h2>
+          <li><h4><%= t('rent.deposit_amount') %></h4><span><%= rent&.deposit_amount %></span></li>
+        </ul>
       </div>
-      <div class="at-widgets-content at-authorholder at-authorholdertwo">
-        <figure class="at-authorimg at-verifieduser">
-        <%= image_tag url_for('user.jpeg'), style:"height: 50px;" %>
-        <i class="fa fa-shield-alt"></i>
-        </figure>
-        <div class="at-authordetails">
-          <div class="at-featurerating">
-            <h3>Landlord Name: <%= @apartment.user.firstname %> <%= @apartment.user.lastname %></h3>
-            <h3>Contact: <%= @apartment.user.phone_no %></h3>
+      <div class="at-widgets-holder">
+        <div class="at-widgets-title">
+          <h2>About Host</h2>
+        </div>
+        <div class="at-widgets-content at-authorholder at-authorholdertwo">
+          <figure class="at-authorimg at-verifieduser">
+          <%= image_tag asset_path('user.png'), style:"height: 50px;" %>
+          <i class="fa fa-shield-alt"></i>
+          </figure>
+          <div class="at-authordetails">
+            <div class="at-featurerating">
+              <h3>Landlord Name: <%= @apartment.user.firstname %> <%= @apartment.user.lastname %></h3>
+              <h3>Contact: <%= @apartment.user.phone_no %></h3>
+            </div>
+          </div>
+          <div class="at-btnarea row">
+            <%# if current_user&.student? %>
+              <%#= link_to 'View All My Ads', apartments_path, class: 'at-btn col-sm-3 ml-1' %>
+              <%# unless @apartment&.booking&.paid? %>
+                <%#= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"at-btn col-sm-3 ml-1" %>
+              <%# end %>
+              <%#= render '/inquiries/inquiry_button' %>
+            <%# end %>
           </div>
         </div>
-        <div class="at-btnarea row">
-          <%# if current_user&.student? %>
-            <%#= link_to 'View All My Ads', apartments_path, class: 'at-btn col-sm-3 ml-1' %>
-            <%# unless @apartment&.booking&.paid? %>
-              <%#= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"at-btn col-sm-3 ml-1" %>
-            <%# end %>
-            <%#= render '/inquiries/inquiry_button' %>
-          <%# end %>
-        </div>
       </div>
+      <!-- Send inquiry to the landlord button -->
     </div>
-    <!-- Send inquiry to the landlord button -->
   </div>
 </div>
 <br/>
