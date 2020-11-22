@@ -60,6 +60,16 @@ class Apartment < ApplicationRecord
     date.strftime("%b, %Y") if date
   end
 
+  # Check future date availability
+  def available_in_future?
+    month.to_i >= Date.today.month && year.to_i >= Date.today.year
+  end
+
+  # Display available date
+  def available_date
+    available_in_future? ? "Available From: #{display_proper_availability_date}" : "Available Now"
+  end
+
   # landlord full name
   def landlord_name
     "#{user&.firstname} #{user&.lastname}"

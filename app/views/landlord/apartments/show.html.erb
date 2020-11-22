@@ -79,7 +79,9 @@
                     </tr>
                     <% RentRate::INCLUDED_IN_NET_RATE_FIELDS.each do |field| %>
                       <% if !is_included_in_net_rate?(rent&.included_in_net_rate, field) %>
-                        <tr><td><%= t("rent.#{field}") %>: <span><%= rent&.send(field) %></span></td></tr>
+                        <% if rent&.send(field).present? %>
+                          <tr><td><%= t("rent.#{field}") %>: <span><%= rent&.send(field) %></span></td></tr>
+                        <% end %>
                       <% end %>
                     <% end %>
                     <tr><td><%= t('rent.deposit_amount') %>: <span><%= rent&.deposit_amount %></span></td></tr>
