@@ -13,19 +13,17 @@
                   role="grid" aria-describedby="bootstrap-data-table_info">
                   <thead>
                     <tr role="row">
-                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"><%= t('booking.property_name') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('booking.start_date') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('booking.end_date') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:150px; text-align:center;"><%= t('booking.status') %></th>
+                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.firstname') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('users.lastname') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('users.email') %></th>
                     </tr>
                   </thead>
                   <tbody>
                     <% @bookings.each do |booking| %>
                       <tr role="row" class="odd">
-                        <td><%= booking&.apartment_title %></td>
-                        <td><%= date_format(booking&.start_date) %></td>
-                        <td><%= date_format(booking&.end_date) %></td>
-                        <td align="center"><%= booking&.status %></td>
+                        <td><%= booking&.user&.firstname %></td>
+                        <td><%= booking&.user&.lastname %></td>
+                        <td><%= booking&.user&.email %></td>
                       </tr>
                     <% end %>
                     </tr>
