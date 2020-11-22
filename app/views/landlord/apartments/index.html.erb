@@ -10,7 +10,7 @@
         </div>
         <div class="card-body">
           <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-            
+
               <div class="table-responsive">
                 <table id="bootstrap-data-table" class="table table-bordered dataTable no-footer"
                   role="grid" aria-describedby="bootstrap-data-table_info">
@@ -28,7 +28,7 @@
                       <tr role="row" class="odd">
                         <td><%= link_to apartment&.title, landlord_apartment_path(apartment), style: "color:#212529;" %></td>
                         <td><%= apartment&.campus %></td>
-                        <td><%= apartment&.departure_date_availabilty %></td>
+                        <td><%= apartment&.display_proper_availability_date %></td>
                         <td><%= apartment&.rent_rate&.deposit_amount %></td>
                         <td align="center">
                           <%= link_to landlord_apartment_path(apartment), class: 'btn btn-sm btn-primary'  do  %>
@@ -47,7 +47,7 @@
                   </tbody>
                 </table>
               </div>
-            
+
             <div class="row">
               <%= paginate @apartments %>
             </div>

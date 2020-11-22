@@ -55,6 +55,11 @@ class Apartment < ApplicationRecord
     departure_date&.strftime('%d-%m-%Y')
   end
 
+  def display_proper_availability_date
+    date = Date.parse("1-#{month}-#{year}") if month && year
+    date.strftime("%b, %Y") if date
+  end
+
   # landlord full name
   def landlord_name
     "#{user&.firstname} #{user&.lastname}"
