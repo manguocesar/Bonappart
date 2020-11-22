@@ -4,7 +4,7 @@
       <% apartment.images.each do |image| %>
         <figure class="item">
           <a href="javascript:void(0);">
-            <%= image_tag url_for(image), alt:"img description", class: "item" %>
+            <%= image_tag url_for(image), alt:"img description", class: "item", style:"height: 200px;" %>
           </a>
           <figcaption>
             <div class="at-slider-details">
