@@ -37,6 +37,8 @@ en:
   thank_you:
     title: Thank you for booking Accomodation.
     message: Your Accomodation is booked successfully.
+    subscription_title: Thank you for Posting Accomodation.
+    subscription_message: Your Accomodation is posted Successfully.
   users:
     sign_up: SIGN UP
     edit_user: Edit User
@@ -199,6 +201,7 @@ en:
     departure_date: Departure Date
     status: Status
     invoice_for_booking: Invoice for Booking
+    invoice_for_subcription: Invoice for Subscription
     billing_details: Billing Details
     booking_summary: Booking Summary
     payment_type: Payment Type
