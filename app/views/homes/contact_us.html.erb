@@ -1,25 +1,7 @@
-
-<!-- Inner Banner Start -->
-<div class="at-haslayout at-innerbannerholder">
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-12 col-md-12">
-        <div class="at-innerbannercontent">
-          <div class="at-title"><h2><%= t('contact_us.happy_to_serve') %></h2></div>
-          <ol class="at-breadcrumb">
-            <li><%= link_to t('breadcrubs.main'), root_path %></li>
-            <li><%= t('contact_us.title') %></li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Home Slider End -->
 <!-- Main Start -->
 <main id="at-main" class="at-main at-haslayout">
   <!-- Contact Form Start -->
-  <section class="at-haslayout at-main-section">
+  <section class="at-haslayout at-main-section contact-us">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-sm-12 col-md-12 push-md-0 col-lg-10 push-lg-1 col-xl-8 push-xl-2">
@@ -90,23 +72,23 @@
     </div>
   </div>
   <!-- Map Start -->
-  <div class="at-haslayout at-contactmap-holder">
+  <!-- <div class="at-haslayout at-contactmap-holder">
     <div id="map" class="at-locationmap"></div>
-  </div>
+  </div> -->
   <!-- Map Start -->
 </main>
 <!-- Main End -->
 <script>
-$(document).ready(function (e) {
-  initilizeMap();
-});
-function initilizeMap() {
-  var myLatLng = [
-    [ '100.00',
-      '',
-      "37.772323",
-      "-122.214897" ]
-  ];
-  DisplayMap.mapSettings(myLatLng);
-}
+  // $(document).ready(function (e) {
+  //   initilizeMap();
+  // });
+  // function initilizeMap() {
+  //   var myLatLng = [
+  //     [ '100.00',
+  //       '',
+  //       "37.772323",
+  //       "-122.214897" ]
+  //   ];
+  //   DisplayMap.mapSettings(myLatLng);
+  // }
 </script>
