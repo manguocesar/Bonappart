@@ -114,6 +114,8 @@ ActiveRecord::Schema.define(version: 2020_11_20_175343) do
     t.integer "receiver_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "apartment_id", null: false
+    t.index ["apartment_id"], name: "index_inquiries_on_apartment_id"
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -127,6 +129,16 @@ ActiveRecord::Schema.define(version: 2020_11_20_175343) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["booking_id"], name: "index_invoices_on_booking_id"
     t.index ["subscription_id"], name: "index_invoices_on_subscription_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -166,6 +178,15 @@ ActiveRecord::Schema.define(version: 2020_11_20_175343) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name_for_student"
+    t.string "name_for_landlord"
+    t.bigint "inquiry_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["inquiry_id"], name: "index_rooms_on_inquiry_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -216,9 +237,13 @@ ActiveRecord::Schema.define(version: 2020_11_20_175343) do
   add_foreign_key "apartments", "apartment_types"
   add_foreign_key "apartments", "bookings"
   add_foreign_key "apartments", "users"
+  add_foreign_key "inquiries", "apartments"
   add_foreign_key "invoices", "bookings"
   add_foreign_key "invoices", "subscriptions"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "payments", "subscriptions"
+  add_foreign_key "rooms", "inquiries"
   add_foreign_key "subscriptions", "apartments"
   add_foreign_key "subscriptions", "users"
 end
