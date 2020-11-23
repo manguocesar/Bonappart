@@ -39,5 +39,6 @@ class RoomsController < ApplicationController
     column_name = current_user.student? ? 'sender_id' : 'receiver_id'
     @inquiries = Inquiry.where("#{column_name}=#{current_user&.id}")
     @rooms = @inquiries.map(&:rooms).flatten.compact
+    @room = @rooms.first if @rooms.present? && @room.blank?
   end
 end

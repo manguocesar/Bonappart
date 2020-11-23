@@ -141,6 +141,8 @@ en:
     properties: Properties
     bookings: Bookings
     invoices: Invoices
+    inquiries: Inquiries
+    my_inquiries: My Inquiries
     landlord_management: Landlord Management
     student_management: Student Management
     all_landlords: All Landlord Users

@@ -4,17 +4,7 @@
 <% if @rooms.present? %>
   <div class="container-fluid">
     <div class="row">
-      <%#= render 'shared/header_bg' %>
       <div class="col-3 rooms-sidebar">
-        <!-- Logged in User Details
-        <div class="card no-outline">
-          <div class="card-body">
-            <small>Logged in as</small><br>
-            <b><%#= current_user.username %><br></b>
-          </div>
-        </div>-->
-        <br>
-        <hr class="pt-5">
         <% @rooms.each do |room| %>
           <%= link_to room, class: 'room-link' do %>
             <% active_class = (@room == room) ? 'active' : '' %>
@@ -33,7 +23,7 @@
       </div>
       <div class="col-9">
         <% if @room.present? %>
-          <div class="chat-room pt-80">
+          <div class="chat-room">
             <nav class="navbar navbar-light">
               <!-- Room or Inquiry Name -->
               <span class="navbar-brand" href="#">
@@ -57,8 +47,8 @@
 <% else %>
   <div class="text-center pt-80">
     <div class="nodata-in-table">
-      <i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i>
-      <h3><%= current_user.student? ? t('no_inquire') : t('no_inquiry') %></h3>
+      <i class="fa fa-exclamation-triangle text-danger" aria-hidden="true" style="font-size: 5em"></i>
+      <h3 class="pt-3"><%= current_user.student? ? t('no_inquire') : t('no_inquiry') %></h3>
     </div>
   </div>
 <% end %>

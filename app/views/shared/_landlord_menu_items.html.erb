@@ -21,9 +21,9 @@
         <i class="menu-icon fa fa-home"></i><%= t('dashboard.properties') %>
       <% end %>
     </li>
-    <li>
+    <li class=<%= "active" if active_tab == 'rooms' %>>
       <%= link_to landlord_rooms_path do %>
-        <i class="menu-icon fa fa-commenting-o"></i><%= t('dashboard.my_inquiries') %>
+        <i class="menu-icon fa fa-commenting-o"></i><%= t('dashboard.inquiries') %>
       <% end %>
     </li>
   </ul>
