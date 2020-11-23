@@ -116,13 +116,12 @@
             </div>
           </div>
           <div class="at-btnarea row">
-            <%# if current_user&.student? %>
-              <%#= link_to 'View All My Ads', apartments_path, class: 'at-btn col-sm-3 ml-1' %>
-              <%# unless @apartment&.booking&.paid? %>
-                <%#= link_to 'Book Now', new_booking_path(apartment_id: @apartment&.id), remote: true, class:"at-btn col-sm-3 ml-1" %>
-              <%# end %>
-              <%#= render '/inquiries/inquiry_button' %>
-            <%# end %>
+            <% if current_user&.student? %>
+              <% unless @apartment&.booking&.paid? %>
+                <%= link_to 'Book Now', booking_instruction_path(apartment_id: @apartment&.id), remote: true, class:"at-btn col-sm-3 ml-1" %>
+              <% end %>
+              <%= render '/inquiries/inquiry_button' %>
+            <% end %>
           </div>
         </div>
       </div>
