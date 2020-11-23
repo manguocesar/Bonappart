@@ -13,7 +13,7 @@
     </li>
     <li class=<%= "active" if active_tab == 'apartment_types' %>>
       <%= link_to admin_apartment_types_path do %>
-        <i class="menu-icon fa fa-home"></i><%= t('dashboard.apartment_types') %>
+        <i class="menu-icon fa fa-building"></i><%= t('dashboard.apartment_types') %>
       <% end %>
     </li>
     <li class=<%= "active" if active_tab == 'landlord' %>>
@@ -28,7 +28,7 @@
     </li>
     <li class=<%= "active" if active_tab == 'bookings' %>>
       <%= link_to admin_bookings_path do %>
-        <i class="menu-icon fa fa-bookmark"></i><%= t('dashboard.bookings') %>
+        <i class="menu-icon fa fa-th-list"></i><%= t('dashboard.bookings') %>
       <% end %>
     </li>
   </ul>

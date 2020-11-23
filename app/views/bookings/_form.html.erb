@@ -6,12 +6,6 @@
   <%= hidden_field_tag 'invoice[amount]', @apartment&.rent_rate&.net_rate %>
   <%= hidden_field_tag :apartment, apartment %>
   <div class='row'>
-    <div class="form-group col-sm-12">
-      <%= form.label t('booking.status'), class:"col-form-label" %><br/>
-      <%= select_tag 'booking[status]', options_for_select(Payment.payment_statuses, 'pending'),  class: 'form-control selectpicker', disabled: true %>
-    </div>
-  </div>
-  <div class='row'>
     <div class="form-group at-checkin-holder at-datecheck col-sm-6">
       <%= form.label t('booking.start_date'), class:"col-form-label" %>
       <%= form.text_field :start_date, class: 'form-control at-startdate' %>
