@@ -35,10 +35,10 @@ en:
   cannot_perform: "You can't perform this action."
   actions: Actions
   thank_you:
-    title: Thank you for booking Accomodation.
-    message: Your Accomodation is booked successfully.
-    subscription_title: Thank you for Posting Accomodation.
-    subscription_message: Your Accomodation is posted Successfully.
+    title: Thank you for booking Accomodation
+    message: Your Accomodation is booked successfully
+    subscription_title: Thank you for Posting Accomodation
+    subscription_message: Your Accomodation is posted Successfully
   users:
     sign_up: SIGN UP
     edit_user: Edit User

@@ -1,18 +1,15 @@
 <!-- Inner Banner Start -->
-<div class="at-haslayout at-innerbannerholder">
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-12 col-md-12">
-        <div class="at-innerbannercontent">
-          <div class="at-title"><h2><%= t('thank_you.subscription_title') %></h2></div>
-          <ol class="at-breadcrumb">
-            <li><%= t('thank_you.subscription_message') %></li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<% if current_user&.landlord? %>
+  <div class="at-title text-center"><h2><%= t('thank_you.subscription_title') %></h2></div>
+  <ol class="at-breadcrumb">
+    <li><%= t('thank_you.subscription_message') %></li>
+  </ol>
+<% else %>
+  <div class="at-title text-center"><h2><%= t('thank_you.title') %></h2></div>
+  <ol class="at-breadcrumb">
+    <li><%= t('thank_you.message') %></li>
+  </ol>
+<% end %>
 <!-- Home Slider End -->
 <!-- Invoice details start -->
 <%= render 'invoice' %>

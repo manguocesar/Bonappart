@@ -100,31 +100,33 @@
           <li><h4><%= t('rent.deposit_amount') %></h4><span><%= rent&.deposit_amount %></span></li>
         </ul>
       </div>
-      <div class="at-widgets-holder">
-        <div class="at-widgets-title">
-          <h2>About Host</h2>
-        </div>
-        <div class="at-widgets-content at-authorholder at-authorholdertwo">
-          <figure class="at-authorimg at-verifieduser">
-          <%= image_tag asset_path('user.png'), style:"height: 50px; width: 50px;" %>
-          <i class="fa fa-shield-alt"></i>
-          </figure>
-          <div class="at-authordetails">
-            <div class="at-featurerating">
-              <h3>Landlord Name: <%= @apartment.user.firstname %> <%= @apartment.user.lastname %></h3>
-              <h3>Contact: <%= @apartment.user.phone_no %></h3>
+      <% if current_user && current_user&.student? %>
+        <div class="at-widgets-holder">
+          <div class="at-widgets-title">
+            <h2>Book Now or Inquiry with Landlord </h2>
+          </div>
+          <div class="at-widgets-content at-authorholder at-authorholdertwo">
+            <!--
+              <figure class="at-authorimg at-verifieduser">
+              <%#= image_tag asset_path('user.png'), style:"height: 50px; width: 50px;" %>
+              <i class="fa fa-shield-alt"></i>
+              </figure>
+              <div class="at-authordetails">
+                <div class="at-featurerating">
+                  <h3>Landlord Name: <%#= @apartment.user.firstname %> <%#= @apartment.user.lastname %></h3>
+                  <h3>Contact: <%#= @apartment.user.phone_no %></h3>
+                </div>
+              </div>
+            -->
+            <div class="at-btnarea row">
+                <% unless @apartment&.booking&.paid? %>
+                  <%= link_to 'Book Now', booking_instruction_path(apartment_id: @apartment&.id), remote: true, class:"at-btn col-sm-3 ml-1" %>
+                <% end %>
+                <%= render '/inquiries/inquiry_button' %>
             </div>
           </div>
-          <div class="at-btnarea row">
-            <% if current_user&.student? %>
-              <% unless @apartment&.booking&.paid? %>
-                <%= link_to 'Book Now', booking_instruction_path(apartment_id: @apartment&.id), remote: true, class:"at-btn col-sm-3 ml-1" %>
-              <% end %>
-              <%= render '/inquiries/inquiry_button' %>
-            <% end %>
-          </div>
         </div>
-      </div>
+      <% end %>
       <!-- Send inquiry to the landlord button -->
     </div>
   </div>
