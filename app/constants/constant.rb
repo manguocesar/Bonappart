@@ -38,4 +38,5 @@ module Constant
   MONTH_ARRAY = ('1'..'12').to_a
 
   YEAR_ARRAY = ('2020'..'2030').to_a
+  PAYMENT_AMOUNT = 100
 end

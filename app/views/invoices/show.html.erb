@@ -1,14 +1,10 @@
 <!-- Inner Banner Start -->
 <% if current_user&.landlord? %>
   <div class="at-title text-center"><h2><%= t('thank_you.subscription_title') %></h2></div>
-  <ol class="at-breadcrumb">
-    <li><%= t('thank_you.subscription_message') %></li>
-  </ol>
+  <h4 class="text-center"><%= t('thank_you.subscription_message') %></h4>
 <% else %>
   <div class="at-title text-center"><h2><%= t('thank_you.title') %></h2></div>
-  <ol class="at-breadcrumb">
-    <li><%= t('thank_you.message') %></li>
-  </ol>
+  <h4 class="text-center"><%= t('thank_you.message') %></h4>
 <% end %>
 <!-- Home Slider End -->
 <!-- Invoice details start -->

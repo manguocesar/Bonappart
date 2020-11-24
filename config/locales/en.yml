@@ -168,6 +168,7 @@ en:
     end_date: End date
     book_now: Book Now
     property_name: Property Name
+    instructions: Booking Instructions
   address:
     area: Area
     postal_code: Postal code
@@ -203,6 +204,7 @@ en:
     status: Status
     invoice_for_booking: Invoice for Booking
     invoice_for_subcription: Invoice for Subscription
+    invoice_for_booking: Invoice for Booking
     billing_details: Billing Details
     booking_summary: Booking Summary
     payment_type: Payment Type
