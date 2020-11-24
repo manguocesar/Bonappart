@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>invoice</title>
+  </head>
+  <body bgcolor="#aaaaaa">
+    <table width="950" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff" >
+      <tr>
+        <td align="center" valign="top" style="padding:10px 0px; ">
+          <table width="880" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="280" align="left" valign="top"><a href="#" target="_blank"><img src="images/logo-small.png" alt="" width="280" height="66" style="padding: 0px; margin: 0px; display: block;"  border="0" vspace="0" hspace="0"/></a></td>
+              <td width="600" align="right" valign="middle">
+                <table width="350" border="0" align="right" cellpadding="0" cellspacing="0" style="font-size: 14px; line-height:22px; font-family: Arial, Helvetica, sans-serif; color:#000; font-weight:300; text-align: left; padding:10px 0;">
+                  <tr>
+                    <td width="27" align="left" valign="middle"><img src="images/call01.png" alt="" width="16" height="16" style="padding: 0px; margin: 0px; display: block;"  border="0" vspace="0" hspace="0"/></td>
+                    <td width="138" align="left" valign="middle"><a href="#"  style="color:#000; text-decoration:none;">+90 99999 99999</a></td>  <td width="26" align="right" valign="middle"><img src="images/user01.png" alt="" width="16" height="16" style="padding: 0px; margin: 0px; display: block;"  border="0" vspace="0" hspace="0"/></td>
+                    <td width="159" align="right" valign="middle"><a href="#" style="color:#000; text-decoration:none;">info@yourcompany.com </a></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" valign="top"  style="padding:10px;">
+          <table width="880" border="0" align="center" cellpadding="0" cellspacing="0"bgcolor="#D5F1F9">
+            <tr>
+              <td width="488" valign="middle" style=" font-family: Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; color:#000000; line-height:24px; padding:10px;"><%= @invoice.invoice_number %></td>
+              <td width="392" align="right" valign="middle"  style=" font-family: Arial, Helvetica, sans-serif; font-size:16px; font-weight:normal; text-align:right; color:#000000; line-height:24px; padding:10px;">Invoice Due Date<br />
+                <span style=" font-weight:bold;"><%= date_format(@invoice.date) %></span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" valign="top" >&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="center" valign="top" >
+          <table width="880" border="0" align="center" cellpadding="0" cellspacing="0" >
+            <tr>
+              <td width="400" valign="top" style="padding:0 0 5px 10px; border-right:solid 1px #b9b9b9;font-family: Arial, Helvetica, sans-serif; font-size:14px; text-align: left; font-weight:bold; color:#000000; line-height:20px; ">From</td>
+              <td width="400" valign="top" style="padding:0 0 5px 10px;font-family: Arial, Helvetica, sans-serif; font-size:14px; text-align: left; font-weight:bold; color:#000000; line-height:20px;  ">To</td>
+            </tr>
+            <tr>
+              <td width="400" valign="top" bgcolor="#FFFFFF" style=" font-family: Arial, Helvetica, sans-serif; font-size:12px; text-align: left; color:#333333; line-height:20px; padding:5px 10px 10px 10px; border-right:solid 1px #b9b9b9;">
+                <span style=" font-weight:700;">$INVOICE_ACCOUNT_ID$</span><br />
+                $INVOICE_BILL_STREET$<br />
+                $INVOICE_BILL_CODE$ $INVOICE_BILL_CITY$<br />
+                $INVOICE_BILL_STATE$
+              </td>
+              <td width="400" valign="top" bgcolor="#FFFFFF" style=" font-family: Arial, Helvetica, sans-serif; font-size:12px; text-align: left; color:#333333; line-height:20px; padding:5px 10px 10px 10px; ">
+              <span style=" font-weight:700;">  $COMPANY_NAME$</span><br />
+              $COMPANY_ADDRESS$<br />
+              $COMPANY_ZIP$ $COMPANY_CITY$<br />
+              $COMPANY_COUNTRY$<br />
+              Telefon $COMPANY_PHONE$<br />
+              Telefax $COMPANY_FAX$
+              <br />
+              $COMPANY_WEBSITE$<br />
+              %M_Invoice Date%: $INVOICE_INVOICEDATE$
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="center" valign="top" ><table width="880" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td><table width="880" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#e0dedf" style=" border:solid 1px #b9b9b9; font-family: Arial, Helvetica, sans-serif; font-size:14px; text-align: center; font-weight:bold; color:#000000; line-height:20px; word-break: break-all ">
+              <tr>
+                <td width="137" align="left" style="padding:8px; border-right:solid 1px #b9b9b9;">Product Code</td>
+                <td width="220" align="left" style="padding:8px; border-right:solid 1px #b9b9b9;">Product Name</td>
+                <td width="119" align="left" style="padding:8px; border-right:solid 1px #b9b9b9;" >QUANTITY</td>
+                <td width="133" align="left" style="padding:8px; border-right:solid 1px #b9b9b9;">LIST PRICE</td>
+
+                <td width="111" align="left" style="padding:8px; border-right:solid 1px #b9b9b9;">Discount</td>
+                <td width="158" align="right" style="padding:8px;">Total</td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td><table width="880" border="0" align="center" cellpadding="0" cellspacing="0" style="border:solid 1px #b9b9b9;">
+              <tr>
+                <td style=" font-family: Arial, Helvetica, sans-serif; font-size:14px; text-align: left; color:#000000; line-height:20px; padding:10px;">#PRODUCTBLOC_START#</td>
+              </tr>
+              <tr>
+                <td><table width="878" border="0" align="center" cellpadding="0" cellspacing="0"  style="  border-right:0 !important;border-left:0 !important; border:solid 1px #b9b9b9; font-family: Arial, Helvetica, sans-serif; font-size:14px; text-align: center; font-weight:300; color:#000000; line-height:20px; word-break: break-all">
+              <tr>
+                <td width="135" align="left" style="padding:8px; border-right:solid 1px #b9b9b9;">$PRODUCT POSITION$</td>
+                <td width="223" align="left" style="padding:8px; border-right:solid 1px #b9b9b9;"> $PRODUCT NAME$ </td>
+
+
+                <td width="117" align="left" style="padding:8px; border-right:solid 1px #b9b9b9;"> $PRODUCT QUANTITY$ </td>
+                <td width="136" align="left" style="padding:8px; border-right:solid 1px #b9b9b9;">$PRODUCT LISTPRICE$</td>
+                <td width="109" align="left" style="padding:8px; border-right:solid 1px #b9b9b9;">$PRODUCT DISCOUNT$</td>
+                <td width="158" align="right" style="padding:8px; font-weight:bold;">$PRODUCT TOTALSUM$</td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td style=" font-family: Arial, Helvetica, sans-serif; font-size:14px; text-align: left; color:#000000; line-height:20px; padding:10px;">#PRODUCTBLOC_END#</td>
+            </tr>
+          </table></td>
+          </tr>
+          <tr>
+            <td style="padding:5px 0;"><table width="500" border="0" align="right" cellpadding="0" cellspacing="0" style="border:solid 1px #b9b9b9;   font-family: Arial, Helvetica, sans-serif; font-size:14px; font-weight:normal; color:#000000; line-height:20px;">
+              <tr>
+                <td width="300" align="right" style=" border-bottom:solid 1px #b9b9b9;  border-right:solid 1px #b9b9b9; text-align:right; padding:5px;">
+                  <strong>Subtotals:
+                    </strong></td>
+                <td width="100" align="right" style="border-bottom:solid 1px #b9b9b9;  text-align:right; padding:5px;">$SUBTOTAL$</td>
+                </tr>
+              <tr>
+                <td align="right" style=" border-bottom:solid 1px #b9b9b9; border-right:solid 1px #b9b9b9; text-align:right; padding:5px;"><strong>%G_Discount%</strong></td>
+                <td align="right" style="border-bottom:solid 1px #b9b9b9;  text-align:right; padding:5px;">$TOTALDISCOUNT$</td>
+                </tr>
+              <tr>
+                <td align="right" style="border-bottom:solid 1px #b9b9b9;border-right:solid 1px #b9b9b9; text-align:right; padding:5px;"><strong>Total with TAX</strong></td>
+                <td align="right"  style="border-bottom:solid 1px #b9b9b9;  text-align:right; padding:5px;">$TOTALWITHVAT$</td>
+                </tr>
+              <tr>
+                <td align="right" style="border-bottom:solid 1px #b9b9b9;border-right:solid 1px #b9b9b9; text-align:right; padding:5px;"><strong>%G_Adjustment%</strong></td>
+                <td align="right"  style="border-bottom:solid 1px #b9b9b9;  text-align:right; padding:5px;">$ADJUSTMENT$</td>
+              </tr>
+              <tr>
+                <td align="right" style=" text-align:right; padding:5px; border-right:solid 1px #b9b9b9;"><strong>%G_LBL_GRAND_TOTAL% ($CURRENCYCODE$)</strong></td>
+                <td align="right" style="padding:5px;   text-align:right;"><strong>$TOTAL$</strong></td>
+              </tr>
+              </table></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td align="center" valign="top">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="left" style="padding:10px"><table width="880" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td align="left" style="padding:0;font-family: Arial, Helvetica, sans-serif; font-size:16px; text-transform:uppercase;font-weight:300; color: #000000; text-align:left; ">$INVOICE_TERMS_CONDITIONS$</td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="center" ><table width="880" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><table width="880" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#e5e5e5"   style="font-size:15px; line-height:20px; font-family: Arial, Helvetica, sans-serif; color:#000; font-weight:bold; padding:0px; " >
+          <tr>
+            <td width="5" bgcolor="#0D89FF">&nbsp;</td>
+            <td width="875" align="left" valign="middle" style="padding:10px;">Payment Information</td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><table width="880" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="middle"  style=" padding:5px 0; font-size:12px; line-height:20px; font-family: Arial, Helvetica, sans-serif; color:#000; font-weight:300;"><span style=" font-weight:bold;">Please login into your account  in order to pay invoice</span><br />
+              <span style=" font-weight:bold;">Our Paypal is </span><a href="mailto:info@yourcompany.com "  style="color:#000;">
+              info@yourcompany.com </a></td>
+            <td align="right" valign="middle"><img src="images/payment_logo.png" alt="" width="311" height="36" style="padding: 0px; margin: 0px; display: block;"  border="0" vspace="0" hspace="0"/></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table>
+    </td>
+      </tr>
+      <tr>
+        <td >&nbsp;</td>
+      </tr>
+      <tr>
+        <td ><table width="950" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#e5e5e5"   style="font-size:11px; line-height:20px; font-family: Arial, Helvetica, sans-serif; color:#000; font-weight:300; padding:0px; " >
+          <tr>
+            <td width="" align="center" valign="middle" style="padding:5px;">© Copyright 2017 yourcompany.com. All Rights Reserved. </td>
+          </tr>
+        </table></td>
+    </tr>
+    </table>
+  </body>
+</html>
