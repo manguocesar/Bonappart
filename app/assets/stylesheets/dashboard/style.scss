@@ -852,13 +852,11 @@ aside.left-panel {
     font-family: 'Open Sans';
     font-size: 22px;
     float: none;
-
+    padding:9px 0px;
     margin: 0;
     text-align: left;
     text-transform: capitalize;
     display: block;
-
-    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -866,7 +864,7 @@ aside.left-panel {
     .navbar .navbar-brand span {
       font-weight: 600; }
     .navbar .navbar-brand img {
-      height:60px;
+      height:40px;
       width: auto;
      }
     .navbar .navbar-brand.hidden {
@@ -2098,7 +2096,7 @@ margin:0 !important }
 
 @media (max-width: 1368px) {
   .content {
-    padding: 0 15px; }
+    padding:15px; }
 
   .twt-category {
     margin-bottom: 0; }
@@ -2371,3 +2369,9 @@ img{object-fit: contain;}
 
 }
 
+
+.header-menu a {
+	font-weight: 500;
+	color: #222222;
+	font-size: 15px;
+}

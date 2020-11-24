@@ -2,9 +2,10 @@
 <div id="user-id" data-user-id="<%= current_user.try(:id) %>"></div>
 <!-- All Messages By Rooms -->
 <% if @rooms.present? %>
-  <div class="container-fluid">
+<div class="section-chatbox py-5">
+  <div class="container">
     <div class="row">
-      <div class="col-3 rooms-sidebar">
+      <div class="col-sm-3 rooms-sidebar">
         <% @rooms.each do |room| %>
           <%= link_to room, class: 'room-link' do %>
             <% active_class = (@room == room) ? 'active' : '' %>
@@ -21,7 +22,7 @@
           <% end %>
         <% end %>
       </div>
-      <div class="col-9">
+      <div class="col-sm-9">
         <% if @room.present? %>
           <div class="chat-room">
             <nav class="navbar navbar-light">
@@ -44,6 +45,7 @@
       </div>
     </div>
   </div>
+</div> 
 <% else %>
   <div class="text-center pt-80">
     <div class="nodata-in-table">

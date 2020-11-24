@@ -5,16 +5,15 @@
       <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
     </div>
 
-    <div class="col-sm-7">
-      <div class='row'>
-        <div class='col-sm-12'>
-          <%= link_to about_us_path, class: 'mr-4' do %>
+    <div class="col-sm-7 text-right">
+      
+          <%= link_to about_us_path, class: 'ml-4' do %>
             <i class="fa fa-address-card mr-2"></i>About Us
           <% end %>
-          <%= link_to contact_us_path, class: 'mr-4' do %>
+          <%= link_to contact_us_path, class: 'ml-4' do %>
             <i class="fa fa-comments mr-2"></i>Contact Us
           <% end %>
-          <%= link_to edit_profile_url, class: 'mr-4' do %>
+          <%= link_to edit_profile_url, class: 'ml-4' do %>
             <% if current_user.image.present? %>
               <%= image_tag url_for(current_user.image), class: "user-avatar rounded-circle float-left mr-2" %>
             <% else %>
@@ -22,11 +21,10 @@
             <% end %>
             <%= current_user&.fullname %>
           <% end %>
-          <%= link_to destroy_user_session_path, method: :delete, class: 'mr-4' do %>
+          <%= link_to destroy_user_session_path, method: :delete, class: 'ml-4' do %>
             <i class="fa fa-power-off"></i> <%= t('dashboard.signout') %>
           <% end %>
-        </div>
-      </div>
+        
     </div>
   </div>
 </header>

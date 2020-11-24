@@ -29,11 +29,7 @@
                     <li class="nav-item">
                       <%= link_to 'Register', popup_forms_path(name: 'register'), remote: true, class: '', style: "font-size: medium;" %>
                     </li>
-                    <div class="at-detailsbtn-topbar">
-                      <li class="nav-item">
-                        <%= link_to 'Become a Host', popup_forms_path(name: 'host'), remote: true, class: 'at-btn at-btnactive host-btn' %>
-                      </li>
-                    </div>
+                    
                   <% end %>
                   <% if current_user.present? %>
                     <li class="menu-item-has-children page_item_has_children"><span class="at-dropdowarrow"><i class="lnr lnr-chevron-right"></i></span>
@@ -59,8 +55,15 @@
                     </li>
                   <% end %>
                 </ul>
+               
               </div>
+              
             </nav>
+            <div class="at-detailsbtn-topbar">
+              
+                <%= link_to 'Become a Host', popup_forms_path(name: 'host'), remote: true, class: 'at-btn at-btnactive host-btn' %>
+              
+            </div>
           </div>
         </div>
       </div>
