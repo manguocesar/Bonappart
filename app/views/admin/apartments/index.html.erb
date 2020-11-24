@@ -26,7 +26,7 @@
                   <tbody>
                     <% @apartments.each do |apartment| %>
                       <tr role="row" class="odd">
-                        <td><%= apartment&.title %></td>
+                        <td><%= link_to apartment&.title, admin_apartment_path(apartment) %></td>
                         <td><%= apartment&.campus %></td>
                         <td><%= apartment&.display_proper_availability_date %></td>
                         <td><%= apartment&.rent_rate&.deposit_amount %></td>
