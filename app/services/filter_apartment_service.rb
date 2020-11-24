@@ -31,7 +31,7 @@ class FilterApartmentService
 
   def sort_apartments
     sort_filter(:campus)
-    sort_filter(:distance_from_university)
+    sort_filter(:distance_from_campus)
     sort_filter(:rent)
     search_apartments
   end
@@ -44,7 +44,7 @@ class FilterApartmentService
     @apartments = case field
                   when :campus
                     search_apartments.filter_by_campus(field_params)
-                  when :distance_from_university
+                  when :distance_from_campus
                     filter_apartments_by_distance(field_params)
                   when :rent
                     filter_apartments_by_rent(field_params)
@@ -55,14 +55,14 @@ class FilterApartmentService
   def filter_apartments_by_distance(distance_params)
     return search_apartments if distance_params.include?('I do not mind')
 
-    # search_apartments.filter_by_distance_from_university(distance_params)
+    # search_apartments.filter_by_distance_from_campus(distance_params)
     case distance_params
-    when distance?(distance_params, Constant::LESS_THAN_TEN)
-      search_apartments.near(Constant::UNIVERSITY_ADDRESS, 10)
-    when distance?(distance_params, Constant::GREATER_THAN_TEN)
-      search_apartments.near(Constant::UNIVERSITY_ADDRESS, 20)
-    when distance?(distance_params, Constant::OUTSIDE_FONTAINEBLEAU)
-      search_apartments.near(Constant::UNIVERSITY_ADDRESS, 55, units: :km)
+    when Constant::DISTANCE_FROM_CAMPUS[0]
+      search_apartments.where("duration_from_campus <= ?", 10)
+    when Constant::DISTANCE_FROM_CAMPUS[1]
+      search_apartments.where("duration_from_campus >= :duration AND distance_from_campus <= :distance", duration: 10, distance: two_decimal_precision('2'))
+    when Constant::DISTANCE_FROM_CAMPUS[2]
+      search_apartments.where("distance_from_campus >= ?", two_decimal_precision('2'))
     else
       search_apartments
     end
@@ -103,5 +103,9 @@ class FilterApartmentService
 
   def distance?(distance_params, distance)
     distance_params.include?(distance)
+  end
+
+  def two_decimal_precision(value)
+    "%.2f" % value
   end
 end
