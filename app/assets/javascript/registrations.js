@@ -9,7 +9,6 @@ $(document).ready(function () {
 
 RegisterForm = {
   validate: function () {
-    debugger;
     $('#edit_user').validate({
       errorClass: 'is-invalid text-danger',
       errorElement: 'div',
