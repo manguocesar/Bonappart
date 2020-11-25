@@ -1,7 +1,10 @@
 <div id="room-id" data-room-id="<%= @room.try(:id) %>"></div>
 <div id="user-id" data-user-id="<%= current_user.try(:id) %>"></div>
 <% if @rooms.present? %>
-  <div id="frame">
+<div class="content">
+<div class="row">
+<div class="col-sm-12 col-lg-8 m-auto">
+  <div id="frame" class="chatbox">
     <div id="sidepanel">
       <div id="contacts">
         <ul>
@@ -11,7 +14,7 @@
               <li class="contact <%= active_class %>">
                 <div class="wrap">
                   <div class="meta">
-                    <p class="name"><%= display_name_as_user_role(room) %></p>
+                    <%= display_name_as_user_role(room) %>
                   </div>
                 </div>
               </li>
@@ -21,9 +24,9 @@
       </div>
     </div>
     <% if @room.present? %>
-      <div class="content">
+      <div class="content p-0">
         <div class="contact-profile">
-          <p class="pt-3 pl-3"><%= display_name_as_user_role(@room) %></p>
+          <%= display_name_as_user_role(@room) %>
         </div>
         <div class="messages">
           <ul>
@@ -41,6 +44,9 @@
         </div>
       </div>
     <% end %>
+  </div>
+  </div>
+  </div>
   </div>
 <% else %>
   <div class="text-center pt-80">
