@@ -34,6 +34,8 @@ en:
   hello: "Hello world"
   cannot_perform: "You can't perform this action."
   actions: Actions
+  no_inquiry: 'Any Inquiry not received yet.'
+  no_inquire: 'You not started any inquiry yet.'
   thank_you:
     title: Thank you for booking Accomodation.
     message: Your Accomodation is booked successfully.
@@ -139,6 +141,8 @@ en:
     properties: Properties
     bookings: Bookings
     invoices: Invoices
+    inquiries: Inquiries
+    my_inquiries: My Inquiries
     landlord_management: Landlord Management
     student_management: Student Management
     all_landlords: All Landlord Users
