@@ -8,14 +8,11 @@
 .chat-room {
   height:65vh;
 
-
-
-
   .message {
     min-height:33px;
     .content-container {
       display: inline-block;
-     
+
       .author {
         font-size: 0.8rem;
         color: #777777;
@@ -25,13 +22,10 @@
     &.me {
       .content-container {
         float: right;
-       
+
       }
     }
   }
-  
-   
-
 }
 
 .card.no-outline {
@@ -67,13 +61,6 @@
     }
   }
 }
-
-
-
-
-
-
-
 
 
 .rooms-sidebar {
