@@ -2117,8 +2117,15 @@ margin:0 !important }
     margin: 2px 0; } }
 @media (max-width: 1024px) {
   aside.left-panel {
-    padding: 0 20px;
+    padding: 0 0px;
     width: 200px; }
+    .navbar .navbar-brand {
+      padding: 14px 0px;
+    }
+    .navbar .navbar-brand img {
+      height: 30px;
+      width: auto;
+    }
 
   .navbar .navbar-nav li > a .menu-icon {
     width: 30px; }
@@ -2157,7 +2164,7 @@ margin:0 !important }
     aside.left-panel .navbar {
       margin-bottom: 0; }
       aside.left-panel .navbar .navbar-header {
-        height: 60px; }
+        height: 60px; padding:0px 15px }
       aside.left-panel .navbar .navbar-brand {
         border-bottom: none;
         display: inline-block;
@@ -2278,7 +2285,8 @@ img{object-fit: contain;}
 	border: 1px solid #dddddd;
 	border-radius: 5px;
 	padding: 20px;
-	margin-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+  min-height:230px;
 }
 .box h4 {
 	font-size: 18px;
@@ -2294,9 +2302,9 @@ img{object-fit: contain;}
 	display: inline-block;
 }
 .table td, .table th {
-	padding: .5rem;
+	padding: .4rem;
 	vertical-align:middle;
-	font-size: 15px;
+	font-size:14px;
 	font-weight: 400;
 }
 .table thead th {
@@ -2349,6 +2357,18 @@ img{object-fit: contain;}
 	padding-bottom: .375rem;
 }
 
+.header-menu a {
+	font-weight: 500;
+	color: #222222;
+	font-size: 14px;
+}
+.hint-box {
+	background: #f7f7f7;
+	border-radius: 5px;
+	padding: 15px;
+}
+
+
 /*
 =============================================================
   responsive css here
@@ -2363,14 +2383,19 @@ img{object-fit: contain;}
 .card-title {
 	font-size: 1rem;
 }
-
-}
-
-
-
-
 .header-menu a {
 	font-weight: 500;
 	color: #222222;
-	font-size: 15px;
+	font-size: 13px;
+	text-align: center;
+	margin: 0px 10px 0px 0px !important;
 }
+.right-panel header.header {
+	padding: 16px 30px;
+}
+
+
+}
+
+
+
