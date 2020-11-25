@@ -10,8 +10,8 @@ class Subscription < ApplicationRecord
   enum status: { pending: 0, failed: 1, paid: 2 }
 
   # Associations
-  has_many :payments
-  has_one :invoice
+  has_many :payments, dependent: :destroy
+  has_one :invoice, dependent: :destroy
   belongs_to :user
   belongs_to :apartment
 

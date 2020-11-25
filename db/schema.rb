@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_20_175343) do
+ActiveRecord::Schema.define(version: 2020_11_24_183605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_11_20_175343) do
     t.datetime "departure_date"
     t.integer "total_bedrooms"
     t.string "shower_room"
-    t.string "distance_from_university"
+    t.string "distance_from_campus"
     t.string "other_facilities"
     t.float "longitude"
     t.float "latitude"
@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(version: 2020_11_20_175343) do
     t.string "campus"
     t.string "month"
     t.string "year"
+    t.integer "duration_from_campus"
+    t.string "travel_mode", default: "walking"
     t.index ["apartment_type_id"], name: "index_apartments_on_apartment_type_id"
     t.index ["booking_id"], name: "index_apartments_on_booking_id"
     t.index ["user_id"], name: "index_apartments_on_user_id"
