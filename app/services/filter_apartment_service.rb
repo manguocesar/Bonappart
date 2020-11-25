@@ -60,9 +60,9 @@ class FilterApartmentService
     when Constant::DISTANCE_FROM_CAMPUS[0]
       search_apartments.where("duration_from_campus <= ?", 10)
     when Constant::DISTANCE_FROM_CAMPUS[1]
-      search_apartments.where("duration_from_campus >= :duration AND distance_from_campus <= :distance", duration: 10, distance: two_decimal_precision('2'))
+      search_apartments.where("duration_from_campus >= :duration AND distance_from_campus <= :distance", duration: 10, distance: two_decimal_precision('55'))
     when Constant::DISTANCE_FROM_CAMPUS[2]
-      search_apartments.where("distance_from_campus >= ?", two_decimal_precision('2'))
+      search_apartments.where("distance_from_campus >= ?", two_decimal_precision('55'))
     else
       search_apartments
     end
