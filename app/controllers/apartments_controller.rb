@@ -5,7 +5,7 @@ class ApartmentsController < ApplicationController
   before_action :set_apartment, only: %i[show edit update destroy]
 
   def index
-    @apartments = pagination(filtered_apartments)
+    @apartments = pagination(filtered_apartments).order(created_at: :desc)
   end
 
   def show

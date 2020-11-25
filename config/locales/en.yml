@@ -61,7 +61,7 @@ en:
     leave_blank: Leave blank if you don't want to change password
   filter_results: Filter
   search: Seacrh
-  confirmation: Are you sure?
+  confirmation: Are You Sure You want to Delete This?
   apartments: Accomodations
   apartment:
     apartment_title: Apartment Title
