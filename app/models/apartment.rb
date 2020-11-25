@@ -22,6 +22,7 @@ class Apartment < ApplicationRecord
   has_one :rent_rate, dependent: :destroy
   belongs_to :apartment_type
   belongs_to :booking, optional: true
+  has_many :subscriptions, dependent: :destroy
   accepts_nested_attributes_for :rent_rate
 
   # Delegation
