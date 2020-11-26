@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :html, :js
   skip_before_action :verify_authenticity_token, only: :create
+  rescue_from Redis::CannotConnectError, with: :redirect_to_root_path
 
   # POST /resource
   # Override from devise for add roles for authorizations
@@ -56,5 +57,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       resource.update_attributes(account_update_params)
       bypass_sign_in(resource)
     end
+  end
+
+  private
+
+  def redirect_to_root_path
+    redirect_to root_path
   end
 end

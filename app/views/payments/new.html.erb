@@ -11,7 +11,7 @@
     </div>
     <div class="form-group col-sm-4">
       <%= form.label 'amount', class:"col-form-label" %>
-      <%= form.text_field 'payment[amount]', value: params[:amount], class: 'form-control', disabled: true %>
+      <%= form.text_field 'payment[amount]', value: params[:amount], class: 'form-control', disabled: true, id: 'amount' %>
     </div>
     <div class="form-group col-sm-4">
       <%= form.label 'remarks', class:"col-form-label" %>
@@ -19,24 +19,65 @@
     </div>
   </div>
   <%= render partial: 'address_details' , locals: { form: form } %>
-  <div class='offset-md-5 mt-3 mb-4'>
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+  <div class='offset-md-5 mt-3 mb-4' id='stripePaymentForm'>
+    <button type="button" class="btn btn-primary" data-toggle="modal" id="paymentFormSub">
+      Submit
+    </button>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="paymentModalLabel">Payment Initiated</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Click on "Pay with Card" to initiate the payment.
+          We didn't save any card information.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" style="font-size:0.975rem;border-radius:7px;">Close</button>
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="pk_test_51HZY7lFYh30SOXdPiBXS9R16JA8sU4QpBTLzlWoSsnCRQhPc6NSRxsxDl047P6A71UWBSZcwduL3o5WQS6MvYAw000dcmzAW6p"
             data-description="Book Accomodation"
             data-email = "<%= current_user.email %>"
             data-locale="auto">
-    </script>
+          </script>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
-<script>
+
+<script type="text/javascript">
+  var net_rate = "<%= find_net_rate %>"
+  var deposit_amount = "<%= find_deposit_amount %>"
+  var amount_field_value = $('#amount').val();
+
+  if(amount_field_value == net_rate){
+    $('#payment_type').val('full')
+  } else if (amount_field_value == deposit_amount){
+    $('#payment_type').val('deposit')
+  }
+
   $('#payment_type').change(function () {
     if ($('#payment_type').val() == 'full' ){
-      $('#amount').val(<%= find_net_rate %>)
+      $('#amount').val(net_rate)
     } else {
-      $('#amount').val(<%= find_deposit_amount %>)
+      $('#amount').val(deposit_amount)
     }
   })
-  $('.stripe-button').on('click', function () {
+
+  $('#paymentFormSub').on('click', function () {
     PaymentForm.validate();
+    var is_valid = $('#stripe-form').valid();
+    if(is_valid){
+      $('#paymentModal').modal('show');
+    } else {
+      $('#paymentModal').modal('hide');
+    }
   })
 </script>
