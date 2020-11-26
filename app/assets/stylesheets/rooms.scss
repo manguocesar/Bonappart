@@ -1,0 +1,136 @@
+// Place all the styles related to the Rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "common";
+@import "homes";
+
+
+.chat-room {
+  height:65vh;
+
+  .message {
+    min-height:33px;
+    .content-container {
+      display: inline-block;
+
+      .author {
+        font-size: 0.8rem;
+        color: #777777;
+        margin-left: 10px;
+      }
+    }
+    &.me {
+      .content-container {
+        float: right;
+
+      }
+    }
+  }
+}
+
+.card.no-outline {
+  border: none;
+}
+
+.room-link {
+  &:hover {
+   text-decoration: none;
+  }
+  .room-card {
+    transition: background-color 0.5s ease;
+    border-radius: 20px;
+    &:hover {
+      background-color: #eeeeee;
+    }
+    &.active {
+      background-color: black;
+      .name {
+        color: white;
+      }
+      .member-count {
+        color: #e0e0e0;
+      }
+    }
+    .name {
+      font-weight: bold;
+      color: black;
+    }
+    .member-count {
+      color: #777777;
+      font-weight: light;
+    }
+  }
+}
+
+
+.rooms-sidebar {
+	background: #20c997;
+}
+.chatbox {
+	border-radius: 10px;
+	overflow: hidden;
+	border: 1px solid #dddddd;
+}
+.room-link .room-card.active {
+	background-color: rgba(0,0,0,0.2);
+}
+.room-link .room-card {
+	transition: background-color 0.5s ease;
+	border-radius: 0;
+	padding: 15px 15px;
+	font-size: 16px;
+	font-weight: 400;
+}
+.chat-room-heading {
+	background: #f7f7f7;
+	border-bottom: 1px solid #dddddd;
+	color: #222222;
+	font-size: 16px !important;
+  padding: 15px;
+  font-weight: 600px;
+	line-height: normal;
+}
+.chat-room .chat-box {
+	position: absolute;
+  bottom: 0;
+	padding: 10px;
+	width: 100%;
+	margin-left: 0;
+	background-color: #dddddd;
+	border-top: 1px solid #dddddd;
+}
+.chat-room .chat-box input[type="text"] {
+	height: 46px;
+	font-size: 16px;
+	padding: 0px 15px;
+	border: 0;
+}
+.chat-room .chat-box .btn {
+	height: 46px;
+	background: #20c997;
+	border-color: #20c997;
+}
+.chat-room .message .content-container .content {
+	background-color: #e8e8e8;
+padding: 5px 15px;
+border-radius: 50px;
+color: #222;
+letter-spacing: 0.5px;
+}
+.chat-room .message.me .content-container .content {
+	background-color: #20c997;
+  color: white;
+}
+.chat-room #messages {
+	/* height: 65%; */
+	overflow-y: auto;
+	padding: 15px 15px 70px 15px;
+	position: absolute;
+	width: 100%;
+	height: calc(100% - 120px);
+	top: 53px;
+}
+
+.pt-110 {
+  padding-top: 110px !important;
+}

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :bookings
   resources :payments
   resources :inquiries
+  resources :messages
+  resources :rooms
   resources :invoices, only: %i[index show]
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
@@ -22,10 +24,12 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'dashboard#index'
     resources :apartments
     resources :users, only: %i[edit update]
+    resources :rooms
     resources :subscriptions, only: %i[index new create]
     resources :bookings, only: %i[index show]
     resources :invoices, only: %i[index show]
   end
+
   get '/new_invoice' => 'invoices#new', as: :add_invoice
   get '/card/new' => 'payments#new', as: :add_payment_method
   post '/card' => 'payments#create', as: :create_payment_method
@@ -39,6 +43,7 @@ Rails.application.routes.draw do
   get 'cities/:state', to: 'payments#cities'
   get 'render_login', to: 'inquiries#render_login_page'
   get 'invoice_details', to: 'invoices#invoice_details'
+  get 'booking_instruction', to: 'bookings#booking_instruction'
   get '/invoice/:id/download_invoice', to: 'invoices#download_invoice', as: :download
   get '/student_bookings', to: 'bookings#student_bookings'
   root 'homes#index'

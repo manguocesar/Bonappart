@@ -1,6 +1,6 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |form| %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, id: 'edit_user') do |form| %>
   <%= devise_error_messages! %>
-  <%= render 'shared/messages' %>
   <div class="row">
     <div class="form-group col-sm-6">
       <%= form.label t('users.firstname'), class:"col-form-label" %>
@@ -67,13 +67,14 @@
       <%= form.file_field :image, multiple: false, class: "form-control select" %>
     </div>
   </div>
-  <div class="actions">
+  <div class="actions text-right">
     <%= link_to 'Back', root_path, class: 'at-btn' %>
     <%= form.submit "Update", class:"at-btn at-btnactive" %>
   </div>
 <% end %>
 <script type="text/javascript">
   $(document).ready(function (e) {
-    EditUserForm.validate();
+    DatePicker.init();
+    RegisterForm.validate("<%= !resource.new_record? %>");
   });
 </script>

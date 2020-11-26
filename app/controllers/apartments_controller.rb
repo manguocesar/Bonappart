@@ -5,7 +5,7 @@ class ApartmentsController < ApplicationController
   before_action :set_apartment, only: %i[show edit update destroy]
 
   def index
-    @apartments = pagination(filtered_apartments)
+    @apartments = pagination(filtered_apartments).order(created_at: :desc)
   end
 
   def show
@@ -14,57 +14,76 @@ class ApartmentsController < ApplicationController
 
   def new
     @apartment = Apartment.new
-    authorize @apartment
     @apartment.build_rent_rate
   end
 
-  def edit; end
-
   def create
-    @apartment = Apartment.new(apartment_params)
-    authorize @apartment
     begin
+      @apartment = Apartment.new(apartment_params)
       if @apartment.save
-        aparment_index_or_show_page(is_index: false, action: 'create')
+        apartment_index_or_show_page(is_index: false, action: 'create')
       else
         render :new
       end
     rescue => exception
       puts "#{exception.inspect}"
-      redirect_to apartments_path
+      apartment_index_or_show_page(is_index: true, action: 'create')
     end
   end
+
+  # def new
+  #   @apartment = Apartment.new
+  #   authorize @apartment
+  #   @apartment.build_rent_rate
+  # end
+
+  def edit; end
+
+  # def create
+  #   @apartment = Apartment.new(apartment_params)
+  #   authorize @apartment
+  #   begin
+  #     if @apartment.save
+  #       apartment_index_or_show_page(is_index: false, action: 'create')
+  #     else
+  #       render :new
+  #     end
+  #   rescue => exception
+  #     puts "#{exception.inspect}"
+  #     redirect_to apartments_path
+  #   end
+  # end
 
   def update
     begin
       if @apartment.update(apartment_params)
-        aparment_index_or_show_page(is_index: false, action: 'update')
+        apartment_index_or_show_page(is_index: false, action: 'update')
       else
         render :edit
       end
     rescue => exception
       puts "#{exception.inspect}"
       redis_error = exception.kind_of?(Redis::CannotConnectError)
-      aparment_index_or_show_page(is_index: !redis_error, action: 'update')
+      apartment_index_or_show_page(is_index: !redis_error, action: 'update')
     end
   end
 
   def destroy
     begin
       if @apartment.destroy
-        aparment_index_or_show_page(is_index: true, action: 'delete')
+        apartment_index_or_show_page(is_index: true, action: 'delete')
       else
         redirect_to apartments_path
       end
     rescue => exception
       puts "#{exception.inspect}"
-      aparment_index_or_show_page(is_index: true, action: 'delete')
+      apartment_index_or_show_page(is_index: true, action: 'delete')
     end
   end
 
   private
 
-  def aparment_index_or_show_page(is_index: true, action: 'update')
+  def apartment_index_or_show_page(is_index: true, action: 'update')
     index_or_show_path = is_index ? 's_path' : '_path'
     if current_user.admin?
       redirect_to send("admin_apartment#{index_or_show_path}".to_sym), notice: t("apartment.#{action}")
@@ -90,7 +109,7 @@ class ApartmentsController < ApplicationController
       :title, :description, :postalcode, :floor, :campus,
       :city, :country, :area, :month, :year, :availability, :apartment_type_id,
       :arrival_date, :departure_date, :total_bedrooms,
-      :shower_room, :distance_from_university, :other_facilities,
+      :shower_room, :distance_from_campus, :other_facilities,
       :longitude, :latitude, :user_id, :virtual_visit_link, images: [],
       rent_rate_attributes: [
         :net_rate, :water_charge, :heating_charge, :electricity_charge, :internet_charge, :insurance_charge, :deposit_amount, included_in_net_rate: []

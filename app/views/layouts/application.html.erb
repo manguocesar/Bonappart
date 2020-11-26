@@ -8,6 +8,7 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag controller_name %>
     <%= javascript_include_tag controller_name %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh015i50EB_Ol2dxNvgd11iJBYJhfpziI"></script>
     <link rel="apple-touch-icon" sizes="57x57" href=<%= asset_url("favicon-icons/apple-icon-57x57.png") %> >
     <link rel="apple-touch-icon" sizes="60x60" href=<%= asset_url("favicon-icons/apple-icon-60x60.png") %> >
@@ -38,6 +39,7 @@
     </div>
     <!-- Preloader End -->
     <div class="page-container">
+      <%= render 'shared/messages' %>
       <div class="main-content">
         <%= render 'shared/header' %>
         <div class="main-content-inner">

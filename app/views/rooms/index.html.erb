@@ -1,0 +1,59 @@
+<div id="room-id" data-room-id="<%= @room.try(:id) %>"></div>
+<div id="user-id" data-user-id="<%= current_user.try(:id) %>"></div>
+<!-- All Messages By Rooms -->
+<% if @rooms.present? %>
+<div class="section-chatbox py-5">
+  <div class="container">
+    <div class="chatbox">
+    <div class="row no-gutters">
+      <div class="col-sm-4 rooms-sidebar">
+        <% @rooms.each do |room| %>
+          <%= link_to room, class: 'room-link' do %>
+            <% active_class = (@room == room) ? 'active' : '' %>
+            <div class="room-card <%= active_class %>">
+
+                <span class='name'><%= display_name_as_user_role(room) %><span><br>
+                <!--
+                  <span class='member-count'>
+                    <small><%#= room.users.uniq.count %> Members</small>
+                  </span>
+                -->
+
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-sm-8">
+        <% if @room.present? %>
+          <div class="chat-room">
+            <nav class="chat-room-heading">
+              <!-- Room or Inquiry Name -->
+              <span href="#">
+                <%= display_name_as_user_role(@room) %>
+              </span>
+              <!-- <small><%#= @room.users.uniq.count %> Members</small>  -->
+            </nav>
+            <div id="messages">
+              <% @room.messages.ascending_order.each do |message| %>
+                <%= render 'messages/message', message: message %>
+              <% end %>
+            </div>
+            <div class="chat-box">
+              <%= render 'messages/form', message: Message.new, room: @room %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<% else %>
+  <div class="text-center pt-110">
+    <div class="nodata-in-table">
+      <i class="fa fa-exclamation-triangle text-danger" aria-hidden="true" style="font-size: 5em"></i>
+      <h3 class="pt-3"><%= current_user.student? ? t('no_inquire') : t('no_inquiry') %></h3>
+    </div>
+  </div>
+<% end %>
+

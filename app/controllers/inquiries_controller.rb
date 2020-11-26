@@ -19,7 +19,7 @@ class InquiriesController < ApplicationController
   def create
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
-      InquiryMailerWorker.perform_async(current_user&.id, get_user&.id, @inquiry&.id)
+      InquiryMailerWorker.perform_async(@inquiry&.id)
     end
     respond_to do |format|
       format.html
@@ -37,7 +37,7 @@ class InquiriesController < ApplicationController
   private
 
   def inquiry_params
-    params.require(:inquiry).permit(:sender_id, :receiver_id, :message)
+    params.require(:inquiry).permit(:sender_id, :receiver_id, :message, :apartment_id)
   end
 
   def get_user
@@ -45,6 +45,10 @@ class InquiriesController < ApplicationController
   end
 
   def load_landlord
-    @landlord = Apartment.find_by_id(params[:apartment])&.user
+    @landlord = find_apartment&.user
+  end
+
+  def find_apartment
+    @apartment = Apartment.find_by_id(params[:apartment])
   end
 end

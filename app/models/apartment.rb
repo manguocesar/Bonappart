@@ -4,13 +4,13 @@
 class Apartment < ApplicationRecord
   # scopes for filters
   scope :filter_by_type, ->(apartment_type) { joins(:apartment_type).where('apartment_types.name ILIKE :apartment_type', apartment_type: "%#{apartment_type.downcase}%") }
-  scope :filter_by_distance_from_university, ->(distance_from_university) { where 'distance_from_university ILIKE ?', distance_from_university.downcase }
+  scope :filter_by_distance_from_campus, ->(distance_from_campus) { where 'distance_from_campus ILIKE ?', distance_from_campus.downcase }
   scope :filter_by_campus, ->(campus) { where campus: campus }
   scope :filter_by_rent_asc, -> { includes(:rent_rate).order('rent_rates.net_rate ASC') }
   scope :filter_by_rent, ->(low_rate, high_rate) { joins(:rent_rate).where('rent_rates.net_rate >= ? AND rent_rates.net_rate <= ?', low_rate, high_rate) }
   scope :filter_by_month, ->(month) { where month: month }
   scope :filter_by_year, ->(year) { where year: year }
-  scope :similar_apartments, ->(distance_from_university) { where distance_from_university: distance_from_university }
+  scope :similar_apartments, ->(distance_from_campus) { where distance_from_campus: distance_from_campus }
   scope :subscribed, -> { select(&:subscribed) }
   scope :unsubscribed, -> { reject(&:subscribed) }
   scope :available, -> { select(&:availability) }
@@ -20,8 +20,10 @@ class Apartment < ApplicationRecord
   has_many_attached :images
   belongs_to :user
   has_one :rent_rate, dependent: :destroy
+  has_many :inquiries
   belongs_to :apartment_type
   belongs_to :booking, optional: true
+  has_many :subscriptions, dependent: :destroy
   accepts_nested_attributes_for :rent_rate
 
   # Delegation
@@ -35,6 +37,16 @@ class Apartment < ApplicationRecord
 
   geocoded_by :full_address
   after_validation :geocode # , if: ->(obj){ obj.address.present? and obj.address_changed? }
+  after_commit :walking_distance_from_campus, only: %i[create update]
+
+  def walking_distance_from_campus
+    DistanceMatrixGoogleApiWorker.perform_async(self&.id) if api_call_validated?
+  end
+
+  def api_call_validated?
+    (latitude.present? && longitude.present?) &&
+      (distance_from_campus.blank? || duration_from_campus.blank?)
+  end
 
   def maximum_image_uploadation
     errors.add(:base, 'maximum 20 images can allowed to upload') if images.count > 20

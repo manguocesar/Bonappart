@@ -1,8 +1,8 @@
 @import "common";
 
 .modal-content .errors{
-  position: absolute;
-  top: -70px;
+  position: inherit;
+  top: 10px;
   width: 100%;
 }
 .homesliderimg{
@@ -12,6 +12,7 @@
 .all_properties{
   text-align: center;
 }
+
 .row{
   .host-btn{
     margin-top: 2px !important;
@@ -23,4 +24,7 @@
 }
 .contact-us{
   padding: 0px;
+}
+.row label{
+  text-transform: capitalize;
 }
