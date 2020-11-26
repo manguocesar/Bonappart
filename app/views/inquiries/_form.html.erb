@@ -2,6 +2,7 @@
   <%= render 'shared/error_messages', target: inquiry %>
   <%= hidden_field_tag 'inquiry[sender_id]', current_user&.id %>
   <%= hidden_field_tag 'inquiry[receiver_id]', @landlord&.id %>
+  <%= hidden_field_tag 'inquiry[apartment_id]', @apartment&.id %>
 
   <div class='row'>
     <div class="form-group col-sm-12 mb-3">

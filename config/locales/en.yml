@@ -34,6 +34,8 @@ en:
   hello: "Hello world"
   cannot_perform: "You can't perform this action."
   actions: Actions
+  no_inquiry: 'Any Inquiry not received yet.'
+  no_inquire: 'You not started any inquiry yet.'
   thank_you:
     title: Thank you for booking Accomodation
     message: Your Accomodation is booked successfully
@@ -61,7 +63,7 @@ en:
     leave_blank: Leave blank if you don't want to change password
   filter_results: Filter
   search: Seacrh
-  confirmation: Are you sure?
+  confirmation: Are You Sure You want to Delete This?
   apartments: Accomodations
   apartment:
     apartment_title: Apartment Title
@@ -86,20 +88,20 @@ en:
     rent: Rent
     total_bedrooms: Total bedrooms
     shower_room: Shower room
-    distance_from_university: Distance from university
+    distance_from_campus: Distance from campus
     other_facilities: Other facilities
     longitude: Longitude
     latitude: Latitude
     images: Images
-    virtual_visit_link: Virtual visit link
+    virtual_visit_link: Virtual Visit Link
     select_images: Upload only .jpg, .jpeg, .png files
-    create: Apartment added successfully
-    update: Apartment updated successfully
-    delete: Apartment deleted successfully
+    create: Apartment Added Successfully
+    update: Apartment Updated Successfully
+    delete: Apartment Deleted Successfully
     previous: Previous
     next: Next
-    booking_success: Accomodation booked successfully
-    subscription_success: Accomodation subscribed successfully
+    booking_success: Accomodation Booked Successfully
+    subscription_success: Accomodation Subscribed Successfully
     edit_delete_apartments: Edit/Delete your Apartment details
     edit_post_apartments: Edit/Post your Apartment details
     rent_details: Rent Details
@@ -139,6 +141,8 @@ en:
     properties: Properties
     bookings: Bookings
     invoices: Invoices
+    inquiries: Inquiries
+    my_inquiries: My Inquiries
     landlord_management: Landlord Management
     student_management: Student Management
     all_landlords: All Landlord Users
@@ -175,6 +179,8 @@ en:
     city: City
     state: State
     country: Country
+    select_state: Please Select State
+    select_city: Please Select City
   admin:
     apartment_type:
       title: Apartment Types

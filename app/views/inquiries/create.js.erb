@@ -1,4 +1,4 @@
-<% if @inquiry.present? %>
+<% if @inquiry.errors.present? %>
   $("#inuiryModal").find(".modal-content").html("<%= j (render 'new') %>");
   $("#inuiryModal").modal();
 <% else %>
