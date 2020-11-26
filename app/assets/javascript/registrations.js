@@ -52,11 +52,10 @@ RegisterForm = {
 }
 DatePicker = {
   init: function () {
-    startDate = document.getElementsByClassName("at-startdate");
     new Lightpick({
-      field: startDate,
+      field: document.getElementById('birthdate'),
       onSelect: function (date) {
-        startDate.innerHTML = date.format('Do MMMM YYYY');
+        document.getElementById('birthdate').innerHTML = date.format('Do MMMM YYYY');
       }
     });
   }
