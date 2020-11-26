@@ -32,7 +32,7 @@
         </div>
         <div class="modal-body">
           Click on "Pay with Card" to initiate the payment.
-          We didn't save any card information.
+          We don't save any card information.
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" style="font-size:0.975rem;border-radius:7px;">Close</button>
@@ -49,24 +49,6 @@
 <% end %>
 
 <script type="text/javascript">
-  var net_rate = "<%= find_net_rate %>"
-  var deposit_amount = "<%= find_deposit_amount %>"
-  var amount_field_value = $('#amount').val();
-
-  if(amount_field_value == net_rate){
-    $('#payment_type').val('full')
-  } else if (amount_field_value == deposit_amount){
-    $('#payment_type').val('deposit')
-  }
-
-  $('#payment_type').change(function () {
-    if ($('#payment_type').val() == 'full' ){
-      $('#amount').val(net_rate)
-    } else {
-      $('#amount').val(deposit_amount)
-    }
-  })
-
   $('#paymentFormSub').on('click', function () {
     PaymentForm.validate();
     var is_valid = $('#stripe-form').valid();
