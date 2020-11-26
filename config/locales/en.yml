@@ -34,8 +34,9 @@ en:
   hello: "Hello world"
   cannot_perform: "You can't perform this action."
   actions: Actions
-  no_inquiry: 'Any Inquiry not received yet.'
-  no_inquire: 'You not started any inquiry yet.'
+  no_inquiry: 'Ypu have not received Any Inquiry yet'
+  no_inquire: 'You have not started any inquiry yet'
+  address_details: Address Details
   thank_you:
     title: Thank you for booking Accomodation
     message: Your Accomodation is booked successfully
