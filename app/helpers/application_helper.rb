@@ -30,6 +30,10 @@ module ApplicationHelper
     ApartmentType.all
   end
 
+  def apartment_type_name(type)
+    type.name&.humanize&.pluralize if type.present?
+  end
+
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end

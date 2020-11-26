@@ -35,7 +35,7 @@ module Admin
     # Update invoice
     def update
       if @invoice.update(invoice_params)
-        redirect_to admin_invoices_path, notice: t('user.update')
+        redirect_to admin_invoices_path, notice: t('invoice.update')
       else
         render :edit
       end

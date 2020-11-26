@@ -4,12 +4,16 @@ var ApartmentForm = {
       required: true
     };
 
-    $('#apartment_apartment_type_id, #apartment_campus').on('change', function () {
+    $('#apartment_apartment_type_id, #apartment_campus, #apartment_month, #apartment_year').on('change', function () {
+      const selector = $(this).attr('id');
       if ($(this).val() == "") {
         $(this).valid();
       } else {
+        if (selector == "apartment_campus") {
+          var selector_value = $(this).val()
+          $('#apartment_country').val(selector_value == "Fontainebleau" ? 'France' : selector_value)
+        }
         $(this).parent('div').removeClass('is-invalid text-danger');
-        const selector = $(this).attr('id');
         $(`#${selector}-error`).remove();
       }
     });
@@ -22,7 +26,7 @@ var ApartmentForm = {
         if (element.is('select')) {
           var parentDiv = element.parent('div');
           error.insertAfter(parentDiv);
-          parentDiv.addClass("is-invalid text-danger");
+          // parentDiv.addClass("is-invalid text-danger");
         } else {
           error.insertAfter(element);
         }
@@ -34,42 +38,47 @@ var ApartmentForm = {
         "apartment[postalcode]": requiredRule,
         "apartment[floor]": requiredRule,
         "apartment[city]": requiredRule,
-        "apartment[country]": requiredRule,
         "apartment[area]": requiredRule,
         "apartment[apartment_type]": requiredRule,
         "apartment[availability]": requiredRule,
         "apartment[arrival_date]": requiredRule,
+        "apartment[month]": requiredRule,
+        "apartment[year]": requiredRule,
         "apartment[departure_date]": requiredRule,
         "apartment[total_bedrooms]": requiredRule,
         "apartment[shower_room]": requiredRule,
-        "apartment[distance_from_university]": requiredRule,
-        "apartment[other_facilities]": requiredRule,
+        "apartment[distance_from_campus]": requiredRule,
         "apartment[longitude]": requiredRule,
         "apartment[latitude]": requiredRule,
         "apartment[apartment_type_id]": requiredRule,
-        "apartment[campus]": requiredRule
+        "apartment[campus]": requiredRule,
+        "apartment[rent_rate_attributes][net_rate]": requiredRule,
+        "apartment[rent_rate_attributes][deposit_amount]": requiredRule
       },
 
       messages: {
-        "apartment[title]": 'Please enter title',
-        "apartment[description]": 'Please enter description',
-        "apartment[postalcode]": 'Please enter postalcode',
-        "apartment[floor]": 'Please enter floor',
-        "apartment[city]": 'Please enter city',
-        "apartment[country]": 'Please enter country',
-        "apartment[area]": 'Please enter area',
-        "apartment[apartment_type]": 'Please enter accomodation type',
-        "apartment[availability]": 'Please enter availability',
-        "apartment[arrival_date]": 'Please enter arrival date',
-        "apartment[departure_date]": 'Please enter departure date',
-        "apartment[total_bedrooms]": 'Please enter total bedrooms',
-        "apartment[shower_room]": 'Please enter shower room',
-        "apartment[distance_from_university]": 'Please enter distance from university',
-        "apartment[other_facilities]": 'Please enter other facilities',
-        "apartment[longitude]": 'Please enter longtitude',
-        "apartment[latitude]": 'Please enter latitude',
-        "apartment[apartment_type_id]": 'Please select accomodation type',
-        "apartment[campus]": 'Please select campus'
+        "apartment[title]": 'Please Enter Title',
+        "apartment[description]": 'Please Enter Description',
+        "apartment[postalcode]": 'Please Enter Postalcode',
+        "apartment[floor]": 'Please Enter Floor',
+        "apartment[city]": 'Please Enter City',
+        "apartment[area]": 'Please Enter Area',
+        "apartment[month]": 'Please Select Month',
+        "apartment[year]": 'Please Select Year',
+        "apartment[apartment_type]": 'Please Enter Accomodation Type',
+        "apartment[availability]": 'Please Enter Availability',
+        "apartment[arrival_date]": 'Please Enter Arrival Date',
+        "apartment[departure_date]": 'Please Enter Departure Date',
+        "apartment[total_bedrooms]": 'Please Enter Total Bedrooms',
+        "apartment[shower_room]": 'Please Enter Shower Room',
+        "apartment[distance_from_campus]": 'Please Enter Distance From Campus',
+        "apartment[longitude]": 'Please Enter Longtitude',
+        "apartment[latitude]": 'Please Enter Latitude',
+        "apartment[apartment_type_id]": 'Please Select Accomodation Type',
+        "apartment[campus]": 'Please Select Campus',
+        "apartment[rent_rate_attributes][net_rate]": 'Please Enter Net Rate',
+        "apartment[rent_rate_attributes][deposit_amount]": 'Please Enter Deposite Amount'
+
       },
     });
   }
@@ -86,7 +95,7 @@ var Filter = {
             departure_date: $('.at-enddate').val(),
           },
           sort: {
-            distance_from_university: $('#distance_from_university').val(),
+            distance_from_campus: $('#distance_from_university').val(),
             rent: $('#net_rate').val(),
           },
         },
@@ -101,7 +110,7 @@ var DisplayMap = {
   mapSettings: function (latlong) {
     // latlong - coordinates and apartment price
     const map = new google.maps.Map(document.getElementById("at-locationmap"), {
-      zoom: 10,
+      zoom: 17,
       center: new google.maps.LatLng(parseFloat(latlong[0][2]), parseFloat(latlong[0][3])),
       panControl: true,
       zoomControl: true,
@@ -147,4 +156,31 @@ var DisplayMap = {
       marker.setAnimation(google.maps.Animation.BOUNCE);
     }
   },
+}
+
+
+function previewFile(input) {
+  $('#image_preview img').remove();
+  var files = input.files
+  if (files && files.length > 0 ) {
+    if(files.length > 20){
+      $('#image-limit-validation').removeClass('d-none').addClass('d-block');
+    } else {
+      $('#uploadedImage').addClass('d-none');
+      $('#image-limit-validation').removeClass('d-block').addClass('d-none');
+      for (var i = 0; i < files.length; i++) {
+        $('#image_preview').append("<img src='" + URL.createObjectURL(event.target.files[i]) + "', width='150px', height='100px'>&nbsp&nbsp");
+      }
+    }
+  }
+}
+
+function textFieldDisable(event) {
+  var input_field = $(`input[name="apartment[rent_rate_attributes][${event.attr('value')}]"`)
+  if (event.prop('checked')){
+    input_field.attr('disabled', true);
+    input_field.val('');
+  } else {
+    input_field.removeAttr('disabled');
+  }
 }

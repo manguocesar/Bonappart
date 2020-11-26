@@ -1,7 +1,15 @@
 @import "common";
 
 .modal-content .errors{
-  position: absolute;
-  top: -70px;
+  position: inherit;
+  top: 10px;
   width: 100%;
 }
+.homesliderimg{
+  max-width: 100%;
+  height: 500px;
+}
+.all_properties{
+  text-align: center;
+}
+

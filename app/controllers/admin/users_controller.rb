@@ -32,10 +32,23 @@ module Admin
     end
 
     def update
-      if @user.update(user_params)
-        redirect_to admin_users_path, notice: t('user.update')
+      if update_user
+        bypass_sign_in(@user) if @user.admin?
+        if @user.admin?
+          redirect_to root_path, notice: t('user.profile_update')
+        else
+          redirect_to admin_users_path, notice: t('user.update')
+        end
       else
         render :edit
+      end
+    end
+
+    def update_user
+      if user_params[:password].blank?
+        @user.update_without_password(user_params)
+      else
+        @user.update(user_params)
       end
     end
 

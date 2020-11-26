@@ -17,7 +17,7 @@
     </div>
     <div class="form-group col-sm-12 mb-3">
       <%= form.label t('invoice.status'), class:"col-form-label" %><br/>
-      <%= select_tag('invoice[status]', options_for_select(Invoice.statuses.map { |k, v| [k.humanize.capitalize, k] }), class: "form-control selectpicker", include_blank: t('user.select_status')) %>
+      <%= select_tag('invoice[status]', options_for_select(Invoice.statuses.map { |k, v| [k.humanize.capitalize, k] }), class: "form-control", include_blank: t('user.select_status')) %>
     </div>
     <div class="modal-footer">
       <%= link_to "Back", admin_invoices_path, class: 'btn btn-secondary' %>

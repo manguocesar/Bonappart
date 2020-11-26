@@ -1,76 +1,66 @@
 <div class='container'>
-  <div class="row justify-content-center">
+  <div class="remove-flex row justify-content-center">
     <div class="col-12 col-md-12 col-lg-12 col-xl-11 push-xl-1">
       <div class="at-slider-content" style="max-width:1100px;">
         <div class="at-title">
           <h4>Start Your Search Here</h4>
         </div>
         <div class="remove-flex row">
-          <div class="col-12 col-md-12 col-lg-6 float-left">
-            <%= form_tag(apartments_path, method: :get, remote: params[:remote_flag], class: 'at-formtheme at-formbanner') do |form| %>
-              <fieldset class="at-datetime">
-                <div class="form-group">
-                  <div class="at-selectdate-holder">
-                    <div class="at-select">
-                      <label>Check-In:</label>
-                      <input class="form-control at-startdate" name="<%= 'search[arrival_date]' %>" placeholder="<%= t('apartment.arrival_date') %>">
-                    </div>
-                    <div class="at-select">
-                      <label>Check Out:</label>
-                      <input class="form-control at-enddate" name="<%= 'search[departure_date]' %>" placeholder="<%= t('apartment.departure_date') %>">
-                    </div>
-                    <a href="javascript:void(0);" class="at-calendarbtn"><i class="ti-calendar"></i></a>
-                  </div>
+          <%= form_tag(apartments_path, method: :get, remote: params[:remote_flag], class: 'at-formtheme at-formbanner') do |form| %>
+          <div class="row">
+            <div class="at-widget col-sm-3">
+              <div class="at-widgettitle at-collapsetitle" id="heading5" data-toggle="collapse" data-target="#collapse1" role="heading">
+                <h3><%= t('admin.apartment_type.title') %></h3>
+              </div>
+              <div class="at-collapseholder collapse show" id="collapse1" aria-labelledby="heading5">
+                <div class="at-widgetcontent">
+                  <%= select_tag 'search[apartment_type]', options_for_select(apartment_type_collection.pluck(:name)), class: "form-control col-sm-12", include_blank: t('apartment.select_apartment_type') %>
                 </div>
-                <div class="form-group">
-                  <div class="at-select">
-                    <%= select_tag('sort[campus]', options_for_select(Constant::CAMPUS), class: "form-control", include_blank: t('apartment.campus')) %>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="at-select">
-                    <%= select_tag('sort[distance_from_university]', options_for_select(Constant::DISTANCE_FROM_UNIVERSITY), class: "form-control", include_blank: t('apartment.distance_from_university')) %>
-                  </div>
-                </div>
-                <div class="at-widget">
-                  <div class="at-widgettitle at-collapsetitle" id="heading5" data-toggle="collapse" data-target="#collapse5" role="heading">
-                    <h3>Price Range:</h3>
-                  </div>
-                  <div class="at-collapseholder collapse show" id="collapse5" aria-labelledby="heading5">
-                    <div class="at-widgetcontent">
-                      <div class="at-areasizebox">
-                        <input type="text" id="at-rangeamount" name="<%= 'sort[rent]' %>" readonly="">
-                      </div>
-                      <div id="at-rangeslider" class="at-rangeslider at-themerangeslider ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                        <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 12%;"></span>
-                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 80%;"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </fieldset>
+              </div>
             </div>
-            <div class="col-12 col-md-12 col-lg-6 float-left">
-              <legend class="at-formtitle"><%= t('admin.apartment_type.title') %></legend>
-              <div class="form-group">
-                <div class="at-room-radioholder at-room-radiovtwo">
-                  <% apartment_type_collection.each do |apartment_type| %>
-                    <span class="at-radio">
-                      <input id="at-private-<%= apartment_type.id %>" type="radio" name="<%= 'search[apartment_type]' %>" value="<%= apartment_type.name %>">
-                      <label for="at-private-<%= apartment_type.id %>">
-                        <%= image_tag apartment_type_image(apartment_type) %>
-                        <span><em><%= apartment_type.name %></em></span>
-                      </label>
-                    </span>
-                  <% end %>
+            <div class="at-widget col-sm-3">
+              <div class="at-widgettitle at-collapsetitle" id="heading5" data-toggle="collapse" data-target="#collapse6" role="heading">
+                <h3>Available From:</h3>
+              </div>
+              <div class="at-collapseholder collapse show" id="collapse6" aria-labelledby="heading5">
+                <div class="at-widgetcontent">
+                  <%= select_tag 'search[month]', options_for_select(Constant::MONTH_ARRAY), class: 'form-control col-sm-5 selectpicker', include_blank: t('apartment.month') %>
+                  <%= select_tag 'search[year]', options_for_select(Constant::YEAR_ARRAY), class: 'form-control col-sm-5 selectpicker', include_blank: t('apartment.year') %>
                 </div>
               </div>
-              <div class="form-group at-btnarea">
-                <%= button_tag t('filter_results'), class:"at-btn sort-filter", type: "submit" %>
+            </div>
+            <div class="at-widget col-sm-3">
+              <div class="at-widgettitle at-collapsetitle" id="heading5" data-toggle="collapse" data-target="#collapse5" role="heading">
+                <h3>Price Range:</h3>
               </div>
-            <% end %>
+              <div class="at-collapseholder collapse show" id="collapse5" aria-labelledby="heading5">
+                <div class="at-widgetcontent">
+                  <div class="at-areasizebox">
+                    <input type="text" id="at-rangeamount" name="<%= 'sort[rent]' %>" readonly="">
+                  </div>
+                  <div id="at-rangeslider" class="at-rangeslider at-themerangeslider ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                    <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
+                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 12%;"></span>
+                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 80%;"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="at-widget col-sm-3">
+              <div class="at-widgettitle at-collapsetitle" id="heading5" data-toggle="collapse" data-target="#collapse2" role="heading">
+                <h3><%= t('apartment.distance_from_campus') %></h3>
+              </div>
+              <div class="at-collapseholder collapse show" id="collapse2" aria-labelledby="heading5">
+                <div class="at-widgetcontent">
+                  <%= select_tag('sort[distance_from_campus]', options_for_select(Constant::DISTANCE_FROM_CAMPUS), class: "form-control col-sm-12", include_blank: t('apartment.select_distance')) %>
+                </div>
+              </div>
+            </div>
           </div>
+          <div class="at-btnarea ml-4">
+            <%= button_tag t('filter_results'), class:"at-btn sort-filter", type: "submit" %>
+          </div>
+          <% end %>
         </div>
       </div>
     </div>

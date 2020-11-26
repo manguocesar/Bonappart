@@ -8,6 +8,7 @@
 @import "dashboard/animate";
 @import "dashboard/style";
 @import "common/bootstrap-select.min";
+@import "landlord/rooms";
 
 .card {
   border-radius: 4px;
@@ -29,4 +30,8 @@ body {
   justify-content: space-between;
   border-radius: 5px;
   background-color: #eeeeee;
+}
+
+#image-limit-validation {
+  color: #dc3545;
 }

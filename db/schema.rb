@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_11_192045) do
+ActiveRecord::Schema.define(version: 2020_11_24_183605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_11_11_192045) do
     t.datetime "departure_date"
     t.integer "total_bedrooms"
     t.string "shower_room"
-    t.string "distance_from_university"
+    t.string "distance_from_campus"
     t.string "other_facilities"
     t.float "longitude"
     t.float "latitude"
@@ -80,6 +80,10 @@ ActiveRecord::Schema.define(version: 2020_11_11_192045) do
     t.boolean "subscribed", default: false
     t.bigint "apartment_type_id"
     t.string "campus"
+    t.string "month"
+    t.string "year"
+    t.integer "duration_from_campus"
+    t.string "travel_mode", default: "walking"
     t.index ["apartment_type_id"], name: "index_apartments_on_apartment_type_id"
     t.index ["booking_id"], name: "index_apartments_on_booking_id"
     t.index ["user_id"], name: "index_apartments_on_user_id"
@@ -112,6 +116,8 @@ ActiveRecord::Schema.define(version: 2020_11_11_192045) do
     t.integer "receiver_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "apartment_id", null: false
+    t.index ["apartment_id"], name: "index_inquiries_on_apartment_id"
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -125,6 +131,16 @@ ActiveRecord::Schema.define(version: 2020_11_11_192045) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["booking_id"], name: "index_invoices_on_booking_id"
     t.index ["subscription_id"], name: "index_invoices_on_subscription_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -152,6 +168,7 @@ ActiveRecord::Schema.define(version: 2020_11_11_192045) do
     t.bigint "apartment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "included_in_net_rate", default: [], array: true
     t.index ["apartment_id"], name: "index_rent_rates_on_apartment_id"
   end
 
@@ -163,6 +180,15 @@ ActiveRecord::Schema.define(version: 2020_11_11_192045) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name_for_student"
+    t.string "name_for_landlord"
+    t.bigint "inquiry_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["inquiry_id"], name: "index_rooms_on_inquiry_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -213,9 +239,13 @@ ActiveRecord::Schema.define(version: 2020_11_11_192045) do
   add_foreign_key "apartments", "apartment_types"
   add_foreign_key "apartments", "bookings"
   add_foreign_key "apartments", "users"
+  add_foreign_key "inquiries", "apartments"
   add_foreign_key "invoices", "bookings"
   add_foreign_key "invoices", "subscriptions"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "payments", "subscriptions"
+  add_foreign_key "rooms", "inquiries"
   add_foreign_key "subscriptions", "apartments"
   add_foreign_key "subscriptions", "users"
 end

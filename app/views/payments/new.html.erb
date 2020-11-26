@@ -1,4 +1,3 @@
-<%= render 'shared/header_bg' %>
 <% url = payment_url(params)  %>
 <%= form_with url: url,  id: 'stripe-form' do |form| %>
   <%= hidden_field_tag 'payment[booking_id]', params[:booking_id] %>

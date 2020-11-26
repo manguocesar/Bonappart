@@ -2,7 +2,7 @@
 
 module Constant
   USER_FIELDS = %i[firstname lastname username phone_no birthdate
-                   gender address email password password_confirmation image].freeze
+                   gender address email password password_confirmation image terms_of_service].freeze
 
   USER_UPDATE_FIELDS = USER_FIELDS + [:current_password].freeze
 
@@ -26,12 +26,21 @@ module Constant
   EDIT = 'edit'
   ZERO = '0.0'
 
-  DISTANCE_FROM_UNIVERSITY = ['<10 minutes’ walk from campus', '>10 minutes’ walk from campus',
-                              'Outside Fontainebleau in nearby houses', 'I do not mind'].freeze
+  MONTH_ARRAY = ('1'..'12').to_a
+  YEAR_ARRAY = ('2020'..'2030').to_a
+
+  DISTANCE_FROM_CAMPUS = [
+    '<10 minutes’ walk from campus',
+    '>10 minutes’ walk from campus',
+    'Outside Fontainebleau in nearby houses',
+    'I do not mind'
+  ].freeze
 
   CAMPUS = %w[Fontainebleau Singapore].freeze
-  UNIVERSITY_ADDRESS = 'Boulevard de Constance 77305 Fontainebleau'
+  FONTAINEBLEAU_CAMPUS_ADDRESS = 'Boulevard de Constance 77305 Fontainebleau France'
   LESS_THAN_TEN = '<10 minutes'
   GREATER_THAN_TEN = '>10 minutes'
   OUTSIDE_FONTAINEBLEAU = 'Outside Fontainebleau'
+
+  COORDINATES_OF_FONTAINEBLEAU_CAMPUS = [48.4022714, 2.6872183]
 end

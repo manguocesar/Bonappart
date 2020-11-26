@@ -1,4 +1,4 @@
-<header id="at-header" class="at-header at-headervtwo at-haslayout">
+<header id="at-header" class="at-header at-haslayout">
   <div class="at-navigationarea">
     <div class="container-fluid">
       <div class="row">
@@ -9,6 +9,7 @@
             <% end %>
           </strong>
           <div class="at-rightarea">
+            <!-- Statred menu items -->
             <nav id="at-nav" class="at-nav navbar-expand-lg">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="lnr lnr-menu"></i>
@@ -21,6 +22,15 @@
                   <li class="nav-item <%= active_inactive_header_class('contact_us') %>">
                     <%= link_to 'Contact Us', contact_us_path %>
                   </li>
+                  <% unless current_user.present? %>
+                    <li class="nav-item">
+                      <%= link_to 'Login', popup_forms_path(name: 'login'), remote: true, class: '', style: "font-size: medium;" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to 'Register', popup_forms_path(name: 'register'), remote: true, class: '', style: "font-size: medium;" %>
+                    </li>
+
+                  <% end %>
                   <% if current_user.present? %>
                     <li class="menu-item-has-children page_item_has_children"><span class="at-dropdowarrow"><i class="lnr lnr-chevron-right"></i></span>
                       <a href="javascript:void(0);" class="at-menu-icon">
@@ -33,6 +43,9 @@
                           <%= link_to title_and_url.first, title_and_url.last %>
                         </li>
                         <li>
+                          <%= link_to t('dashboard.my_inquiries'), rooms_path %>
+                        </li>
+                        <li>
                           <%= link_to "Edit Profile", edit_user_registration_path %>
                         </li>
                         <li>
@@ -42,20 +55,15 @@
                     </li>
                   <% end %>
                 </ul>
+
               </div>
             </nav>
-            <% unless current_user.present? %>
-              <div class="at-loginarea float-right">
-                  <%= link_to 'Login', popup_forms_path(name: 'login'), remote: true, class: 'at-registeroption', style: "font-size: medium;" %>
-                  <%= link_to 'Register', popup_forms_path(name: 'register'), remote: true, class: 'at-registeroption', style: "font-size: medium;" %>
-                <div class="at-detailsbtn-topbar">
-                  <%= link_to 'Become a Host', popup_forms_path(name: 'host'), remote: true, class: 'at-btn at-btnactive' %>
-                  <!--<em>OR</em>
-                  <a href="javascript:void(0);" class="at-btn at-btnactive at-btntwo" data-toggle="modal" data-target="#findproperty">Find Property</a> -->
-                </div>
+            <% if current_user.blank? %>
+              <div class="at-detailsbtn-topbar">
+                <%= link_to 'Become a Host', popup_forms_path(name: 'host'), remote: true, class: 'at-btn at-btnactive host-btn' %>
               </div>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -66,11 +74,11 @@
 <div class="modal fade at-loginpopup" tabindex="-1" role="dialog" id="deviseform" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="at-modalcontent modal-content">
-      <div class='errors'></div>
       <div class="at-popuptitle">
         <h4 class='popup-heading'></h4>
         <a href="javascript:void(0);" class="at-closebtn close"><i class="lnr lnr-cross" data-dismiss="modal"></i></a>
       </div>
+      <div class='errors'></div>
       <div class="modal-body" id='devise-forms'>
       </div>
     </div>

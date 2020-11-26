@@ -55,6 +55,15 @@ RegisterForm = {
       errorClass: 'is-invalid text-danger',
       errorElement: 'div',
 
+      errorPlacement: function (error, element) {
+        if (element.attr('type') == 'checkbox') {
+          var parent = element.parent();
+          error.insertAfter(parent);
+        } else {
+          error.insertAfter(element);
+        }
+      },
+
       rules: {
         "user[email]": {
           required: true,
@@ -82,6 +91,9 @@ RegisterForm = {
           equalTo: '#password'
         },
         "user[username]": {
+          required: true
+        },
+        "user[terms_of_service]": {
           required: true
         }
       },

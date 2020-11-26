@@ -1,13 +1,13 @@
-<table id="bootstrap-data-table" class="table table-striped table-bordered dataTable no-footer"
+<table id="bootstrap-data-table" class="table table-bordered dataTable no-footer"
   role="grid" aria-describedby="bootstrap-data-table_info">
   <thead>
     <tr role="row">
-      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('users.firstname') %></th>
-      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('users.lastname') %></th>
-      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('users.email') %></th>
-      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('users.username') %></th>
-      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('users.phone_no') %></th>
-      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="2">Actions</th>
+      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.firstname') %></th>
+      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.lastname') %></th>
+      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.email') %></th>
+      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.username') %></th>
+      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.phone_no') %></th>
+      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:150px; text-align:center;">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -18,13 +18,11 @@
         <td><%= user.email %></td>
         <td><%= user.username %></td>
         <td><%= user.phone_no %></td>
-        <td>
-          <%= link_to edit_admin_user_path(user) do %>
-            <i class="fa fa-pencil"></i>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to admin_user_path(user), method: :delete, data: { confirm: t('confirmation') }  do %>
+        <td align="center">
+        <%= link_to edit_admin_user_path(user), class:'btn btn-sm btn-success' do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
+          <%= link_to admin_user_path(user), method: :delete, data: { confirm: t('confirmation') }, class:'btn btn-sm btn-danger'  do %>
             <i class="fa fa-trash"></i>
           <% end %>
         </td>

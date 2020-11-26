@@ -1,23 +1,23 @@
-<div class="animated fadeIn">
+<div class="content">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4><strong class="card-title"><%= t('invoice.my_invoice') %></strong></h4>
+          <h3 class="card-title"><%= t('dashboard.invoices') %></h3>
         </div>
         <div class="card-body">
-          <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+          <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
             <div class="row">
               <div class="col-sm-12">
-                <table id="bootstrap-data-table" class="table table-striped table-bordered dataTable no-footer"
+                <table id="bootstrap-data-table" class="table table-bordered dataTable no-footer"
                   role="grid" aria-describedby="bootstrap-data-table_info">
                   <thead>
                     <tr role="row">
-                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.invoice_number') %></th>
-                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.property_name') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.amount') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.date') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.status') %></th>
+                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"><%= t('invoice.invoice_number') %></th>
+                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"><%= t('invoice.property_name') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('invoice.amount') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('invoice.date') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:150px; text-align:center;"><%= t('invoice.status') %></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -27,7 +27,7 @@
                         <td><%= invoice.apartment_title %></td>
                         <td><%= invoice&.amount %></td>
                         <td><%= date_format(invoice.date) %></td>
-                        <td><%= link_to invoice.status, invoice_show_path(invoice) %></td>
+                        <td align="center"><%= link_to invoice.status, invoice_show_path(invoice) %></td>
                       </tr>
                     <% end %>
                     </tr>
