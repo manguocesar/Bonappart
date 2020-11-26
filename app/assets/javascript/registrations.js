@@ -80,3 +80,13 @@ RegisterForm = {
     });
   }
 }
+DatePicker = {
+  init: function () {
+    new Lightpick({
+      field: document.getElementById('birthdate'),
+      onSelect: function (date) {
+        document.getElementById('birthdate').innerHTML = date.format('Do MMMM YYYY');
+      }
+    });
+  }
+}

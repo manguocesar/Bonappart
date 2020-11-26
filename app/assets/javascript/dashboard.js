@@ -11,4 +11,18 @@
 //= require apartments/custom
 //= require apartment_types/validate
 //= require admin/users_validate
+//= require common/moment.min
+//= require common/lightpick
+
 var $ = jQuery
+
+DatePicker = {
+  init: function () {
+    new Lightpick({
+      field: document.getElementById('birthdate'),
+      onSelect: function (date) {
+        document.getElementById('birthdate').innerHTML = date.format('Do MMMM YYYY');
+      }
+    });
+  }
+}
