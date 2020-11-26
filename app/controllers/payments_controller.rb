@@ -24,6 +24,7 @@ class PaymentsController < ApplicationController
     @payment.save
     @payment.paid!
     redirect_to invoice_path(invoice)
+    ConfirmBookingWorker.perform_async(current_user&.id, find_landlord_user&.id)
     rescue => exception
       flash[:error] = exception.message
       redirect_to add_payment_method_path(amount: payment_params['amount'], booking_id: payment_params['booking_id'])
@@ -64,5 +65,10 @@ class PaymentsController < ApplicationController
 
   def invoice
     @payment&.booking&.invoice || @payment&.subscription&.invoice
+  end
+
+  def find_landlord_user
+    booking = Booking.find_by(id: payment_params[:booking_id])
+    booking&.apartment&.user
   end
 end

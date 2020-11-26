@@ -10,11 +10,11 @@
     </div>
     <div class="form-group col-sm-4">
       <%= f.label t('address.state'), class:"col-form-label" %>
-      <%= select_tag 'address[state]', options_for_select(CS.states(:fr).map {|k, v| [v, k]}), class: 'form-control selectpicker', id: 'state', include_blank: 'Select State' %>
+      <%= select_tag 'address[state]', options_for_select(CS.states(:fr).map {|k, v| [v, k]}), class: 'form-control selectpicker', id: 'state', include_blank: t('address.select_state') %>
     </div>
     <div class="form-group col-sm-4">
       <%= f.label t('address.city'), class:"col-form-label" %>
-      <%= select_tag 'address[city]', options_for_select([]), class: 'form-control selectpicker', id: 'city' %>
+      <%= select_tag 'address[city]', options_for_select([]), class: 'form-control selectpicker', id: 'city', include_blank: t('address.select_city') %>
     </div>
   </div>
 <% end %>

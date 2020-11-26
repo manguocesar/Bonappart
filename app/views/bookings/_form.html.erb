@@ -3,7 +3,7 @@
   <%= hidden_field_tag 'booking[user_id]', current_user&.id %>
   <%= hidden_field_tag 'invoice[invoice_number]', random_invoice_number %>
   <%= hidden_field_tag 'invoice[date]', Date.today %>
-  <%= hidden_field_tag 'invoice[amount]', @apartment&.rent_rate&.net_rate %>
+  <%= hidden_field_tag 'invoice[amount]', Constant::PAYMENT_AMOUNT %>
   <%= hidden_field_tag :apartment, apartment %>
   <div class='row'>
     <div class="form-group at-checkin-holder at-datecheck col-sm-6">
