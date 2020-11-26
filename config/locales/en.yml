@@ -178,6 +178,8 @@ en:
     city: City
     state: State
     country: Country
+    select_state: Please Select State
+    select_city: Please Select City
   admin:
     apartment_type:
       title: Apartment Types
