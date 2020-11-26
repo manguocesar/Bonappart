@@ -50,3 +50,14 @@ RegisterForm = {
     });
   }
 }
+DatePicker = {
+  init: function () {
+    startDate = document.getElementsByClassName("at-startdate");
+    new Lightpick({
+      field: startDate,
+      onSelect: function (date) {
+        startDate.innerHTML = date.format('Do MMMM YYYY');
+      }
+    });
+  }
+}

@@ -1,33 +1,54 @@
 <% url = payment_url(params)  %>
-<%= form_with url: url,  id: 'stripe-form' do |form| %>
-  <%= hidden_field_tag 'payment[booking_id]', params[:booking_id] %>
-  <%= hidden_field_tag 'payment[subscription_id]', params[:subscription] %>
-  <%= hidden_field_tag 'payment[amount]', params[:amount] %>
-  <h2 class='offset-md-4 mt-2 mb-2'>Payment details</h2>
-  <div class='row ml-4 mr-4'>
-    <div class="form-group col-sm-4">
-      <%= form.label 'payment_type', class:"col-form-label" %>
-      <%= select_tag 'payment[payment_type]', options_for_select(Payment.payment_types.map {|k, v| [k.humanize.capitalize, k]}), class: 'form-control selectpicker', id: 'payment_type', include_blank: 'Please select payment type' %>
-    </div>
-    <div class="form-group col-sm-4">
-      <%= form.label 'amount', class:"col-form-label" %>
-      <%= form.text_field 'payment[amount]', value: params[:amount], class: 'form-control', disabled: true %>
-    </div>
-    <div class="form-group col-sm-4">
-      <%= form.label 'remarks', class:"col-form-label" %>
-      <%= form.text_field 'payment[remarks]', class: 'form-control remarks' %>
+<main id="at-main" class="at-main at-haslayout">
+  <div class="at-haslayout at-main-section">
+    <div class="container">
+      <div class="row">
+        <div id="at-twocolumns" class="at-twocolumns at-haslayout">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+          <!-- Bookings List Start -->
+            <div class="at-showresult-holder">
+              <div class="at-resulttitle">
+                <h3 class='offset-md-4 mt-2 mb-2'>Payment details</h3>
+              </div>
+            </div>
+            <div class="at-blog-grid at-haslayout">
+              <div class="row" id='bookingCard'>
+                <%= form_with url: url,  id: 'stripe-form' do |form| %>
+                  <%= hidden_field_tag 'payment[booking_id]', params[:booking_id] %>
+                  <%= hidden_field_tag 'payment[subscription_id]', params[:subscription] %>
+                  <%= hidden_field_tag 'payment[amount]', params[:amount] %>
+                  <div class='row ml-4 mr-4'>
+                    <div class="form-group col-sm-4">
+                      <%= form.label 'payment_type', class:"col-form-label" %>
+                      <%= select_tag 'payment[payment_type]', options_for_select(Payment.payment_types.map {|k, v| [k.humanize.capitalize, k]}), class: 'form-control selectpicker', id: 'payment_type', include_blank: 'Please select payment type' %>
+                    </div>
+                    <div class="form-group col-sm-4">
+                      <%= form.label 'amount', class:"col-form-label" %>
+                      <%= form.text_field 'payment[amount]', value: params[:amount], class: 'form-control', disabled: true %>
+                    </div>
+                    <div class="form-group col-sm-4">
+                      <%= form.label 'remarks', class:"col-form-label" %>
+                      <%= form.text_field 'payment[remarks]', class: 'form-control remarks' %>
+                    </div>
+                  </div>
+                  <%= render partial: 'address_details' , locals: { form: form } %>
+                  <div class='offset-md-5 mt-3 mb-4'>
+                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_test_51HZY7lFYh30SOXdPiBXS9R16JA8sU4QpBTLzlWoSsnCRQhPc6NSRxsxDl047P6A71UWBSZcwduL3o5WQS6MvYAw000dcmzAW6p"
+                            data-description="Book Accomodation"
+                            data-email = "<%= current_user.email %>"
+                            data-locale="auto">
+                    </script>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <%= render partial: 'address_details' , locals: { form: form } %>
-  <div class='offset-md-5 mt-3 mb-4'>
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="pk_test_51HZY7lFYh30SOXdPiBXS9R16JA8sU4QpBTLzlWoSsnCRQhPc6NSRxsxDl047P6A71UWBSZcwduL3o5WQS6MvYAw000dcmzAW6p"
-            data-description="Book Accomodation"
-            data-email = "<%= current_user.email %>"
-            data-locale="auto">
-    </script>
-  </div>
-<% end %>
+</main>
 <script>
   $('#payment_type').change(function () {
     if ($('#payment_type').val() == 'full' ){
