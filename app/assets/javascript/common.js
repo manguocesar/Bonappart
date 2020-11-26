@@ -14,3 +14,4 @@
 //= require common/bootstrap-select.min
 //= require jquery.validate
 //= require common/custom
+//= require admin/users_validate

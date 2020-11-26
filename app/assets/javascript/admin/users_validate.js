@@ -1,7 +1,11 @@
 var UserForm = {
-  validate: function () {
+  validate: function (edit_profile_called) {
     var requiredRule = {
       required: true
+    };
+
+    var notRequired = {
+      required: false
     };
 
     var confirmRules = {
@@ -9,7 +13,9 @@ var UserForm = {
       equalTo: '#password'
     };
 
-    $('#new_user').validate({
+    var can_pw_leave_blank = edit_profile_called && (edit_profile_called === true || edit_profile_called == 'true')
+
+    $('#new_user, #user_edit_form').validate({
       errorElement: 'div',
       errorClass: 'is-invalid text-danger',
 
@@ -34,8 +40,8 @@ var UserForm = {
         "user[gender]": requiredRule,
         "user[address]": requiredRule,
         "user[email]": requiredRule,
-        "user[password]": requiredRule,
-        "user[password_confirmation]": confirmRules,
+        "user[password]": can_pw_leave_blank ? notRequired : requiredRule,
+        "user[password_confirmation]": can_pw_leave_blank ? notRequired : confirmRules,
         "roles": requiredRule,
       },
 

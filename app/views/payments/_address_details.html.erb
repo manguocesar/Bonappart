@@ -22,15 +22,19 @@
 <script>
   $('#state').change(function () {
     var input_state = $('#city');
-    $.getJSON('/cities/' + $(this).val(), function (data) {
+    if($(this).val() == ''){
       input_state.empty();
-      $.each(data, function (i, ele) {
-      input_state.append($("<option></option>")
-            .attr("value", ele)
-            .text(ele));
-      });
-      $("#city option[value='1']").remove();
       $('.selectpicker').selectpicker('refresh');
-    });
+    } else {
+      $.getJSON('/cities/' + $(this).val(), function (data) {
+        input_state.empty();
+        $.each(data, function (i, ele) {
+        input_state.append($("<option></option>")
+              .attr("value", ele)
+              .text(ele));
+        });
+        $('.selectpicker').selectpicker('refresh');
+      });
+    }
   })
 </script>
