@@ -4,7 +4,7 @@ var PaymentForm = {
       required: true
     };
 
-  $('#state, #payment_type').on('change', function () {
+  $('#state').on('change', function () {
     const selector = $(this).attr('id');
     if ($(this).val() == "") {
       $(this).valid();

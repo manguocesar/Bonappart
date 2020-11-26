@@ -11,13 +11,14 @@ module Landlord
         bypass_sign_in(@user)
         redirect_to root_path, notice: t('user.profile_update')
       else
+        flash.now[:alert] = @user&.errors&.full_messages
         render :edit
       end
     end
 
     def update_user
       if user_params[:password].blank?
-        @user.update_without_password(user_params) 
+        @user.update_without_password(user_params)
       else
         @user.update(user_params)
       end

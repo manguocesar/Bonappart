@@ -54,11 +54,11 @@
     <div class="form-group col-sm-6">
       <%= form.label t('users.password'), class:"col-form-label" %>
       <em>(<%= t('users.leave_blank') %>)</em>
-      <%= form.password_field :password, autocomplete: "new-password", id: 'password', class: 'form-control', placeholder: t('users.min_character'), required: false %>
+      <%= form.password_field :password, autocomplete: "new-password", id: 'password', class: 'form-control', placeholder: t('users.min_character') %>
     </div>
     <div class="form-group col-sm-6">
       <%= form.label t('users.confirm_password'), class:"col-form-label" %>
-      <%= form.password_field :password_confirmation, class: 'form-control', validate: 'false', require: '', required: false %>
+      <%= form.password_field :password_confirmation, class: 'form-control' %>
     </div>
   </div>
   <div class="actions">
