@@ -8,8 +8,8 @@ class Invoice < ApplicationRecord
   # Status enum
   enum status: { unpaid: 0, paid: 1 }
 
-  def apartment_rent
-    booking.present? ? booking.rent_amount : subscription.subscription_amount
+  def payment_amount
+    booking.present? ? Constant::PAYMENT_AMOUNT : subscription.subscription_amount
   end
 
   def apartment_title

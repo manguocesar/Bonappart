@@ -9,7 +9,9 @@ class PaymentsController < ApplicationController
   end
 
   def cities
-    render json: CS.cities(params[:state], :fr).to_json
+    fetch_cities = CS.cities(params[:state], :fr)
+    cities = fetch_cities.reject{|c| c == '1' }
+    render json: cities.to_json
   end
 
   def create
@@ -22,8 +24,10 @@ class PaymentsController < ApplicationController
     @payment.save
     @payment.paid!
     redirect_to invoice_path(invoice)
-    rescue Stripe::CardError => e
-      redirect_to add_payment_method_path
+    ConfirmBookingWorker.perform_async(current_user&.id, find_landlord_user&.id)
+    rescue => exception
+      flash[:error] = exception.message
+      redirect_to add_payment_method_path(amount: payment_params['amount'], booking_id: payment_params['booking_id'])
   end
 
   def create_subscription_payment
@@ -36,8 +40,8 @@ class PaymentsController < ApplicationController
     @payment.save
     @payment.paid!
     redirect_to invoice_path(invoice)
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
+    rescue => exception
+      flash[:error] = exception.message
       redirect_to create_subscription_payment_path
   end
 
@@ -61,5 +65,10 @@ class PaymentsController < ApplicationController
 
   def invoice
     @payment&.booking&.invoice || @payment&.subscription&.invoice
+  end
+
+  def find_landlord_user
+    booking = Booking.find_by(id: payment_params[:booking_id])
+    booking&.apartment&.user
   end
 end

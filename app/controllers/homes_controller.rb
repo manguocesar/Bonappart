@@ -2,6 +2,8 @@
 
 # Homes controller
 class HomesController < ApplicationController
+  rescue_from Redis::CannotConnectError, with: :redirect_to_root_path
+
   def index
     if root_url_as_per_role.present?
       redirect_to root_url_as_per_role

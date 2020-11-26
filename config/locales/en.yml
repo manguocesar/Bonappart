@@ -34,13 +34,14 @@ en:
   hello: "Hello world"
   cannot_perform: "You can't perform this action."
   actions: Actions
-  no_inquiry: 'Any Inquiry not received yet.'
-  no_inquire: 'You not started any inquiry yet.'
+  no_inquiry: 'Ypu have not received Any Inquiry yet'
+  no_inquire: 'You have not started any inquiry yet'
+  address_details: Address Details
   thank_you:
-    title: Thank you for booking Accomodation.
-    message: Your Accomodation is booked successfully.
-    subscription_title: Thank you for Posting Accomodation.
-    subscription_message: Your Accomodation is posted Successfully.
+    title: Thank you for booking Accomodation
+    message: Your Accomodation is booked successfully
+    subscription_title: Thank you for Posting Accomodation
+    subscription_message: Your Accomodation is posted Successfully
   users:
     sign_up: SIGN UP
     edit_user: Edit User
@@ -172,12 +173,15 @@ en:
     end_date: End date
     book_now: Book Now
     property_name: Property Name
+    instructions: Booking Instructions
   address:
     area: Area
     postal_code: Postal code
     city: City
     state: State
     country: Country
+    select_state: Please Select State
+    select_city: Please Select City
   admin:
     apartment_type:
       title: Apartment Types
@@ -207,6 +211,7 @@ en:
     status: Status
     invoice_for_booking: Invoice for Booking
     invoice_for_subcription: Invoice for Subscription
+    invoice_for_booking: Invoice for Booking
     billing_details: Billing Details
     booking_summary: Booking Summary
     payment_type: Payment Type

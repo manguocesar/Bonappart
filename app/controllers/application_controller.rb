@@ -44,6 +44,10 @@ class ApplicationController < ActionController::Base
     (request.url.include?('landlord') || request.url.include?('admin'))
   end
 
+  def redirect_to_root_path
+    redirect_to root_path
+  end
+
   protected
 
   # Add customized/new signup params for permit

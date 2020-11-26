@@ -6,7 +6,7 @@
   <%= hidden_field_tag 'subscription[expired_at]', expiration_date %>
   <%= hidden_field_tag 'invoice[invoice_number]', random_invoice_number %>
   <%= hidden_field_tag 'invoice[date]', Date.today %>
-  <%= hidden_field_tag 'invoice[amount]', @apartment&.rent_rate&.net_rate %>
+  <%= hidden_field_tag 'invoice[amount]', @apartment&.apartment_type&.amount %>
 
   <div class='row'>
     <div class="form-group col-sm-12 mb-3">
