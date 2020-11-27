@@ -19,19 +19,8 @@
                   <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:150px; text-align:center;"><%= t('actions') %></th>
                 </tr>
               </thead>
-              <tbody>
-                <% @apartment_types.each do |apartment_type| %>
-                  <tr>
-                    <td><%= apartment_type.name %></td>
-                    <td><%= apartment_type.amount %></td>
-                    <td><%= apartment_type.status %></td>
-                    <td align="center">
-                      <%= link_to 'Edit', edit_admin_apartment_type_path(apartment_type), class:'btn btn-sm btn-success', remote: true %>
-                      <%= link_to 'Delete', admin_apartment_type_path(apartment_type), class:'btn btn-sm btn-danger', method: :delete, data: { confirm: t('confirmation') } %>
-                    </td>
-                  </tr>
-                <% end %>
-                </tr>
+              <tbody id="apartmentTypeList">
+                <%= render 'list' %>
               </tbody>
             </table>
           </div>

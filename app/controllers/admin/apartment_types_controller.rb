@@ -8,7 +8,7 @@ module Admin
     protect_from_forgery with: :null_session
 
     def index
-      @apartment_types = ApartmentType.all
+      fetch_apartment_types
       # authorize @apartments
     end
 
@@ -45,8 +45,9 @@ module Admin
     # Update apartment type
     def update
       @apartment_type.update(apartment_type_params)
+      fetch_apartment_types
       respond_to do |format|
-        format.html
+        format.html { redirect_to admin_apartment_types_path }
         format.js
       end
     end
@@ -67,6 +68,10 @@ module Admin
     def load_apartment_type
       @apartment_type = ApartmentType.find_by(id: params[:id])
       # authorize @apartment_type
+    end
+
+    def fetch_apartment_types
+      @apartment_types = ApartmentType.all
     end
 
     # Permit the parameters
