@@ -1,0 +1,17 @@
+<% unless flash.empty? %>
+  <div id="error_explanation" class='alert-items'>
+    <% flash.each do |f| %>
+      <% next if f[1].include?('Signed out') %>
+      <div class='<%= "alert #{build_alert_classes(f.first.to_s)} alert-dismiss" %>' role="alert">
+        <% if (f[1].is_a?Array) %>
+          <%= f[1].join("<br />").html_safe %>
+        <% else %>
+          <%= f[1] %>
+        <% end %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+  </div>
+<% end %>

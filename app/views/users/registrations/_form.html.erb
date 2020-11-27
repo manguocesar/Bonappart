@@ -1,0 +1,80 @@
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, id: 'edit_user') do |form| %>
+  <%= devise_error_messages! %>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.label t('users.firstname'), class:"col-form-label" %>
+      <%= form.text_field :firstname, class: 'form-control' %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.label t('users.lastname'), class:"col-form-label" %>
+      <%= form.text_field :lastname, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.label t('users.phone_no'), class:"col-form-label" %>
+      <%= form.text_field :phone_no, class: 'form-control' %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.label t('users.birthdate'), class:"col-form-label" %>
+      <%= form.text_field :birthdate, class: 'form-control', id: 'birthdate' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.label t('users.gender'), class:"col-form-label" %>
+      <div class="custom-control custom-radio custom-control-inline">
+        <%= form.label :male %>
+        <%= form.radio_button :gender, "Male", id: 'customRadio1', class: 'custom-control-input' %>
+        <label class="custom-control-label male mt-4" for="customRadio1"></label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <%= form.label :female %>
+        <%= form.radio_button :gender, "Female", id: 'customRadio2', class: 'custom-control-input' %>
+        <label class="custom-control-label female mt-4" for="customRadio2"></label>
+      </div>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.label t('users.address'), class:"col-form-label" %>
+      <%= form.text_field :address, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.label t('users.username'), class:"col-form-label" %>
+      <%= form.text_field :username, class: 'form-control' %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.label t('users.email'), class:"col-form-label" %>
+      <%= form.text_field :email, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.label t('users.new_password'), class:"col-form-label" %>
+      <em>(<%= t('users.leave_blank') %>)</em>
+      <%= form.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: t('users.min_character') %>
+    </div>
+    <div class="form-group col-sm-6 mt-4">
+      <%= form.label t('users.confirm_password'), class:"col-form-label" %>
+      <%= form.password_field :password_confirmation, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-12">
+      <%= form.label t('users.profile_pic'), class:"col-form-label" %>
+      <%= form.file_field :image, multiple: false, class: "form-control select" %>
+    </div>
+  </div>
+  <div class="actions text-right">
+    <%= link_to 'Back', root_path, class: 'at-btn' %>
+    <%= form.submit "Update", class:"at-btn at-btnactive" %>
+  </div>
+<% end %>
+<script type="text/javascript">
+  $(document).ready(function (e) {
+    DatePicker.init();
+    RegisterForm.validate("<%= !resource.new_record? %>");
+  });
+</script>

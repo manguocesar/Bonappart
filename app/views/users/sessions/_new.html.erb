@@ -1,0 +1,43 @@
+<div class="hint-box">
+<div class='row'>
+  <div class='col-sm-6'>
+    <p>Student user<br> studentuser@gmail.com<br> Password: studentuser</p>
+  </div>
+  <div class='col-sm-6'>
+    <p>Landlord user<br> johndoe@gmail.com<br> Password: landlorduser</p>
+  </div>
+</div>
+</div>
+<%= form_for(:user, url: session_path(:user), class: 'at-formtheme at-formlogin', html: {id: 'new_user'}, remote: true) do |f| %>
+  <%= devise_error_messages! %>
+  
+    <div class="form-group">
+      <%= f.text_field :login, autocomplete: 'off', class: 'form-control', placeholder: 'Your Email *' %>
+    </div>
+    <div class="form-group">
+      <%= f.password_field :password, class: 'form-control', placeholder: 'Password *' %>
+    </div>
+    <div class="form-group at-btnarea text-center">
+      <button id="form_submit" type="submit" class="at-btn mt-2">Login </button>
+    </div>
+    <div class="form-footer text-center mt-4">
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <p class='text-muted'>
+          <%= link_to "Forgot Your Password?", popup_forms_path(name: 'forgot_password'), remote: true %>
+        </p>
+      <% end %>
+      <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+        <p class='text-muted'>
+          <%= link_to "Didn't receive confirmation instructions?", popup_forms_path(name: 'resend_confirmation'), remote: true %>
+        </p>
+      <% end %>
+      </p>
+      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <p class='text-muted'>
+          Don't have an account?
+          <%= link_to "Sign up", popup_forms_path(name: 'register'), remote: true %>
+        </p>
+      <% end %>
+    </div>
+ 
+<% end %>

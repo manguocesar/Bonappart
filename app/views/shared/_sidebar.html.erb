@@ -1,0 +1,29 @@
+<aside id="left-panel" class="left-panel">
+  <nav class="navbar navbar-expand-sm navbar-default">
+
+    <!-- /.sidebar header -->
+    <div class="navbar-header">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu"
+        aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars"></i>
+      </button>
+      <!-- /.sidebar logo -->
+      <%= link_to root_url_as_per_role, class: "navbar-brand" do%>
+        <%= image_tag image_path('logo-dashboard.png') %>
+      <% end %>
+      <%= link_to root_url_as_per_role, class: "navbar-brand hidden" do%>
+        <%= image_tag image_path('logo-small.png') %>
+      <% end %>
+    </div>
+
+    <!-- /.navbar-collapse -->
+    <% if current_user.landlord? %>
+      <!-- Landlord menu items -->
+      <%= render 'shared/landlord_menu_items' %>
+    <% else %>
+      <!-- Admin menu items -->
+      <%= render 'shared/admin_menu_items' %>
+    <% end %>
+    <!-- /.navbar-collapse -->
+  </nav>
+</aside>

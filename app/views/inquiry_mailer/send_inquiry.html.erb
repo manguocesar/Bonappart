@@ -1,0 +1,21 @@
+<style type="text/css">
+.btn {
+  padding: 14px 24px;
+  border: 0 none;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.btn-success {
+  background: #0099cc;
+  color: #ffffff;
+}
+</style>
+
+<h4><%= "Hello #{@receiver_name.titleize}" %></h4>
+<p><%= "#{@sender_name} has sent you the enquiry for your apartment" %></p>
+<br/>
+<p><%= @message %></p>
+<p>
+  <%= link_to 'Click here', '#', class: 'at-btn at-btnactive' %> to respond
+</p>

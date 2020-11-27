@@ -1,0 +1,15 @@
+@import "common";
+
+.is-invalid-popover {
+  background-color: #ffdde0;
+  left: -8px !important;
+  .popover-body{
+    color: #934C5B;
+  }
+}
+.is-invalid-popover[x-placement^="top"] .arrow::after {
+  border-top-color: #ffdde0;
+}
+.is-invalid-popover[x-placement^="left"] .arrow::after {
+  border-left-color: #ffdde0;
+}

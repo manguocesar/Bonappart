@@ -15,5 +15,21 @@ module ApartmentBooking
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.delivery_method = :smtp
+    config.assets.initialize_on_precompile = false
+    config.active_job.queue_adapter = :sidekiq
+
+    config.action_mailer.smtp_settings = {
+      address: 'smtp.gmail.com',
+      port: 587,
+      domain: 'gmail.com',
+      user_name: 'kenan3patel@gmail.com',
+      password: 'jigarshah8000',
+      authentication: :plain,
+      enable_starttls_auto: true
+    }
+    # Rails.application.routes.default_url_options[:host] = Settings.mailer.host
   end
 end

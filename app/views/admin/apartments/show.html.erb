@@ -1,0 +1,108 @@
+<div class="content">
+<div class='row'>
+  <div class="col-sm-12">
+    <div id="carouselExampleControls" class="carousel slide my-5" data-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+        <!-- Image box start -->
+        <% @apartment.images.each do |image| %>
+          <div class="carousel-item <%= @apartment.active_class(image) %>">
+            <%= image_tag url_for(image), class: "d-block w-100", style:"height:420px;" %>
+          </div>
+        <% end %>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color:black;"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true" style="background-color:black;"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+  <div class='col-sm-6'>
+  <!-- Map container start -->
+    <div id="at-locationmap" class="at-locationmap"></div>
+  <!-- Map container end -->
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><%= t('apartment.property_details') %></h3>
+      </div>
+      <div class="card-body">
+        <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+
+            <div class="table-responsive">
+              <table id="bootstrap-data-table" class="table table-bordered dataTable no-footer"
+                role="grid" aria-describedby="bootstrap-data-table_info">
+                <tbody>
+                  <tr><td><%= t('apartment.description') %>: <span><%= @apartment.description %></span></td></tr>
+                  <tr><td><%= t('apartment.shower_room') %>: <span><%= @apartment.shower_room %></span></td></tr>
+                  <tr><td><%= t('apartment.floor') %>: <span><%= @apartment.floor %></span></td></tr>
+                  <tr><td><%= t('apartment.total_bedrooms') %>: <span><%= @apartment.total_bedrooms %></span></td></tr>
+                  <tr><td><%= t('apartment.area') %>: <span><%= @apartment.area %></td></tr>
+                  <tr><td><%= t('apartment.distance_from_campus') %>: <span><%= @apartment.distance_from_campus %></span></td></tr>
+                  <tr><td><%= t('apartment.other_facilities') %>: <span><%= @apartment.other_facilities %></span></td></tr>
+                  <tr><td><%= t('apartment.virtual_visit_link') %>: <span><a href="<%= @apartment.virtual_visit_link %>"><%= @apartment.virtual_visit_link %></a></span></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><%= t('apartment.rent_details') %></h3>
+      </div>
+      <div class="card-body">
+        <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+
+            <div class="table-responsive">
+              <table id="bootstrap-data-table" class="table table-bordered dataTable no-footer"
+                role="grid" aria-describedby="bootstrap-data-table_info">
+                <tbody>
+                  <% rent = @apartment.rent_rate %>
+                  <tr>
+                    <td><%= t('rent.net_rate') %>:
+                      <span>
+                        <%= rent&.net_rate %>
+                        <% if rent&.included_in_net_rate.present? %>
+                          (Included with <%= rent&.included_in_net_rate&.map(&:humanize)&.join(', ') %>)
+                        <% end %>
+                      </span>
+                    </td>
+                  </tr>
+                  <% RentRate::INCLUDED_IN_NET_RATE_FIELDS.each do |field| %>
+                    <% if !is_included_in_net_rate?(rent&.included_in_net_rate, field) %>
+                      <% if rent&.send(field).present? %>
+                        <tr><td><%= t("rent.#{field}") %>: <span><%= rent&.send(field) %></span></td></tr>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                  <tr>
+                    <td><%= t('rent.deposit_amount') %>: <span><%= rent&.deposit_amount %></span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+        </div>
+      </div>
+      <div class="card-footer">
+        <%= link_to 'Edit', edit_admin_apartment_path(@apartment), class: 'btn at-btn' %>
+        <%= link_to admin_apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn btn-danger delete-btn' do %>Delete
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<%= render '/shared/modal_window', locals: { modelId: 'subscriptionModal' } %>
+<%= render '/shared/modal_window', locals: { modelId: 'booking_modal' } %>

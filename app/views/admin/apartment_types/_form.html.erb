@@ -1,0 +1,30 @@
+<%= form_with(model: apartment_type, url: admin_apartment_types_path, remote: true, id: 'apartment_type_form') do |form| %>
+  <%= render 'shared/error_messages', target: apartment_type %>
+  <div class='row'>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label 'Apartment Type', class:"col-form-label" %><br/>
+      <%= form.text_field :name, class: 'form-control', required: true %>
+    </div>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label 'Apartment Amount', class:"col-form-label" %><br/>
+      <%= form.text_field :amount, class: 'form-control', required: true %>
+    </div>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label 'Apartment Image', class:"col-form-label" %><br/>
+      <div class="custom-file">
+        <%= form.file_field :image, class: "custom-file-input", id:"customFile", required: apartment_type&.new_record? %>
+        <label class="custom-file-label" for="customFile"><%= t('apartment.select_images') %></label>
+      </div>
+    </div>
+    <div class="form-group col-sm-12 mb-3 text-right">
+      <%= link_to "Back", '', data: { dismiss: 'modal' }, class: 'btn btn-secondary' %>
+      <%= button_tag 'Save', class:"btn at-btn at-btn", type: "submit" %>
+    </div>
+  </div>
+<% end %>
+<script type="text/javascript">
+  $(document).ready(function (e) {
+    $('[data-toggle="popover"]').popover({ html:true,placement:'top' });
+    ApartmentTypeForm.validate();
+  });
+</script>

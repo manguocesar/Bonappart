@@ -1,0 +1,40 @@
+<h4 class='ml-5 mt-2'><%= t('address_details') %></h4>
+<%= form.fields_for :address, @payment.address do |f| %>
+  <div class='row ml-4 mr-4'>
+    <div class="form-group col-sm-3">
+      <%= f.label t('address.area'), class:"col-form-label" %>
+      <%= f.text_field :area, class: 'form-control' %>
+    </div>
+     <div class="form-group col-sm-3">
+      <%= f.label t('address.postal_code'), class:"col-form-label" %>
+      <%= f.text_field :postal_code, class: 'form-control' %>
+    </div>
+    <div class="form-group col-sm-3">
+      <%= f.label t('address.state'), class:"col-form-label" %>
+      <%= select_tag 'address[state]', options_for_select(CS.states(:fr).map {|k, v| [v, k]}), class: 'form-control selectpicker', id: 'state', include_blank: t('address.select_state') %>
+    </div>
+    <div class="form-group col-sm-3">
+      <%= f.label t('address.city'), class:"col-form-label" %>
+      <%= select_tag 'address[city]', options_for_select([]), class: 'form-control selectpicker', id: 'city', include_blank: t('address.select_city') %>
+    </div>
+  </div>
+<% end %>
+<script>
+  $('#state').change(function () {
+    var input_state = $('#city');
+    if($(this).val() == ''){
+      input_state.empty();
+      $('.selectpicker').selectpicker('refresh');
+    } else {
+      $.getJSON('/cities/' + $(this).val(), function (data) {
+        input_state.empty();
+        $.each(data, function (i, ele) {
+        input_state.append($("<option></option>")
+              .attr("value", ele)
+              .text(ele));
+        });
+        $('.selectpicker').selectpicker('refresh');
+      });
+    }
+  })
+</script>

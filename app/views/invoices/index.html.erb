@@ -1,0 +1,46 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><%= t('dashboard.invoices') %></h3>
+        </div>
+        <div class="card-body">
+          <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="bootstrap-data-table" class="table table-bordered dataTable no-footer"
+                  role="grid" aria-describedby="bootstrap-data-table_info">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"><%= t('invoice.invoice_number') %></th>
+                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"><%= t('invoice.property_name') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('invoice.amount') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('invoice.date') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:150px; text-align:center;"><%= t('invoice.status') %></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @invoices.each do |invoice| %>
+                      <tr role="row" class="odd">
+                        <td><%= link_to "##{invoice.invoice_number}", invoice_show_path(invoice) %></td>
+                        <td><%= invoice.apartment_title %></td>
+                        <td><%= invoice&.amount %></td>
+                        <td><%= date_format(invoice.date) %></td>
+                        <td align="center"><%= link_to invoice.status, invoice_show_path(invoice) %></td>
+                      </tr>
+                    <% end %>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <%= paginate @invoices %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

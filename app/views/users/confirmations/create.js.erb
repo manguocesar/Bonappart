@@ -1,0 +1,6 @@
+if(<%= resource.errors.present? %>){
+  <% flash.now[:alert] = resource.errors.full_messages.first %>
+  $(".errors").html('').html("<%= j (render "shared/messages") %>").hide().fadeIn();
+}else{
+  location.reload();
+}

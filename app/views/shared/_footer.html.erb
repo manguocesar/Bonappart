@@ -1,0 +1,68 @@
+<!-- Footer Start -->
+<footer id="at-footer" class="at-footer at-haslayout">
+  <div class="at-fthreecolumn at-haslayout">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-2">
+          <div class="at-fwidget">
+            <div class="at-fwidget-titile">
+              <h3>About</h3>
+            </div>
+            <div class="at-fwidget-content">
+              <ul>
+                <!-- <li><a href="javascript:void(0);">Our Vision</a></li>
+                <li><a href="javascript:void(0);">Our Mission</a></li>
+                <li><a href="javascript:void(0);">Teerm &amp; Conditions</a></li>
+                <li><a href="javascript:void(0);">Privacy Policy</a></li>
+                <li><a href="javascript:void(0);">Posting Policy</a></li>
+                <li><a href="javascript:void(0);">Team Behind Curtain</a></li> -->
+                <li><%= link_to 'About Us', about_us_path %></li>
+                <li><%= link_to 'Contact Us', contact_us_path %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-12 col-lg-6 col-xl-4"></div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-2"></div>
+        <div class="col-12 col-md-12 col-lg-6 col-xl-4">
+          <div class="at-ffollow-holder">
+            <div class="at-fwidget-titile">
+              <h3>Follow Us</h3>
+            </div>
+            <ul class="at-socialicons at-socialicons-white">
+              <li class="at-facebook"><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
+              <li class="at-twitter"><a href="javascript:void(0);"><i class="fab fa-twitter"></i></a></li>
+              <li class="at-youtube"><a href="javascript:void(0);"><i class="fab fa-youtube"></i></a></li>
+              <li class="at-instagram"><a href="javascript:void(0);"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="at-footerbottom at-haslayout">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-12">
+          <div class="at-copyrights-holder">
+            <div class="at-flogoarea">
+              <strong class="at-flogo">
+                <%= link_to root_path do %>
+                  <%= image_tag image_path('logo2.png'), style: 'height: 30px;' %>
+                <% end %>
+              </strong>
+              <!-- <strong class="at-flogo"><a href="index.html"><img src="images/flogo.png" alt="footer logo"></a></strong> -->
+              <p class="at-copyrights">Copyrights © 2019 by <a href="javascript:void(0);">Bonapart.</a> All Rights Reserved.</p>
+            </div>
+            <div class="at-rightarea">
+              <figure class="at-payment-icons">
+                <%= image_tag image_path('payment-icon/img-04.jpg') %>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Footer End -->

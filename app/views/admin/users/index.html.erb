@@ -1,0 +1,44 @@
+<div class="content">
+  <%= render 'shared/messages' %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><%= params['type'] == 'student' ? t('dashboard.all_students') : t('dashboard.all_landlords') %></h3>
+          <%= link_to new_admin_user_path, class: 'btn at-btn btn-sm pull-right' do %>
+            <i class="menu-icon fa fa-plus"></i> <%= params['type'] == 'student' ? t('dashboard.add_new_student') : t('dashboard.add_new_landlord') %>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6 ml-auto">
+            <div class="form-group">
+            <%= form_tag(admin_users_path, method: :get, remote: true ) do |form| %>
+              <div class="input-group">
+                <input type="text"  name="search" class="form-control" placeholder="Search Landlord by First name, Last name, User name, Email, Phone No... ">
+                <%= hidden_field_tag :type, params['type'] %>
+                <div class="input-group-append">
+                <%= button_tag 'Search', class:"at-btn btn btn-success", type: "submit" %>
+                </div>
+              </div>
+            <% end %>
+            </div>
+            </div>
+          </div>
+          <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+            <div class="row">
+              <div class="col-sm-12 userTable">
+                <div class="table-responsive">
+                <%= render 'users', users: @users %>
+                </div>
+              </div>
+            </div>
+            <div class="row users-pagination">
+              <%= render 'users_pagination', users: @users %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

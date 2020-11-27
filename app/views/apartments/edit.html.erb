@@ -1,0 +1,16 @@
+<div class="content">
+  <div class="card">
+    <div class="card-header">
+    <h3 class="card-title"><%= t('apartment.edit_apartment') %></h3>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <%= render 'form', apartment: @apartment, url: show_page_apartments %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render '/shared/modal_window', locals: { modelId: 'subscriptionModal' } %>
+<%= render '/shared/modal_window', locals: { modelId: 'booking_modal' } %>

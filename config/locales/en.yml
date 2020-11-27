@@ -10,6 +10,7 @@
 #
 #     <%= t('hello') %>
 #
+
 # To use a different locale, set it with `I18n.locale`:
 #
 #     I18n.locale = :es
@@ -31,3 +32,219 @@
 
 en:
   hello: "Hello world"
+  cannot_perform: "You can't perform this action."
+  actions: Actions
+  no_inquiry: 'Ypu have not received Any Inquiry yet'
+  no_inquire: 'You have not started any inquiry yet'
+  address_details: Address Details
+  thank_you:
+    title: Thank you for booking Accomodation
+    message: Your Accomodation is booked successfully
+    subscription_title: Thank you for Posting Accomodation
+    subscription_message: Your Accomodation is posted Successfully
+  users:
+    sign_up: SIGN UP
+    edit_user: Edit User
+    firstname: First Name
+    lastname: Last Name
+    phone_no: Phone No
+    email: Email
+    birthdate: Birth date
+    address: Address
+    gender: Gender
+    username: User Name
+    current_password: Current Password
+    password: Password
+    new_password: New Password
+    confirm_password: Confirm Password
+    profile_pic: Profile Picture
+    select_role: Select Role
+    sign_up_as: Sign Up As
+    min_character: 6 characters minimum
+    leave_blank: Leave blank if you don't want to change password
+  filter_results: Filter
+  search: Seacrh
+  confirmation: Are You Sure You want to Delete This?
+  apartments: Accomodations
+  apartment:
+    apartment_title: Apartment Title
+    address: Address
+    add_apartment: Add apartment
+    edit_apartment: Edit apartment
+    title: Title
+    description: Description
+    postalcode: Postalcode
+    floor: Floor
+    city: City
+    country: Country
+    area: Area
+    apartment_type: Accomodation type
+    select_accomodation_type: Select accomodation type
+    availability: Availability
+    arrival_date: Arrival date
+    departure_date: Departure date
+    available_date: Available Date
+    available_from: Available From
+    status: Status
+    rent: Rent
+    total_bedrooms: Total bedrooms
+    shower_room: Shower room
+    distance_from_campus: Distance from campus
+    other_facilities: Other facilities
+    longitude: Longitude
+    latitude: Latitude
+    images: Images
+    virtual_visit_link: Virtual Visit Link
+    select_images: Upload only .jpg, .jpeg, .png files
+    create: Apartment Added Successfully
+    update: Apartment Updated Successfully
+    delete: Apartment Deleted Successfully
+    previous: Previous
+    next: Next
+    booking_success: Accomodation Booked Successfully
+    subscription_success: Accomodation Subscribed Successfully
+    edit_delete_apartments: Edit/Delete your Apartment details
+    edit_post_apartments: Edit/Post your Apartment details
+    rent_details: Rent Details
+    property_details: Property Details
+    campus: Campus
+    select_campus: Select campus
+    property_name: Property Name
+    campus: Campus
+    month: Month
+    year: Year
+    distance_from_campus: Distance From Campus
+    select_apartment_type: Select Type
+    select_distance: Select Distance
+  dashboard:
+    count_of_ads: Count of Ads
+    count_of_active_ads: Count of Active Ads
+    count_of_contacts: Count of contacts
+    count_of_members: Count of members
+    landlord_management: Landlords management
+    dashboard: Dashboard
+    apartments: Apartments
+    all_apartments: All Apartments
+    bookings: Bookings
+    add_apartment: Add Apartment
+    apartment_types: Apartment Types
+    booked_apartment: Booked Apartments
+    subscriptions: Subscriptions
+    my_invoice: My Invoice
+    invoices: Invoices
+    paid_invoices: Paid Invoices
+    unpaid_invoices: Unpaid Invoices
+    settings: Settings
+    profile: Profile
+    edit_profile: Edit Profile
+    signout: Sign Out
+    my_ads: My Ads
+    properties: Properties
+    bookings: Bookings
+    invoices: Invoices
+    inquiries: Inquiries
+    my_inquiries: My Inquiries
+    landlord_management: Landlord Management
+    student_management: Student Management
+    all_landlords: All Landlord Users
+    all_students: All Student Users
+    add_new_landlord: Add New Landlord
+    add_new_student: Add New Student
+  inquiry:
+    instructions: Instructions
+    login_message: You need to login to contact with landlord
+  mailer:
+    send_inquiry:
+      subject: Inquiry for appartment booking
+  footer:
+    copyright: © Copyright 2020. All right reserved.
+    company_name: Bonapart
+  rent:
+    net_rate: Net rate
+    water_charge: Water charge
+    heating_charge: Heating charge
+    electricity_charge: Electricity charge
+    internet_charge: Internet charge
+    insurance_charge: Insurance charge
+    deposit_amount: Deposit amount
+  booking:
+    status: Status
+    start_date: Start date
+    end_date: End date
+    book_now: Book Now
+    property_name: Property Name
+    instructions: Booking Instructions
+  address:
+    area: Area
+    postal_code: Postal code
+    city: City
+    state: State
+    country: Country
+    select_state: Please Select State
+    select_city: Please Select City
+  admin:
+    apartment_type:
+      title: Apartment Types
+      add_apartment_type: Add Apartment Type
+      amount: Amount
+      actions: Actions
+      create:
+        success: Apartment type successfully created
+        failer: Apartment type has not been created
+  contact_us:
+    happy_to_serve: We’re Happy To Serve You
+    title: Contact
+    get_in_touch: Get In Touch With Us
+    support: We Offer 24/7 Support
+    form_content: Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation ullamco laboris nisiut aliquip
+  breadcrumbs:
+    main: Main
+  invoice:
+    title: Invoice
+    invoice_number: Invoice Number
+    date: Date
+    apartment_name: Apartment Name
+    property_name: Property Name
+    amount: Amount
+    arrival_date: Arrival Date
+    departure_date: Departure Date
+    status: Status
+    invoice_for_booking: Invoice for Booking
+    invoice_for_subcription: Invoice for Subscription
+    invoice_for_booking: Invoice for Booking
+    billing_details: Billing Details
+    booking_summary: Booking Summary
+    payment_type: Payment Type
+    total: Total
+    payment_status: Payment Status
+    subtotal: Subtotal
+    paid: Paid
+    balance_due: Balance Due
+    customer_details: Customer Details
+    subscription_date: Subscription Date
+    expiration_date: Expiration Date
+    subscription_summary: Subscription Summary
+    start_date: Start Date
+    end_date: End Date
+    fullname: Name
+    area: Area
+    city: City
+    state: State
+    postal_code: Postal code
+    email: Email
+    my_invoice: Invoices
+    invoice: Invoice
+  subscription:
+    apartment: Apartment
+    amount: Amount
+    start_date: Start Date
+    end_date: End Date
+    status: Status
+  landlord:
+    apartments: Apartments
+    add_apartment: Add Apartment
+  user:
+    create: User Added Successfully
+    update: User Updated Succsessfully
+    delete: User Deleted Succsessfully
+    profile_update: Profile Updated Successfully

@@ -1,0 +1,40 @@
+<div class='row'>
+  <div class="card text-white bg-primary ml-5 mt-4 mr-4 col-sm-6" style="max-width: 18rem;">
+    <div class="card-header"><%= t('dashboard.count_of_ads') %></div>
+      <div class="card-body">
+        <h5 class="card-title" style="color:white;">Total Accommodations count</h5>
+        <p class="card-text">10</p>
+      </div>
+    </div>
+    <div class="card text-white bg-danger mt-4 mr-4 col-sm-6" style="max-width: 18rem;">
+      <div class="card-header"><%= t('dashboard.count_of_active_ads') %></div>
+      <div class="card-body">
+        <h5 class="card-title" style="color:white;">Active Accommodations count</h5>
+        <p class="card-text">5</p>
+      </div>
+    </div>
+    <div class="card text-white bg-success mt-4 mr-4 col-sm-6" style="max-width: 18rem;">
+      <div class="card-header"><%= t('dashboard.count_of_contacts') %></div>
+      <div class="card-body">
+        <h5 class="card-title" style="color:white;">Count of Contacts</h5>
+        <p class="card-text">10</p>
+      </div>
+    </div>
+    <div class="card text-white bg-warning mt-4 mr-4 col-sm-6" style="max-width: 18rem;">
+      <div class="card-header"><%= t('dashboard.count_of_members') %></div>
+      <div class="card-body">
+        <h5 class="card-title" style="color:white;">Count of Members</h5>
+        <p class="card-text">10</p>
+      </div>
+    </div>
+    <%= link_to edit_user_registration_path do %>
+      <div class="card text-white bg-dark ml-5 mb-3 mt-4 mr-4 col-sm-6" style="max-width: 18rem;">
+        <div class="card-header">Settings</div>
+        <div class="card-body">
+          <h5 class="card-title" style="color:white;">Manage your profile</h5>
+          <p class="card-text">Add/Edit/Delete</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

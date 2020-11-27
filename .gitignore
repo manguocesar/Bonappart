@@ -48,6 +48,11 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
@@ -58,3 +63,5 @@ Thumbs.db
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+# Ignore database.yml
+/config/database.yml

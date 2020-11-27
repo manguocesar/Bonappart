@@ -1,0 +1,24 @@
+.row{
+  .post-btn, .edit-btn{
+    height: 40px;
+    min-width: auto;
+  }
+  .post-btn, .delete-btn{
+    margin-left: 15px;
+  }
+}
+.at-select{
+  .dropdown {
+    width: 100% !important;
+  }
+}
+
+.remove-flex.row {
+  display: block;
+  // padding-left: 70px;
+}
+
+
+.w_280 {
+  width: 280px;
+}

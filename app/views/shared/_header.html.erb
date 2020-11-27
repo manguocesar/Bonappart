@@ -1,0 +1,89 @@
+<header id="at-header" class="at-header at-haslayout">
+  <div class="at-navigationarea">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <strong class="at-logo">
+            <%= link_to root_url do%>
+              <%= image_tag image_path('logo2.png') %>
+            <% end %>
+          </strong>
+          <div class="at-rightarea">
+            <!-- Statred menu items -->
+            <nav id="at-nav" class="at-nav navbar-expand-lg">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="lnr lnr-menu"></i>
+              </button>
+              <div class="collapse navbar-collapse at-navigation" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item <%= active_inactive_header_class('about_us') %>">
+                    <%= link_to 'About Us', about_us_path %>
+                  </li>
+                  <li class="nav-item <%= active_inactive_header_class('contact_us') %>">
+                    <%= link_to 'Contact Us', contact_us_path %>
+                  </li>
+                  <% unless current_user.present? %>
+                    <li class="nav-item">
+                      <%= link_to 'Login', popup_forms_path(name: 'login'), remote: true, class: '', style: "font-size: medium;" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to 'Register', popup_forms_path(name: 'register'), remote: true, class: '', style: "font-size: medium;" %>
+                    </li>
+
+                  <% end %>
+                  <% if current_user.present? %>
+                    <li class="menu-item-has-children page_item_has_children"><span class="at-dropdowarrow"><i class="lnr lnr-chevron-right"></i></span>
+                      <a href="javascript:void(0);" class="at-menu-icon">
+                        <%= current_user&.fullname %>
+                        <span class="at-navmorecontent">MyInfo</span>
+                      </a>
+                      <ul class="sub-menu">
+                        <% title_and_url = mydashboard_or_mybookings %>
+                        <li>
+                          <%= link_to title_and_url.first, title_and_url.last %>
+                        </li>
+                        <% if current_user.student? %>
+                          <li>
+                            <%= link_to t('dashboard.my_inquiries'), rooms_path %>
+                          </li>
+                        <% end %>
+                        <li>
+                          <%= link_to "Edit Profile", edit_user_registration_path %>
+                        </li>
+                        <li>
+                          <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+                        </li>
+                      </ul>
+                    </li>
+                  <% end %>
+                </ul>
+
+              </div>
+            </nav>
+            <% if current_user.blank? %>
+              <div class="at-detailsbtn-topbar">
+                <%= link_to 'Become a Host', popup_forms_path(name: 'host'), remote: true, class: 'at-btn at-btnactive host-btn' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Header End -->
+<!-- Login/SignUp/Host/ForgotPassword/Confirmation Popup Forms Start-->
+<div class="modal fade at-loginpopup" tabindex="-1" role="dialog" id="deviseform" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="at-modalcontent modal-content">
+      <div class="at-popuptitle">
+        <h4 class='popup-heading'></h4>
+        <a href="javascript:void(0);" class="at-closebtn close"><i class="lnr lnr-cross" data-dismiss="modal"></i></a>
+      </div>
+      <div class='errors'></div>
+      <div class="modal-body" id='devise-forms'>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Login/SignUp/Host/ForgotPassword/Confirmation Popup Forms End-->

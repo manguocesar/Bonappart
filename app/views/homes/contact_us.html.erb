@@ -1,0 +1,94 @@
+<!-- Main Start -->
+<main id="at-main" class="at-main at-haslayout">
+  <!-- Contact Form Start -->
+  <section class="at-haslayout at-main-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12">
+          <div class="at-sectionhead">
+            <div class="at-sectiontitle">
+              <h2><%= t('contact_us.get_in_touch') %></h2>
+              <span><%= t('contact_us.support') %></span>
+            </div>
+            <div class="at-description">
+              <p><%= t('contact_us.form_content') %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12">
+          <%= form_with(model: @contact_us, url: create_contact_us_path, local: true, class: 'at-formtheme at-formcontactus') do |form| %>
+            <fieldset>
+              <div class="form-group form-group-half">
+                <%= form.text_field :first_name, class: 'form-control', placeholder: 'First Name', required: true %>
+              </div>
+              <div class="form-group form-group-half">
+                <%= form.text_field :last_name, class: 'form-control', placeholder: 'Last Name', required: true %>
+              </div>
+              <div class="form-group form-group-half">
+                <%= form.email_field :email, class: 'form-control', placeholder: 'Your Email', required: true %>
+              </div>
+              <div class="form-group form-group-half">
+                <%= form.text_field :subject, class: 'form-control', placeholder: 'Subject', required: true %>
+              </div>
+              <div class="form-group">
+                <%= form.text_area :message, class: 'form-control', placeholder: 'Message', required: true %>
+              </div>
+              <div class="form-group text-right">
+                <%= form.submit 'Send Now', class: 'at-btn' %>
+              </div>
+            </fieldset>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Contact Form End -->
+  <div class="at-haslayout pb-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12">
+          <div class="at-contactus-details">
+            <figure class="at-contactbg">
+              <%= image_tag 'contactus/bg-img.png', alt:"img description" %>
+            </figure>
+            <div class="at-contactinfo">
+              <%= image_tag 'contactus/img-01.jpg', alt:"img description" %>
+              <span>Talk To Us</span>
+              <h3>(+1) 2345 67 89 00</h3>
+            </div>
+            <div class="at-contactinfo">
+              <%= image_tag 'contactus/img-02.jpg', alt:"img description" %>
+              <span>Send Us Email</span>
+              <h3>info@yourdomain.com</h3>
+            </div>
+            <div class="at-contactinfo">
+              <%= image_tag 'contactus/img-03.jpg', alt:"img description" %>
+              <span>Our Open Location</span>
+              <h3>44-46 Brightside Road, Scotland, EH10 4BF</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Map Start -->
+  <!-- <div class="at-haslayout at-contactmap-holder">
+    <div id="map" class="at-locationmap"></div>
+  </div> -->
+  <!-- Map Start -->
+</main>
+<!-- Main End -->
+<script>
+  // $(document).ready(function (e) {
+  //   initilizeMap();
+  // });
+  // function initilizeMap() {
+  //   var myLatLng = [
+  //     [ '100.00',
+  //       '',
+  //       "37.772323",
+  //       "-122.214897" ]
+  //   ];
+  //   DisplayMap.mapSettings(myLatLng);
+  // }
+</script>

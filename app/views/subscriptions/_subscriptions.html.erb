@@ -1,0 +1,16 @@
+<% @subscriptions.each do |subscription| %>
+<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+  <div class="at-article">
+    <div class="at-article-content">
+      <div class="at-featured-tags"></div>
+      <div class="at-title">
+        <h4>Accomodation: <a href="<%= apartment_path(subscription&.apartment) %>"><%= subscription&.apartment_title %></a></h4>
+      </div>
+      <div class="at-description">
+        <span><i class='ti-stats-up'></i> Subscription Status: <%= subscription&.status&.humanize %></span><br>
+        <span><i class="ti-calendar"></i> Subscription From: <%= display_date(subscription&.started_at) %> To: <%= display_date(subscription&.expired_at) %></span><br>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
