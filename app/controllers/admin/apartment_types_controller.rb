@@ -71,7 +71,7 @@ module Admin
 
     # Permit the parameters
     def apartment_type_params
-      params.require(:apartment_type).permit(:name, :amount, :image)
+      params.require(:apartment_type).permit(:name, :amount, :status, :image)
     end
   end
 end

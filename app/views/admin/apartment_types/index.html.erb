@@ -1,44 +1,42 @@
 <div class="content">
-  
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title"><%= t('admin.apartment_type.title') %></h3>
-          <%= link_to new_admin_apartment_type_path, remote:true, class: 'btn btn-sm at-btn pull-right' do %>
-            <i class="fa fa-plus" aria-hidden="true"></i> <%= t('admin.apartment_type.add_apartment_type') %>
-          <% end %>
-        </div>
-        <div class="card-body">
-          <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-            
-              <div class="table-responsive">
-                <table id="bootstrap-data-table" class="table table-bordered dataTable no-footer"
-                  role="grid" aria-describedby="bootstrap-data-table_info">
-                  <thead>
-                    <tr role="row">
-                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"><%= t('admin.apartment_type.title') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('admin.apartment_type.amount') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:150px; text-align:center;"><%= t('actions') %></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% @apartment_types.each do |apartment_type| %>
-                      <tr>
-                        <td><%= apartment_type.name %></td>
-                        <td><%= apartment_type.amount %></td>
-                        <td align="center">
-                          <%= link_to 'Edit', edit_admin_apartment_type_path(apartment_type), class:'btn btn-sm btn-success', remote: true %>
-                          <%= link_to 'Delete', admin_apartment_type_path(apartment_type), class:'btn btn-sm btn-danger', method: :delete, data: { confirm: t('confirmation') } %>
-                        </td>
-                      </tr>
-                    <% end %>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title"><%= t('admin.apartment_type.title') %></h3>
+      <%= link_to new_admin_apartment_type_path, remote:true, class: 'btn btn-sm at-btn pull-right' do %>
+        <i class="fa fa-plus" aria-hidden="true"></i> <%= t('admin.apartment_type.add_property_type') %>
+      <% end %>
+    </div>
+    <div class="card-body">
+      <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+          <div class="table-responsive">
+            <table id="bootstrap-data-table" class="table table-bordered dataTable no-footer"
+              role="grid" aria-describedby="bootstrap-data-table_info">
+              <thead>
+                <tr role="row">
+                  <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"><%= t('admin.apartment_type.type') %></th>
+                  <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('admin.apartment_type.amount') %></th>
+                  <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('admin.apartment_type.status') %></th>
+                  <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:150px; text-align:center;"><%= t('actions') %></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @apartment_types.each do |apartment_type| %>
+                  <tr>
+                    <td><%= apartment_type.name %></td>
+                    <td><%= apartment_type.amount %></td>
+                    <td><%= apartment_type.status %></td>
+                    <td align="center">
+                      <%= link_to 'Edit', edit_admin_apartment_type_path(apartment_type), class:'btn btn-sm btn-success', remote: true %>
+                      <%= link_to 'Delete', admin_apartment_type_path(apartment_type), class:'btn btn-sm btn-danger', method: :delete, data: { confirm: t('confirmation') } %>
+                    </td>
+                  </tr>
+                <% end %>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </div>
       </div>
-    
+    </div>
+  </div>
 </div>
 <%= render '/shared/modal_window', locals: { modelId: 'apartmentTypeModal' } %>
