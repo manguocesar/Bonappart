@@ -3,3 +3,10 @@
 @import "map_style";
 @import "common/bootstrap-select.min";
 @import "apartments/common";
+
+.lightpick.lightpick--1-columns {
+	margin-top: 300px;
+}
+ol li {
+  list-style: none;
+}
