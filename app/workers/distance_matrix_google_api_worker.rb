@@ -16,7 +16,7 @@ class DistanceMatrixGoogleApiWorker
       origin_latlong = campus_latlong.join(',')
       destination_latlong = apartment_latlong.join(',')
       result = Google::Maps.distance_matrix(origin_latlong, destination_latlong, mode: @apartment.travel_mode)
-      distance_in_km = two_decimal_precision(result&.distance/1000.00)
+      distance_in_km = two_decimal_precision(result&.distance.to_i/1000.00)
       duration_in_min = result&.duration.to_i/60
       @apartment.update_columns(distance_from_campus: distance_in_km, duration_from_campus: duration_in_min)
     rescue => exception
