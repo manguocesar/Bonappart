@@ -40,7 +40,7 @@ class InvoicesController < ApplicationController
       format.pdf do
         render pdf: 'invoice',
                template: 'invoices/download_invoice.html.erb',
-               locals: { invoice: @invoice }
+               locals: { invoice: @invoice, booking: @invoice&.booking, apartment: @invoice&.booking&.apartment }
       end
     end
   end
