@@ -125,9 +125,10 @@ en:
     dashboard: Dashboard
     apartments: Apartments
     all_apartments: All Apartments
+    all_properties: All Properties
     bookings: Bookings
     add_apartment: Add Apartment
-    apartment_types: Apartment Types
+    property_types: Property Types
     booked_apartment: Booked Apartments
     subscriptions: Subscriptions
     my_invoice: My Invoice
@@ -184,9 +185,11 @@ en:
     select_city: Please Select City
   admin:
     apartment_type:
-      title: Apartment Types
-      add_apartment_type: Add Apartment Type
+      title: Property Types
+      type: Type Name
+      add_property_type: Add Property Type
       amount: Amount
+      status: Status
       actions: Actions
       create:
         success: Apartment type successfully created
@@ -243,6 +246,7 @@ en:
   landlord:
     apartments: Apartments
     add_apartment: Add Apartment
+    add_property: Add Property
   user:
     create: User Added Successfully
     update: User Updated Succsessfully
