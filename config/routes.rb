@@ -44,7 +44,8 @@ Rails.application.routes.draw do
   get 'render_login', to: 'inquiries#render_login_page'
   get 'invoice_details', to: 'invoices#invoice_details'
   get 'booking_instruction', to: 'bookings#booking_instruction'
-  get '/invoice/:id/download_invoice', to: 'invoices#download_invoice', as: :download
-  get '/student_bookings', to: 'bookings#student_bookings'
+  get '/invoice/:id/preview', to: 'invoices#preview', as: :preview
+  get '/invoice/:id/download', to: 'invoices#download', as: :download
+  get '/my_bookings', to: 'bookings#student_bookings', as: :my_bookings
   root 'homes#index'
 end
