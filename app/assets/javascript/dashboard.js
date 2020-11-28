@@ -13,7 +13,7 @@
 //= require admin/users_validate
 //= require common/moment.min
 //= require common/lightpick
-
+//= require common/bootstrap-select.min
 var $ = jQuery
 
 DatePicker = {
