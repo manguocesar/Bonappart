@@ -47,8 +47,7 @@ class StripePayment
           country: 'France'
         }
       },
-      # amount: amount.to_i * 100,
-      amount: 1 * 100,
+      amount: amount.to_i * 100,
       description: email,
       currency: 'eur'
     )
