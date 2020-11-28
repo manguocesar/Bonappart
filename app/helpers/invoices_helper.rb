@@ -33,4 +33,8 @@ module InvoicesHelper
       end
     end
   end
+
+  def invoice_title
+    current_user.landlord? ? t('post_confirmation') : t('booking_confirmation')
+  end
 end

@@ -22,6 +22,9 @@
                   <li class="nav-item <%= active_inactive_header_class('contact_us') %>">
                     <%= link_to 'Contact Us', contact_us_path %>
                   </li>
+                  <li class="nav-item <%= active_inactive_header_class('faq') %>">
+                    <%= link_to 'FAQ', faq_path %>
+                  </li>
                   <% unless current_user.present? %>
                     <li class="nav-item">
                       <%= link_to 'Login', popup_forms_path(name: 'login'), remote: true, class: '', style: "font-size: medium;" %>

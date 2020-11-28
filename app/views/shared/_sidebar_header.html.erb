@@ -12,6 +12,9 @@
       <%= link_to contact_us_path, class: 'ml-4' do %>
         <i class="fa fa-comments mr-2"></i>Contact Us
       <% end %>
+      <%= link_to faq_path, class: 'ml-4' do %>
+        <i class="fa fa-comment mr-2"></i>FAQ
+      <% end %>
       <%= link_to edit_profile_url, class: 'ml-4' do %>
         <% if current_user.image.present? %>
           <%= image_tag url_for(current_user.image), class: "user-avatar rounded-circle float-left mr-2" %>
