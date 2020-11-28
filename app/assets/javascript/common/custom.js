@@ -34,7 +34,9 @@ DatePickerRange = {
 		startDate = document.getElementsByClassName("at-startdate");
 		endDate = document.getElementsByClassName("at-enddate");
 		for (let i = 0; i <= startDate.length; i++) {
-			if(null!= startDate[i])new Lightpick({field:startDate[i],secondField:endDate[i],singleDate:!1,onSelect:function(e,a){e&&e.format("Do MMMM YYYY"),a&&a.format("Do MMMM YYYY")}});
+			if(null!= startDate[i])new Lightpick({
+				minDate: new Date(),
+				field:startDate[i],secondField:endDate[i],singleDate:!1,onSelect:function(e,a){e&&e.format("Do MMMM YYYY"),a&&a.format("Do MMMM YYYY")}});
 		}
 		startDateTwo = document.getElementsByClassName("at-startdatetwo");
 		endDateTwo = document.getElementsByClassName("at-enddatetwo");

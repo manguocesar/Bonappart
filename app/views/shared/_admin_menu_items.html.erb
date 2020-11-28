@@ -8,12 +8,12 @@
     </li>
     <li class=<%= "active" if active_tab == 'apartments' %>>
       <%= link_to admin_apartments_path do %>
-        <i class="fa fa-home mr-3"></i><%= t('dashboard.all_apartments') %>
+        <i class="menu-icon fa fa-home"></i><%= t('dashboard.all_properties') %>
       <% end %>
     </li>
     <li class=<%= "active" if active_tab == 'apartment_types' %>>
       <%= link_to admin_apartment_types_path do %>
-        <i class="menu-icon fa fa-building"></i><%= t('dashboard.apartment_types') %>
+        <i class="menu-icon fa fa-building"></i><%= t('dashboard.property_types') %>
       <% end %>
     </li>
     <li class=<%= "active" if active_tab == 'landlord' %>>
