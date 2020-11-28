@@ -1,32 +1,39 @@
-<div id="titlebar" class="solid">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h2><%= t('booking_confirmation') %></h2>
+<main id="at-main" class="at-main at-haslayout">
+  <!-- Contact Form Start -->
+  <section class="at-haslayout at-main-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12">
+          <div class="at-sectionhead">
+            <h2><%= t('booking_confirmation') %></h2>
+          </div>
+        </div>
+        <!-- Booking confirmation inner Banner Start -->
+        <div class="col-12 col-sm-12">
+          <% if current_user&.landlord? %>
+            <div class="at-title text-center">
+              <div class="check-logo"><i class="fa fa-check-circle"></i></div>
+              <h2><%= t('thank_you.subscription_title') %></h2></div>
+              <h4 class="text-center"><%= t('thank_you.subscription_message') %></h4>
+            </div>
+          <% else %>
+            <div class="at-title text-center">
+              <div class="check-logo"><i class="fa fa-check-circle"></i></div>
+              <h2><%= t('thank_you.title') %></h2>
+              <h4 class="text-center"><%= t('thank_you.message') %></h4>
+            </div>
+          <% end %>
+          <div class="at-title text-center">
+            <%= link_to t('go_to_my_bookings'), my_bookings_path, class: 'at-btn text-center mb-3' %>
+            <%= link_to t('view_invoice'), preview_path(format: :pdf), target: '_blank', class: 'at-btn text-center mb-3' %>
+            <%= link_to t('download_invoice'), download_path(format: :pdf), class: 'at-btn text-center mb-3' %>
+          </div>
+        </div>
+        <!-- Booking confirmation inner Banner End -->
       </div>
     </div>
-  </div>
-</div>
-<!-- Booking confirmation inner Banner Start -->
-<% if current_user&.landlord? %>
-  <div class="at-title text-center">
-    <div class="check-logo"><i class="fa fa-check-circle"></i></div>
-    <h2><%= t('thank_you.subscription_title') %></h2></div>
-    <h4 class="text-center"><%= t('thank_you.subscription_message') %></h4>
-  </div>
-<% else %>
-  <div class="at-title text-center">
-    <div class="check-logo"><i class="fa fa-check-circle"></i></div>
-    <h2><%= t('thank_you.title') %></h2>
-    <h4 class="text-center"><%= t('thank_you.message') %></h4>
-  </div>
-<% end %>
-<div class="at-title text-center">
-  <%= link_to t('go_to_my_bookings'), apartments_path, class: 'at-btn text-center mb-3' %>
-  <%= link_to t('view_invoice'), preview_path(format: :pdf), target: '_blank', class: 'at-btn text-center mb-3' %>
-  <%= link_to t('download_invoice'), download_path(format: :pdf), class: 'at-btn text-center mb-3' %>
-</div>
-<!-- Booking confirmation inner Banner End -->
+  </section>
+</main>
 <!-- Invoice details end -->
 <%#= render 'invoice' %>
 <!-- Invoice details end -->

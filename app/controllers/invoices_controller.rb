@@ -3,7 +3,7 @@
 # Invoices Controller
 class InvoicesController < ApplicationController
   before_action :load_booking, only: :new
-  before_action :set_invoice_details, only: %i[show preview]
+  before_action :set_invoice_details, only: %i[show preview download]
 
   # GET
   # Invoice listings
@@ -49,14 +49,18 @@ class InvoicesController < ApplicationController
     html = render_to_string('invoices/preview.html.erb', layout: false)
     pdf = WickedPdf.new.pdf_from_string(html)
     send_data(pdf,
-              filename: 'invoices/preview.html.erb',
+              filename: "invoice_#{@invoice.invoice_number}",
               disposition: 'attachment')
   end
 
   private
 
-  def set_invoice_details
+  def load_invoice
     @invoice = Invoice.find_by(id: params[:id])
+  end
+
+  def set_invoice_details
+    load_invoice
     @address = @invoice.address
     @booking = @invoice.booking
     @subscription = @invoice.subscription

@@ -1,51 +1,35 @@
-<!-- Invoice details start -->
 <div class="content">
-<div class="card">
-<div class="card-header">
-  <h3 class="card-title">
-  <%= "#{t('invoice.invoice')} ##{@invoice.invoice_number}" %>
-  </h3>
-</div>
-<div class="card-body">
-  <div class="row">
-    <div class="col-md-12">
-
-      <div class="row">
-        <div class="col-md-6 customer-details">
-          <div class="box">
-            <h4><%= t('invoice.billing_details') %></h4>
-            <div class="box-content">
-              <p class="mb-0"><strong><%= t('invoice.fullname') %>: </strong><%= @user.fullname %><br>
-              <strong><%= t('invoice.area') %>: </strong><%= @address&.area %><br>
-              <strong><%= t('invoice.city') %>: </strong><%= @address&.city %><br>
-              <strong><%= t('invoice.state') %>: </strong><%= @address&.state %><br>
-              <strong><%= t('invoice.postal_code') %>: </strong><%= @address&.postal_code %></p>
+  <!-- Contact Form Start -->
+  <div class='row'>
+      <div class="col-sm-12">
+          <div class="at-sectionhead">
+            <h2><%= t('booking_confirmation') %></h2>
+          </div>
+        <!-- Booking confirmation inner Banner Start -->
+        <div class="col-12 col-sm-12">
+          <% if current_user&.landlord? %>
+            <div class="at-title text-center">
+              <div class="check-logo"><i class="fa fa-check-circle"></i></div>
+              <h2><%= t('thank_you.subscription_title') %></h2></div>
+              <h4 class="text-center"><%= t('thank_you.subscription_message') %></h4>
             </div>
+          <% else %>
+            <div class="at-title text-center">
+              <div class="check-logo"><i class="fa fa-check-circle"></i></div>
+              <h2><%= t('thank_you.title') %></h2>
+              <h4 class="text-center"><%= t('thank_you.message') %></h4>
+            </div>
+          <% end %>
+          <div class="at-title text-center">
+            <%= link_to t('go_to_my_bookings'), my_bookings_path, class: 'btn btn-sm at-btn' %>
+            <%= link_to t('view_invoice'), preview_path(format: :pdf), target: '_blank', class: 'btn btn-sm at-btn' %>
+            <%= link_to t('download_invoice'), download_path(format: :pdf), class: 'btn btn-sm at-btn' %>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="box">
-            <h4><%= t('invoice.customer_details') %></h4>
-            <div class="box-content">
-              <p class="mb-0"><strong><%= t('invoice.fullname') %>: </strong><%= @user.fullname %><br>
-              <strong><%= t('invoice.email') %>: </strong><%= @user.email %><br>
-              <strong><%= t('invoice.date') %>: </strong><%= date_format(@invoice.date) %></p>
-            </div>
-          </div>
-        </div>
+        <!-- Booking confirmation inner Banner End -->
       </div>
-    </div>
-  </div>
-
-  <h3 class="form-group"><%= 'Summary' %></h3>
-
-  <%= render 'summary' %>
-  <div class='text-right'>
-    <%= link_to t('back_to_home'), landlord_dashboard_path, class: 'btn btn-dark btn-xs' %>
-    <%= link_to t('view_invoice'), preview_path(format: :pdf), target: :blank, class: 'btn btn-success btn-xs' %>
-    <%= link_to t('download_invoice'), download_path(format: :pdf), class: 'btn btn-success btn-xs' %>
   </div>
 </div>
-</div>
-
+<!-- Invoice details end -->
+<%#= render 'invoice' %>
 <!-- Invoice details end -->
