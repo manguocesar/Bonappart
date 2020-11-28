@@ -25,7 +25,7 @@
                       <%= image_tag wicked_pdf_asset_base64('invoice/call01.png'), style: 'max-width: 150px; padding: 0px; margin: 0px 0px 2px 4px; display: block;' %>
                     <td width="138" align="left" valign="middle"><a href="#" style="color:#000; text-decoration:none;">+90
                         99999 99999</a></td>
-                    <td width="26" align="right" valign="middle"><%= image_tag wicked_pdf_asset_base64('invoice/user01.png'), alt: "", width: "16", 
+                    <td width="26" align="right" valign="middle"><%= image_tag wicked_pdf_asset_base64('invoice/user01.png'), alt: "", width: "16",
                       height: "16", style: "padding: 0px; margin: 0px; display: block;", border: "0", vspace: "0", hspace: "0" %>
                     </td>
                     <td width="159" align="right" valign="middle"><a href="#"
@@ -43,11 +43,11 @@
             <tr>
               <td width="488" valign="middle"
                 style=" font-family: Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; color:#000000; line-height:24px; padding:10px;">
-                #<%= invoice&.invoice_number %></td>
+                #<%= @invoice&.invoice_number %></td>
               <td width="392" align="right" valign="middle"
                 style=" font-family: Arial, Helvetica, sans-serif; font-size:16px; font-weight:normal; text-align:right; color:#000000; line-height:24px; padding:10px;">
                 Invoice Due Date<br />
-                <span style=" font-weight:bold;"><%= date_format(invoice&.created_at) %></span>
+                <span style=" font-weight:bold;"><%= date_format(@invoice&.created_at) %></span>
               </td>
             </tr>
           </table>
@@ -70,11 +70,11 @@
             <tr>
               <td width="400" valign="top" bgcolor="#FFFFFF"
                 style=" font-family: Arial, Helvetica, sans-serif; font-size:12px; text-align: left; color:#333333; line-height:20px; padding:5px 10px 10px 10px; border-right:solid 1px #b9b9b9;">
-                <span style=" font-weight:700;"><%= invoice&.booking&.user&.fullname %></span><br />
-                <%= invoice&.address&.area %><br />
-                <%= invoice&.address&.postal_code %>
-                <%= invoice&.address&.city %><br />
-                <%= invoice&.address&.state %>
+                <span style=" font-weight:700;"><%= @invoice&.booking&.user&.fullname %></span><br />
+                <%= @invoice&.address&.area %><br />
+                <%= @invoice&.address&.postal_code %>
+                <%= @invoice&.address&.city %><br />
+                <%= @invoice&.address&.state %>
               </td>
               <td width="400" valign="top" bgcolor="#FFFFFF"
                 style=" font-family: Arial, Helvetica, sans-serif; font-size:12px; text-align: left; color:#333333; line-height:20px; padding:5px 10px 10px 10px; ">

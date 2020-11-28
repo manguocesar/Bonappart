@@ -9,7 +9,7 @@
 <div class="card-body">
   <div class="row">
     <div class="col-md-12">
-     
+
       <div class="row">
         <div class="col-md-6 customer-details">
           <div class="box">
@@ -38,13 +38,13 @@
   </div>
 
   <h3 class="form-group"><%= 'Summary' %></h3>
-  
+
   <%= render 'summary' %>
   <div class='text-right'>
-    <%= link_to 'Back to Home page', landlord_dashboard_path, class: 'btn btn-dark btn-xs' %>
-    <%= link_to 'Download PDF', download_path(format: :pdf), class: 'btn btn-success btn-xs' %>
-  
-</div>
+    <%= link_to t('back_to_home'), landlord_dashboard_path, class: 'btn btn-dark btn-xs' %>
+    <%= link_to t('view_invoice'), preview_path(format: :pdf), target: :blank, class: 'btn btn-success btn-xs' %>
+    <%= link_to t('download_invoice'), download_path(format: :pdf), class: 'btn btn-success btn-xs' %>
+  </div>
 </div>
 </div>
 
