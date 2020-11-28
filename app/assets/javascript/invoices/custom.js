@@ -30,13 +30,3 @@ InvoiceForm = {
   }
 };
 
-DatePicker = {
-  init: function () {
-    new Lightpick({
-      field: document.getElementById('date'),
-      onSelect: function (date) {
-        document.getElementById('date').innerHTML = date.format('Do MMMM YYYY');
-      }
-    });
-  }
-};
