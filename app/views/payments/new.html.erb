@@ -37,7 +37,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" style="font-size:0.975rem;border-radius:7px;">Close</button>
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="pk_test_51HZY7lFYh30SOXdPiBXS9R16JA8sU4QpBTLzlWoSsnCRQhPc6NSRxsxDl047P6A71UWBSZcwduL3o5WQS6MvYAw000dcmzAW6p"
+            data-key="<%= Rails.application.credentials.dig(Rails.env.to_sym, :stripe,:publishable_key) %>"
             data-description="Payment For Accomodation"
             data-email = "<%= current_user.email %>"
             data-locale="auto">
