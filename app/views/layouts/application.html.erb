@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag controller_name %>
     <%= javascript_include_tag controller_name %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh015i50EB_Ol2dxNvgd11iJBYJhfpziI"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.dig(Rails.env.to_sym, :google_map_api_key) %>"></script>
     <link rel="apple-touch-icon" sizes="57x57" href=<%= asset_url("favicon-icons/apple-icon-57x57.png") %> >
     <link rel="apple-touch-icon" sizes="60x60" href=<%= asset_url("favicon-icons/apple-icon-60x60.png") %> >
     <link rel="apple-touch-icon" sizes="72x72" href=<%= asset_url("favicon-icons/apple-icon-72x72.png") %> >

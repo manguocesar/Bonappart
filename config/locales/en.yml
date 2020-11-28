@@ -37,11 +37,13 @@ en:
   no_inquiry: 'Ypu have not received Any Inquiry yet'
   no_inquire: 'You have not started any inquiry yet'
   address_details: Address Details
+  booking_confirmation: Booking Confirmation
+  post_confirmation: Post Confirmation
   thank_you:
-    title: Thank you for booking Accomodation
+    title: Thank you for your booking!
     message: Your Accomodation is booked successfully
-    subscription_title: Thank you for Posting Accomodation
-    subscription_message: Your Accomodation is posted Successfully
+    subscription_title: Thank you for Posting Property
+    subscription_message: Your Property is posted Successfully
   users:
     sign_up: SIGN UP
     edit_user: Edit User
@@ -256,3 +258,7 @@ en:
     update: User Updated Succsessfully
     delete: User Deleted Succsessfully
     profile_update: Profile Updated Successfully
+  download_invoice: Download Invoice
+  view_invoice: View Invoice
+  back_to_home: Back To Home
+  go_to_my_bookings: Go To My Bookings

@@ -20,6 +20,9 @@ class HomesController < ApplicationController
   # Get About Us Page
   def about_us; end
 
+  # Get FAQ page
+  def faq; end
+
   # Create Contact Us Inquiry
   def create_contact_us
     @contact_us = ContactUs.new(contact_us_params)

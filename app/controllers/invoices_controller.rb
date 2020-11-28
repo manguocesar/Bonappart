@@ -3,7 +3,7 @@
 # Invoices Controller
 class InvoicesController < ApplicationController
   before_action :load_booking, only: :new
-  before_action :set_invoice_details, only: %i[show download_invoice]
+  before_action :set_invoice_details, only: %i[show preview download]
 
   # GET
   # Invoice listings
@@ -24,7 +24,7 @@ class InvoicesController < ApplicationController
   def create
     @invoice = Booking.new(invoice_params)
     if @invoice.save
-      redirect_to add_payment_method_path(booking_id: @booking&.id,amount: booking&.amount)
+      redirect_to add_payment_method_path(booking_id: @booking&.id, amount: booking&.amount)
     else
       render :new
     end
@@ -34,21 +34,33 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.find_by(id: params['invoice'])
   end
 
-  def download_invoice
+  def preview
     respond_to do |format|
       format.js
       format.pdf do
         render pdf: 'invoice',
-               template: 'invoices/download_invoice.pdf.erb',
-               locals: { invoice: @invoice }
+               template: 'invoices/preview.html.erb',
+               locals: { invoice: @invoice, booking: @invoice&.booking, apartment: @invoice&.booking&.apartment }
       end
     end
   end
 
+  def download
+    html = render_to_string('invoices/preview.html.erb', layout: false)
+    pdf = WickedPdf.new.pdf_from_string(html)
+    send_data(pdf,
+              filename: "invoice_#{@invoice.invoice_number}",
+              disposition: 'attachment')
+  end
+
   private
 
-  def set_invoice_details
+  def load_invoice
     @invoice = Invoice.find_by(id: params[:id])
+  end
+
+  def set_invoice_details
+    load_invoice
     @address = @invoice.address
     @booking = @invoice.booking
     @subscription = @invoice.subscription
