@@ -1,0 +1,30 @@
+<div class="content">
+  <div class="remove-flex row">
+    <div class="col-md-12">
+      <h3 class="card-title"><%= t('settings') %></h3>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card height">
+            <% @settings.each do |setting| %>
+              <div class="card-header"><%= t('setting.email_details') %>
+              <%= link_to edit_admin_setting_path(setting), class:'btn btn-sm btn-success float-right' do %>
+                <i class="fa fa-pencil"></i>
+              <% end %>
+              </div>
+                <div class="card-block">
+                  <strong class='ml-3'><%= t('setting.address') %>: </strong><%= setting.address %><br>
+                  <strong class='ml-3'><%= t('setting.port') %>: </strong><%= setting.port %><br>
+                  <strong class='ml-3'><%= t('setting.domain') %>: </strong><%= setting.domain %><br>
+                  <strong class='ml-3'><%= t('setting.user_name') %>: </strong><%= setting.user_name %><br>
+                  <strong class='ml-3'><%= t('setting.password') %>: </strong><%= setting.password %><br>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

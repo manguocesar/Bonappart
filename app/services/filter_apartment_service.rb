@@ -15,8 +15,17 @@ class FilterApartmentService
     # return current_user&.apartments if current_user.present? && current_user.landlord?
     if current_user.present? && current_user.landlord?
       params[:type].present? ? landlord_apartments : current_user.apartments
+    elsif current_user.present? && current_user.admin?
+      params[:type].present? ? admin_apartments : Apartment.all
     else
       Apartment.all
+    end
+  end
+
+  def admin_apartments
+    case params[:type]
+    when 'live_ads' then Apartment.subscribed
+    when 'all_ads' then Apartment.all
     end
   end
 

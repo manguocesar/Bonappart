@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_26_184623) do
+ActiveRecord::Schema.define(version: 2020_11_28_121635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 2020_11_26_184623) do
     t.integer "receiver_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "apartment_id"
+    t.bigint "apartment_id", null: false
     t.index ["apartment_id"], name: "index_inquiries_on_apartment_id"
   end
 
@@ -190,6 +190,16 @@ ActiveRecord::Schema.define(version: 2020_11_26_184623) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["inquiry_id"], name: "index_rooms_on_inquiry_id"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.string "address"
+    t.string "port"
+    t.string "domain"
+    t.string "user_name"
+    t.string "password"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "subscriptions", force: :cascade do |t|

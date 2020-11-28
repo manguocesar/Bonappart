@@ -14,6 +14,8 @@
 //= require common/moment.min
 //= require common/lightpick
 //= require common/bootstrap-select.min
+//= require settings/custom
+
 var $ = jQuery
 
 DatePicker = {
