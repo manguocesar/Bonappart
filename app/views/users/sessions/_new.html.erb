@@ -1,16 +1,6 @@
-<div class="hint-box">
-<div class='row'>
-  <div class='col-sm-6'>
-    <p>Student user<br> studentuser@gmail.com<br> Password: studentuser</p>
-  </div>
-  <div class='col-sm-6'>
-    <p>Landlord user<br> johndoe@gmail.com<br> Password: landlorduser</p>
-  </div>
-</div>
-</div>
 <%= form_for(:user, url: session_path(:user), class: 'at-formtheme at-formlogin', html: {id: 'new_user'}, remote: true) do |f| %>
   <%= devise_error_messages! %>
-  
+
     <div class="form-group">
       <%= f.text_field :login, autocomplete: 'off', class: 'form-control', placeholder: 'Your Email *' %>
     </div>
@@ -39,5 +29,5 @@
         </p>
       <% end %>
     </div>
- 
+
 <% end %>
