@@ -8,7 +8,7 @@ module Admin
 
     # Invoice listings
     def index
-      @invoices = pagination(Invoice.all)
+      @invoices = pagination(Invoice.all.order(created_at: :desc))
     end
 
     # New invoice
@@ -18,9 +18,11 @@ module Admin
 
     # Get landlord specific apartments
     def landlord_properties
-      fetch_user = User.find_by(firstname: params[:landlord_user])
-      apartments = fetch_user&.apartments.map(&:title)
-      render json: apartments.to_json
+      fetch_user = User.find_by(id: params[:id])
+      if fetch_user.present?
+        apartments = fetch_user&.apartments&.pluck(:title, :id)
+        render json: apartments.to_json
+      end
     end
 
     # Edit invoice
@@ -61,11 +63,11 @@ module Admin
     private
 
     def apartment
-      Apartment.find_by(title: invoice_params[:apartment_id])
+      Apartment.find_by(id: invoice_params[:apartment_id])
     end
 
     def user
-      User.find_by(firstname: invoice_params[:user_id].split.first)
+      User.find_by(id: invoice_params[:user_id].split.first)
     end
 
     def set_required_id

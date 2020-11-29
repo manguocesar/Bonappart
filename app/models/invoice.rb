@@ -29,6 +29,6 @@ class Invoice < ApplicationRecord
   end
 
   def landlord_user
-    User.with_role(:landlord).map(&:fullname)
+    User.with_role(:landlord).map(&:fullname_with_id)
   end
 end

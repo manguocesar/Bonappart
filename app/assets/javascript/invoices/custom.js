@@ -5,9 +5,6 @@ InvoiceForm = {
       errorElement: 'div',
 
       rules: {
-        "invoice[invoice_number]": {
-          required: true,
-        },
         "invoice[amount]": {
           required: true
         },
@@ -20,7 +17,6 @@ InvoiceForm = {
       },
 
       messages: {
-        "invoice[invoice_number]": 'Please Enter Invoice Number',
         "invoice[amount]": 'Please Enter Amount',
         "invoice[date]": 'Please Enter Date',
         "invoice[status]": 'Please Select Status'
@@ -31,16 +27,16 @@ InvoiceForm = {
 };
 
 Property = {
-  fillValues: function() {
+  init: function() {
     $('#landlordUser').change(function () {
       var properties = $('#properties');
-      var landlord_name = $(this).val().split(' ')[0]
+      var landlord_name = $(this).val()
       $.getJSON('/admin/landlord_properties/' + landlord_name, function (data) {
         properties.empty();
         $.each(data, function (i, ele) {
         properties.append($("<option></option>")
-          .attr("value", ele)
-          .text(ele));
+          .attr("value", ele[1])
+          .text(ele[0]));
         });
         $('.selectpicker').selectpicker('refresh');
       });

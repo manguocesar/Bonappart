@@ -58,6 +58,11 @@ class User < ApplicationRecord
     "#{firstname} #{lastname}"
   end
 
+  # User full name with email
+  def fullname_with_id
+    ["#{firstname} #{lastname}", id]
+  end
+
   # display user's available apartments
   def available_apartments
     apartments.where(availability: false)
