@@ -5,7 +5,7 @@
         <div class="card-header">
           <h3 class="card-title"><%= t('dashboard.bookings') %></h3>
           <%= link_to new_admin_booking_path, local: true, class: 'btn btn-sm at-btn pull-right' do %>
-            <i class="menu-icon fa fa-plus"></i> <%= 'New Booking' %>
+            <i class="menu-icon fa fa-plus"></i> <%= t('booking.new') %>
           <% end %>
         </div>
         <div class="card-body">
@@ -49,4 +49,3 @@
     </div>
   </div>
 </div>
-<%= render '/shared/modal_window', locals: { modelId: 'apartmentTypeModal' } %>

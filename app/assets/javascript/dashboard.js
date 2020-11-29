@@ -18,15 +18,8 @@ var $ = jQuery
 
 DatePicker = {
   init: function () {
-    // new Lightpick({
-    //   field: document.getElementById('birthdate'),
-    //   onSelect: function (date) {
-    //     document.getElementById('birthdate').innerHTML = date.format('Do MMMM YYYY');
-    //   }
-    // });
     startDate = document.getElementsByClassName("datepicker");
     for (let i = 0; i <= startDate.length; i++) {
-        debugger;
       if (null != startDate[i]) new Lightpick({
         field: startDate[i],
         minDate: new Date(),
