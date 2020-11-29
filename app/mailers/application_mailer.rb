@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  # default from: 'from@example.com'
+  default from: 'from@example.com'
   layout 'mailer'
   before_action :set_smtp_settings
 
