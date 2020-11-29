@@ -27,4 +27,8 @@ class Invoice < ApplicationRecord
   def address
     booking.present? ? booking&.payment_address : subscription&.payment_address
   end
+
+  def landlord_user
+    User.with_role(:landlord).map(&:fullname)
+  end
 end

@@ -5,7 +5,7 @@
       <div class="row mt-3">
         <div class="col-sm-12">
           <h4 class="header-title"><%= t('apartment.add_apartment') %></h4>
-          <%= render partial: 'form', invoice: @invoice, url: invoices_path %>
+          <%= render 'form', invoice: @invoice, url: admin_invoices_path, method: :post %>
         </div>
       </div>
     </div>

@@ -1,6 +1,5 @@
-<%= form_with(model: invoice, url: url, method: method, local: true, id: 'invoice_form') do |form| %>
-  <%= render 'shared/error_messages', target: invoice %>
-  <%= hidden_field_tag 'invoice[booking_id]', @invoice&.booking_id %>
+<%= form_for(invoice, url: url, method: method, local: true, id: 'invoice_form') do |form| %>
+  <%= render 'shared/error_messages', target: @invoice %>
   <%= hidden_field_tag 'invoice[subscription_id]', @invoice&.subscription_id %>
   <div class='row'>
     <div class="form-group col-sm-12 mb-3">
@@ -8,16 +7,32 @@
       <%= form.text_field :invoice_number, class: 'form-control', required: true %>
     </div>
     <div class="form-group col-sm-12 mb-3">
-      <%= form.label t('invoice.amount'), class:"col-form-label" %><br/>
-      <%= form.text_field :amount, class: 'form-control', required: true %>
-    </div>
-    <div class="form-group col-sm-12 mb-3">
       <%= form.label t('invoice.date'), class:"col-form-label" %><br/>
       <%= form.text_field :date, class: 'form-control', id: 'date', required: true %>
     </div>
     <div class="form-group col-sm-12 mb-3">
+      <%= form.label t('invoice.landlord'), class:"col-form-label" %><br/>
+      <%= select_tag('invoice[user]', options_for_select(invoice.landlord_user), class: "form-control selectpicker", id: 'landlordUser', include_blank: t('user.select_landlord')) %>
+    </div>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label t('invoice.property'), class:"col-form-label" %><br/>
+      <%= select_tag('invoice[apartment]', options_for_select([]), class: "form-control selectpicker", id: 'properties', include_blank: t('user.select_property')) %>
+    </div>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label t('invoice.description'), class:"col-form-label" %><br/>
+      <%= form.text_field :description, class: 'form-control', required: true %>
+    </div>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label t('invoice.net_sales_amount'), class:"col-form-label" %><br/>
+      <%= form.text_field :amount, class: 'form-control', required: true %>
+    </div>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label t('invoice.vat_rate'), class:"col-form-label" %><br/>
+      <%= form.text_field :vat_rate, class: 'form-control', required: true %>
+    </div>
+    <div class="form-group col-sm-12 mb-3">
       <%= form.label t('invoice.status'), class:"col-form-label" %><br/>
-      <%= select_tag('invoice[status]', options_for_select(Invoice.statuses.map { |k, v| [k.humanize.capitalize, k] }), class: "form-control", include_blank: t('user.select_status')) %>
+      <%= select_tag('invoice[status]', options_for_select(Invoice.statuses.map { |k, v| [k.humanize.capitalize, k] }), class: "form-control selectpicker", include_blank: t('user.select_status')) %>
     </div>
     <div class="modal-footer">
       <%= link_to "Back", admin_invoices_path, class: 'btn btn-secondary' %>
@@ -27,6 +42,19 @@
 <% end %>
 <script type="text/javascript">
   $(document).ready(function (e) {
+    $('#landlordUser').change(function () {
+    var properties = $('#properties');
+    var landlord_name = $(this).val().split(' ')[0]
+    $.getJSON('/admin/landlord_properties/' + landlord_name, function (data) {
+      properties.empty();
+      $.each(data, function (i, ele) {
+      properties.append($("<option></option>")
+        .attr("value", ele)
+        .text(ele));
+      });
+      $('.selectpicker').selectpicker('refresh');
+    });
+    })
     InvoiceForm.validate();
     new Lightpick({
       field: document.getElementById('date'),

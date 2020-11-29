@@ -4,7 +4,7 @@
 module Admin
   class InvoicesController < ApplicationController
     before_action :set_invoice_details, only: %i[show edit update destroy set_required_id]
-    before_action :set_required_id, only: %i[new edit]
+    before_action :set_required_id, only: %i[edit]
 
     # Invoice listings
     def index
@@ -16,6 +16,13 @@ module Admin
       @invoice = Invoice.new
     end
 
+    # Get landlord specific apartments
+    def landlord_properties
+      fetch_user = User.find_by(firstname: params[:landlord_user])
+      apartments = fetch_user&.apartments.map(&:title)
+      render json: apartments.to_json
+    end
+
     # Edit invoice
     def edit; end
 
@@ -25,8 +32,10 @@ module Admin
     # Create invoice
     def create
       @invoice = Invoice.new(invoice_params)
+      @invoice.user_id = User.find_by(firstname: invoice_params[:user])&.id
+      @invoice.apartment_id = Apartment.find_by(title: invoice_params[:apartment])&.id
       if @invoice.save
-        redirect_to add_payment_method_path(booking_id: @booking&.id, amount: booking&.amount)
+        redirect_to admin_invoices_path, notice: t('invoice.create')
       else
         render :new
       end
@@ -59,11 +68,15 @@ module Admin
       @address = @invoice.address
       @booking = @invoice.booking
       @subscription = @invoice.subscription
-      @user = @booking.present? ? @booking.user : @subscription.user
+      @user = @subscription.user
     end
 
     def invoice_params
-      params.require(:invoice).permit(%i[invoice_number date status amount booking_id subscription_id])
+      params.require(:invoice).permit(
+        %i[invoice_number date status amount subscription_id
+           description vat_rate user_id apartment_id booking_id
+          ]
+      )
     end
   end
 end
