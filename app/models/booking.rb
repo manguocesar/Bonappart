@@ -34,4 +34,12 @@ class Booking < ApplicationRecord
   def payment_status
     payments.last.status
   end
+
+  def startdate
+    start_date.strftime('%B %d, %Y') if start_date.present?
+  end
+
+  def enddate
+    end_date.strftime('%B %d, %Y') if end_date.present?
+  end
 end
