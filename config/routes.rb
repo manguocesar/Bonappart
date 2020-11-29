@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :apartments
     resources :subscriptions, only: %i[index new create]
     resources :invoices, only: %i[index show]
-    resources :bookings, only: %i[index show]
+    resources :bookings
   end
   namespace :landlord do
     get '/dashboard', to: 'dashboard#index'

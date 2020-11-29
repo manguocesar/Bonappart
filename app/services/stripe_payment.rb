@@ -52,7 +52,6 @@ class StripePayment
       currency: 'eur'
     )
     rescue Stripe::CardError => e
-      flash[:error] = e.message
-      redirect_to root_path
+      e&.message
   end
 end
