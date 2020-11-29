@@ -177,6 +177,12 @@ en:
     book_now: Book Now
     property_name: Property Name
     instructions: Booking Instructions
+    student: Student
+    property: Property
+    select_student: Select Student
+    select_property: Select Property
+    book_property: Book Property
+    new: New Booking
   address:
     area: Area
     postal_code: Postal code

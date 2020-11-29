@@ -79,7 +79,13 @@ class Apartment < ApplicationRecord
 
   # Display available date
   def available_date
-    available_in_future? ? "Available From: #{display_proper_availability_date}" : "Available Now"
+    if available_in_future?
+      "Available From: #{display_proper_availability_date}"
+    elsif booking.present?
+      "Rented from #{booking.startdate} To #{booking.enddate}"
+    else
+      'Available Now'
+    end
   end
 
   # landlord full name
@@ -97,7 +103,7 @@ class Apartment < ApplicationRecord
     apartment_type&.name&.titleize
   end
 
-   # Return net amount of apartment
+  # Return net amount of apartment
   def net_rent
     rent_rate&.net_rate&.to_i if rent_rate.present?
   end

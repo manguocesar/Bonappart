@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     resources :apartment_types
     resources :apartments
     resources :subscriptions, only: %i[index new create]
-    resources :invoices
-    resources :bookings, only: %i[index show]
+    resources :invoices, only: %i[index show]
+    resources :bookings
     get 'landlord_properties/:landlord_user', to: 'invoices#landlord_properties'
   end
   namespace :landlord do
