@@ -43,6 +43,7 @@
 <% end %>
 <script type="text/javascript">
   $(document).ready(function (e) {
+    $('.selectpicker').selectpicker('refresh');
     $('#landlordUser').change(function () {
     var properties = $('#properties');
     var landlord_name = $(this).val().split(' ')[0]

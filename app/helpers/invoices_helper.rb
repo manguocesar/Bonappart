@@ -2,8 +2,8 @@
 
 # Invoices Helper
 module InvoicesHelper
-  def invoice_sumary_title(invoice)
-    invoice.booking.present? ? t('invoice.booking_summary') : t('invoice.subscription_summary')
+  def invoice_sumary_title(user)
+    user.student? ? t('invoice.booking_summary') : t('invoice.subscription_summary')
   end
 
   def invoice_payment_path(invoice)

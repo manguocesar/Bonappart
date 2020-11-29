@@ -2,7 +2,11 @@
   <div class="remove-flex row">
     <div class="col-md-12">
       <div class="text-xs-center">
-        <h2><%= "#{t('invoice.invoice_for_booking')} ##{@invoice.invoice_number}" %></h2>
+        <% if @user.student? %>
+          <h2><%= "#{t('invoice.invoice_for_booking')} ##{@invoice.invoice_number}" %></h2>
+        <% else %>
+          <h2><%= "#{t('invoice.invoice_for_subcription')} ##{@invoice.invoice_number}" %></h2>
+        <% end %>
       </div>
       <hr>
       <div class="row">
@@ -35,11 +39,11 @@
     <div class="col-md-12">
       <div class="card ">
         <div class="card-header">
-          <h3 class="text-xs-center"><strong><%= invoice_sumary_title(@invoice) %></strong></h3>
+          <h3 class="text-xs-center"><strong><%= invoice_sumary_title(@user) %></strong></h3>
         </div>
         <div class="card-block">
           <div class="table-responsive">
-            <% if @invoice.booking.present? %>
+            <% if @user.student? %>
               <%= render 'invoices/booking_summary' %>
             <% else %>
               <%= render 'invoices/subscription_summary' %>
