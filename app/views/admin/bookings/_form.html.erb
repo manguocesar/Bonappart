@@ -1,0 +1,34 @@
+<%= form_for(booking, url: url, method: method, html: { id: 'user_booking_form' }) do |form| %>
+  <%= render 'shared/messages' %>
+  <div class="row">
+    <div class="form-group col-sm-12">
+      <%= form.label 'Student', class:"col-form-label" %>
+      <%= select_tag("booking[user_id]", options_for_select(User.students.pluck(:email, :id)), class: "form-control selectpicker", include_blank: 'Select Student') %>
+    </div>
+    <div class="form-group col-sm-12">
+      <%= form.label 'Property', class:"col-form-label" %>
+      <%= select_tag(:apartment, options_for_select(Apartment.available.pluck(:title, :id)), class: "form-control selectpicker", include_blank: 'Select Property') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.label 'Start Date', class:"col-form-label" %>
+      <%= form.text_field :start_date, class: 'form-control datepicker', id: 'startdate' %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.label 'End Date', class:"col-form-label" %>
+      <%= form.text_field :end_date, class: 'form-control datepicker', id: 'enddate' %>
+    </div>
+  </div>
+  <%= form.hidden_field 'booking[status]', value: 'paid' %>
+  <div class="actions text-right">
+    <%= link_to 'Back', admin_users_path, class: 'btn btn-dark' %>
+    <%= form.submit "Save", class:"btn btn-success" %>
+  </div>
+<% end %>
+<script type="text/javascript">
+  $(document).ready(function (e) {
+    DatePicker.init();
+    $('.selectpicker').selectpicker();
+  });
+</script>
