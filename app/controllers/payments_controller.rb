@@ -15,34 +15,56 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    StripePayment.new(params, current_user).call
-    @payment = Payment.new(payment_params).tap do |payment|
-                 payment.stripe_token = params[:stripeToken]
-                 address = payment.build_address
-                 create_address(address)
-               end
-    @payment.save
-    @payment.paid!
-    redirect_to invoice_path(invoice)
-    ConfirmBookingWorker.perform_async(current_user&.id, find_landlord_user&.id)
+    ActiveRecord::Base.transaction do
+      @stripe_payment_record = StripePayment.new(params, current_user).call
+      if @stripe_payment_record.kind_of?(Stripe::Charge)
+        @payment = Payment.new(payment_params).tap do |payment|
+                    payment.stripe_token = params[:stripeToken]
+                    payment.stripe_payment_id = @stripe_payment_record.id
+                    payment.stripe_transaction_id = @stripe_payment_record.balance_transaction
+                    address = payment.build_address
+                    create_address(address)
+                  end
+        @payment.save
+        @payment.paid!
+      end
+    end
+    if @payment&.id.present?
+      redirect_to invoice_path(invoice)
+      ConfirmBookingWorker.perform_async(current_user&.id, find_landlord_user&.id)
+    else
+      flash[:error] = @stripe_payment_record if @stripe_payment_record && @stripe_payment_record.kind_of?(String)
+      redirect_to add_payment_method_path(amount: payment_params['amount'], booking_id: payment_params['booking_id'])
+    end
     rescue => exception
-      flash[:error] = exception.message
+      flash[:error] = @stripe_payment_record && @stripe_payment_record.kind_of?(String) ? @stripe_payment_record : exception&.message
       redirect_to add_payment_method_path(amount: payment_params['amount'], booking_id: payment_params['booking_id'])
   end
 
   def create_subscription_payment
-    StripePayment.new(params, current_user).call
-    payment = Payment.new(payment_params)
-    create_address(payment.build_address)
-    @payment = payment.tap do |pay|
-                 pay.stripe_token = params[:stripeToken]
-               end
-    @payment.save
-    @payment.paid!
-    redirect_to invoice_path(invoice)
+    ActiveRecord::Base.transaction do
+      @stripe_payment_record = StripePayment.new(params, current_user).call
+      if @stripe_payment_record.kind_of?(Stripe::Charge)
+        @payment = Payment.new(payment_params).tap do |payment|
+                      payment.stripe_token = params[:stripeToken]
+                      payment.stripe_payment_id = @stripe_payment_record.id
+                      payment.stripe_transaction_id = @stripe_payment_record.balance_transaction
+                      address = payment.build_address
+                      create_address(address)
+                    end
+        @payment.save
+        @payment.paid!
+      end
+    end
+    if @payment&.id.present?
+      redirect_to invoice_path(invoice)
+    else
+      flash[:error] = @stripe_payment_record if @stripe_payment_record && @stripe_payment_record.kind_of?(String)
+      redirect_to_apartment
+    end
     rescue => exception
-      flash[:error] = exception.message
-      redirect_to create_subscription_payment_path
+      flash[:error] = @stripe_payment_record && @stripe_payment_record.kind_of?(String) ? @stripe_payment_record : exception&.message
+      redirect_to_apartment
   end
 
   def create_address(address)
@@ -70,5 +92,13 @@ class PaymentsController < ApplicationController
   def find_landlord_user
     booking = Booking.find_by(id: payment_params[:booking_id])
     booking&.apartment&.user
+  end
+
+  def redirect_to_apartment
+    if current_user.landlord?
+      redirect_to landlord_apartments_path
+    else
+      redirect_to admin_apartments_path
+    end
   end
 end
