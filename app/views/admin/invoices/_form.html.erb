@@ -12,7 +12,7 @@
       <%= form.text_field :date, class: 'form-control', id: 'date', required: true %>
     </div>
     <div class="form-group col-sm-12 mb-3">
-      <%= form.label t('invoice.landlord_or_student'), class:"col-form-label" %><br/>
+      <%= form.label t('invoice.landlord'), class:"col-form-label" %><br/>
       <%= select_tag('invoice[user_id]', options_for_select(invoice.landlord_user), class: "form-control selectpicker", id: 'landlordUser', include_blank: t('user.select_landlord')) %>
     </div>
     <div class="form-group col-sm-12 mb-3">

@@ -205,7 +205,7 @@ en:
   breadcrumbs:
     main: Main
   invoice:
-    landlord_or_student: Landlord / Student
+    landlord: Landlord
     select_landlord: Select Landlord
     property: Property
     select_property: Select Property
