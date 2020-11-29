@@ -32,8 +32,10 @@ module Admin
     # Create invoice
     def create
       @invoice = Invoice.new(invoice_params)
-      @invoice.user_id = User.find_by(firstname: invoice_params[:user])&.id
-      @invoice.apartment_id = Apartment.find_by(title: invoice_params[:apartment])&.id
+      @invoice.user_id = user&.id
+      @invoice.apartment_id = apartment&.id
+      @invoice.booking_id = apartment.booking&.id
+      @invoice.subscription_id = apartment.subscription&.id
       if @invoice.save
         redirect_to admin_invoices_path, notice: t('invoice.create')
       else
@@ -58,6 +60,14 @@ module Admin
 
     private
 
+    def apartment
+      Apartment.find_by(title: invoice_params[:apartment_id])
+    end
+
+    def user
+      User.find_by(firstname: invoice_params[:user_id].split.first)
+    end
+
     def set_required_id
       @booking_id = Booking.find_by(id: @invoice.booking_id)
       @subscription_id = Subscription.find_by(id: @invoice.subscription_id)
@@ -68,7 +78,7 @@ module Admin
       @address = @invoice.address
       @booking = @invoice.booking
       @subscription = @invoice.subscription
-      @user = @subscription.user
+      @user = @booking.present? ? @booking.user : @subscription.user
     end
 
     def invoice_params
