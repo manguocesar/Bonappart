@@ -9,8 +9,8 @@ class ConfirmBookingWorker
   def perform(student_id, landlord_id)
     student = find_user(student_id)
     landlord = find_user(landlord_id)
-    ConfirmationMailer.student_booking_confirmed_email(student, landlord).deliver_later
-    ConfirmationMailer.landlord_booking_confirmed_email(student, landlord).deliver_later
+    ConfirmationMailer.student_booking_confirmed_email(student, landlord).deliver_now
+    ConfirmationMailer.landlord_booking_confirmed_email(student, landlord).deliver_now
   end
 
   private
