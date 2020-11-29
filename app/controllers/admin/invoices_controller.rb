@@ -20,7 +20,7 @@ module Admin
     def landlord_properties
       fetch_user = User.find_by(id: params[:id])
       if fetch_user.present?
-        apartments = fetch_user&.apartments&.pluck(:title, :id)
+        apartments = fetch_user.booked_apartments.pluck(:title, :id)
         render json: apartments.to_json
       end
     end

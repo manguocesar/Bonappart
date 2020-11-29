@@ -87,4 +87,9 @@ class User < ApplicationRecord
   def unavailable_apartments
     apartments.reject(&:availability)
   end
+
+  # Get the total Booked apartments
+  def booked_apartments
+    apartments.joins(:booking)
+  end
 end
