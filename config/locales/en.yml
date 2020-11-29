@@ -274,6 +274,7 @@ en:
     update: User Updated Succsessfully
     delete: User Deleted Succsessfully
     profile_update: Profile Updated Successfully
+    edit: Edit Profile
   download_invoice: Download Invoice
   view_invoice: View Invoice
   back_to_home: Back To Home

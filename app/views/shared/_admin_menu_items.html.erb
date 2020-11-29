@@ -6,6 +6,16 @@
         <i class="fa fa-dashboard mr-3"></i><%= t('dashboard.dashboard') %>
       <% end %>
     </li>
+    <li class=<%= "active" if active_tab == 'bookings' %>>
+      <%= link_to admin_bookings_path do %>
+        <i class="menu-icon fa fa-th-list"></i><%= t('dashboard.bookings') %>
+      <% end %>
+    </li>
+    <li class=<%= "active" if active_tab == 'invoices' %>>
+      <%= link_to admin_invoices_path do %>
+        <i class="menu-icon fa fa-th-list"></i><%= t('dashboard.invoices') %>
+      <% end %>
+    </li>
     <li class=<%= "active" if active_tab == 'apartments' %>>
       <%= link_to admin_apartments_path do %>
         <i class="menu-icon fa fa-home"></i><%= t('dashboard.all_properties') %>
@@ -24,16 +34,6 @@
     <li class=<%= "active" if active_tab == 'student' %>>
       <%= link_to admin_users_path(type: 'student') do %>
         <i class="fa fa-user mr-3"></i><%= t('dashboard.student_management') %>
-      <% end %>
-    </li>
-    <li class=<%= "active" if active_tab == 'bookings' %>>
-      <%= link_to admin_bookings_path do %>
-        <i class="menu-icon fa fa-th-list"></i><%= t('dashboard.bookings') %>
-      <% end %>
-    </li>
-    <li class=<%= "active" if active_tab == 'invoices' %>>
-      <%= link_to admin_invoices_path do %>
-        <i class="menu-icon fa fa-th-list"></i><%= t('dashboard.invoices') %>
       <% end %>
     </li>
   </ul>
