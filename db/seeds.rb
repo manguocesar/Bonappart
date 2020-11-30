@@ -16,7 +16,7 @@ Setting.find_or_create_by(user_name: 'kenan3patel@gmail.com') do |setting|
   setting.address = 'smtp.gmail.com'
   setting.port = '587'
   setting.domain = 'gmail.com'
-  setting.password = 'jigarshah8000'
+  setting.password = 'jig@rshah8000'
   setting.save
 end
 puts 'Setting created with default Email'
