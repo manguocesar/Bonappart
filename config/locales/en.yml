@@ -197,6 +197,8 @@ en:
       type: Type Name
       add_property_type: Add Property Type
       amount: Amount
+      landlord_listing_fee: Landlord listing fee
+      student_booking_fee: Student booking fee
       status: Status
       actions: Actions
       create:
