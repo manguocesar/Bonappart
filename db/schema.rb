@@ -132,14 +132,8 @@ ActiveRecord::Schema.define(version: 2020_12_01_171529) do
     t.bigint "subscription_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "description"
-    t.float "vat_rate"
-    t.bigint "user_id"
-    t.bigint "apartment_id"
-    t.index ["apartment_id"], name: "index_invoices_on_apartment_id"
     t.index ["booking_id"], name: "index_invoices_on_booking_id"
     t.index ["subscription_id"], name: "index_invoices_on_subscription_id"
-    t.index ["user_id"], name: "index_invoices_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -162,8 +156,6 @@ ActiveRecord::Schema.define(version: 2020_12_01_171529) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "subscription_id"
-    t.string "stripe_transaction_id"
-    t.string "stripe_payment_id"
     t.index ["booking_id"], name: "index_payments_on_booking_id"
     t.index ["subscription_id"], name: "index_payments_on_subscription_id"
   end
@@ -251,10 +243,8 @@ ActiveRecord::Schema.define(version: 2020_12_01_171529) do
   add_foreign_key "apartments", "bookings"
   add_foreign_key "apartments", "users"
   add_foreign_key "inquiries", "apartments"
-  add_foreign_key "invoices", "apartments"
   add_foreign_key "invoices", "bookings"
   add_foreign_key "invoices", "subscriptions"
-  add_foreign_key "invoices", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "payments", "subscriptions"
