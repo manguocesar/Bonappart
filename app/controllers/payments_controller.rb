@@ -30,7 +30,7 @@ class PaymentsController < ApplicationController
       end
     end
     if @payment&.id.present?
-      redirect_to invoice_path(invoice)
+      render 'thank_you'
       ConfirmBookingWorker.perform_async(current_user&.id, find_landlord_user&.id)
     else
       flash[:error] = @stripe_payment_record if @stripe_payment_record && @stripe_payment_record.kind_of?(String)

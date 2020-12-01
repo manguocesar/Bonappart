@@ -1,8 +1,17 @@
 InvoiceForm = {
   validate: function () {
-    $('#invoice_form').validate({
+    $('#invoiceForm').validate({
       errorClass: 'is-invalid text-danger',
       errorElement: 'div',
+      errorPlacement: function (error, element) {
+        if (element.is('select')) {
+          var parentDiv = element.parent('div');
+          error.insertAfter(parentDiv);
+          // parentDiv.addClass("is-invalid text-danger");
+        } else {
+          error.insertAfter(element);
+        }
+      },
 
       rules: {
         "invoice[amount]": {
@@ -13,15 +22,26 @@ InvoiceForm = {
         },
         "invoice[status]": {
           required: true
+        },
+        "invoice[user_id]": {
+          required: true
+        },
+        "invoice[apartment_id]": {
+          required: true
+        },
+        "invoice[vat_rate]": {
+          required: true
         }
       },
 
       messages: {
         "invoice[amount]": 'Please Enter Amount',
         "invoice[date]": 'Please Enter Date',
-        "invoice[status]": 'Please Select Status'
+        "invoice[status]": 'Please Select Status',
+        "invoice[user_id]": 'Please Select Landlord',
+        "invoice[apartment_id]": 'Please Select Property',
+        "invoice[vat_rate]": 'Please Enter VAT Rate'
       },
-
     });
   }
 };

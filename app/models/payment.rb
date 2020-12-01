@@ -27,7 +27,7 @@ class Payment < ApplicationRecord
   def update_apartment_status(model_name, field_name, value)
     send(model_name).paid!
     send(model_name).apartment.update_attribute(field_name, value)
-    send(model_name).invoice.paid!
+    send(model_name).invoice.paid! if model_name == 'subscription'
   end
 
   # Payment statuses dropdown

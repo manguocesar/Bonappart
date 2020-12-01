@@ -20,7 +20,7 @@ module Admin
     def landlord_properties
       fetch_user = User.find_by(id: params[:id])
       if fetch_user.present?
-        apartments = fetch_user.booked_apartments.pluck(:title, :id)
+        apartments = fetch_user.apartments.subscribed.pluck(:title, :id)
         render json: apartments.to_json
       end
     end
@@ -36,7 +36,6 @@ module Admin
       @invoice = Invoice.new(invoice_params)
       @invoice.user_id = user&.id
       @invoice.apartment_id = apartment&.id
-      @invoice.booking_id = apartment.booking&.id
       @invoice.subscription_id = apartment.subscription&.id
       if @invoice.save
         redirect_to admin_invoices_path, notice: t('invoice.create')
@@ -71,22 +70,20 @@ module Admin
     end
 
     def set_required_id
-      @booking_id = Booking.find_by(id: @invoice.booking_id)
       @subscription_id = Subscription.find_by(id: @invoice.subscription_id)
     end
 
     def set_invoice_details
       @invoice = Invoice.find_by(id: params[:id])
-      @address = @invoice.address
-      @booking = @invoice.booking
-      @subscription = @invoice.subscription
-      @user = @booking.present? ? @booking.user : @subscription.user
+      @address = @invoice&.address
+      @subscription = @invoice&.subscription
+      @user = @subscription&.user
     end
 
     def invoice_params
       params.require(:invoice).permit(
         %i[invoice_number date status amount subscription_id
-           description vat_rate user_id apartment_id booking_id
+           description vat_rate user_id apartment_id
           ]
       )
     end

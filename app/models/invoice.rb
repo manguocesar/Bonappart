@@ -31,4 +31,12 @@ class Invoice < ApplicationRecord
   def landlord_user
     User.with_role(:landlord).map(&:fullname_with_id)
   end
+
+  def total_amount
+    vat_rate.present? ? amount + vat_rate : amount
+  end
+
+  def balance_due
+    total_amount - amount
+  end
 end
