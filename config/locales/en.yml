@@ -40,6 +40,18 @@ en:
   address_details: Address Details
   booking_confirmation: Booking Confirmation
   post_confirmation: Post Confirmation
+  settings: Settings
+  members: Members
+  setting:
+    address: Address
+    port: Port
+    domain: Domain
+    user_name: User Name
+    password: Password
+    email_details: Default Email Details Of Application
+    create: Settings Added Successfully
+    update: Settings Updated Successfully
+    delete: Settings Deleted Successfully
   thank_you:
     title: Thank you for your booking!
     message: Your Accomodation is booked successfully

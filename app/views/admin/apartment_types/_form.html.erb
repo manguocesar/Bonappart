@@ -21,13 +21,6 @@
       <%= form.label t('admin.apartment_type.status'), class:"col-form-label" %>
       <%= select_tag(:status, options_for_select(ApartmentType.statuses.map {|key, _| [key.humanize.capitalize, key]}, apartment_type&.status), class: "form-control selectpicker", name: "apartment_type[status]", include_blank: 'Status') %>
     </div>
-    <div class="form-group col-sm-12 mb-3">
-      <%= form.label 'Apartment Image', class:"col-form-label" %><br/>
-      <div class="custom-file">
-        <%= form.file_field :image, class: "custom-file-input", id:"customFile", required: apartment_type&.new_record? %>
-        <label class="custom-file-label" for="customFile"><%= t('apartment.select_images') %></label>
-      </div>
-    </div>
     <div class="form-group col-sm-12 mb-3 text-right">
       <%= link_to "Back", '', data: { dismiss: 'modal' }, class: 'btn btn-secondary' %>
       <%= button_tag 'Save', class:"btn at-btn at-btn", type: "submit" %>

@@ -1,0 +1,37 @@
+<%= form_for(setting, url: url, method: method, html: { id: 'setting_form' }) do |form| %>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.label t('setting.address'), class:"col-form-label" %>
+      <%= form.text_field :address, class: 'form-control' %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.label t('setting.port'), class:"col-form-label" %>
+      <%= form.text_field :port, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.label t('setting.domain'), class:"col-form-label" %>
+      <%= form.text_field :domain, class: 'form-control' %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= form.label t('setting.user_name'), class:"col-form-label" %>
+      <%= form.text_field :user_name, class: 'form-control', id: 'birthdate' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.label t('setting.password'), class:"col-form-label" %>
+      <%= form.password_field :password, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="actions text-right">
+    <%= link_to 'Back', admin_settings_path, class: 'btn btn-dark' %>
+    <%= form.submit "Save", class:"btn btn-success" %>
+  </div>
+<% end %>
+<script type="text/javascript">
+  $(document).ready(function (e) {
+    SettingForm.validate();
+  });
+</script>

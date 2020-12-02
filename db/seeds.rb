@@ -11,3 +11,12 @@ roles.each do |role|
   Role.find_or_create_by(name: role)
 end
 puts 'roles created'
+
+Setting.find_or_create_by(user_name: Rails.application.credentials.dig(:smtp_settings, :user_name)) do |setting|
+  setting.address = 'smtp.gmail.com'
+  setting.port = '587'
+  setting.domain = 'gmail.com'
+  setting.password = Rails.application.credentials.dig(:smtp_settings, :user_name)
+  setting.save
+end
+puts 'Setting created with default Email'

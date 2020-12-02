@@ -17,6 +17,5 @@ Rails.application.config.assets.precompile += %w[style.css dashboard.js
                                                  bookings.scss bookings.js payments.js
                                                  apartment_types.js subscriptions.js
                                                  invoices.js dashboard.scss registrations.js
-                                                 rooms.js
-                                                 rooms.scss
+                                                 rooms.js rooms.scss settings.js
                                                 ]
