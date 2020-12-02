@@ -225,6 +225,7 @@ en:
       create:
         success: Apartment type successfully created
         failer: Apartment type has not been created
+      delete: Apartment type deleted successfully
   contact_us:
     happy_to_serve: We’re Happy To Serve You
     title: Contact
