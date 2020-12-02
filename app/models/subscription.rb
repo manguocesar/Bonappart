@@ -32,6 +32,6 @@ class Subscription < ApplicationRecord
   end
 
   def subscription_amount
-    apartment.apartment_type.amount
+    apartment.landlord_listing_fee
   end
 end

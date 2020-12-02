@@ -269,7 +269,7 @@
 
     #contacts {
       height: calc(100% - 177px);
-     
+
 
       &.expanded {
         height: calc(100% - 334px);
@@ -422,12 +422,12 @@
 
     .contact-profile {
       width: 100%;
-    height: auto;
-    line-height: 50px;
-    background: #dddddd;
-    padding: 0px 15px;
-    font-weight: 700;
-    color: #222222;
+      height: auto;
+      line-height: 50px;
+      background: #dddddd;
+      padding: 0px 15px;
+      font-weight: 700;
+      color: #222222;
 
       img {
         width: 40px;
@@ -588,6 +588,21 @@
       }
     }
   }
+}
+
+.time_date {
+  color: #747474;
+  display: block;
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+
+.mt-45 {
+  margin-top: 45px !important;
+}
+
+.message-date-dropdown.bootstrap-select{
+  width: 175px !important;
 }
 
 @media screen and (max-width: 360px) {
@@ -761,7 +776,7 @@
 
 @media screen and (min-width: 900px) {
   #frame .content {
-    width: calc(100% - 340px);
+    width: calc(100% - 280px);
   }
 }
 

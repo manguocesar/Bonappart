@@ -34,16 +34,36 @@ en:
   hello: "Hello world"
   cannot_perform: "You can't perform this action."
   actions: Actions
-  no_inquiry: 'Ypu have not received Any Inquiry yet'
+  no_record_found: 'No Record Found'
+  no_inquiry: 'You have not received any inquiry yet'
   no_inquire: 'You have not started any inquiry yet'
   address_details: Address Details
   booking_confirmation: Booking Confirmation
   post_confirmation: Post Confirmation
+  settings: Settings
+  members: Members
+  setting:
+    address: Address
+    port: Port
+    domain: Domain
+    user_name: User Name
+    password: Password
+    email_details: Default Email Details Of Application
+    create: Settings Added Successfully
+    update: Settings Updated Successfully
+    delete: Settings Deleted Successfully
   thank_you:
     title: Thank you for your booking!
     message: Your Accomodation is booked successfully
     subscription_title: Thank you for Posting Property
     subscription_message: Your Property is posted Successfully
+  homes:
+    main_heading: Stay at home while at INSEAD
+    sub_heading: Only direct rental platform for INSEAD students
+    desc: Congratulations on your admission at INSEAD! This will be without a doubt one of the best year in your life and we are here to find the right accommodation that will make you feel at home
+    explore: Explore
+    explore_desc: Start looking for your dream place
+    explore_types: Browse the studio, room and other co-living
   users:
     sign_up: SIGN UP
     edit_user: Edit User
@@ -129,6 +149,7 @@ en:
     all_apartments: All Apartments
     all_properties: All Properties
     bookings: Bookings
+    conversations: Conversations
     add_apartment: Add Apartment
     property_types: Property Types
     booked_apartment: Booked Apartments
@@ -197,6 +218,8 @@ en:
       type: Type Name
       add_property_type: Add Property Type
       amount: Amount
+      landlord_listing_fee: Landlord listing fee
+      student_booking_fee: Student booking fee
       status: Status
       actions: Actions
       create:

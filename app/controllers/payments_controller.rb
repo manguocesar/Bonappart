@@ -30,8 +30,9 @@ class PaymentsController < ApplicationController
       end
     end
     if @payment&.id.present?
-      render 'thank_you'
-      ConfirmBookingWorker.perform_async(current_user&.id, find_landlord_user&.id)
+      redirect_to invoice_path(invoice)
+      ConfirmationMailer.student_booking_confirmed_email(current_user&.id, find_landlord_user&.id).deliver_later
+      ConfirmationMailer.landlord_booking_confirmed_email(current_user&.id, find_landlord_user&.id).deliver_later
     else
       flash[:error] = @stripe_payment_record if @stripe_payment_record && @stripe_payment_record.kind_of?(String)
       redirect_to add_payment_method_path(amount: payment_params['amount'], booking_id: payment_params['booking_id'])

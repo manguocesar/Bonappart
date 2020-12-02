@@ -1,0 +1,11 @@
+<li class=<%= message.user.student? ? "sent" : "replies" %>>
+  <p><%= message&.content %></p>
+  <% message_ids = @array_of_date_id.map(&:last) %>
+  <% if message_ids.include?(message.id) %>
+    <% class_name = proper_class_name([message.created_at.to_date, message.id]) %>
+  <% end %>
+  <span class="time_date <%= class_name if class_name %><%= ' float-right mt-45' if message.user.landlord?%>">
+    <%= message&.user&.username %> |
+    <%= message&.created_at&.strftime('%d %b, %Y') %>
+  </span>
+</li>

@@ -2,34 +2,39 @@
   <% final_net_rate = @apartment&.rent_rate&.included_in_net_rate %>
   <div class='row'>
     <div class="form-group col-sm-4">
-      <%= f.label t('rent.net_rate'), class:"col-form-label" %><br/>
+      <%= f.label t('rent.net_rate'), class:"col-form-label" %><br/><br/>
       <%= f.text_field :net_rate, class: 'form-control', required: true %>
     </div>
     <div class="form-group col-sm-4">
-      <%= check_box_tag 'apartment[rent_rate_attributes][included_in_net_rate][]', 'water_charge', is_included_in_net_rate?(final_net_rate, 'water_charge'), onclick: "textFieldDisable($(this));", title: 'Included in Net rate' %>
       <%= f.label t('rent.water_charge'), class:"col-form-label" %><br/>
+      <span><i><%= 'included in the rent' %></i></span>
+      <%= check_box_tag 'apartment[rent_rate_attributes][included_in_net_rate][]', 'water_charge', is_included_in_net_rate?(final_net_rate, 'water_charge'), onclick: "textFieldDisable($(this));", title: 'Included in Net rate' %>
       <%= f.text_field :water_charge, class: 'form-control' %>
     </div>
     <div class="form-group col-sm-4">
-      <%= check_box_tag 'apartment[rent_rate_attributes][included_in_net_rate][]', 'heating_charge', is_included_in_net_rate?(final_net_rate, 'heating_charge'), onclick: "textFieldDisable($(this));", title: 'Included in Net rate' %>
       <%= f.label t('rent.heating_charge'), class:"col-form-label" %><br/>
+      <span><i><%= 'included in the rent' %></i></span>
+      <%= check_box_tag 'apartment[rent_rate_attributes][included_in_net_rate][]', 'heating_charge', is_included_in_net_rate?(final_net_rate, 'heating_charge'), onclick: "textFieldDisable($(this));", title: 'Included in Net rate' %>
       <%= f.text_field :heating_charge, class: 'form-control' %>
     </div>
   </div>
   <div class='row'>
     <div class="form-group col-sm-4">
-      <%= check_box_tag 'apartment[rent_rate_attributes][included_in_net_rate][]', 'electricity_charge', is_included_in_net_rate?(final_net_rate, 'electricity_charge'), onclick: "textFieldDisable($(this));", title: 'Included in Net rate' %>
       <%= f.label t('rent.electricity_charge'), class:"col-form-label" %><br/>
+      <span><i><%= 'included in the rent' %></i></span>
+      <%= check_box_tag 'apartment[rent_rate_attributes][included_in_net_rate][]', 'electricity_charge', is_included_in_net_rate?(final_net_rate, 'electricity_charge'), onclick: "textFieldDisable($(this));", title: 'Included in Net rate' %>
       <%= f.text_field :electricity_charge, class: 'form-control' %>
     </div>
     <div class="form-group col-sm-4">
-      <%= check_box_tag 'apartment[rent_rate_attributes][included_in_net_rate][]', 'internet_charge', is_included_in_net_rate?(final_net_rate, 'internet_charge'), onclick: "textFieldDisable($(this));", title: 'Included in Net rate' %>
       <%= f.label t('rent.internet_charge'), class:"col-form-label" %><br/>
+      <span><i><%= 'included in the rent' %></i></span>
+      <%= check_box_tag 'apartment[rent_rate_attributes][included_in_net_rate][]', 'internet_charge', is_included_in_net_rate?(final_net_rate, 'internet_charge'), onclick: "textFieldDisable($(this));", title: 'Included in Net rate' %>
       <%= f.text_field :internet_charge, class: 'form-control' %>
     </div>
      <div class="form-group col-sm-4">
-      <%= check_box_tag 'apartment[rent_rate_attributes][included_in_net_rate][]', 'insurance_charge', is_included_in_net_rate?(final_net_rate, 'insurance_charge'), onclick: "textFieldDisable($(this));", title: 'Included in Net rate' %>
       <%= f.label t('rent.insurance_charge'), class:"col-form-label" %><br/>
+      <span><i><%= 'included in the rent' %></i></span>
+      <%= check_box_tag 'apartment[rent_rate_attributes][included_in_net_rate][]', 'insurance_charge', is_included_in_net_rate?(final_net_rate, 'insurance_charge'), onclick: "textFieldDisable($(this));", title: 'Included in Net rate' %>
       <%= f.text_field :insurance_charge, class: 'form-control' %>
     </div>
   </div>

@@ -1,0 +1,31 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><%= t('settings') %></h3>
+          <%= link_to edit_admin_setting_path(@setting), class: 'btn btn-sm btn-success float-right' do %>
+            <i class="fa fa-pencil"></i>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <div class="form-group col-sm-6">
+            <strong><%= t('setting.address') %>: </strong><%= @setting.address %><br>
+          </div>
+          <div class="form-group col-sm-6">
+            <strong><%= t('setting.port') %>: </strong><%= @setting.port %><br>
+          </div>
+          <div class="form-group col-sm-6">
+            <strong><%= t('setting.domain') %>: </strong><%= @setting.domain %><br>
+          </div>
+          <div class="form-group col-sm-6">
+            <strong><%= t('setting.user_name') %>: </strong><%= @setting.user_name %><br>
+          </div>
+          <div class="form-group col-sm-6 settingsPassword">
+            <strong><%= t('setting.password') %>: </strong><%= @setting.password %><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

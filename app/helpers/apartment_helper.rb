@@ -85,6 +85,8 @@ module ApartmentHelper
       'invoices'
     when 'rooms'
       'rooms'
+    when 'settings'
+      'settings'
     when 'users'
       params['type'] == 'landlord' ? 'landlord' : 'student'
     end

@@ -1,0 +1,14 @@
+<div class="content">
+<div class="row">
+  <div class="col-xs-12 col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><%= t('user.edit') %></h3>
+      </div>
+      <div class="card-body">
+        <%= render 'form', setting: @setting, url: admin_setting_path, method: :put %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
