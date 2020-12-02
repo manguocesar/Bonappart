@@ -72,7 +72,7 @@
                         <span>
                           <%= rent&.net_rate %>
                           <% if rent&.included_in_net_rate.present? %>
-                            (Included with <%= rent&.included_in_net_rate&.map(&:humanize)&.join(', ') %>)
+                            (Including <%= rent&.included_in_net_rate&.map(&:humanize)&.join(', ') %>)
                           <% end %>
                         </span>
                       </td>
@@ -93,6 +93,9 @@
         </div>
         <div class="card-footer">
           <%= link_to 'Edit', edit_landlord_apartment_path(@apartment), class: 'btn at-btn' %>
+          <% if !@apartment.new_record? && !@apartment.subscribed? %>
+            <%= link_to 'Post', subscription_url_for_user(@apartment&.id), data: { remote: true }, class: 'btn at-btn' %>
+          <% end %>
           <%= link_to landlord_apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn  btn-danger delete-btn' do %>Delete
           <% end %>
           </div>

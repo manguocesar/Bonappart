@@ -58,6 +58,11 @@ class User < ApplicationRecord
     "#{firstname} #{lastname}"
   end
 
+  # User full name with email
+  def fullname_with_id
+    ["#{firstname} #{lastname}", id]
+  end
+
   # display user's available apartments
   def available_apartments
     apartments.where(availability: false)
@@ -81,5 +86,10 @@ class User < ApplicationRecord
   # Get the total Booked apartments
   def unavailable_apartments
     apartments.reject(&:availability)
+  end
+
+  # Get the total Booked apartments
+  def booked_apartments
+    apartments.joins(:booking)
   end
 end

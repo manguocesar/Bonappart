@@ -142,7 +142,7 @@
                   <tr>
                     <td width="300" align="right"
                       style=" border-bottom:solid 1px #b9b9b9;  border-right:solid 1px #b9b9b9; text-align:right; padding:5px;">
-                      <strong>Subtotals:
+                      <strong>Subtotal:
                       </strong>
                     </td>
                     <td width="100" align="right"
@@ -151,10 +151,10 @@
                   <tr>
                     <td align="right"
                       style=" border-bottom:solid 1px #b9b9b9; border-right:solid 1px #b9b9b9; text-align:right; padding:5px;">
-                      <strong>Discount</strong>
+                      <strong>VAT Rate</strong>
                     </td>
-                    <td align="right" style="border-bottom:solid 1px #b9b9b9;  text-align:right; padding:5px;">
-                      </td>
+                    <td align="right" style="border-bottom:solid 1px #b9b9b9;  text-align:right; padding:5px;"><%= @invoice&.vat_rate %>
+                    </td>
                   </tr>
                   <tr>
                     <td align="right"
@@ -162,13 +162,19 @@
                       <strong>Total with TAX</strong>
                     </td>
                     <td align="right" style="border-bottom:solid 1px #b9b9b9;  text-align:right; padding:5px;">
-                      <%= @invoice.amount %></td>
+                      <strong><%= @invoice.total_amount %></strong></td>
+                  </tr>
+                  <tr>
+                    <td align="right" style=" border-bottom:solid 1px #b9b9b9;border-right:solid 1px #b9b9b9; text-align:right; padding:5px;">
+                      <strong>Paid</strong>
+                    </td>
+                    <td align="right" style="border-bottom:solid 1px #b9b9b9;  text-align:right; padding:5px;"><strong><%= @invoice.amount %></strong></td>
                   </tr>
                   <tr>
                     <td align="right" style=" text-align:right; padding:5px; border-right:solid 1px #b9b9b9;">
-                      <strong>GRAND_TOTAL</strong>
+                      <strong>Balance Due</strong>
                     </td>
-                    <td align="right" style="padding: 5px 5px 20px;   text-align:right;"><strong><%= @invoice.amount %></strong></td>
+                    <td align="right" style="padding: 5px 5px 20px;   text-align:right;"><strong><%= @invoice.balance_due %></strong></td>
                   </tr>
                 </table>
               </td>

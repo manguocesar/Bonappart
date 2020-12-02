@@ -27,7 +27,7 @@ module ApplicationHelper
   end
 
   def apartment_type_collection
-    ApartmentType.all
+    ApartmentType.where.not(name: 'default').first(3)
   end
 
   def apartment_type_name(type)
@@ -40,10 +40,6 @@ module ApplicationHelper
 
   def date_format(date)
     date.strftime('%B %d, %Y') if date.present?
-  end
-
-  def random_invoice_number
-    rand.to_s[2, 8]
   end
 
   def display_date(date)

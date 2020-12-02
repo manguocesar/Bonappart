@@ -69,13 +69,15 @@
     </div>
     <div class='col-sm-6'>
       <!-- Map container start -->
-        <div id="locationmap" class=""></div>
+      <div id="locationmap" class=""></div>
       <!-- Map container end -->
-      <div class="at-propertydetails at-detailsproperty mt-3">
+      <div class="at-propertydetails at-detailsproperty">
         <div class="at-filtersoptions">
             <h3>Rent: <em>€ <%= @apartment&.rent_rate&.net_rate %></em>/month</h3>
             <h3><%= @apartment&.available_date %></h3>
         </div>
+      </div>
+      <div class="at-propertydetails at-detailsproperty ml-4 mt-5">
         <div class="at-propertytitle">
           <h3><%= t('apartment.rent_details') %></h3>
         </div>
@@ -86,7 +88,7 @@
             <span class="w_280">
               <%= rent&.net_rate %>
               <% if rent&.included_in_net_rate.present? %>
-                (Included with <%= rent&.included_in_net_rate&.map(&:humanize)&.join(', ') %>)
+                (Including <%= rent&.included_in_net_rate&.map(&:humanize)&.join(', ') %>)
               <% end %>
             </span>
           </li>

@@ -15,6 +15,7 @@ class Apartment < ApplicationRecord
   scope :unsubscribed, -> { reject(&:subscribed) }
   scope :available, -> { select(&:availability) }
   scope :unavailable, -> { reject(&:availability) }
+  scope :booked, -> {  }
 
   # Associations
   has_many_attached :images
@@ -23,7 +24,7 @@ class Apartment < ApplicationRecord
   has_many :inquiries
   belongs_to :apartment_type
   belongs_to :booking, optional: true
-  has_many :subscriptions, dependent: :destroy
+  has_one :subscription, dependent: :destroy
   accepts_nested_attributes_for :rent_rate
 
   # Delegation
@@ -38,6 +39,8 @@ class Apartment < ApplicationRecord
   geocoded_by :full_address
   after_validation :geocode # , if: ->(obj){ obj.address.present? and obj.address_changed? }
   after_commit :walking_distance_from_campus, only: %i[create update]
+
+  SINGAPORE = 'Singapore'.freeze
 
   def walking_distance_from_campus
     DistanceMatrixGoogleApiWorker.perform_async(self&.id) if api_call_validated?
@@ -67,20 +70,23 @@ class Apartment < ApplicationRecord
     departure_date&.strftime('%d-%m-%Y')
   end
 
+  def parse_date
+    Date.parse("1-#{month}-#{year}")
+  end
+
   def display_proper_availability_date
-    date = Date.parse("1-#{month}-#{year}") if month && year
-    date.strftime("%b, %Y") if date
+    parse_date&.strftime('%b, %Y') if month && year
   end
 
   # Check future date availability
   def available_in_future?
-    month.to_i >= Date.today.month && year.to_i >= Date.today.year
+    parse_date > Date.today
   end
 
   # Display available date
   def available_date
     if available_in_future?
-      "Available From: #{display_proper_availability_date}"
+      "Available From #{display_proper_availability_date}"
     elsif booking.present?
       "Rented from #{booking.startdate} To #{booking.enddate}"
     else
@@ -121,5 +127,18 @@ class Apartment < ApplicationRecord
   # Get user image..
   def user_image
     user.image
+  end
+
+  def singapore?
+    campus == 'Singapore'
+  end
+
+  # Get landlord's listing fee
+  def landlord_listing_fee
+    if campus == SINGAPORE
+      ApartmentType.singapore_campus.landlord_listing_fee
+    else
+      ApartmentType.fantainebleau_campus.landlord_listing_fee
+    end
   end
 end

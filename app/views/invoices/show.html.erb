@@ -24,9 +24,7 @@
             </div>
           <% end %>
           <div class="at-title text-center">
-            <%= link_to t('go_to_my_bookings'), my_bookings_path, class: 'at-btn text-center mb-3' %>
-            <%= link_to t('view_invoice'), preview_path(format: :pdf), target: '_blank', class: 'at-btn text-center mb-3' %>
-            <%= link_to t('download_invoice'), download_path(format: :pdf), class: 'at-btn text-center mb-3' %>
+            <%= link_to 'Back to Home page', root_path, class: 'at-btn text-center mb-3' %>
           </div>
         </div>
         <!-- Booking confirmation inner Banner End -->
