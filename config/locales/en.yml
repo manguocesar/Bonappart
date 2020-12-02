@@ -34,7 +34,8 @@ en:
   hello: "Hello world"
   cannot_perform: "You can't perform this action."
   actions: Actions
-  no_inquiry: 'Ypu have not received Any Inquiry yet'
+  no_record_found: 'No Record Found'
+  no_inquiry: 'You have not received any inquiry yet'
   no_inquire: 'You have not started any inquiry yet'
   address_details: Address Details
   booking_confirmation: Booking Confirmation
@@ -136,6 +137,7 @@ en:
     all_apartments: All Apartments
     all_properties: All Properties
     bookings: Bookings
+    conversations: Conversations
     add_apartment: Add Apartment
     property_types: Property Types
     booked_apartment: Booked Apartments
