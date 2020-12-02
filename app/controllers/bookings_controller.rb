@@ -26,11 +26,9 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @invoice = @booking.build_invoice(invoice_params)
     @booking.apartment = Apartment.find_by(id: params[:apartment])
     if @booking.save
-      @invoice.save
-      redirect_to invoice_details_path(invoice: @invoice&.id)
+      redirect_to add_payment_method_path(booking_id: @booking&.id, amount: Constant::PAYMENT_AMOUNT)
     else
       render :new
     end

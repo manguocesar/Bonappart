@@ -6,6 +6,11 @@
         <i class="menu-icon fa fa-th-list"></i><%= t('dashboard.bookings') %>
       <% end %>
     </li>
+    <li class=<%= "active" if active_tab == 'invoices' %>>
+      <%= link_to admin_invoices_path do %>
+        <i class="menu-icon fa fa-th-list"></i><%= t('dashboard.invoices') %>
+      <% end %>
+    </li>
     <li class=<%= "active" if active_tab == 'apartments' %>>
       <%= link_to admin_apartments_path do %>
         <i class="menu-icon fa fa-home"></i><%= t('dashboard.all_properties') %>

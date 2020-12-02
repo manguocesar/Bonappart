@@ -29,6 +29,16 @@
 <script type="text/javascript">
   $(document).ready(function (e) {
     DatePicker.init();
+    startDate = document.getElementsByClassName("datepicker");
+    for (let i = 0; i <= startDate.length; i++) {
+      if (null != startDate[i]) new Lightpick({
+        minDate: new Date(),
+        field: startDate[i],
+        onSelect: function (date) {
+          startDate[i].innerHTML = date.format('Do MMMM YYYY');
+        }
+      });
+    }
     $('.selectpicker').selectpicker();
   });
 </script>

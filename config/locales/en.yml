@@ -234,6 +234,13 @@ en:
   breadcrumbs:
     main: Main
   invoice:
+    landlord: Landlord
+    select_landlord: Select Landlord
+    property: Property
+    select_property: Select Property
+    net_sales_amount: Net Sales Amount
+    vat_rate: VAT Rate
+    description: Description
     title: Invoice
     invoice_number: Invoice Number
     date: Date
@@ -268,6 +275,13 @@ en:
     email: Email
     my_invoice: Invoices
     invoice: Invoice
+    all_invoice: All Invoices
+    edit_invoice: Edit Invoice
+    add_invoice: Add Invoice
+    select_status: Select status
+    create: Invoice Created Successfully
+    update: Invoice Updated Successfully
+    delete: Invoice Deleted Successfully
   subscription:
     apartment: Apartment
     amount: Amount
@@ -283,6 +297,7 @@ en:
     update: User Updated Succsessfully
     delete: User Deleted Succsessfully
     profile_update: Profile Updated Successfully
+    edit: Edit Profile
   download_invoice: Download Invoice
   view_invoice: View Invoice
   back_to_home: Back To Home

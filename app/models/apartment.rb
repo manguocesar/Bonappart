@@ -15,6 +15,7 @@ class Apartment < ApplicationRecord
   scope :unsubscribed, -> { reject(&:subscribed) }
   scope :available, -> { select(&:availability) }
   scope :unavailable, -> { reject(&:availability) }
+  scope :booked, -> {  }
 
   # Associations
   has_many_attached :images
@@ -23,7 +24,7 @@ class Apartment < ApplicationRecord
   has_many :inquiries
   belongs_to :apartment_type
   belongs_to :booking, optional: true
-  has_many :subscriptions, dependent: :destroy
+  has_one :subscription, dependent: :destroy
   accepts_nested_attributes_for :rent_rate
 
   # Delegation
