@@ -16,7 +16,7 @@ Setting.find_or_create_by(user_name: Rails.application.credentials.dig(:smtp_set
   setting.address = 'smtp.gmail.com'
   setting.port = '587'
   setting.domain = 'gmail.com'
-  setting.password = Rails.application.credentials.dig(:smtp_settings, :user_name)
+  setting.password = Rails.application.credentials.dig(:smtp_settings, :password)
   setting.save
 end
 puts 'Setting created with default Email'
