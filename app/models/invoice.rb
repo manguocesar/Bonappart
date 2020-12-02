@@ -43,4 +43,8 @@ class Invoice < ApplicationRecord
   def generate_invoice_number
     invoice_number.present? ? invoice_number : random_invoice_number
   end
+
+  def random_invoice_number
+    rand.to_s[2, 8]
+  end
 end

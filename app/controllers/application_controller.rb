@@ -11,12 +11,16 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   layout :layout_by_resource
 
-  helper_method :root_url_as_per_role, :logged_in_user?, :logged_in?
+  helper_method :root_url_as_per_role, :logged_in_user?, :logged_in?, :random_invoice_number
 
   private
 
   def authorize_administrative
     administrative_request? && (current_user.blank? || (logged_in? && !current_user.administrative_role?))
+  end
+
+  def random_invoice_number
+    rand.to_s[2, 8]
   end
 
   def logged_in?

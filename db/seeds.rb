@@ -20,3 +20,15 @@ Setting.find_or_create_by(user_name: Rails.application.credentials.dig(:smtp_set
   setting.save
 end
 puts 'Setting created with default Email'
+
+if ApartmentType.where(name: 'default').blank?
+  listing_fee = { 'Singapore' => 0, 'Fontainebleau' => 100 }
+  ApartmentType.campus.each do |type|
+    apartment_type = ApartmentType.new
+    apartment_type.name = 'default'
+    apartment_type.student_booking_fee = 50
+    apartment_type.landlord_listing_fee = listing_fee[type.first]
+    apartment_type.campus = type.first
+    apartment_type.save(validate: false)
+  end
+end
