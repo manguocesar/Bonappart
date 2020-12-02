@@ -5,8 +5,10 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title"><%= t('landlord.apartments') %></h3>
-          <%= link_to new_landlord_apartment_path, class: 'btn btn-sm at-btn pull-right' do %>
-            <i class="menu-icon fa fa-plus"></i> <%= t('landlord.add_apartment') %>
+          <% if controller_name != 'dashboard' %>
+            <%= link_to new_landlord_apartment_path, class: 'btn btn-sm at-btn pull-right' do %>
+              <i class="menu-icon fa fa-plus"></i> <%= t('landlord.add_apartment') %>
+            <% end %>
           <% end %>
         </div>
         <div class="card-body">
@@ -50,7 +52,13 @@
               </div>
 
             <div class="row">
-              <%= paginate @apartments %>
+              <% if controller_name == 'dashboard' %>
+                <div class="col-12 col-sm-12 col-md-12 at-btnarea-mt float-left">
+                  <%= link_to 'View More', landlord_apartments_path, class: 'btn btn-sm at-btn pull-right' %>
+                </div>
+              <% else %>
+                <%= paginate @apartments %>
+              <% end %>
             </div>
           </div>
         </div>

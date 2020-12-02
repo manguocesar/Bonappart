@@ -36,7 +36,13 @@
               </div>
             </div>
             <div class="row">
-              <%= paginate @invoices %>
+              <% if controller_name == 'dashboard' %>
+                <div class="col-12 col-sm-12 col-md-12 at-btnarea-mt float-left">
+                  <%= link_to 'View More', landlord_invoices_path, class: 'btn btn-sm at-btn pull-right' %>
+                </div>
+              <% else %>
+                <%= paginate @invoices %>
+              <% end %>
             </div>
           </div>
         </div>
