@@ -31,5 +31,10 @@
         <i class="menu-icon fa fa-th-list"></i><%= t('dashboard.bookings') %>
       <% end %>
     </li>
+    <li class=<%= "active" if active_tab == 'rooms' %>>
+      <%= link_to admin_rooms_path do %>
+        <i class="menu-icon fa fa-comments"></i><%= t('dashboard.conversations') %>
+      <% end %>
+    </li>
   </ul>
 </div>
