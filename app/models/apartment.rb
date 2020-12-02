@@ -39,6 +39,8 @@ class Apartment < ApplicationRecord
   after_validation :geocode # , if: ->(obj){ obj.address.present? and obj.address_changed? }
   after_commit :walking_distance_from_campus, only: %i[create update]
 
+  SINGAPORE = 'Singapore'.freeze
+
   def walking_distance_from_campus
     DistanceMatrixGoogleApiWorker.perform_async(self&.id) if api_call_validated?
   end
@@ -126,8 +128,16 @@ class Apartment < ApplicationRecord
     user.image
   end
 
+  def singapore?
+    campus == 'Singapore'
+  end
+
   # Get landlord's listing fee
   def landlord_listing_fee
-    apartment_type.landlord_listing_fee
+    if campus == SINGAPORE
+      ApartmentType.singapore_campus.landlord_listing_fee
+    else
+      ApartmentType.fantainebleau_campus.landlord_listing_fee
+    end
   end
 end

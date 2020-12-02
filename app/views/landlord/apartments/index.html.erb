@@ -1,5 +1,7 @@
 <div class="content">
-  <%= render 'shared/messages' %>
+  <% if controller_name != 'dashboard' %>
+    <%= render 'shared/messages' %>
+  <% end %>
   <div class="row">
     <div class="col-md-12">
       <div class="card">
