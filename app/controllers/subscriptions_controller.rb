@@ -18,7 +18,7 @@ class SubscriptionsController < ApplicationController
   # Filter subscriptions by status
   def filter_by_status(subscriptions)
     return subscriptions if params[:status].blank?
-    
+
     subscriptions.filter_by_status(params[:status])
   end
 

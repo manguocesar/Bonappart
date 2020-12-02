@@ -1,0 +1,76 @@
+<div id="room-id" data-room-id="<%= @room.try(:id) %>"></div>
+<% if @rooms.present? %>
+  <div class="content">
+    <div class="row">
+      <div class="col-sm-12 col-lg-8 m-auto">
+        <div id="frame" class="chatbox">
+          <div id="sidepanel">
+            <div id="contacts">
+              <ul>
+                <% @rooms.each do |room| %>
+                  <% active_class = (@room == room) ? 'active' : '' %>
+                  <%= link_to admin_room_path(room) do %>
+                    <li class="contact <%= active_class %>">
+                      <div class="wrap">
+                        <div class="meta">
+                          <%= display_name_as_user_role(room) %>
+                        </div>
+                      </div>
+                    </li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <% if @room.present? %>
+            <div class="content p-0">
+              <div class="contact-profile text-wrap">
+                <%= display_name_as_user_role(@room) %>
+                <% @array_of_date_id = pluck_conversations_dates(@room) %>
+                <select class="message-date-dropdown selectpicker" id='messageDateDropdown'>
+                  <option value="all">All</option>
+                  <% @array_of_date_id.reverse.each do |record| %>
+                    <% message_date = record&.first&.strftime('%d %b, %Y') %>
+                    <% dropdown_val = proper_class_name(record) %>
+                    <option value="<%= dropdown_val %>"><%= message_date %></option>
+                  <% end %>
+                </select>
+              </div>
+              <div class="messages">
+                <ul>
+                  <div id="messages">
+                    <% @room.messages.ascending_order.each do |message| %>
+                      <div>
+                        <%= render 'message', message: message %>
+                      </div>
+                    <% end %>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="text-center" style="padding-top:20px;">
+    <div class="nodata-in-table">
+      <i class="fa fa-exclamation-triangle text-danger" aria-hidden="true" style="font-size: 5em"></i>
+      <h3><%= t('no_record_found') %></h3>
+    </div>
+  </div>
+<% end %>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('.selectpicker').selectpicker();
+    $('#messageDateDropdown').change(function () {
+      var selected_date = $("#messageDateDropdown").val();
+      if (selected_date == "all") {
+        $('.messages').animate({ scrollTop: 0 })
+      } else {
+        $(`.${selected_date}`)[0].scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
+      }
+    })
+  });
+</script>

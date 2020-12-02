@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   rescue_from ActiveRecord::RecordNotFound, Pundit::NotDefinedError, with: :record_not_found
+  before_action :redirect_to_root_path, if: :authorize_administrative
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   layout :layout_by_resource
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
   helper_method :root_url_as_per_role, :logged_in_user?, :logged_in?
 
   private
+
+  def authorize_administrative
+    administrative_request? && (current_user.blank? || (logged_in? && !current_user.administrative_role?))
+  end
 
   def logged_in?
     current_user.present?
@@ -28,7 +33,7 @@ class ApplicationController < ActionController::Base
     if current_user && current_user.landlord?
       landlord_dashboard_path
     elsif current_user && current_user.admin?
-      admin_dashboard_path
+      admin_bookings_path
     end
   end
 
