@@ -33,7 +33,7 @@ module Constant
     '<10 minutes’ walk from campus',
     '>10 minutes’ walk from campus',
     'Outside Fontainebleau in nearby houses',
-    'I do not mind'
+    'Not important'
   ].freeze
 
   CAMPUS = %w[Fontainebleau Singapore].freeze

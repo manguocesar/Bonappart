@@ -6,8 +6,16 @@
       <%= form.text_field :name, class: 'form-control', required: true %>
     </div>
     <div class="form-group col-sm-12 mb-3">
-      <%= form.label 'Apartment Amount', class:"col-form-label" %><br/>
-      <%= form.text_field :amount, class: 'form-control', required: true %>
+      <%= form.label t('admin.apartment_type.landlord_listing_fee'), class:"col-form-label" %><br/>
+      <%= form.text_field :landlord_listing_fee, class: 'form-control', required: true %>
+    </div>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label t('admin.apartment_type.student_booking_fee'), class:"col-form-label" %><br/>
+      <%= form.text_field :student_booking_fee, class: 'form-control', required: true %>
+    </div>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label t('admin.apartment_type.status'), class:"col-form-label" %>
+      <%= select_tag(:campus, options_for_select(ApartmentType.campus.map {|key, _| [key.humanize.capitalize, key]}, apartment_type&.campus), class: "form-control selectpicker", name: "apartment_type[campus]", include_blank: 'Status') %>
     </div>
     <div class="form-group col-sm-12 mb-3">
       <%= form.label t('admin.apartment_type.status'), class:"col-form-label" %>

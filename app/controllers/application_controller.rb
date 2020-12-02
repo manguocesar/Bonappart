@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     if current_user && current_user.landlord?
       landlord_dashboard_path
     elsif current_user && current_user.admin?
-      admin_dashboard_path
+      admin_bookings_path
     end
   end
 

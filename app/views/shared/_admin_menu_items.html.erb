@@ -1,9 +1,9 @@
 <div id="main-menu" class="main-menu collapse navbar-collapse">
   <ul class="nav navbar-nav">
     <% active_tab = active_link_to_tab %>
-    <li class=<%= "active" if active_tab == 'dashboard' %>>
-      <%= link_to admin_dashboard_path do %>
-        <i class="menu-icon fa fa-dashboard"></i><%= t('dashboard.dashboard') %>
+    <li class=<%= "active" if active_tab == 'bookings' %>>
+      <%= link_to admin_bookings_path do %>
+        <i class="menu-icon fa fa-th-list"></i><%= t('dashboard.bookings') %>
       <% end %>
     </li>
     <li class=<%= "active" if active_tab == 'apartments' %>>
@@ -24,11 +24,6 @@
     <li class=<%= "active" if active_tab == 'student' %>>
       <%= link_to admin_users_path(type: 'student') do %>
         <i class="menu-icon fa fa-user"></i><%= t('dashboard.student_management') %>
-      <% end %>
-    </li>
-    <li class=<%= "active" if active_tab == 'bookings' %>>
-      <%= link_to admin_bookings_path do %>
-        <i class="menu-icon fa fa-th-list"></i><%= t('dashboard.bookings') %>
       <% end %>
     </li>
     <li class=<%= "active" if active_tab == 'rooms' %>>
