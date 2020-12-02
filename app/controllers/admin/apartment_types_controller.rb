@@ -76,7 +76,7 @@ module Admin
 
     # Permit the parameters
     def apartment_type_params
-      params.require(:apartment_type).permit(:name, :landlord_listing_fee, :student_booking_fee, :status, :image)
+      params.require(:apartment_type).permit(:name, :landlord_listing_fee, :student_booking_fee, :status, :campus, :image)
     end
   end
 end

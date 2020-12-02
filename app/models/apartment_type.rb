@@ -8,4 +8,8 @@ class ApartmentType < ApplicationRecord
   scope :singapore_campus, -> { where(name: 'default', campus: 'Singapore').first }
 
   validates_presence_of :name, :landlord_listing_fee, :student_booking_fee
+
+  def default
+    name == 'default'
+  end
 end
