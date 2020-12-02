@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_171529) do
     t.integer "status", default: 0
     t.float "landlord_listing_fee", default: 0.0
     t.float "student_booking_fee", default: 0.0
+    t.integer "campus", default: 0
   end
 
   create_table "apartments", force: :cascade do |t|

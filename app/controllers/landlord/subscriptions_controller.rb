@@ -10,7 +10,7 @@ module Landlord
     end
 
     def new
-      @subscription = Subscription.new
+      @subscription = @apartment.subscriptions.new
     end
 
     def create
@@ -18,7 +18,12 @@ module Landlord
       @invoice = @subscription.build_invoice(invoice_params)
       if @subscription.save
         @invoice.save
-        redirect_to invoice_details_path(invoice: @invoice&.id)
+        if @subscription.apartment.campus == 'Singapore'
+          @subscription.apartment.update(subscribed: true)
+          redirect_to invoice_path(@invoice)
+        else
+          redirect_to invoice_details_path(invoice: @invoice&.id)
+        end
       else
         render :new
       end

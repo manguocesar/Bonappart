@@ -39,6 +39,8 @@ class Apartment < ApplicationRecord
   after_validation :geocode # , if: ->(obj){ obj.address.present? and obj.address_changed? }
   after_commit :walking_distance_from_campus, only: %i[create update]
 
+  SINGAPORE = 'Singapore'.freeze
+
   def walking_distance_from_campus
     DistanceMatrixGoogleApiWorker.perform_async(self&.id) if api_call_validated?
   end
@@ -67,20 +69,23 @@ class Apartment < ApplicationRecord
     departure_date&.strftime('%d-%m-%Y')
   end
 
+  def parse_date
+    Date.parse("1-#{month}-#{year}")
+  end
+
   def display_proper_availability_date
-    date = Date.parse("1-#{month}-#{year}") if month && year
-    date.strftime("%b, %Y") if date
+    parse_date&.strftime('%b, %Y') if month && year
   end
 
   # Check future date availability
   def available_in_future?
-    month.to_i >= Date.today.month && year.to_i >= Date.today.year
+    parse_date > Date.today
   end
 
   # Display available date
   def available_date
     if available_in_future?
-      "Available From: #{display_proper_availability_date}"
+      "Available From #{display_proper_availability_date}"
     elsif booking.present?
       "Rented from #{booking.startdate} To #{booking.enddate}"
     else
@@ -123,8 +128,16 @@ class Apartment < ApplicationRecord
     user.image
   end
 
+  def singapore?
+    campus == 'Singapore'
+  end
+
   # Get landlord's listing fee
   def landlord_listing_fee
-    apartment_type.landlord_listing_fee
+    if campus == SINGAPORE
+      ApartmentType.singapore_campus.landlord_listing_fee
+    else
+      ApartmentType.fantainebleau_campus.landlord_listing_fee
+    end
   end
 end
