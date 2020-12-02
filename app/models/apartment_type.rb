@@ -4,5 +4,5 @@ class ApartmentType < ApplicationRecord
   has_one_attached :image
   enum status: { active: 0, inactive: 1 }
 
-  validates_presence_of :name, :amount
+  validates_presence_of :name, :landlord_listing_fee, :student_booking_fee
 end

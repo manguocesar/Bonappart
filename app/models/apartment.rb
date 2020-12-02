@@ -122,4 +122,9 @@ class Apartment < ApplicationRecord
   def user_image
     user.image
   end
+
+  # Get landlord's listing fee
+  def landlord_listing_fee
+    apartment_type.landlord_listing_fee
+  end
 end
