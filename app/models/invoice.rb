@@ -39,4 +39,8 @@ class Invoice < ApplicationRecord
   def balance_due
     total_amount - amount
   end
+
+  def generate_invoice_number
+    invoice_number.present? ? invoice_number : random_invoice_number
+  end
 end
