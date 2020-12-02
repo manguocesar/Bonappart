@@ -7,6 +7,6 @@ class ContactUsMailer < ApplicationMailer
     @sender_name = [contact_us_request&.first_name, contact_us_request&.last_name].join(' ')
     @message = contact_us_request&.message
     # Change Admin Email Here
-    mail(to: Rails.application.credentials.admin_email, subject: contact_us_request&.subject) if contact_us_request&.email.present?
+    mail(to: Rails.application.credentials.dig(Rails.env.to_sym, :admin_email), subject: contact_us_request&.subject) if contact_us_request&.email.present?
   end
 end
