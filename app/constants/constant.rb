@@ -26,6 +26,8 @@ module Constant
   EDIT = 'edit'
   ZERO = '0.0'
 
+  DEFAULT_APARTMENT_TYPE = 'default'
+
   MONTH_ARRAY = ('1'..'12').to_a
   YEAR_ARRAY = ('2020'..'2030').to_a
 

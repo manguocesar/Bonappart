@@ -11,9 +11,9 @@ class Apartment < ApplicationRecord
   scope :filter_by_month, ->(month) { where month: month }
   scope :filter_by_year, ->(year) { where year: year }
   scope :similar_apartments, ->(distance_from_campus) { where distance_from_campus: distance_from_campus }
-  scope :subscribed, -> { select(&:subscribed) }
+  scope :subscribed, -> { where(subscribed: true) }
   scope :unsubscribed, -> { reject(&:subscribed) }
-  scope :available, -> { select(&:availability) }
+  scope :available, -> { where(availability: true) }
   scope :unavailable, -> { reject(&:availability) }
 
   # Associations

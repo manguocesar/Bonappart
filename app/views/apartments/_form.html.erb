@@ -30,8 +30,8 @@
     </div>
     <div class="form-group col-sm-6">
       <div class="at-select">
-        <%= form.label t('apartment.apartment_type'), class:"col-form-label" %>
-        <%= select_tag 'apartment[apartment_type_id]', options_for_select(apartment_types_array, apartment&.apartment_type_id), class: "form-control selectpicker apartment-type", include_blank: t('apartment.select_accomodation_type') %>
+        <%= form.label t('apartment.property_type'), class:"col-form-label" %>
+        <%= select_tag 'apartment[apartment_type_id]', options_for_select(apartment_types_array, apartment&.apartment_type_id), class: "form-control selectpicker apartment-type", include_blank: Constant::DEFAULT_APARTMENT_TYPE %>
       </div>
     </div>
   </div>
@@ -116,4 +116,12 @@
     ApartmentForm.validate();
     $('.selectpicker').selectpicker();
   });
+  var campus_and_default_type_id = "<%=  find_campus_from_default_type_id %>"
+  $('#apartment_campus').on('change', function () {
+    var field_value = $(this).val();
+    var default_option = $('#apartment_apartment_type_id option:contains("<%= Constant::DEFAULT_APARTMENT_TYPE %>")')
+    if (field_value !== ''){
+      default_option.val(campus_and_default_type_id.split(`${field_value}_`)[1][0])
+    }
+  })
 </script>

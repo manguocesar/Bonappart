@@ -100,6 +100,7 @@ en:
     city: City
     country: Country
     area: Area
+    property_type: Property Type
     apartment_type: Accomodation type
     select_accomodation_type: Select accomodation type
     availability: Availability
