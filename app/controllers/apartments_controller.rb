@@ -3,6 +3,7 @@
 # Apartments controller
 class ApartmentsController < ApplicationController
   before_action :set_apartment, only: %i[show edit update destroy]
+  before_action :update_subscribed, only: %i[index]
 
   def index
     @apartments = pagination(filtered_apartments)
@@ -82,6 +83,12 @@ class ApartmentsController < ApplicationController
   end
 
   private
+
+  def update_subscribed
+    Apartment.all.each do |apartment|
+      apartment.update_attributes(subscribed: false) if apartment.subscription_present?
+    end
+  end
 
   def apartment_index_or_show_page(is_index: true, action: 'update')
     index_or_show_path = is_index ? 's_path' : '_path'
