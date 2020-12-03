@@ -16,9 +16,9 @@ class FilterApartmentService
     if current_user.present? && current_user.landlord?
       params[:type].present? ? landlord_apartments : current_user.apartments
     elsif current_user.present? && current_user.admin?
-      params[:type].present? ? admin_apartments : Apartment.all
+      params[:type].present? ? admin_apartments : Apartment.subscribed
     else
-      Apartment.all
+      Apartment.subscribed
     end
   end
 
