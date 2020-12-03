@@ -141,4 +141,15 @@ class Apartment < ApplicationRecord
       ApartmentType.fantainebleau_campus.landlord_listing_fee
     end
   end
+
+  # Check apartment subscription details
+  def check_subscription
+    !subscribed || subscription_present?
+  end
+
+  def subscription_present?
+    return unless subscription
+
+    subscription.expired_at.eql?(Date.today)
+  end
 end

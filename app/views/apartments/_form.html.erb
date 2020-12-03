@@ -105,7 +105,7 @@
   <div class='text-right'>
     <%= link_to 'Back', back_to_apartments, class: 'btn btn-dark' %>
     <%= button_tag 'Save', class:"btn at-btn", type: "submit" %>
-    <% if !apartment.new_record? && !apartment.subscribed? %>
+    <% if !apartment.new_record? && apartment.check_subscription %>
       <%= link_to 'Preview', apartment_path(params[:id]), class: 'btn at-btn' %>
     <% end %>
   </div>

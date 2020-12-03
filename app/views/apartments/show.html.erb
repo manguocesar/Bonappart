@@ -137,7 +137,7 @@
 <div class='text-right'>
   <% if current_user&.administrative_role? %>
     <%= link_to 'Edit', "#{show_page_apartments}/edit", class: 'at-btn' %>
-    <% if !@apartment.new_record? && !@apartment.subscribed? %>
+    <% if !@apartment.new_record? && @apartment.check_subscription %>
       <%= link_to 'Post', subscription_url_for_user(@apartment&.id), data: { remote: true }, class: 'at-btn' %>
     <% end %>
   <% end %>
