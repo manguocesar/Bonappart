@@ -11,11 +11,10 @@ class Apartment < ApplicationRecord
   scope :filter_by_month, ->(month) { where month: month }
   scope :filter_by_year, ->(year) { where year: year }
   scope :similar_apartments, ->(distance_from_campus) { where distance_from_campus: distance_from_campus }
-  scope :subscribed, -> { select(&:subscribed) }
+  scope :subscribed, -> { where(subscribed: true) }
   scope :unsubscribed, -> { reject(&:subscribed) }
-  scope :available, -> { select(&:availability) }
+  scope :available, -> { where(availability: true) }
   scope :unavailable, -> { reject(&:availability) }
-  scope :booked, -> {  }
 
   # Associations
   has_many_attached :images
@@ -140,5 +139,16 @@ class Apartment < ApplicationRecord
     else
       ApartmentType.fantainebleau_campus.landlord_listing_fee
     end
+  end
+
+  # Check apartment subscription details
+  def check_subscription
+    !subscribed || subscription_present?
+  end
+
+  def subscription_present?
+    return unless subscription
+
+    subscription.expired_at.eql?(Date.today)
   end
 end

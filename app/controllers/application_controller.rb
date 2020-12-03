@@ -54,6 +54,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_root_path
+    flash[:error] = t('login_warning') unless logged_in?
     redirect_to root_path
   end
 

@@ -100,6 +100,7 @@ en:
     city: City
     country: Country
     area: Area
+    property_type: Property Type
     apartment_type: Accomodation type
     select_accomodation_type: Select accomodation type
     availability: Availability
@@ -303,3 +304,4 @@ en:
   view_invoice: View Invoice
   back_to_home: Back To Home
   go_to_my_bookings: Go To My Bookings
+  login_warning: 'You need to login to perform this action'
