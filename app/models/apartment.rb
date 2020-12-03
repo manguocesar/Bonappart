@@ -15,7 +15,6 @@ class Apartment < ApplicationRecord
   scope :unsubscribed, -> { reject(&:subscribed) }
   scope :available, -> { select(&:availability) }
   scope :unavailable, -> { reject(&:availability) }
-  scope :booked, -> {  }
 
   # Associations
   has_many_attached :images
