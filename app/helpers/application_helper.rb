@@ -27,8 +27,7 @@ module ApplicationHelper
   end
 
   def apartment_type_collection
-    # ApartmentType.all
-    ApartmentType.where.not(name: 'default').first(3)
+    ApartmentType.all
   end
 
   def apartment_type_name(type)
