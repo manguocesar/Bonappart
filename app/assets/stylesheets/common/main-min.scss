@@ -56,7 +56,8 @@ h1 {
 }
 
 h2 {
-  font-size: 36px
+  font-size: 36px;
+  color: #222222 !important;
 }
 
 h3 {
@@ -2898,7 +2899,8 @@ button.at-btn:focus {
 .at-featured-holder {
   float: left;
   width: 100%;
-  border-radius: 4px
+  border-radius: 4px;
+  background: #ffffff;
 }
 
 .at-featured-sliders .at-featured-holder {
@@ -3185,7 +3187,7 @@ button.at-btn:focus {
   float: left;
   width: 100%;
   list-style: none;
-  margin-top: 27px;
+  margin-top:0px;
   line-height: 14px
 }
 
@@ -4787,8 +4789,11 @@ button.at-btn:focus {
   width: 100%;
   background: #f7f8f9;
   text-align: center;
-  padding: 23px 30px 27px;
-  border-top: 1px solid #eee
+  padding:20px;
+  border-top:0px solid #eee
+}
+.at-filtersoptions h3 {
+  margin: 0;
 }
 
 .at-filtersoptions p {
@@ -6302,7 +6307,8 @@ i.at-color6 {
 .at-propertytitle h3 {
   line-height: 1;
   font-size: 18px;
-  margin: 0 0 17px
+  color: #222222;
+  margin: 0 0 20px
 }
 
 .at-propertydetails.at-aboutproperty {
@@ -6321,7 +6327,7 @@ i.at-color6 {
 .at-propertydetails {
   float: left;
   width: 100%;
-  margin-bottom: 30px
+  margin:0px;
 }
 
 .at-propertydetails .at-description p:last-child {
@@ -7470,4 +7476,18 @@ i.at-color6 {
 
 .section-chatbox {
   clear: both;
+}
+
+
+
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .at-btn {
+      padding: 0 10px; 
+      min-width: auto;
+  }
+  
+  
 }
