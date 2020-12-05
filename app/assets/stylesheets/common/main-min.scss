@@ -1971,7 +1971,6 @@ button.at-btn:focus {
 }
 
 .modal-footer {
-  padding: 0;
   display: block;
   border-top: 1px solid #eee
 }
@@ -7470,24 +7469,48 @@ i.at-color6 {
   .homesliderimg {
     height: 380px !important;
   }
-
+  .at-main {
+    padding: 0px 15px;
+  }
+  .at-btn {
+    padding: 0 10px;
+    min-width: auto;
+    font: 700 12px/32px Nunito, sans-serif;
+    width: 100%;
+  }
+  .lightpick__day,
+  .lightpick__day-of-the-week {
+    width: 43px !important;
+  }
 }
-
-
 .section-chatbox {
   clear: both;
 }
 
-
-
-
-
-
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .at-btn {
-      padding: 0 10px; 
-      min-width: auto;
+    padding: 0 10px;
+    min-width: auto;
   }
-  
-  
+}
+
+.lightpick__month {
+  padding:10px;
+}
+.lightpick__day {
+  width:47px;
+  height: 35px;
+  font-size: 12px;
+}
+.lightpick__day-of-the-week {
+  height: 35px;
+  width:47px;
+  font-size: 12px;
+}
+
+.lightpick__month-title-bar {
+  margin: 0;
+}
+.lightpick.lightpick--1-columns {
+  width: 350px;
 }

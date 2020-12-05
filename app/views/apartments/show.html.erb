@@ -120,12 +120,12 @@
                   <h3>Contact: <%#= @apartment.user.phone_no %></h3>
                 </div>
               </div>
-            --> 
+            -->
             <div class="row">
-                <% unless @apartment&.booking&.paid? %>
-                  <div class="col-sm-6"><%= link_to 'Book Now', booking_instruction_path(apartment_id: @apartment&.id), remote: true, class:"at-btn btn-block" %></div>
-                <% end %>
-                <div class="col-sm-6"> <%= render '/inquiries/inquiry_button' %> </div>
+              <% unless @apartment&.booking&.paid? %>
+                <div class="col-sm-6"><div class="form-group"><%= link_to 'Book Now', booking_instruction_path(apartment_id: @apartment&.id), remote: true, class:"at-btn btn-block" %></div></div>
+              <% end %>
+              <div class="col-sm-6"> <%= render '/inquiries/inquiry_button' %> </div>
             </div>
           </div>
         </div>
@@ -146,11 +146,12 @@
 </div>
 <br/>
 <main id="at-main" class="at-main at-haslayout">
+   <div class="container">
   <!-- Booking form modal -->
   <%= render '/shared/modal_window', locals: { modelId: 'booking_modal' } %>
   <%= render '/shared/modal_window', locals: { modelId: 'inuiryModal' } %>
   <%= render '/shared/modal_window', locals: { modelId: 'subscriptionModal' } %>
-
+  </div>
   <% if !current_user&.administrative_role? %>
     <!-- Similar apartments -->
     <div class="at-haslayout at-main-section at-sectionbg">

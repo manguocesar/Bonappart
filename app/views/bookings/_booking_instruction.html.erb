@@ -3,21 +3,23 @@
   <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
 </div>
 <div class="modal-body">
-  <div class='row'>
-    <div class="col-sm-12 mb-3">
-      <p>You are now one-step away from confirming your booking!</p>
-      <p><b>How to book</b></p>
-      <p>1. Please make sure you are fully aligned with your landlord on the rental (entry date, exit date)</p>
-      <p>2. Select your entry and exit date</p>
-      <p>3. Pay the €100 booking fee to confirm the booking</p>
-      <p><b>What happens next?</b></p>
-      <p>1. Once booked, you will receive all details of your landlord</p>
-      <p>2. Please arrange the contract directly with your landlord</p>
-      <p>3. Arrange a meeting date for the keys, you are all set!</p>
+  <p>You are now one-step away from confirming your booking!</p>
+  <p><b>How to book</b></p>
+  <p>1. Please make sure you are fully aligned with your landlord on the rental (entry date, exit date)</p>
+  <p>2. Select your entry and exit date</p>
+  <p>3. Pay the €100 booking fee to confirm the booking</p>
+  <p><b>What happens next?</b></p>
+  <p>1. Once booked, you will receive all details of your landlord</p>
+  <p>2. Please arrange the contract directly with your landlord</p>
+  <p>3. Arrange a meeting date for the keys, you are all set!</p>
+</div>
+<div class="modal-footer">
+  <div class="row">
+    <div class="col col-6">
+      <%= link_to "Back", '', data: { dismiss: 'modal' }, class: 'at-btn btn-block' %>
     </div>
-    <div class="modal-footer">
-      <%= link_to "Back", '', data: { dismiss: 'modal' }, class: 'btn at-btn' %>
-      <%= link_to 'Book Now', new_booking_path(apartment_id: params[:apartment_id]), remote: true, class:"at-btn col-sm-3 ml-1" %>
+    <div class="col col-6">
+      <%= link_to 'Book Now', new_booking_path(apartment_id: params[:apartment_id]), remote: true, class:"at-btn btn-block" %>
     </div>
   </div>
 </div>

@@ -274,14 +274,7 @@
       #contacts ul {
         margin: 0;
       }
-      &::-webkit-scrollbar {
-        width: 8px;
-        background: #2c3e50;
-      }
 
-      &::-webkit-scrollbar-thumb {
-        background-color: #243140;
-      }
 
       ul li.contact {
         position: relative;
@@ -425,6 +418,7 @@
       background: #dddddd;
       padding: 0px 15px;
       font-weight: 700;
+      font-size: 14px;
       color: #222222;
 
       img {
@@ -651,64 +645,17 @@
   }
 }
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options.active {
-    margin-top: 62px;
-  }
-}
-
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options:before {
-    margin-left: 23px;
-  }
-}
-
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options ul li {
-    padding: 15px 0 35px 22px;
-  }
-}
-
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options ul li span.status-circle {
-    width: 14px;
-    height: 14px;
-  }
-}
-
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options ul li span.status-circle:before {
-    height: 18px;
-    width: 18px;
-  }
-}
-
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options ul li p {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #search {
-    display: none;
-  }
-}
 
 
 
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #contacts ul li.contact .wrap {
-    width: 100%;
-  }
-}
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #contacts ul li.contact .wrap img {
-    margin-right: 0px;
-  }
-}
+
+
+
+
+
+
 
 
 
@@ -781,14 +728,21 @@
     width: 100%;
   }
   #frame .content {
-    height:400px;
+    height:60vh;
     overflow-y: auto;
   }
   #frame .content #messages {
     padding-top: 20px;
   }
-  
-  
+  #frame .content .messages {
+    height: auto;
+    position:static;
+  }
+  #frame .content .contact-profile {
+    padding:15px;
+  }
+
+
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -802,9 +756,12 @@
     height:700px;
     overflow-y: auto;
   }
-  
-  
+
+
 }
 
 
 
+ #sidepanel a {
+   color: #ffffff;
+ }

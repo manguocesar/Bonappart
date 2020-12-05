@@ -2,7 +2,7 @@
 <% if @rooms.present? %>
   <div class="content">
     <div class="row">
-      <div class="col-sm-12 col-lg-12 col-xl-8 m-auto">
+      <div class="col-sm-12">
         <div id="frame" class="chatbox">
           <div id="sidepanel">
             <div id="contacts">
@@ -11,11 +11,9 @@
                   <% active_class = (@room == room) ? 'active' : '' %>
                   <%= link_to admin_room_path(room) do %>
                     <li class="contact <%= active_class %>">
-                      <div class="wrap">
-                        <div class="meta">
+
                           <%= display_name_as_user_role(room) %>
-                        </div>
-                      </div>
+
                     </li>
                   <% end %>
                 <% end %>
@@ -26,11 +24,11 @@
             <div class="content p-0">
               <div class="contact-profile text-wrap">
                 <div class="row">
-                <div class="col-sm-7 col-lg-8">
+                <div class="col-sm-7 col-lg-9">
                 <div class="username"> <%= display_name_as_user_role(@room) %> </div>
                 <% @array_of_date_id = pluck_conversations_dates(@room) %>
                 </div>
-                <div class="col-sm-5 col-lg-4">
+                <div class="col-sm-5 col-lg-3">
                 <select class="form-control message-date-dropdown selectpicker" id='messageDateDropdown'>
                   <option value="all">All</option>
                   <% @array_of_date_id.reverse.each do |record| %>
