@@ -34,9 +34,9 @@ class ApplicationController < ActionController::Base
   end
 
   def root_url_as_per_role
-    if current_user && current_user.landlord?
+    if current_user && current_user&.landlord?
       landlord_dashboard_path
-    elsif current_user && current_user.admin?
+    elsif current_user && current_user&.admin?
       admin_bookings_path
     end
   end

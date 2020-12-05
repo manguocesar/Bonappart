@@ -103,32 +103,22 @@
             <li><h4><%= t('rent.deposit_amount') %></h4><span><%= rent&.deposit_amount %></span></li>
           </ul>
         </div>
-      <div class="at-widgets-holder">
-        <div class="at-widgets-title">
-          <h2>Book Now or Inquiry with Landlord </h2>
-        </div>
-        <div class="at-widgets-content at-authorholder at-authorholdertwo">
-          <!--
-            <figure class="at-authorimg at-verifieduser">
-            <%#= image_tag asset_path('user.png'), style:"height: 50px; width: 50px;" %>
-            <i class="fa fa-shield-alt"></i>
-            </figure>
-            <div class="at-authordetails">
-              <div class="at-featurerating">
-                <h3>Landlord Name: <%#= @apartment.user.firstname %> <%#= @apartment.user.lastname %></h3>
-                <h3>Contact: <%#= @apartment.user.phone_no %></h3>
-              </div>
+      <% if !current_user&.administrative_role?%>
+        <div class="at-widgets-holder">
+            <div class="at-widgets-title">
+              <h2>Book Now or Inquiry with Landlord </h2>
             </div>
-          -->
-          <div class="row">
-            <% if @apartment&.check_booking %>
-              <div class="col-sm-6"><div class="form-group"><%= link_to 'Book Now', booking_instruction_path(apartment_id: @apartment&.id), remote: true, class:"at-btn btn-block" %></div></div>
-            <% end %>
-            <div class="col-sm-6"> <%= render '/inquiries/inquiry_button' %> </div>
+          <div class="at-widgets-content at-authorholder at-authorholdertwo">
+            <div class="row">
+              <% if @apartment&.check_booking %>
+                <div class="col-sm-6"><div class="form-group"><%= link_to 'Book Now', booking_instruction_path(apartment_id: @apartment&.id), remote: true, class:"at-btn btn-block" %></div></div>
+              <% end %>
+              <div class="col-sm-6"> <%= render '/inquiries/inquiry_button' %> </div>
+              <!-- Send inquiry to the landlord button -->
+            </div>
           </div>
         </div>
-      </div>
-        <!-- Send inquiry to the landlord button -->
+      <% end %>
       </div>
     </div>
   </div>
