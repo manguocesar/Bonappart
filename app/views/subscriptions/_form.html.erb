@@ -25,9 +25,13 @@
       <%= form.label 'Expired at:', class:"col-form-label" %>
       <%= expiration_date %>
     </div>
-    <div class="modal-footer">
-      <%= link_to "Back", '', data: { dismiss: 'modal' }, class: 'btn at-btn' %>
-      <%= button_tag 'Confirm', class:"btn at-btn", type: "submit" %>
+  </div>
+  <div class="row">
+    <div class="col col-6">
+      <%= link_to "Back", '', data: { dismiss: 'modal' }, class: 'at-btn btn-block' %>
+    </div>
+    <div class="col col-6">
+      <%= button_tag 'Confirm', class:"at-btn btn-block at-btnactive", type: "submit" %>
     </div>
   </div>
 <% end %>

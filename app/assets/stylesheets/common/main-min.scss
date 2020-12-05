@@ -56,7 +56,8 @@ h1 {
 }
 
 h2 {
-  font-size: 36px
+  font-size: 36px;
+  color: #222222 !important;
 }
 
 h3 {
@@ -1970,7 +1971,6 @@ button.at-btn:focus {
 }
 
 .modal-footer {
-  padding: 0;
   display: block;
   border-top: 1px solid #eee
 }
@@ -2898,7 +2898,8 @@ button.at-btn:focus {
 .at-featured-holder {
   float: left;
   width: 100%;
-  border-radius: 4px
+  border-radius: 4px;
+  background: #ffffff;
 }
 
 .at-featured-sliders .at-featured-holder {
@@ -3185,7 +3186,7 @@ button.at-btn:focus {
   float: left;
   width: 100%;
   list-style: none;
-  margin-top: 27px;
+  margin-top:0px;
   line-height: 14px
 }
 
@@ -4787,8 +4788,11 @@ button.at-btn:focus {
   width: 100%;
   background: #f7f8f9;
   text-align: center;
-  padding: 23px 30px 27px;
-  border-top: 1px solid #eee
+  padding:20px;
+  border-top:0px solid #eee
+}
+.at-filtersoptions h3 {
+  margin: 0;
 }
 
 .at-filtersoptions p {
@@ -6302,7 +6306,8 @@ i.at-color6 {
 .at-propertytitle h3 {
   line-height: 1;
   font-size: 18px;
-  margin: 0 0 17px
+  color: #222222;
+  margin: 0 0 20px
 }
 
 .at-propertydetails.at-aboutproperty {
@@ -6321,7 +6326,7 @@ i.at-color6 {
 .at-propertydetails {
   float: left;
   width: 100%;
-  margin-bottom: 30px
+  margin:0px;
 }
 
 .at-propertydetails .at-description p:last-child {
@@ -7464,10 +7469,48 @@ i.at-color6 {
   .homesliderimg {
     height: 380px !important;
   }
-
+  .at-main {
+    padding: 0px 15px;
+  }
+  .at-btn {
+    padding: 0 10px;
+    min-width: auto;
+    font: 700 12px/32px Nunito, sans-serif;
+    width: 100%;
+  }
+  .lightpick__day,
+  .lightpick__day-of-the-week {
+    width: 43px !important;
+  }
 }
-
-
 .section-chatbox {
   clear: both;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .at-btn {
+    padding: 0 10px;
+    min-width: auto;
+  }
+}
+
+.lightpick__month {
+  padding:10px;
+}
+.lightpick__day {
+  width:47px;
+  height: 35px;
+  font-size: 12px;
+}
+.lightpick__day-of-the-week {
+  height: 35px;
+  width:47px;
+  font-size: 12px;
+}
+
+.lightpick__month-title-bar {
+  margin: 0;
+}
+.lightpick.lightpick--1-columns {
+  width: 350px;
 }

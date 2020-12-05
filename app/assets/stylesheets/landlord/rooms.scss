@@ -7,16 +7,13 @@
   height: 80vh;
   background: #ffffff;
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   -moz-box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
 
   #sidepanel {
     float: left;
-    min-width: 280px;
-    max-width: 340px;
-    width: 40%;
+    width:35%;
     height: 100%;
     background: #2c3e50;
     color: #f5f5f5;
@@ -277,18 +274,11 @@
       #contacts ul {
         margin: 0;
       }
-      &::-webkit-scrollbar {
-        width: 8px;
-        background: #2c3e50;
-      }
 
-      &::-webkit-scrollbar-thumb {
-        background-color: #243140;
-      }
 
       ul li.contact {
         position: relative;
-        padding: 10px 0 15px 0;
+        padding: 10px;
         font-size: 0.9em;
         cursor: pointer;
 
@@ -415,9 +405,10 @@
 
   .content {
     float: right;
-    width: 60%;
+    width: 65%;
     height: 100%;
     overflow: hidden;
+    background: #ffffff;
     position: relative;
 
     .contact-profile {
@@ -427,6 +418,7 @@
       background: #dddddd;
       padding: 0px 15px;
       font-weight: 700;
+      font-size: 14px;
       color: #222222;
 
       img {
@@ -479,12 +471,12 @@
         display: inline-block;
         clear: both;
         float: left;
-        margin: 15px 15px 5px 15px;
+        margin: 10px 10px 0px 10px;
         width: calc(100% - 25px);
         font-size: 0.9em;
 
         &:nth-last-child(1) {
-          margin-bottom: 20px;
+          margin-bottom:10px;
         }
 
         &.sent {
@@ -518,9 +510,10 @@
 
         p {
           display: inline-block;
-          padding: 10px 15px;
+          padding:5px 15px;
           border-radius: 20px;
-          max-width: 205px;
+          max-width:205px;
+          font-size: 14px;
           line-height: 130%;
           margin: 0;
         }
@@ -595,14 +588,11 @@
   display: block;
   font-size: 12px;
   margin: 8px 0 0;
+  clear: both;
 }
 
-.mt-45 {
-  margin-top: 45px !important;
-}
-
-.message-date-dropdown.bootstrap-select{
-  width: 175px !important;
+#frame #sidepanel #contacts ul {
+  margin: 0;
 }
 
 @media screen and (max-width: 360px) {
@@ -612,12 +602,7 @@
   }
 }
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel {
-    width: 58px;
-    min-width: 58px;
-  }
-}
+
 
 @media screen and (max-width: 735px) {
   #frame #sidepanel #profile {
@@ -660,85 +645,19 @@
   }
 }
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options.active {
-    margin-top: 62px;
-  }
-}
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options:before {
-    margin-left: 23px;
-  }
-}
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options ul li {
-    padding: 15px 0 35px 22px;
-  }
-}
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options ul li span.status-circle {
-    width: 14px;
-    height: 14px;
-  }
-}
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options ul li span.status-circle:before {
-    height: 18px;
-    width: 18px;
-  }
-}
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options ul li p {
-    display: none;
-  }
-}
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #search {
-    display: none;
-  }
-}
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #contacts {
-    height: calc(100% - 149px);
-    overflow-y: scroll;
-    overflow-x: hidden;
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-}
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #contacts ul li.contact {
-    padding: 6px 0 46px 8px;
-  }
-}
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #contacts ul li.contact .wrap {
-    width: 100%;
-  }
-}
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #contacts ul li.contact .wrap img {
-    margin-right: 0px;
-  }
-}
 
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #contacts ul li.contact .wrap .meta {
-    display: none;
-  }
-}
+
 
 @media screen and (max-width: 735px) {
   #frame #sidepanel #bottom-bar button {
@@ -767,18 +686,8 @@
   }
 }
 
-@media screen and (max-width: 735px) {
-  #frame .content {
-    width: calc(100% - 58px);
-    min-width: 300px !important;
-  }
-}
 
-@media screen and (min-width: 900px) {
-  #frame .content {
-    width: calc(100% - 280px);
-  }
-}
+
 
 @media screen and (max-width: 735px) {
   #frame .content .messages {
@@ -805,12 +714,54 @@
   }
 }
 
-@media screen and (max-width: 735px) {
+@media screen and (max-width: 767px) {
   #frame .content .message-input .wrap button {
     padding: 16px 0;
   }
+  .username {
+    line-height:normal !important;
+  }
+  #frame {
+    height: auto;
+  }
+  #frame #sidepanel, #frame .content {
+    width: 100%;
+  }
+  #frame .content {
+    height:60vh;
+    overflow-y: auto;
+  }
+  #frame .content #messages {
+    padding-top: 20px;
+  }
+  #frame .content .messages {
+    height: auto;
+    position:static;
+  }
+  #frame .content .contact-profile {
+    padding:15px;
+  }
+
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  #frame {
+    height: auto;
+  }
+  #frame #sidepanel, #frame .content {
+    width: 100%;
+  }
+  #frame .content {
+    height:700px;
+    overflow-y: auto;
+  }
+
+
 }
 
 
 
-
+ #sidepanel a {
+   color: #ffffff;
+ }

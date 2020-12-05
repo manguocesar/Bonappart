@@ -151,4 +151,14 @@ class Apartment < ApplicationRecord
 
     subscription.expired_at.eql?(Date.today)
   end
+
+  def check_booking
+    return unless booking
+
+    booking&.pending? || booking_present?
+  end
+
+  def booking_present?
+    booking.end_date.to_date.eql?(Date.today)
+  end
 end
