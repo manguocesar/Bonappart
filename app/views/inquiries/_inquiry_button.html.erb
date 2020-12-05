@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <% if current_user.student? %>
-    <%= link_to 'Contact Landlord', render_url[:url], class: 'at-btn col-sm-3 ml-2', data: { remote: render_url[:is_remote] } %>
+    <%= link_to 'Contact Landlord', render_url[:url], class: 'at-btn btn-block', data: { remote: render_url[:is_remote] } %>
   <% end %>
 <% else %>
-  <%= link_to 'Contact Landlord', render_login_path, class: 'at-btn col-sm-3 ml-2', data: { remote: true } %>
+  <%= link_to 'Contact Landlord', render_login_path, class: 'at-btn btn-block', data: { remote: true } %>
 <% end %>

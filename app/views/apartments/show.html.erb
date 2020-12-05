@@ -1,4 +1,5 @@
-<div class="at-haslayout at-propertybannerholder">
+<div class="at-haslayout at-propertybannerholder py-5">
+<div class="container">
   <div class='row'>
     <div class="col-sm-6">
       <!--Carousel Wrapper-->
@@ -31,7 +32,7 @@
           </ol>
         </div>
         <!--/.Carousel Wrapper-->
-        <div class="at-propertylinkdetails at-haslayout ml-4 mt-5">
+        <div class="at-propertylinkdetails at-haslayout mt-3">
           <h3><%= "Accomodation: #{@apartment.apartment_type_name} in #{@apartment.campus}" %></h3>
           <h4><%= @apartment.title %></h4>
           <div class="at-propertydetails at-aboutproperty">
@@ -44,10 +45,10 @@
               <% end %>
             </ul>
             </div>
-            <div class="at-propertytitle mt-4 ml-2">
+            <div class="at-propertytitle mt-4">
               <h3>About Property</h3>
             </div>
-            <div class="at-description ml-2">
+            <div class="at-description">
               <p><%= @apartment.description %></p>
             </div>
           </div>
@@ -71,13 +72,13 @@
       <!-- Map container start -->
       <div id="locationmap" class=""></div>
       <!-- Map container end -->
-      <div class="at-propertydetails at-detailsproperty">
+      <div class="at-propertydetails at-detailsproperty my-4">
         <div class="at-filtersoptions">
             <h3>Rent: <em>€ <%= @apartment&.rent_rate&.net_rate %></em>/month</h3>
             <h3><%= @apartment&.available_date %></h3>
         </div>
       </div>
-      <div class="at-propertydetails at-detailsproperty ml-4 mt-5">
+      <div class="at-propertydetails at-detailsproperty mb-3">
         <div class="at-propertytitle">
           <h3><%= t('apartment.rent_details') %></h3>
         </div>
@@ -120,11 +121,11 @@
                 </div>
               </div>
             -->
-            <div class="at-btnarea row">
-                <% unless @apartment&.booking&.paid? %>
-                  <%= link_to 'Book Now', booking_instruction_path(apartment_id: @apartment&.id), remote: true, class:"at-btn col-sm-3 ml-1" %>
-                <% end %>
-                <%= render '/inquiries/inquiry_button' %>
+            <div class="row">
+              <% unless @apartment&.booking&.paid? %>
+                <div class="col-sm-6"><div class="form-group"><%= link_to 'Book Now', booking_instruction_path(apartment_id: @apartment&.id), remote: true, class:"at-btn btn-block" %></div></div>
+              <% end %>
+              <div class="col-sm-6"> <%= render '/inquiries/inquiry_button' %> </div>
             </div>
           </div>
         </div>
@@ -132,6 +133,7 @@
       <!-- Send inquiry to the landlord button -->
     </div>
   </div>
+</div>
 </div>
 <br/>
 <div class='text-right'>
@@ -144,14 +146,15 @@
 </div>
 <br/>
 <main id="at-main" class="at-main at-haslayout">
+   <div class="container">
   <!-- Booking form modal -->
   <%= render '/shared/modal_window', locals: { modelId: 'booking_modal' } %>
   <%= render '/shared/modal_window', locals: { modelId: 'inuiryModal' } %>
   <%= render '/shared/modal_window', locals: { modelId: 'subscriptionModal' } %>
-
+  </div>
   <% if !current_user&.administrative_role? %>
     <!-- Similar apartments -->
-    <div class="at-haslayout at-main-section">
+    <div class="at-haslayout at-main-section at-sectionbg">
       <div class="container">
         <div class="row">
           <div class="at-twocolumns at-haslayout">

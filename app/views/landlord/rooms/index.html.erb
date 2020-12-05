@@ -3,7 +3,7 @@
 <% if @rooms.present? %>
 <div class="content">
 <div class="row">
-<div class="col-sm-12 col-lg-8 m-auto">
+<div class="col-sm-12">
   <div id="frame" class="chatbox">
     <div id="sidepanel">
       <div id="contacts">
@@ -12,11 +12,7 @@
             <% active_class = (@room == room) ? 'active' : '' %>
             <%= link_to landlord_room_path(room) do %>
               <li class="contact <%= active_class %>">
-                <div class="wrap">
-                  <div class="meta">
-                    <%= display_name_as_user_role(room) %>
-                  </div>
-                </div>
+                <%= display_name_as_user_role(room) %>
               </li>
             <% end %>
           <% end %>
