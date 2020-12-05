@@ -3,8 +3,8 @@
     <td><%= apartment_type.name %></td>
     <td><%= apartment_type.landlord_listing_fee %></td>
     <td><%= apartment_type.student_booking_fee %></td>
-    <td><%= apartment_type.status %></td>
     <td><%= apartment_type.campus %></td>
+    <td><%= apartment_type.status %></td>
     <td align="center">
       <%= link_to 'Edit', edit_admin_apartment_type_path(apartment_type), class:'btn btn-sm btn-success', remote: true %>
       <% unless apartment_type.default %>

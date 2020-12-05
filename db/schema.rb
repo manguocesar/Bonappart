@@ -163,6 +163,8 @@ ActiveRecord::Schema.define(version: 2020_12_01_171529) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "subscription_id"
+    t.string "stripe_transaction_id"
+    t.string "stripe_payment_id"
     t.index ["booking_id"], name: "index_payments_on_booking_id"
     t.index ["subscription_id"], name: "index_payments_on_subscription_id"
   end

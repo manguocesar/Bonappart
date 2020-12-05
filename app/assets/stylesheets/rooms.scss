@@ -40,20 +40,20 @@
     transition: background-color 0.5s ease;
     border-radius: 20px;
     &:hover {
-      background-color: #eeeeee;
+      background-color:rgba(0,0,0,0.2);
     }
     &.active {
       background-color: black;
       .name {
         color: white;
+        font-weight: bold;
       }
       .member-count {
         color: #e0e0e0;
       }
     }
     .name {
-      font-weight: bold;
-      color: black;
+      color: #ffffff;
     }
     .member-count {
       color: #777777;
@@ -77,8 +77,8 @@
 .room-link .room-card {
 	transition: background-color 0.5s ease;
 	border-radius: 0;
-	padding: 15px 15px;
-	font-size: 16px;
+	padding:10px;
+	font-size:15px;
 	font-weight: 400;
 }
 .chat-room-heading {
