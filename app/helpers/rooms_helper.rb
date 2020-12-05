@@ -25,7 +25,6 @@ module RoomsHelper
   def name_for_admin_user(room)
     student_name_array = room.name_for_student.split('-')
     landlord_name_array = room.name_for_landlord.split('-')
-
-    "#{student_name_array.first}(#{student_name_array.last} -#{landlord_name_array.last} )"
+    "#{student_name_array.first}(#{student_name_array.last.strip}-#{landlord_name_array.last.strip})"
   end
 end
