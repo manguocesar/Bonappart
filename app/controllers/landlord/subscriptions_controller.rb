@@ -10,7 +10,7 @@ module Landlord
     end
 
     def new
-      @subscription = @apartment.subscriptions.new
+      @subscription = Subscription.new
     end
 
     def create
@@ -20,7 +20,10 @@ module Landlord
         @invoice.save
         if @subscription.apartment.campus == 'Singapore'
           @subscription.apartment.update(subscribed: true)
-          redirect_to invoice_path(@invoice)
+          respond_to do |format|
+            format.html { redirect_to invoice_path(@invoice) }
+            format.js { render js: "window.location.href='#{invoice_path(@invoice)}'" }
+          end
         else
           redirect_to invoice_details_path(invoice: @invoice&.id)
         end
