@@ -22,7 +22,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :phone_no, presence: true,
                        numericality: true,
-                       length: { minimum: 10, maximum: 12 }
+                       length: { minimum: 10, maximum: 15 }
 
   # Devise Authentication using Username or Email Query
   def self.find_for_database_authentication(warden_condition)
