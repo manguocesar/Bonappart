@@ -9,7 +9,7 @@ $.validator.addMethod('CUSTOM_EMAIL', function (emailaddr, element) {
 
 $.validator.addMethod('PHONE_NUMBER', function (phoneNumber, element) {
   return this.optional(element) ||
-    phoneNumber.match(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/);
+    phoneNumber.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,9}$/im);
 }, 'Enter valid phone number.' );
 
 jQuery.validator.addMethod("lettersonly", function(value, element) {
