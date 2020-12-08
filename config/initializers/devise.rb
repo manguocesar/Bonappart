@@ -27,7 +27,8 @@ Devise.setup do |config|
   config.mailer_sender = "#{Rails.application.credentials.dig(:smtp_settings, :user_name)}"
 
   # Configure the class responsible to send e-mails.
-  config.mailer = 'Devise::Mailer'
+  # config.mailer = 'Devise::Mailer'
+  config.mailer = 'ApplicationMailer'
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
