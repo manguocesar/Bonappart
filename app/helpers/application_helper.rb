@@ -42,10 +42,6 @@ module ApplicationHelper
     date.strftime('%B %d, %Y') if date.present?
   end
 
-  def random_invoice_number
-    rand.to_s[2, 8]
-  end
-
   def display_date(date)
     date&.strftime('%d-%m-%Y')
   end

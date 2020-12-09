@@ -1,0 +1,47 @@
+<%= form_for(invoice, url: url, method: method, local: true, html: { id: 'invoiceForm'}) do |form| %>
+  <%= render 'shared/error_messages', target: @invoice %>
+  <%= hidden_field_tag 'invoice[subscription_id]', @invoice&.subscription_id %>
+  <%= hidden_field_tag 'invoice[invoice_number]', @invoice.generate_invoice_number %>
+  <div class='row'>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label 'Invoice due date', class:"col-form-label" %><br/>
+      <%= form.text_field :date, class: 'form-control', id: 'date' %>
+    </div>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label t('invoice.landlord'), class:"col-form-label" %><br/>
+      <%= select_tag('invoice[user_id]', options_for_select(invoice.landlord_user), class: "form-control selectpicker", id: 'landlordUser', include_blank: t('user.select_landlord')) %>
+    </div>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label t('invoice.property'), class:"col-form-label" %><br/>
+      <%= select_tag('invoice[apartment_id]', options_for_select([]), class: "form-control selectpicker", id: 'properties', include_blank: t('user.select_property')) %>
+    </div>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label t('invoice.description'), class:"col-form-label" %><br/>
+      <%= form.text_field :description, class: 'form-control' %>
+    </div>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label t('invoice.net_sales_amount'), class:"col-form-label" %><br/>
+      <%= form.text_field :amount, class: 'form-control' %>
+    </div>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label t('invoice.vat_rate'), class:"col-form-label" %><br/>
+      <%= form.text_field :vat_rate, class: 'form-control' %>
+    </div>
+    <div class="form-group col-sm-12 mb-3">
+      <%= form.label t('invoice.status'), class:"col-form-label" %><br/>
+      <%= select_tag('invoice[status]', options_for_select(Invoice.statuses.map { |k, v| [k.humanize.capitalize, k] }), class: "form-control selectpicker", include_blank: t('user.select_status')) %>
+    </div>
+    <div class="modal-footer">
+      <%= link_to "Back", admin_invoices_path, class: 'btn btn-secondary' %>
+      <%= button_tag 'Save', class:"btn at-btn at-btn", type: "submit" %>
+    </div>
+  </div>
+<% end %>
+<script type="text/javascript">
+  $(document).ready(function (e) {
+    $('.selectpicker').selectpicker('refresh');
+    InvoiceForm.validate();
+    Property.init();
+    Calender.init();
+  });
+</script>

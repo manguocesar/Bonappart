@@ -1,17 +1,14 @@
 <div class="at-haslayout py-5">
-<div class="container">
-  <div class="card mt-3">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-sm-12">
-          <h4 class="header-title"><%= t('users.edit_user') %></h4>
-          <% if resource.image.present? %>
-            <%= image_tag url_for(resource&.image), class: "d-block profile" %>
-          <% end %>
-          <%= render 'form' %>
+  <div class="container">
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <h4 class="header-title"><%= t('users.edit_user') %></h4>
+            <%= render 'form' %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>

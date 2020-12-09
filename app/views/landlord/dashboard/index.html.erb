@@ -1,34 +1,9 @@
-<div class="content">
-<div class="row">
-  <div class="col-sm-12">
-    <%= render 'shared/dashboard_error_messages' %>
-  </div>
-
-  <div class="col col-6 col-lg-3">
-    <%= link_to new_landlord_apartment_path do %>
-      <div class="card infobox bg-flat-color-5">
-        <div class="card-body">
-          <h4 class="mb-0">
-            <span class="apartment_block"><i class="menu-icon fa fa-plus"></i></span>
-          </h4>
-          <div><%= t('landlord.add_apartment') %></div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <% @cards.each_with_index do |card, index| %>
-    <div class="col col-6 col-lg-3">
-      <%= link_to landlord_apartments_path(type: change_string_to_param(card.first)) do %>
-        <div class="card infobox bg-flat-color-<%= index + 1 %>">
-          <div class="card-body">
-            <h4 class="mb-0">
-              <span class="count"><%= card.last %></span>
-            </h4>
-            <div><%= card.first %></div>
-          </div>
-        </div>
-      <% end %>
-    </div>
+<%= render 'shared/messages' %>
+<div class="col-12 col-sm-12 col-md-12 at-btnarea-mt float-left mt-2">
+  <%= link_to new_landlord_apartment_path, class: 'btn btn-sm at-btn pull-right' do %>
+    <i class="menu-icon fa fa-plus"></i> <%= t('landlord.add_property') %>
   <% end %>
-  </div>
-</div> <!-- .content -->
+</div>
+<%= render template: 'landlord/bookings/index' %>
+<%= render template: 'invoices/index' %>
+<%= render template: 'landlord/apartments/index' %>

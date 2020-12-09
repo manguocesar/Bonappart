@@ -14,7 +14,7 @@
               </div>
               <div class="at-collapseholder collapse show" id="collapse1" aria-labelledby="heading5">
                 <div class="at-widgetcontent">
-                  <%= select_tag 'search[apartment_type]', options_for_select(apartment_type_collection.pluck(:name)), class: "form-control col-sm-12", include_blank: t('apartment.select_apartment_type') %>
+                  <%= select_tag 'search[apartment_type]', options_for_select(apartment_type_collection.pluck(:name).uniq), class: "form-control col-sm-12", include_blank: t('apartment.select_apartment_type') %>
                 </div>
               </div>
             </div>

@@ -56,7 +56,7 @@ module Admin
     # Delete apartment type
     def destroy
       if @apartment_type.destroy
-        redirect_to admin_apartment_types_path, notice: t('apartment.delete')
+        redirect_to admin_apartment_types_path, notice: t('admin.apartment_type.delete')
       else
         redirect_to admin_apartment_types_path
       end
@@ -76,7 +76,7 @@ module Admin
 
     # Permit the parameters
     def apartment_type_params
-      params.require(:apartment_type).permit(:name, :amount, :status, :image)
+      params.require(:apartment_type).permit(:name, :landlord_listing_fee, :student_booking_fee, :status, :campus, :image)
     end
   end
 end

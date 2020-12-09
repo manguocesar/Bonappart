@@ -6,13 +6,22 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   rescue_from ActiveRecord::RecordNotFound, Pundit::NotDefinedError, with: :record_not_found
+  before_action :redirect_to_root_path, if: :authorize_administrative
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   layout :layout_by_resource
 
-  helper_method :root_url_as_per_role, :logged_in_user?, :logged_in?
+  helper_method :root_url_as_per_role, :logged_in_user?, :logged_in?, :random_invoice_number
 
   private
+
+  def authorize_administrative
+    administrative_request? && (current_user.blank? || (logged_in? && !current_user.administrative_role?))
+  end
+
+  def random_invoice_number
+    rand.to_s[2, 8]
+  end
 
   def logged_in?
     current_user.present?
@@ -25,10 +34,10 @@ class ApplicationController < ActionController::Base
   end
 
   def root_url_as_per_role
-    if current_user && current_user.landlord?
+    if current_user && current_user&.landlord?
       landlord_dashboard_path
-    elsif current_user && current_user.admin?
-      admin_dashboard_path
+    elsif current_user && current_user&.admin?
+      admin_bookings_path
     end
   end
 
@@ -45,6 +54,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_root_path
+    flash[:error] = t('login_warning') unless logged_in?
     redirect_to root_path
   end
 

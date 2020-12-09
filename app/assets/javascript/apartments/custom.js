@@ -109,7 +109,7 @@ var Filter = {
 var DisplayMap = {
   mapSettings: function (latlong) {
     // latlong - coordinates and apartment price
-    const map = new google.maps.Map(document.getElementById("at-locationmap"), {
+    const map = new google.maps.Map(document.getElementById("locationmap"), {
       zoom: 17,
       center: new google.maps.LatLng(parseFloat(latlong[0][2]), parseFloat(latlong[0][3])),
       panControl: true,

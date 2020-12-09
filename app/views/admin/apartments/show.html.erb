@@ -22,7 +22,7 @@
   </div>
   <div class='col-sm-6'>
   <!-- Map container start -->
-    <div id="at-locationmap" class="at-locationmap"></div>
+    <div id="locationmap" class=""></div>
   <!-- Map container end -->
   </div>
 </div>
@@ -73,7 +73,7 @@
                       <span>
                         <%= rent&.net_rate %>
                         <% if rent&.included_in_net_rate.present? %>
-                          (Included with <%= rent&.included_in_net_rate&.map(&:humanize)&.join(', ') %>)
+                          (Including <%= rent&.included_in_net_rate&.map(&:humanize)&.join(', ') %>)
                         <% end %>
                       </span>
                     </td>

@@ -26,6 +26,8 @@ module Constant
   EDIT = 'edit'
   ZERO = '0.0'
 
+  DEFAULT_APARTMENT_TYPE = 'default'
+
   MONTH_ARRAY = ('1'..'12').to_a
   YEAR_ARRAY = ('2020'..'2030').to_a
 
@@ -33,7 +35,7 @@ module Constant
     '<10 minutes’ walk from campus',
     '>10 minutes’ walk from campus',
     'Outside Fontainebleau in nearby houses',
-    'I do not mind'
+    'Not important'
   ].freeze
 
   CAMPUS = %w[Fontainebleau Singapore].freeze

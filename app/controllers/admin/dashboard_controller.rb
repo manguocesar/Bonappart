@@ -7,11 +7,9 @@ module Admin
     # Landloard dashboards
     # Set the collections of cards
     def index
+      total_ads = ['All Ads', '', Apartment.count]
       live_ads = ['Live Ads', '', Apartment.subscribed.count]
-      unpaid_ads = ['Unpaid Ads', Apartment.unsubscribed.count]
-      bookings = ['Booked Ads', Apartment.unavailable.count]
-      free_ads = ['Available Ads', Apartment.available.count]
-      @cards = [live_ads, unpaid_ads, bookings, free_ads]
+      @cards = [live_ads, total_ads]
     end
   end
 end

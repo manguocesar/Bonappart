@@ -13,12 +13,15 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
     resources :apartments
+    resources :settings, only: %i[index edit update]
     resources :users
     resources :apartment_types
     resources :apartments
     resources :subscriptions, only: %i[index new create]
-    resources :invoices, only: %i[index show]
-    resources :bookings, only: %i[index show]
+    resources :invoices
+    resources :bookings
+    resources :rooms, only: %i[index show]
+    get 'landlord_properties/:id', to: 'invoices#landlord_properties'
   end
   namespace :landlord do
     get '/dashboard', to: 'dashboard#index'
@@ -39,6 +42,7 @@ Rails.application.routes.draw do
   post 'create_contact_us', to: 'homes#create_contact_us'
   get '/contact_us', to: 'homes#contact_us'
   get '/faq', to: 'homes#faq'
+  get '/terms_and_conditions', to: 'homes#terms_and_conditions'
   get '/about_us', to: 'homes#about_us'
   get '/popup_forms', to: 'homes#popup_forms'
   get 'cities/:state', to: 'payments#cities'

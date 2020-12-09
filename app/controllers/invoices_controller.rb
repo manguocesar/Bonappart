@@ -49,7 +49,7 @@ class InvoicesController < ApplicationController
     html = render_to_string('invoices/preview.html.erb', layout: false)
     pdf = WickedPdf.new.pdf_from_string(html)
     send_data(pdf,
-              filename: "invoice_#{@invoice.invoice_number}",
+              filename: "invoice_#{@invoice.invoice_number}.pdf",
               disposition: 'attachment')
   end
 

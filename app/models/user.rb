@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   # Scope
   scope :search_by_name_or_email, ->(search) { where 'firstname ILIKE :search_query OR lastname ILIKE :search_query OR username ILIKE :search_query OR phone_no ILIKE :search_query OR email ILIKE :search_query', search_query: search.downcase }
+  scope :students, -> { joins(:roles).where('roles.name = ?', 'student') }
 
   rolify
   # Include default devise modules. Others available are:
@@ -21,7 +22,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :phone_no, presence: true,
                        numericality: true,
-                       length: { minimum: 10, maximum: 12 }
+                       length: { minimum: 10, maximum: 15 }
 
   # Devise Authentication using Username or Email Query
   def self.find_for_database_authentication(warden_condition)
@@ -57,6 +58,11 @@ class User < ApplicationRecord
     "#{firstname} #{lastname}"
   end
 
+  # User full name with email
+  def fullname_with_id
+    ["#{firstname} #{lastname}", id]
+  end
+
   # display user's available apartments
   def available_apartments
     apartments.where(availability: false)
@@ -80,5 +86,10 @@ class User < ApplicationRecord
   # Get the total Booked apartments
   def unavailable_apartments
     apartments.reject(&:availability)
+  end
+
+  # Get the total Booked apartments
+  def booked_apartments
+    apartments.joins(:booking)
   end
 end

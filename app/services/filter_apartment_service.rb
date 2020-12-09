@@ -15,8 +15,17 @@ class FilterApartmentService
     # return current_user&.apartments if current_user.present? && current_user.landlord?
     if current_user.present? && current_user.landlord?
       params[:type].present? ? landlord_apartments : current_user.apartments
+    elsif current_user.present? && current_user.admin?
+      params[:type].present? ? admin_apartments : Apartment.all
     else
-      Apartment.all
+      Apartment.subscribed
+    end
+  end
+
+  def admin_apartments
+    case params[:type]
+    when 'live_ads' then Apartment.subscribed
+    when 'all_ads' then Apartment.all
     end
   end
 
@@ -53,16 +62,16 @@ class FilterApartmentService
   end
 
   def filter_apartments_by_distance(distance_params)
-    return search_apartments if distance_params.include?('I do not mind')
+    return search_apartments if distance_params.include?('Not important')
 
     # search_apartments.filter_by_distance_from_campus(distance_params)
     case distance_params
     when Constant::DISTANCE_FROM_CAMPUS[0]
-      search_apartments.where("duration_from_campus <= ?", 10)
+      search_apartments.where('duration_from_campus <= ?', 10)
     when Constant::DISTANCE_FROM_CAMPUS[1]
-      search_apartments.where("duration_from_campus >= :duration AND distance_from_campus <= :distance", duration: 10, distance: two_decimal_precision('55'))
+      search_apartments.where('duration_from_campus >= :duration AND distance_from_campus <= :distance', duration: 10, distance: two_decimal_precision('55'))
     when Constant::DISTANCE_FROM_CAMPUS[2]
-      search_apartments.where("distance_from_campus >= ?", two_decimal_precision('55'))
+      search_apartments.where('distance_from_campus >= ?', two_decimal_precision('55'))
     else
       search_apartments
     end
@@ -106,6 +115,6 @@ class FilterApartmentService
   end
 
   def two_decimal_precision(value)
-    "%.2f" % value
+    '%.2f' % value
   end
 end

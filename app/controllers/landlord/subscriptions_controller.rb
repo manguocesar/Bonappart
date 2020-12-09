@@ -18,7 +18,15 @@ module Landlord
       @invoice = @subscription.build_invoice(invoice_params)
       if @subscription.save
         @invoice.save
-        redirect_to invoice_details_path(invoice: @invoice&.id)
+        if @subscription.apartment.campus == 'Singapore'
+          @subscription.apartment.update(subscribed: true)
+          respond_to do |format|
+            format.html { redirect_to invoice_path(@invoice) }
+            format.js { render js: "window.location.href='#{invoice_path(@invoice)}'" }
+          end
+        else
+          redirect_to invoice_details_path(invoice: @invoice&.id)
+        end
       else
         render :new
       end

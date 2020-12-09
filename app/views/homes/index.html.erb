@@ -8,10 +8,10 @@
         <div class="col-12 col-md-12 push-md-0 col-lg-10 push-lg-1 col-xl-8 push-xl-2">
           <div class="at-slider-header">
             <div class="at-title">
-              <h1><span>Stay at home while at INSEAD</span>Only direct rental platform for INSEAD students</h1>
+              <h1><span class='main_heading'><%= t('homes.main_heading') %></span><%= t('homes.sub_heading') %></h1>
             </div>
             <div class="at-description">
-              <p>Congratulations on your admission at INSEAD! This will be without a doubt one of the best year in your life and we are here to find the right accommodation that will make you feel at home</p>
+              <p><%= t('homes.desc') %></p>
             </div>
           </div>
         </div>
@@ -53,7 +53,7 @@
                     <figcaption>
                       <div class="at-trip-content">
                         <h3><%= apartment.title.titleize %></h3>
-                        <h4>$<%= rand(100..1000) %> <span>(<%= apartment.apartment_type_name %>)</span></h4>
+                        <h4>$<%= apartment.net_rent %> <span>(<%= apartment.apartment_type_name %>)</span></h4>
                       </div>
                     </figcaption>
                   </figure>
@@ -70,7 +70,7 @@
       </div>
     </div>
   </section>
-  <!-- Recommended Section Start -->
+  <!-- Recommended Section End -->
   <!-- Top Categories Start -->
   <section class="at-haslayout at-main-section at-sectionbg">
     <div class="container">
@@ -78,11 +78,11 @@
         <div class="col-12 col-sm-12 col-md-12 push-md-0 col-lg-10 push-lg-1 col-xl-8 push-xl-2">
           <div class="at-sectionhead">
             <div class="at-sectiontitle">
-              <h2>Explore</h2>
-              <span>Start working for your dream place</span>
+              <h2><%= t('homes.explore') %></h2>
+              <span><%= t('homes.explore_desc') %></span>
             </div>
             <div class="at-description">
-              <p>Browse the studio, room and other co-living</p>
+              <p><%= t('homes.explore_types') %></p>
             </div>
           </div>
         </div>
@@ -109,6 +109,7 @@
       </div>
     </div>
   </section>
+  <!-- Top Categories End -->
 </main>
 <!-- Main End -->
 <script type="text/javascript">

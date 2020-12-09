@@ -1,22 +1,25 @@
-<%= form_with(model: booking, apartment: apartment, remote: true, id: 'bookings_form') do |form| %>
+<%= form_with(model: booking, apartment: apartment, local: true, id: 'bookings_form') do |form| %>
   <%= render 'shared/error_messages', target: booking %>
   <%= hidden_field_tag 'booking[user_id]', current_user&.id %>
-  <%= hidden_field_tag 'invoice[invoice_number]', random_invoice_number %>
-  <%= hidden_field_tag 'invoice[date]', Date.today %>
-  <%= hidden_field_tag 'invoice[amount]', Constant::PAYMENT_AMOUNT %>
   <%= hidden_field_tag :apartment, apartment %>
   <div class='row'>
-    <div class="form-group at-checkin-holder at-datecheck col-sm-6">
+    <div class="form-group col-sm-6">
       <%= form.label t('booking.start_date'), class:"col-form-label" %>
       <%= form.text_field :start_date, class: 'form-control at-startdate' %>
     </div>
-    <div class="form-group at-checkout-holder at-datecheck col-sm-6">
+    <div class="form-group col-sm-6">
       <%= form.label t('booking.end_date'), class:"col-form-label" %>
       <%= form.text_field :end_date, class: 'form-control at-enddate' %>
     </div>
   </div>
-  <%= link_to "Back", '', data: { dismiss: 'modal' }, class: 'at-btn', style:"height: 40px;min-width:auto;" %>
-  <%= button_tag 'Save', class:"at-btn at-btnactive", type: "submit", style:"height: 40px;min-width:auto;" %>
+  <div class='row'>
+    <div class='col col-6'>
+      <%= link_to "Back", '', data: { dismiss: 'modal' }, class: 'at-btn btn-block' %>
+    </div>
+    <div class='col col-6'>
+      <%= button_tag 'Save', class:"at-btn btn-block at-btnactive", type: "submit" %>
+    </div>
+  </div>
 <% end %>
 <script type="text/javascript">
   $(document).ready(function (e) {
