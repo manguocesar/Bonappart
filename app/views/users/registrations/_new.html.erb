@@ -1,5 +1,6 @@
 <%= form_for(:user, url: registration_path(:user), html: { id: 'new_registration' }, remote: true) do |form| %>
   <%= devise_error_messages! %>
+  <%= hidden_field_tag :roles, params[:name] %>
   <div class="row">
     <div class="form-group col-sm-6">
       <%= form.text_field :firstname, id: '', class: 'form-control', placeholder: t('users.firstname') %>

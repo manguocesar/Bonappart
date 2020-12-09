@@ -20,6 +20,7 @@ class DistanceMatrixGoogleApiWorker
       duration_in_min = result&.duration.to_i/60
       @apartment.update_columns(distance_from_campus: distance_in_km, duration_from_campus: duration_in_min)
     rescue => exception
+      puts "========= EXCEPTION =============="
       puts exception.inspect
     end
   end
