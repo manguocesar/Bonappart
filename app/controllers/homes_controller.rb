@@ -40,7 +40,7 @@ class HomesController < ApplicationController
 
     @title = Constant::FORM_BASED_ON_LINKS[params[:name].to_sym].first
     @partial = Constant::FORM_BASED_ON_LINKS[params[:name].to_sym].last
-    if ['host', 'register'].include?(params[:name])
+    if %w[host student].include?(params[:name])
       @role = params[:name].eql?('host') ? 'landlord' : 'student'
     end
   end

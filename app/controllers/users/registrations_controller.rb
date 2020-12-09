@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.save
     yield resource if block_given?
     if resource.persisted?
-      resource.add_role(params[:roles]) if params[:roles].present?
+      add_roles(resource) if params[:roles].present?
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
@@ -63,5 +63,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def redirect_to_root_path
     redirect_to root_path
+  end
+
+  def add_roles(resource)
+    role = params[:roles] == 'host' ? 'landlord' : 'student'
+    resource.add_role(role)
   end
 end
