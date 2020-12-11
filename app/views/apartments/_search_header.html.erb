@@ -8,17 +8,7 @@
         <div class="remove-flex row">
           <%= form_tag(apartments_path, method: :get, remote: params[:remote_flag], class: 'at-formtheme at-formbanner') do |form| %>
           <div class="row">
-            <div class="at-widget col-sm-3">
-              <div class="at-widgettitle at-collapsetitle" id="heading5" data-toggle="collapse" data-target="#collapse1" role="heading">
-                <h3><%= t('admin.apartment_type.title') %></h3>
-              </div>
-              <div class="at-collapseholder collapse show" id="collapse1" aria-labelledby="heading5">
-                <div class="at-widgetcontent">
-                  <%= select_tag 'search[apartment_type]', options_for_select(apartment_type_collection.pluck(:name).uniq), class: "form-control col-sm-12", include_blank: t('apartment.select_apartment_type') %>
-                </div>
-              </div>
-            </div>
-            <div class="at-widget col-sm-3">
+            <div class="at-widget col-sm-4">
               <div class="at-widgettitle at-collapsetitle" id="heading5" data-toggle="collapse" data-target="#collapse6" role="heading">
                 <h3>Available From:</h3>
               </div>
@@ -29,7 +19,7 @@
                 </div>
               </div>
             </div>
-            <div class="at-widget col-sm-3">
+            <div class="at-widget col-sm-4">
               <div class="at-widgettitle at-collapsetitle" id="heading5" data-toggle="collapse" data-target="#collapse5" role="heading">
                 <h3>Price Range:</h3>
               </div>
@@ -46,7 +36,7 @@
                 </div>
               </div>
             </div>
-            <div class="at-widget col-sm-3">
+            <div class="at-widget col-sm-4">
               <div class="at-widgettitle at-collapsetitle" id="heading5" data-toggle="collapse" data-target="#collapse2" role="heading">
                 <h3><%= t('apartment.distance_from_campus') %></h3>
               </div>
