@@ -20,7 +20,7 @@ class Apartment < ApplicationRecord
   has_many_attached :images
   belongs_to :user
   has_one :rent_rate, dependent: :destroy
-  has_many :inquiries
+  has_many :inquiries, dependent: :destroy
   belongs_to :apartment_type
   belongs_to :booking, optional: true
   has_one :subscription, dependent: :destroy
@@ -153,7 +153,7 @@ class Apartment < ApplicationRecord
   end
 
   def check_booking
-    return unless booking
+    return true unless booking
 
     booking&.pending? || booking_present?
   end

@@ -28,7 +28,10 @@ module Constant
 
   DEFAULT_APARTMENT_TYPE = 'default'
 
-  MONTH_ARRAY = ('1'..'12').to_a
+  MONTH_ARRAY = []
+  (1..12).each do |number|
+    MONTH_ARRAY << [Date::MONTHNAMES[number], number.to_s]
+  end
   YEAR_ARRAY = ('2020'..'2030').to_a
 
   DISTANCE_FROM_CAMPUS = [

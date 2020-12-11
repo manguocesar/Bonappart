@@ -8,7 +8,7 @@ class HomesController < ApplicationController
     if root_url_as_per_role.present?
       redirect_to root_url_as_per_role
     else
-      @latest_apartments = Apartment.last(7).group_by.with_index { |_, i| i % 3 }.values
+      @latest_apartments = Apartment.subscribed.last(7).group_by.with_index { |_, i| i % 3 }.values
     end
   end
 
