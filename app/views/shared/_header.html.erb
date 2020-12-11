@@ -65,7 +65,7 @@
             </nav>
             <% if current_user.blank? %>
               <div class="at-detailsbtn-topbar">
-                <%= link_to 'Become a Host', popup_forms_path(name: 'host'), remote: true, class: 'at-btn at-btnactive host-btn' %>
+                <%= link_to 'Become a Host', popup_forms_path(name: 'host'), remote: true, class: 'at-btn at-btnactive host-btn', style: 'font-size: medium;' %>
               </div>
             </div>
           <% end %>

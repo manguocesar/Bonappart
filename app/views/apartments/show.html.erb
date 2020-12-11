@@ -32,6 +32,7 @@
             </ol>
           </div>
           <!--/.Carousel Wrapper-->
+          <br/>
           <div class="at-propertylinkdetails at-haslayout mt-3">
             <h3><%= "Accomodation: #{@apartment.apartment_type_name} in #{@apartment.campus}" %></h3>
             <h4><%= @apartment.title %></h4>
@@ -72,7 +73,7 @@
         <!-- Map container start -->
         <div id="locationmap" class=""></div>
         <!-- Map container end -->
-        <div class="at-propertydetails at-detailsproperty my-4">
+        <div class="at-propertydetails at-detailsproperty my-4 pt-4">
           <div class="at-filtersoptions">
               <h3>Rent: <em>€ <%= @apartment&.rent_rate&.net_rate %></em>/month</h3>
               <h3><%= @apartment&.available_date %></h3>
