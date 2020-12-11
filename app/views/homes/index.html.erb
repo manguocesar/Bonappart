@@ -95,7 +95,7 @@
                     <%= image_tag image_path('category/img-01.jpg') %>
                     <%#= image_tag url_for(image), alt:"img description", class: "item" %>
                   <% end %>
-                  <figcaption><h3><%= apartment_type_name(type) %></h3><span><%= "#{type&.apartments&.count} Listings" %></span></figcaption>
+                  <figcaption><h3><%= apartment_type_name(type) %></h3><span><%= "#{type&.apartments&.subscribed&.count} Listings" %></span></figcaption>
                 </figure>
               </a>
             </div>
