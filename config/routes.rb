@@ -5,7 +5,11 @@ Rails.application.routes.draw do
                                     sessions: 'users/sessions', passwords: 'users/passwords' }
   resources :apartments
   resources :bookings
-  resources :payments
+  resources :payments do
+    collection do
+      get 'thank_you'
+    end
+  end
   resources :inquiries
   resources :messages
   resources :rooms

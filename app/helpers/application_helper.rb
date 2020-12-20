@@ -45,4 +45,14 @@ module ApplicationHelper
   def display_date(date)
     date&.strftime('%d-%m-%Y')
   end
+
+  def booking_path_based_on_role
+    if current_user.student?
+      my_bookings_path
+    elsif current_user.admin?
+      admin_bookings_path
+    elsif current_user.landlord?
+      landlord_bookings_path
+    end
+  end
 end

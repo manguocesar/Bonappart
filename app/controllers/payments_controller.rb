@@ -30,7 +30,7 @@ class PaymentsController < ApplicationController
       end
     end
     if @payment&.id.present?
-      redirect_to invoice_path(invoice)
+      redirect_to thank_you_payments_path
       ConfirmationMailer.student_booking_confirmed_email(current_user&.id, find_landlord_user&.id).deliver_later
       ConfirmationMailer.landlord_booking_confirmed_email(current_user&.id, find_landlord_user&.id).deliver_later
     else
@@ -58,7 +58,7 @@ class PaymentsController < ApplicationController
       end
     end
     if @payment&.id.present?
-      redirect_to invoice_path(invoice)
+      redirect_to subscription_invoice_path_based_on_role
     else
       flash[:error] = @stripe_payment_record if @stripe_payment_record && @stripe_payment_record.kind_of?(String)
       redirect_to_apartment
@@ -77,7 +77,13 @@ class PaymentsController < ApplicationController
     address.save!
   end
 
+  def thank_you; end
+
   private
+
+  def subscription_invoice_path_based_on_role
+    current_user.admin? ? thank_you_payments_path : landlord_invoice_path(subscription_invoice)
+  end
 
   def payment_params
     params.require(:payment).permit(
@@ -86,8 +92,12 @@ class PaymentsController < ApplicationController
     )
   end
 
-  def invoice
-    @payment&.booking&.invoice || @payment&.subscription&.invoice
+  def booking_invoice
+    @payment&.booking&.invoice
+  end
+
+  def subscription_invoice
+    @payment&.subscription&.invoice
   end
 
   def find_landlord_user
