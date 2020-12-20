@@ -13,7 +13,7 @@ class Booking < ApplicationRecord
   has_many :payments, dependent: :destroy
   has_one :invoice, dependent: :destroy
   belongs_to :user
-  has_one :apartment, dependent: :destroy
+  has_one :apartment
 
   def rent_amount
     apartment&.rent_rate&.net_rate
