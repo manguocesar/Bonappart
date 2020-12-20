@@ -10,10 +10,10 @@ class Booking < ApplicationRecord
   enum status: { pending: 0, failed: 1, paid: 2 }
 
   # Associations
-  has_many :payments
-  has_one :invoice
+  has_many :payments, dependent: :destroy
+  has_one :invoice, dependent: :destroy
   belongs_to :user
-  has_one :apartment
+  has_one :apartment, dependent: :destroy
 
   def rent_amount
     apartment&.rent_rate&.net_rate
@@ -24,15 +24,15 @@ class Booking < ApplicationRecord
   end
 
   def payment_address
-    payments.paid.last.address
+    payments&.paid&.last&.address
   end
 
   def payment_type
-    payments.paid.last.payment_type.titleize
+    payments&.paid&.last&.payment_type&.titleize
   end
 
   def payment_status
-    payments.last.status
+    payments&.last&.status
   end
 
   def startdate
