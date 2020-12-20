@@ -96,7 +96,7 @@
       </div>
       <div class="card-footer">
         <%= link_to 'Edit', edit_admin_apartment_path(@apartment), class: 'btn at-btn' %>
-        <%= link_to admin_apartment_path(@apartment), method: :delete, data: { confirm: t('confirmation') }, class: 'btn btn-danger delete-btn' do %>Delete
+        <%= link_to admin_apartment_path(@apartment), method: :delete, data: { confirm: t('apartment.confirmation') }, class: 'btn btn-danger delete-btn' do %>Delete
         <% end %>
       </div>
     </div>

@@ -17,13 +17,13 @@ class Apartment < ApplicationRecord
   scope :unavailable, -> { reject(&:availability) }
 
   # Associations
-  has_many_attached :images
+  has_many_attached :images, dependent: :destroy
   belongs_to :user
   has_one :rent_rate, dependent: :destroy
   has_many :inquiries, dependent: :destroy
   belongs_to :apartment_type
-  belongs_to :booking, optional: true
   has_one :subscription, dependent: :destroy
+  belongs_to :booking, optional: true
   accepts_nested_attributes_for :rent_rate
 
   # Delegation

@@ -139,6 +139,7 @@ en:
     distance_from_campus: Distance From Campus
     select_apartment_type: Select Type
     select_distance: Select Distance
+    confirmation: 'If you deleting this record then associated subscription, booking, invoice and payments are also deleted if any of present. Are you sure you want to delete this record?'
   dashboard:
     count_of_ads: Count of Ads
     count_of_active_ads: Count of Active Ads

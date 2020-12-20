@@ -16,15 +16,15 @@ class Subscription < ApplicationRecord
   belongs_to :apartment
 
   def payment_address
-    payments.paid.last.address if payments.present?
+    payments&.paid&.last&.address if payments.present?
   end
 
   def payment_type
-    payments.paid.last&.payment_type&.titleize
+    payments&.paid.last&.payment_type&.titleize
   end
 
   def payment_status
-    payments.last.status if payments.present?
+    payments&.last&.status if payments.present?
   end
 
   def apartment_title
@@ -32,6 +32,6 @@ class Subscription < ApplicationRecord
   end
 
   def subscription_amount
-    apartment.landlord_listing_fee
+    apartment&.landlord_listing_fee
   end
 end
