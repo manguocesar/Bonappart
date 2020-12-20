@@ -22,7 +22,7 @@ class ApartmentsController < ApplicationController
     begin
       @apartment = Apartment.new(apartment_params)
       if @apartment.save
-        apartment_index_or_show_page(is_index: false, action: 'create')
+        redirect_to apartment_path(@apartment), notice: t("apartment.create")
       else
         render :new
       end
@@ -119,7 +119,9 @@ class ApartmentsController < ApplicationController
       :shower_room, :distance_from_campus, :other_facilities,
       :longitude, :latitude, :user_id, :virtual_visit_link, images: [],
       rent_rate_attributes: [
-        :net_rate, :water_charge, :heating_charge, :electricity_charge, :internet_charge, :insurance_charge, :deposit_amount, included_in_net_rate: []
+        :net_rate, :water_charge, :heating_charge, :electricity_charge, 
+        :internet_charge, :insurance_charge, :deposit_amount,
+        included_in_net_rate: []
       ]
     )
   end
