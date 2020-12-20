@@ -5,12 +5,12 @@
       <div class="row justify-content-center">
         <div class="col-12 col-sm-12">
           <div class="at-sectionhead">
-            <h2><%= t('booking_confirmation') %></h2>
+            <h2><%= current_user&.administrative_role? ? t('post_confirmation') : t('booking_confirmation') %></h2>
           </div>
         </div>
         <!-- Booking confirmation inner Banner Start -->
         <div class="col-12 col-sm-12">
-          <% if current_user&.landlord? %>
+          <% if current_user&.administrative_role? %>
             <div class="at-title text-center">
               <div class="check-logo"><i class="fa fa-check-circle"></i></div>
               <h2><%= t('thank_you.subscription_title') %></h2></div>

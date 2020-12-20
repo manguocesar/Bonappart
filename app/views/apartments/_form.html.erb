@@ -104,10 +104,7 @@
   <%= render partial: 'rent_rates' , locals: { form: form } %>
   <div class='text-right'>
     <%= link_to 'Back', back_to_apartments, class: 'btn btn-dark' %>
-    <%= button_tag 'Save', class:"btn at-btn", type: "submit" %>
-    <% if !apartment.new_record? && apartment.check_subscription %>
-      <%= link_to 'Preview', apartment_path(params[:id]), class: 'btn at-btn' %>
-    <% end %>
+    <%= button_tag 'Save and Preview', class:"btn at-btn", type: "submit" %>
   </div>
 <% end %>
 <script type="text/javascript">
