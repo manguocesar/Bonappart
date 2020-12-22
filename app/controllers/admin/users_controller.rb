@@ -25,7 +25,8 @@ module Admin
       @user = User.new(user_params)
       @user.add_role(params[:roles])
       if @user.save
-        redirect_to admin_users_path, notice: t('user.create')
+        @user.add_role(params[:type])
+        redirect_to admin_users_path(type: params[:type]), notice: t('user.create')
       else
         render :new
       end
@@ -37,7 +38,7 @@ module Admin
         if @user.admin?
           redirect_to root_path, notice: t('user.profile_update')
         else
-          redirect_to admin_users_path, notice: t('user.update')
+          redirect_to admin_users_path(type: params[:type]), notice: t('user.update')
         end
       else
         render :edit
@@ -54,7 +55,7 @@ module Admin
 
     def destroy
       @user.destroy
-      redirect_to admin_users_path, notice: t('user.delete')
+      redirect_to admin_users_path(type: params[:type]), notice: t('user.delete')
     end
 
     private

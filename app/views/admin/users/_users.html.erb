@@ -19,10 +19,10 @@
         <td><%= user.username %></td>
         <td><%= user.phone_no %></td>
         <td align="center">
-        <%= link_to edit_admin_user_path(user), class:'btn btn-sm btn-success' do %>
+        <%= link_to edit_admin_user_path(user.id, type: params[:type]), class:'btn btn-sm btn-success' do %>
           <i class="fa fa-pencil"></i>
         <% end %>
-          <%= link_to admin_user_path(user), method: :delete, data: { confirm: t('confirmation') }, class:'btn btn-sm btn-danger'  do %>
+          <%= link_to admin_user_path(user.id, type: params[:type]), method: :delete, data: { confirm: t('confirmation') }, class:'btn btn-sm btn-danger'  do %>
             <i class="fa fa-trash"></i>
           <% end %>
         </td>
