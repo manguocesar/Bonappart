@@ -23,7 +23,6 @@ module Admin
 
     def create
       @user = User.new(user_params)
-      @user.add_role(params[:roles])
       if @user.save
         @user.add_role(params[:type])
         redirect_to admin_users_path(type: params[:type]), notice: t('user.create')
