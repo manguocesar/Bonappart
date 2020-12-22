@@ -23,13 +23,13 @@
                   <tr>
                     <td width="27" align="left" valign="middle">
                       <%= image_tag wicked_pdf_asset_base64('invoice/call01.png'), style: 'max-width: 150px; padding: 0px; margin: 0px 0px 2px 4px; display: block;' %>
-                    <td width="138" align="left" valign="middle"><a href="#" style="color:#000; text-decoration:none;">+90
-                        99999 99999</a></td>
+                    <td width="138" align="left" valign="middle"><a href="#" style="color:#000; text-decoration:none;">+86 131 6277 0045</a></td>
                     <td width="26" align="right" valign="middle"><%= image_tag wicked_pdf_asset_base64('invoice/user01.png'), alt: "", width: "16",
                       height: "16", style: "padding: 0px; margin: 0px; display: block;", border: "0", vspace: "0", hspace: "0" %>
                     </td>
                     <td width="159" align="right" valign="middle"><a href="#"
-                        style="color:#000; text-decoration:none;">info@yourcompany.com </a></td>
+                        style="color:#000; text-decoration:none;">contact@bonapart.org</a>
+                    </td>
                   </tr>
                 </table>
               </td>
@@ -69,14 +69,6 @@
             </tr>
             <tr>
               <td width="400" valign="top" bgcolor="#FFFFFF"
-                style=" font-family: Arial, Helvetica, sans-serif; font-size:12px; text-align: left; color:#333333; line-height:20px; padding:5px 10px 10px 10px; border-right:solid 1px #b9b9b9;">
-                <span style=" font-weight:700;"><%= @invoice&.booking&.user&.fullname %></span><br />
-                <%= @invoice&.address&.area %><br />
-                <%= @invoice&.address&.postal_code %>
-                <%= @invoice&.address&.city %><br />
-                <%= @invoice&.address&.state %>
-              </td>
-              <td width="400" valign="top" bgcolor="#FFFFFF"
                 style=" font-family: Arial, Helvetica, sans-serif; font-size:12px; text-align: left; color:#333333; line-height:20px; padding:5px 10px 10px 10px; ">
                 <span style=" font-weight:700;">Bonapart</span><br />
                 $COMPANY_ADDRESS$<br />
@@ -87,6 +79,14 @@
                 <br />
                 $COMPANY_WEBSITE$<br />
                 %M_Invoice Date%: $INVOICE_INVOICEDATE$
+              </td>
+              <td width="400" valign="top" bgcolor="#FFFFFF"
+                style=" font-family: Arial, Helvetica, sans-serif; font-size:12px; text-align: left; color:#333333; line-height:20px; padding:5px 10px 10px 10px; border-right:solid 1px #b9b9b9;">
+                <span style=" font-weight:700;"><%= @invoice&.booking&.user&.fullname %></span><br />
+                <%= @invoice&.address&.area %><br />
+                <%= @invoice&.address&.postal_code %>
+                <%= @invoice&.address&.city %><br />
+                <%= @invoice&.address&.state %>
               </td>
             </tr>
           </table>
@@ -139,31 +139,6 @@
               <td style="padding:30px 0px 0px 0px;">
                 <table width="500" border="0" align="right" cellpadding="0" cellspacing="0"
                   style="border:solid 1px #b9b9b9;   font-family: Arial, Helvetica, sans-serif; font-size:14px; font-weight:normal; color:#000000; line-height:20px;">
-                  <tr>
-                    <td width="300" align="right"
-                      style=" border-bottom:solid 1px #b9b9b9;  border-right:solid 1px #b9b9b9; text-align:right; padding:5px;">
-                      <strong>Subtotal:
-                      </strong>
-                    </td>
-                    <td width="100" align="right"
-                      style="border-bottom:solid 1px #b9b9b9;  text-align:right; padding:5px;"><%= @invoice.amount %></td>
-                  </tr>
-                  <tr>
-                    <td align="right"
-                      style=" border-bottom:solid 1px #b9b9b9; border-right:solid 1px #b9b9b9; text-align:right; padding:5px;">
-                      <strong>VAT Rate</strong>
-                    </td>
-                    <td align="right" style="border-bottom:solid 1px #b9b9b9;  text-align:right; padding:5px;"><%= @invoice&.vat_rate %>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td align="right"
-                      style="border-bottom:solid 1px #b9b9b9;border-right:solid 1px #b9b9b9; text-align:right; padding:5px;">
-                      <strong>Total with TAX</strong>
-                    </td>
-                    <td align="right" style="border-bottom:solid 1px #b9b9b9;  text-align:right; padding:5px;">
-                      <strong><%= @invoice.total_amount %></strong></td>
-                  </tr>
                   <tr>
                     <td align="right" style=" border-bottom:solid 1px #b9b9b9;border-right:solid 1px #b9b9b9; text-align:right; padding:5px;">
                       <strong>Paid</strong>

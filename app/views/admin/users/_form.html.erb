@@ -1,6 +1,7 @@
 <%= form_for(user, url: url, method: method, html: { id: 'user_edit_form' }) do |form| %>
   <%= render 'shared/messages' %>
   <%= devise_error_messages! %>
+  <%= hidden_field_tag :type, params[:type] %>
   <div class="row">
     <div class="form-group col-sm-6">
       <%= form.label t('users.firstname'), class:"col-form-label" %>
