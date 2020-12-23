@@ -6,14 +6,6 @@ class CustomizeMailer < Devise::Mailer
   default from: 'from@example.com'
   before_action :set_smtp_settings
 
-  def confirmation_instructions(record, token, opts={})
-    devise_mail(record, :confirmation_instructions)
-  end
-
-  def reset_password_instructions(record, token, opts={})
-    devise_mail(record, :reset_password_instructions)
-  end
-
   def set_smtp_settings
     setting = Setting&.last
     ActionMailer::Base.smtp_settings = {
