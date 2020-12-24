@@ -100,4 +100,8 @@ module ApartmentHelper
       params['type'] == 'landlord' ? 'landlord' : 'student'
     end
   end
+
+  def check_float(field)
+    field.to_i == field ? field.to_i : field
+  end
 end

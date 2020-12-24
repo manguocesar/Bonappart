@@ -26,10 +26,10 @@
                       <tr>
                         <td><%= @invoice.invoice_number %></td>
                         <td><%= @invoice.apartment_title %></td>
-                        <td class="text-xs-center"><%= @invoice.amount %></td>
+                        <td class="text-xs-center"><%= "€#{check_float(@invoice.amount)}" %></td>
                         <td class="text-xs-center"><%= date_format(@invoice.date) %></td>
                         <td class="text-xs-center"><%= @subscription.payment_status %></td>
-                        <td class="text-xs-right"><%= @invoice.amount %></td>
+                        <td class="text-xs-right"><%= "€#{check_float(@invoice.amount)}" %></td>
                       </tr>
                       <tr>
                         <td class="emptyrow"></td>
@@ -37,7 +37,7 @@
                         <td class="emptyrow"></td>
                         <td class="emptyrow"></td>
                         <td class="emptyrow text-xs-center"><strong><%= t('invoice.subtotal') %></strong></td>
-                        <td class="emptyrow text-xs-right"><%= @invoice.amount %></td>
+                        <td class="emptyrow text-xs-right"><%= "€#{check_float(@invoice.amount)}" %></td>
                       </tr>
                       <tr>
                         <td class="emptyrow"></td>
@@ -45,7 +45,7 @@
                         <td class="emptyrow"></td>
                         <td class="emptyrow"></td>
                         <td class="emptyrow text-xs-center"><strong><%= t('invoice.total') %></strong></td>
-                        <td class="emptyrow text-xs-right"><%= @invoice.amount %></td>
+                        <td class="emptyrow text-xs-right"><%= "€#{check_float(@invoice.amount)}" %></td>
                       </tr>
                       <tr>
                         <td class="emptyrow"></td>
@@ -53,7 +53,7 @@
                         <td class="emptyrow"></td>
                         <td class="emptyrow"></td>
                         <td class="emptyrow text-xs-center"><strong><%= t('invoice.paid') %></strong></td>
-                        <td class="emptyrow text-xs-right"><%= paid_amount(@invoice) %></td>
+                        <td class="emptyrow text-xs-right"><%= "€#{check_float(paid_amount(@invoice))}" %></td>
                       </tr>
                       <tr>
                         <td class="emptyrow"></td>
@@ -61,7 +61,7 @@
                         <td class="emptyrow"></td>
                         <td class="emptyrow"></td>
                         <td class="emptyrow text-xs-center"><strong><%= t('invoice.balance_due') %></strong></td>
-                        <td class="emptyrow text-xs-right"><%= balance_due_amount(@invoice) %></td>
+                        <td class="emptyrow text-xs-right"><%= "€#{check_float(balance_due_amount(@invoice))}" %></td>
                       </tr>
                     </tbody>
                 </table>

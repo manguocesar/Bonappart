@@ -75,7 +75,7 @@
         <!-- Map container end -->
         <div class="at-propertydetails at-detailsproperty my-4 pt-4">
           <div class="at-filtersoptions">
-              <h3>Rent: <em>€ <%= @apartment&.rent_rate&.net_rate %></em>/month</h3>
+              <h3>Rent: <em>€<%= check_float(@apartment&.rent_rate&.net_rate) %></em>/month</h3>
               <h3><%= @apartment&.available_date %></h3>
           </div>
         </div>
@@ -88,7 +88,7 @@
             <li>
               <h4><%= t('rent.net_rate') %></h4>
               <span class="w_280">
-                <%= rent&.net_rate %>
+                €<%= check_float(rent&.net_rate) %>
                 <% if rent&.included_in_net_rate.present? %>
                   (Including <%= rent&.included_in_net_rate&.map(&:humanize)&.join(', ') %>)
                 <% end %>
@@ -97,11 +97,11 @@
             <% RentRate::INCLUDED_IN_NET_RATE_FIELDS.each do |field| %>
               <% if !is_included_in_net_rate?(rent&.included_in_net_rate, field) %>
                 <% if rent&.send(field).present? %>
-                  <li><h4><%= t("rent.#{field}") %></h4> <span><%= rent&.send(field) %></span></li>
+                  <li><h4><%= t("rent.#{field}") %></h4> <span>€<%= rent&.send(field) %></span></li>
                 <% end %>
               <% end %>
             <% end %>
-            <li><h4><%= t('rent.deposit_amount') %></h4><span><%= rent&.deposit_amount %></span></li>
+            <li><h4><%= t('rent.deposit_amount') %></h4><span>€<%= check_float(rent&.deposit_amount) %></span></li>
           </ul>
         </div>
       <% if !current_user&.administrative_role?%>

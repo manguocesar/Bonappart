@@ -25,7 +25,7 @@
                       <tr role="row" class="odd">
                         <td><%= "##{invoice.invoice_number}" %></td>
                         <td><%= link_to invoice.apartment_title, download_path(format: :pdf, id: invoice&.id) %></td>
-                        <td><%= invoice&.amount %></td>
+                        <td><%= "€#{check_float(invoice&.amount)}" %></td>
                         <td><%= date_format(invoice.date) %></td>
                         <td align="center"><%= invoice.status %></td>
                       </tr>
