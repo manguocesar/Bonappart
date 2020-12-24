@@ -42,4 +42,8 @@ class Booking < ApplicationRecord
   def enddate
     end_date.strftime('%B %d, %Y') if end_date.present?
   end
+
+  def owner_name
+    apartment.user.fullname
+  end
 end
