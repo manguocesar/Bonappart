@@ -25,8 +25,8 @@
                     <% @bookings.each do |booking| %>
                       <tr role="row" class="odd">
                         <td><%= booking&.apartment_title %></td>
-                        <td><%= date_format(booking&.start_date) %></td>
-                        <td><%= date_format(booking&.end_date) %></td>
+                        <td class='text-center'><%= date_format(booking&.start_date) %><br><%= time_format(booking&.start_date) %></td>
+                        <td class='text-center'><%= date_format(booking&.end_date) %><br><%= time_format(booking&.end_date) %></td>
                         <td><%= booking&.user&.firstname %></td>
                         <td><%= booking&.user&.lastname %></td>
                         <td><%= booking&.user&.email %></td>
