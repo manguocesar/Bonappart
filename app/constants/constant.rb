@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module Constant
+  PER_PAGE = 10
+
   USER_FIELDS = %i[firstname lastname username phone_no birthdate
                    gender address email password password_confirmation image terms_of_service].freeze
 

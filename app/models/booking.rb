@@ -44,6 +44,6 @@ class Booking < ApplicationRecord
   end
 
   def owner_name
-    apartment.user.fullname
+    apartment&.user&.fullname
   end
 end

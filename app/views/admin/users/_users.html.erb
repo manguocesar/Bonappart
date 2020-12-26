@@ -2,6 +2,7 @@
   role="grid" aria-describedby="bootstrap-data-table_info">
   <thead>
     <tr role="row">
+      <th class="text-center"><%= t('sr_no') %></th>
       <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.firstname') %></th>
       <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.lastname') %></th>
       <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.email') %></th>
@@ -11,8 +12,9 @@
     </tr>
   </thead>
   <tbody>
-    <% users.each do |user| %>
+    <% users.each.with_index(1) do |user, index| %>
       <tr role="row" class="odd">
+        <td class="text-center"><%= pagination_params + index %></td>
         <td><%= user.firstname %></td>
         <td><%= user.lastname %></td>
         <td><%= user.email %></td>

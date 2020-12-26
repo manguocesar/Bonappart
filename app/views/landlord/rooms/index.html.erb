@@ -1,48 +1,53 @@
 <div id="room-id" data-room-id="<%= @room.try(:id) %>"></div>
 <div id="user-id" data-user-id="<%= current_user.try(:id) %>"></div>
 <% if @rooms.present? %>
-<div class="content">
-<div class="row">
-<div class="col-sm-12">
-  <div id="frame" class="chatbox">
-    <div id="sidepanel">
-      <div id="contacts">
-        <ul>
-          <% @rooms.each do |room| %>
-            <% active_class = (@room == room) ? 'active' : '' %>
-            <%= link_to landlord_room_path(room) do %>
-              <li class="contact <%= active_class %>">
-                <%= display_name_as_user_role(room) %>
-              </li>
-            <% end %>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-    <% if @room.present? %>
-      <div class="content p-0">
-        <div class="contact-profile">
-          <%= display_name_as_user_role(@room) %>
-        </div>
-        <div class="messages">
-          <ul>
-            <div id="messages">
-              <% @room.messages.ascending_order.each do |message| %>
-                <%= render 'message', message: message %>
-              <% end %>
+  <div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4><strong class="card-title"><%= t('dashboard.inquiries') %></strong></h4>
+          </div>
+          <div id="frame" class="chatbox">
+            <div id="sidepanel">
+              <div id="contacts">
+                <ul>
+                  <% @rooms.each do |room| %>
+                    <% active_class = (@room == room) ? 'active' : '' %>
+                    <%= link_to landlord_room_path(room) do %>
+                      <li class="contact <%= active_class %>">
+                        <%= display_name_as_user_role(room) %>
+                      </li>
+                    <% end %>
+                  <% end %>
+                </ul>
+              </div>
             </div>
-          </ul>
-        </div>
-        <div class="message-input">
-          <div class="wrap">
-            <%= render 'messages/form', message: Message.new, room: @room %>
+            <% if @room.present? %>
+              <div class="content p-0">
+                <div class="contact-profile">
+                  <%= display_name_as_user_role(@room) %>
+                </div>
+                <div class="messages">
+                  <ul>
+                    <div id="messages">
+                      <% @room.messages.ascending_order.each do |message| %>
+                        <%= render 'message', message: message %>
+                      <% end %>
+                    </div>
+                  </ul>
+                </div>
+                <div class="message-input">
+                  <div class="wrap">
+                    <%= render 'messages/form', message: Message.new, room: @room %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
-    <% end %>
-  </div>
-  </div>
-  </div>
+    </div>
   </div>
 <% else %>
   <div class="text-center" style="padding-top:20px;">

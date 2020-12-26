@@ -42,6 +42,7 @@ en:
   post_confirmation: Post Confirmation
   settings: Settings
   members: Members
+  sr_no: 'SN'
   setting:
     address: Address
     port: Port

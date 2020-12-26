@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   layout :layout_by_resource
 
-  helper_method :root_url_as_per_role, :logged_in_user?, :logged_in?, :random_invoice_number
+  helper_method :root_url_as_per_role, :logged_in_user?, :logged_in?, :random_invoice_number, :current_page
 
   private
 
@@ -70,7 +70,11 @@ class ApplicationController < ActionController::Base
   # For setting paginations in apartments page
   def pagination(data)
     updated_data = data.is_a?(Array) ? Kaminari.paginate_array(data) : data
-    updated_data.page(params[:page]).per(9)
+    updated_data.page(current_page).per(Constant::PER_PAGE)
+  end
+
+  def current_page
+    params[:page]
   end
 
   def user_not_authorized(exception)
