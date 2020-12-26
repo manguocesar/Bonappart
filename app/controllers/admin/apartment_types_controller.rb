@@ -5,12 +5,10 @@ module Admin
   # Class begin
   class ApartmentTypesController < ApplicationController
     before_action :load_apartment_type, only: %i[edit update destroy]
+    before_action :fetch_apartment_types, only: %i[index create update]
     protect_from_forgery with: :null_session
 
-    def index
-      fetch_apartment_types
-      # authorize @apartments
-    end
+    def index; end
 
     # GET
     # Initialize inquiry object
@@ -25,12 +23,17 @@ module Admin
     # Create apartment type
     def create
       @apartment_type = ApartmentType.new(apartment_type_params)
-      if @apartment_type.save
-        flash[:success] = t('admin.apartment_type.create.success')
-      else
-        flash[:error] = t('admin.apartment_type.create.failer')
+      respond_to do |format|
+        if @apartment_type.save
+          flash[:success] = t('admin.apartment_type.create.success')
+          format.html { redirect_to admin_apartment_types_path }
+          format.js
+        else
+          flash[:error] = t('admin.apartment_type.create.failer')
+          format.html { redirect_to admin_apartment_types_path }
+          format.js
+        end
       end
-      redirect_to admin_apartment_types_path
     end
 
     # GET
@@ -45,7 +48,6 @@ module Admin
     # Update apartment type
     def update
       @apartment_type.update(apartment_type_params)
-      fetch_apartment_types
       respond_to do |format|
         format.html { redirect_to admin_apartment_types_path }
         format.js
@@ -71,7 +73,7 @@ module Admin
     end
 
     def fetch_apartment_types
-      @apartment_types = ApartmentType.all
+      @apartment_types = pagination(ApartmentType.all)
     end
 
     # Permit the parameters

@@ -3,4 +3,5 @@
   $("#apartmentTypeModal").modal();
 <% else %>
   $("#apartmentTypeModal").modal('toggle');
+  $('#apartmentTypeList').html("<%= j render 'list' %>");
 <% end %>

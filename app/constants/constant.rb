@@ -14,10 +14,13 @@ module Constant
 
   CONTACT_US_PARAMS = %i[first_name last_name email subject message].freeze
 
-  FORM_BASED_ON_LINKS = { 'login': ['Login', 'users/sessions/new'], 'student': ['Register', 'users/registrations/new'],
-                          'host': ['Become A Host', 'users/registrations/new'],
-                          'forgot_password': ['Forgot Your Password?', 'users/passwords/new'],
-                          'resend_confirmation': ['Resend Confirmation', 'users/confirmations/new'] }.freeze
+  FORM_BASED_ON_LINKS = {
+    'login': ['Login', 'users/sessions/new'],
+    'student': ['Register', 'users/registrations/new'],
+    'host': ['Become A Host', 'users/registrations/new'],
+    'forgot_password': ['Forgot Your Password?', 'users/passwords/new'],
+    'resend_confirmation': ['Resend Confirmation', 'users/confirmations/new']
+  }.freeze
 
   APARTMENT_OTHER_AMENITIES = %w[shower_room total_bedrooms].freeze
   APARTMENT_TYPE_PARAMS = %i[name amount image].freeze
@@ -27,8 +30,6 @@ module Constant
   SUBSCRIBED = 'subscribed'
   EDIT = 'edit'
   ZERO = '0.0'
-
-  DEFAULT_APARTMENT_TYPE = 'default'
 
   MONTH_ARRAY = []
   (1..12).each do |number|
