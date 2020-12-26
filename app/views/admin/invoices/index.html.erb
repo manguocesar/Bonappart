@@ -29,7 +29,7 @@
                     <tr role="row" class="odd">
                       <td><%= link_to "##{invoice.invoice_number}", invoice_show_path(invoice) %></td>
                       <td><%= invoice.apartment_title %></td>
-                      <td><%= invoice&.amount %></td>
+                      <td><%= "€#{check_float(invoice&.amount)}" %></td>
                       <td><%= date_format(invoice.date) %></td>
                       <td><%= invoice.status %></td>
                       <td>

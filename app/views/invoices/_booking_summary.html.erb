@@ -14,9 +14,9 @@
       <td><%= @invoice.apartment_title %></td>
       <td class="text-xs-center"><%= date_format(@booking&.start_date) %></td>
       <td class="text-xs-center"><%= date_format(@booking&.end_date) %></td>
-      <td class="text-xs-center"><%= @invoice.amount %></td>
+      <td class="text-xs-center"><%= "€#{check_float(@invoice.amount)}" %></td>
       <td class="text-xs-center"><%= @booking.payment_status %></td>
-      <td class="text-xs-right"><%= @invoice.amount %></td>
+      <td class="text-xs-right"><%= "€#{check_float(@invoice.amount)}" %></td>
     </tr>
     <tr>
       <td class="highrow"></td>
@@ -24,7 +24,7 @@
       <td class="highrow"></td>
       <td class="highrow"></td>
       <td class="highrow text-xs-center"><strong><%= t('invoice.subtotal') %></strong></td>
-      <td class="highrow text-xs-right"><%= @invoice.amount %></td>
+      <td class="highrow text-xs-right"><%= "€#{check_float(@invoice.amount)}" %></td>
     </tr>
     <tr>
       <td class="emptyrow"></td>
@@ -32,7 +32,7 @@
       <td class="emptyrow"></td>
       <td class="emptyrow"></td>
       <td class="emptyrow text-xs-center"><strong><%= t('invoice.total') %></strong></td>
-      <td class="emptyrow text-xs-right"><%= @invoice.amount %></td>
+      <td class="emptyrow text-xs-right"><%= "€#{check_float(@invoice.amount)}" %></td>
     </tr>
     <tr>
       <td class="emptyrow"></td>
@@ -40,7 +40,7 @@
       <td class="emptyrow"></td>
       <td class="emptyrow"></td>
       <td class="emptyrow text-xs-center"><strong><%= t('invoice.paid') %></strong></td>
-      <td class="emptyrow text-xs-right"><%= @invoice.amount %></td>
+      <td class="emptyrow text-xs-right"><%= "€#{check_float(@invoice.amount)}" %></td>
     </tr>
     <tr>
       <td class="emptyrow"></td>
@@ -48,7 +48,7 @@
       <td class="emptyrow"></td>
       <td class="emptyrow"></td>
       <td class="emptyrow text-xs-center"><strong><%= t('invoice.balance_due') %></strong></td>
-      <td class="emptyrow text-xs-right"><%= Constant::BALANCE_DUE %></td>
+      <td class="emptyrow text-xs-right"><%= "€#{check_float(Constant::BALANCE_DUE)}" %></td>
     </tr>
   </tbody>
 </table>

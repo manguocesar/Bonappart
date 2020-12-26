@@ -29,7 +29,7 @@
                         <td><%= link_to apartment&.title, admin_apartment_path(apartment) %></td>
                         <td><%= apartment&.campus %></td>
                         <td><%= apartment&.display_proper_availability_date %></td>
-                        <td><%= apartment&.rent_rate&.deposit_amount %></td>
+                        <td><%= "€#{check_float(apartment&.rent_rate&.deposit_amount)}" %></td>
                         <td align="center">
                           <%= link_to admin_apartment_path(apartment), class:'btn btn-sm btn-primary' do %>
                             <i class='fa fa-eye'></i>

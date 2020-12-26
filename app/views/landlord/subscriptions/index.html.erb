@@ -24,7 +24,7 @@
                     <% @subscriptions.each do |subscription| %>
                       <tr role="row" class="odd">
                         <td><%= subscription.apartment.title %></td>
-                        <td><%= subscription&.invoice&.amount %></td>
+                        <td><%= "€#{check_float(subscription&.invoice&.amount)}" %></td>
                         <td><%= date_format(subscription.started_at) %></td>
                         <td><%= date_format(subscription.expired_at) %></td>
                         <td><%= subscription_status(subscription) %></td>

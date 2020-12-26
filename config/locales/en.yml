@@ -177,8 +177,8 @@ en:
     add_new_landlord: Add New Landlord
     add_new_student: Add New Student
   inquiry:
-    instructions: Instructions
-    login_message: You need to login to book accomodation or contact with landlord
+    instructions: Login
+    login_message: Login to book accomodation or contact with landlord
   mailer:
     send_inquiry:
       subject: Inquiry for appartment booking

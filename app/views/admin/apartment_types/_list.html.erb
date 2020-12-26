@@ -1,8 +1,8 @@
 <% @apartment_types.each do |apartment_type| %>
   <tr>
     <td><%= apartment_type.name %></td>
-    <td><%= apartment_type.landlord_listing_fee %></td>
-    <td><%= apartment_type.student_booking_fee %></td>
+    <td><%= "€#{check_float(apartment_type.landlord_listing_fee)}" %></td>
+    <td><%= "€#{check_float(apartment_type.student_booking_fee)}" %></td>
     <td><%= apartment_type.campus %></td>
     <td><%= apartment_type.status %></td>
     <td align="center">
