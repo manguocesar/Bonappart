@@ -45,13 +45,3 @@
     </div>
   </div>
 <% end %>
-
-<script type="text/javascript">
-  $(document).on('ready', function () {
-    var fields = $('input[name="apartment[rent_rate_attributes][included_in_net_rate][]"');
-    for (let i = 0; i < fields.length; i++) {
-      const element = fields[i];
-      textFieldDisable($(element))
-    }
-  })
-</script>
