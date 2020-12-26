@@ -137,7 +137,7 @@ class Apartment < ApplicationRecord
     if campus == SINGAPORE
       ApartmentType.singapore_campus.landlord_listing_fee
     else
-      ApartmentType.fantainebleau_campus.landlord_listing_fee
+      ApartmentType.fontainebleau_campus.landlord_listing_fee
     end
   end
 

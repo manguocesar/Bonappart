@@ -4,19 +4,19 @@
   <%= hidden_field_tag 'payment[subscription_id]', params[:subscription] %>
   <%= hidden_field_tag 'payment[amount]', params[:amount] %>
   <h3 class='mt-2 mb-2 text-center' style='color:#20c997'>Payment details</h3>
-  <h4 class='ml-5 mt-2'>Booking Details</h4>
+  <h4 class='ml-5 mt-2'><%= "#{detail_heading} Details" %></h4>
   <div class='row ml-4 mr-4'>
     <div class="form-group col-sm-2">
       <label>Apartment Name:</label>
-      <p><%= Booking.find_by(id: params[:booking_id]).apartment.title %></p>
+      <p><%= apartment_title %></p>
     </div>
     <div class="form-group col-sm-2">
-      <label>Booking start date:</label>
-      <p><%= date_format(Booking.find_by(id: params[:booking_id]).start_date) %></p>
+      <label><%= "#{detail_heading} start date:" %></label>
+      <p><%= booking_subscription_startdate %></p>
     </div>
     <div class="form-group col-sm-2">
-      <label>Booking end date:</label>
-      <p><%= date_format(Booking.find_by(id: params[:booking_id]).end_date) %></p>
+      <label><%= "#{detail_heading} end date:" %></label>
+      <p><%= booking_subscription_startdate %></p>
     </div>
     <div class="form-group col-sm-2">
       <label>Amount:</label>
