@@ -3,10 +3,10 @@
 # Subscriptions controller
 module Admin
   class SubscriptionsController < SubscriptionsController
-    before_action :load_apartment, :load_landlord, only: :new
+    before_action :load_apartment, :load_user, only: :new
 
     def index
-      @subscriptions = pagination(Subscription.all.order("created_at DESC"))
+      @subscriptions = pagination(Subscription.all.order('created_at DESC'))
     end
 
     def new
@@ -15,10 +15,9 @@ module Admin
 
     def create
       @subscription = Subscription.new(subscription_params)
-      @invoice = @subscription.build_invoice(invoice_params)
       if @subscription.save
-        @invoice.save
-        redirect_to invoice_details_path(invoice: @invoice&.id)
+        @subscription.apartment.update(subscribed: true)
+        redirect_to edit_apartment_path(@subscription.apartment)
       else
         render :new
       end
@@ -30,8 +29,8 @@ module Admin
       @apartment = Apartment.find_by_id(params[:apartment_id])
     end
 
-    def load_landlord
-      @landlord = load_apartment&.user
+    def load_user
+      @user = load_apartment&.user
     end
 
     def subscription_params

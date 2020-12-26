@@ -20,6 +20,7 @@
                       <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('apartment.campus') %></th>
                       <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('apartment.availability') %></th>
                       <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('rent.deposit_amount') %></th>
+                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:150px; text-align:center;"><%= t('apartment.property_date') %></th>
                       <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:150px; text-align:center;"><%= t('actions') %></th>
                     </tr>
                   </thead>
@@ -27,6 +28,7 @@
                     <% @apartments.each do |apartment| %>
                       <tr role="row" class="odd">
                         <td><%= link_to apartment&.title, admin_apartment_path(apartment) %></td>
+                        <td><%= apartment.user.fullname %></td>
                         <td><%= apartment&.campus %></td>
                         <td><%= apartment&.display_proper_availability_date %></td>
                         <td><%= "€#{check_float(apartment&.rent_rate&.deposit_amount)}" %></td>
