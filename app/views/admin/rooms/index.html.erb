@@ -2,57 +2,60 @@
 <% if @rooms.present? %>
   <div class="content">
     <div class="row">
-      <div class="col-sm-12">
-        <div id="frame" class="chatbox">
-          <div id="sidepanel">
-            <div id="contacts">
-              <ul>
-                <% @rooms.each do |room| %>
-                  <% active_class = (@room == room) ? 'active' : '' %>
-                  <%= link_to admin_room_path(room) do %>
-                    <li class="contact <%= active_class %>">
-
-                          <%= display_name_as_user_role(room) %>
-
-                    </li>
-                  <% end %>
-                <% end %>
-              </ul>
-            </div>
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4><strong class="card-title"><%= t('dashboard.conversations') %></strong></h4>
           </div>
-          <% if @room.present? %>
-            <div class="content p-0">
-              <div class="contact-profile text-wrap">
-                <div class="row">
-                <div class="col-sm-7 col-lg-9">
-                <div class="username"> <%= display_name_as_user_role(@room) %> </div>
-                <% @array_of_date_id = pluck_conversations_dates(@room) %>
-                </div>
-                <div class="col-sm-5 col-lg-3">
-                <select class="form-control message-date-dropdown selectpicker" id='messageDateDropdown'>
-                  <option value="all">All</option>
-                  <% @array_of_date_id.reverse.each do |record| %>
-                    <% message_date = record&.first&.strftime('%d %b, %Y') %>
-                    <% dropdown_val = proper_class_name(record) %>
-                    <option value="<%= dropdown_val %>"><%= message_date %></option>
-                  <% end %>
-                </select>
-                </div>
-                </div>
-              </div>
-              <div class="messages">
+          <div id="frame" class="chatbox">
+            <div id="sidepanel">
+              <div id="contacts">
                 <ul>
-                  <div id="messages">
-                    <% @room.messages.ascending_order.each do |message| %>
-                      <div>
-                        <%= render 'message', message: message %>
-                      </div>
+                  <% @rooms.each do |room| %>
+                    <% active_class = (@room == room) ? 'active' : '' %>
+                    <%= link_to admin_room_path(room) do %>
+                      <li class="contact <%= active_class %>">
+                        <%= display_name_as_user_role(room) %>
+                      </li>
                     <% end %>
-                  </div>
+                  <% end %>
                 </ul>
               </div>
             </div>
-          <% end %>
+            <% if @room.present? %>
+              <div class="content p-0">
+                <div class="contact-profile text-wrap">
+                  <div class="row">
+                  <div class="col-sm-7 col-lg-9">
+                  <div class="username"> <%= display_name_as_user_role(@room) %> </div>
+                  <% @array_of_date_id = pluck_conversations_dates(@room) %>
+                  </div>
+                  <div class="col-sm-5 col-lg-3">
+                  <select class="form-control message-date-dropdown selectpicker" id='messageDateDropdown'>
+                    <option value="all">All</option>
+                    <% @array_of_date_id.reverse.each do |record| %>
+                      <% message_date = record&.first&.strftime('%d %b, %Y') %>
+                      <% dropdown_val = proper_class_name(record) %>
+                      <option value="<%= dropdown_val %>"><%= message_date %></option>
+                    <% end %>
+                  </select>
+                  </div>
+                  </div>
+                </div>
+                <div class="messages">
+                  <ul>
+                    <div id="messages">
+                      <% @room.messages.ascending_order.each do |message| %>
+                        <div>
+                          <%= render 'message', message: message %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </ul>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

@@ -16,6 +16,7 @@
                 role="grid" aria-describedby="bootstrap-data-table_info">
                 <thead>
                   <tr role="row">
+                    <th class="text-center"><%= t('sr_no') %></th>
                     <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.invoice_number') %></th>
                     <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.property_name') %></th>
                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.amount') %></th>
@@ -25,8 +26,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% @invoices.each do |invoice| %>
+                  <% @invoices.each.with_index(1) do |invoice, index| %>
                     <tr role="row" class="odd">
+                      <td class="text-center"><%= pagination_params + index %></td>
                       <td><%= link_to "##{invoice.invoice_number}", invoice_show_path(invoice) %></td>
                       <td><%= invoice.apartment_title %></td>
                       <td><%= "€#{check_float(invoice&.amount)}" %></td>
