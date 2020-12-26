@@ -93,6 +93,6 @@ module ApartmentHelper
   end
 
   def check_float(field)
-    field.to_i == field ? field.to_i : field
+    '%.2f' % field
   end
 end
