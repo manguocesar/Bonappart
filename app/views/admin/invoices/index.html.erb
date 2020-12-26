@@ -20,7 +20,7 @@
                     <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.invoice_number') %></th>
                     <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.property_name') %></th>
                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.amount') %></th>
-                    <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.date') %></th>
+                    <th class="sorting text-center" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.date') %></th>
                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('invoice.status') %></th>
                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="2"><%= t('actions') %></th>
                   </tr>
@@ -32,7 +32,9 @@
                       <td><%= link_to "##{invoice.invoice_number}", invoice_show_path(invoice) %></td>
                       <td><%= invoice.apartment_title %></td>
                       <td><%= "€#{check_float(invoice&.amount)}" %></td>
-                      <td><%= date_format(invoice.date) %></td>
+                      <td class="text-center">
+                        <%= date_format(invoice.date) %>
+                      </td>
                       <td><%= invoice.status %></td>
                       <td>
                         <%= link_to edit_admin_invoice_path(invoice) do %>

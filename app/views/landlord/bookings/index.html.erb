@@ -14,11 +14,11 @@
                   <tr role="row">
                     <th class="text-center"><%= t('sr_no') %></th>
                     <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"><%= t('booking.property_name') %></th>
-                    <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('booking.start_date') %></th>
-                    <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('booking.end_date') %></th>
+                    <th class="sorting text-center" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('booking.start_date') %></th>
+                    <th class="sorting text-center" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('booking.end_date') %></th>
                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.firstname') %></th>
                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('users.lastname') %></th>
-                    <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:180px; text-align:center;" ><%= t('users.email') %></th>
+                    <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:180px;" ><%= t('users.email') %></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -26,8 +26,8 @@
                     <tr role="row" class="odd">
                       <td class="text-center"><%= pagination_params + index %></td>
                       <td><%= booking&.apartment_title %></td>
-                      <td class='text-center'><%= date_format(booking&.start_date) %><br><%= time_format(booking&.start_date) %></td>
-                      <td class='text-center'><%= date_format(booking&.end_date) %><br><%= time_format(booking&.end_date) %></td>
+                      <td class="text-center"><%= date_format(booking&.start_date) %></td>
+                      <td class="text-center"><%= date_format(booking&.end_date) %></td>
                       <td><%= booking&.user&.firstname %></td>
                       <td><%= booking&.user&.lastname %></td>
                       <td><%= booking&.user&.email %></td>

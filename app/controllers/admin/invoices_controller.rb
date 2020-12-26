@@ -8,7 +8,7 @@ module Admin
 
     # Invoice listings
     def index
-      @invoices = pagination(Invoice.all.order(created_at: :desc))
+      @invoices = pagination(Invoice.paid_invoices.order(created_at: :desc))
     end
 
     # New invoice
