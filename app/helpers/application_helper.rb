@@ -59,4 +59,8 @@ module ApplicationHelper
       landlord_bookings_path
     end
   end
+
+  def pagination_params
+    ((current_page || 1).to_i - 1) * Constant::PER_PAGE
+  end
 end

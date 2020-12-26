@@ -5,7 +5,7 @@ module Landlord
   class BookingsController < BookingsController
 
     def index
-      @bookings = pagination(bookings).per(12)
+      @bookings = pagination(bookings)
     end
 
     private

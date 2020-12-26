@@ -13,6 +13,7 @@
                   role="grid" aria-describedby="bootstrap-data-table_info">
                   <thead>
                     <tr role="row">
+                      <th class="text-center"><%= t('sr_no') %></th>
                       <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('subscription.apartment') %></th>
                       <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('subscription.amount') %></th>
                       <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1"><%= t('subscription.start_date') %></th>
@@ -21,8 +22,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% @subscriptions.each do |subscription| %>
+                    <% @subscriptions.each.with_index(1) do |subscription, index| %>
                       <tr role="row" class="odd">
+                        <td class="text-center"><%= pagination_params + index %></td>
                         <td><%= subscription.apartment.title %></td>
                         <td><%= "€#{check_float(subscription&.invoice&.amount)}" %></td>
                         <td><%= date_format(subscription.started_at) %></td>
