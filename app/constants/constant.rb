@@ -35,7 +35,7 @@ module Constant
   (1..12).each do |number|
     MONTH_ARRAY << [Date::MONTHNAMES[number], number.to_s]
   end
-  YEAR_ARRAY = ('2020'..'2030').to_a
+  YEAR_ARRAY = ('2021'..'2030').to_a
 
   DISTANCE_FROM_CAMPUS = [
     '<10 minutes’ walk from campus',

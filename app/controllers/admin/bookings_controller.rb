@@ -6,7 +6,7 @@ module Admin
     before_action :load_apartment, only: :create
 
     def index
-      @bookings = pagination(Booking.order(created_at: :desc))
+      @bookings = pagination(Booking.paid.order(created_at: :desc))
     end
 
     def create
