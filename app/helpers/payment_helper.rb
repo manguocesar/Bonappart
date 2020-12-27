@@ -29,13 +29,13 @@ module PaymentHelper
   end
 
   # Find start date of booking/subscription
-  def booking_subscription_startdate
+  def booking_subscription_start_date
     record = find_booking_subscription(params)
     record.instance_of?(Booking) ? date_format(record.start_date) : date_format(record.started_at)
   end
 
   # Find end date of booking/subscription
-  def booking_subscription_enddate
+  def booking_subscription_end_date
     record = find_booking_subscription(params)
     record.instance_of?(Booking) ? date_format(record.end_date) : date_format(record.expired_at)
   end

@@ -12,7 +12,9 @@ module Landlord
 
     def bookings
       if current_user.present? && current_user.apartments.present?
-        current_user.apartments.joins(:booking).map(&:booking)
+        current_user.apartments.joins(:booking).map {
+          |aprt| aprt.booking if aprt.booking.paid?
+        }.compact.flatten
       else
         []
       end
