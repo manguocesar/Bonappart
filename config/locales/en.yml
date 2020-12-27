@@ -87,6 +87,8 @@ en:
     sign_up_as: Sign Up As
     min_character: 6 characters minimum
     leave_blank: Leave blank if you don't want to change password
+    registerd_at: Date of Registration
+    booking_count: No of Bookings
   filter_results: Filter
   search: Seacrh
   confirmation: Are You Sure You want to Delete This?
@@ -143,6 +145,7 @@ en:
     select_apartment_type: Select Type
     select_distance: Select Distance
     property_date: Property Date
+    landlord_name: Landlord Name
     confirmation: 'If you delete this record, then the associated subscription, bookings, invoices and payments will also be deleted. Are you sure you want to delete this record?'
   dashboard:
     count_of_ads: Count of Ads

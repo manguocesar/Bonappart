@@ -39,11 +39,7 @@ module ApplicationHelper
   end
 
   def date_format(date)
-    date.strftime('%B %d, %Y') if date.present?
-  end
-
-  def time_format(date)
-    date&.strftime('%I:%M %p') if date.present?
+    date.strftime('%B %d, %Y %I:%M %p') if date.present?
   end
 
   def display_date(date)

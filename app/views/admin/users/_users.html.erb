@@ -8,7 +8,12 @@
       <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.email') %></th>
       <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.username') %></th>
       <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.phone_no') %></th>
-      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:150px; text-align:center;">Actions</th>
+      <% if params[:type] == 'landlord' %>
+        <th class="sorting text-center" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.registerd_at') %></th>
+      <% else %>
+        <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.booking_count') %></th>
+      <% end %>
+      <th class="sorting text-center" tabindex="0" aria-controls="bootstrap-data-table" style="width:150px; text-align:center;">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +25,11 @@
         <td><%= user.email %></td>
         <td><%= user.username %></td>
         <td><%= user.phone_no %></td>
+        <% if params[:type] == 'landlord' %>
+          <td class="text-center"><%= date_format(user.created_at) %></td>
+        <% else %>
+          <td class="text-center"><%= user.bookings.count %></td>
+        <% end %>
         <td align="center">
         <%= link_to edit_admin_user_path(user.id, type: params[:type]), class:'btn btn-sm btn-success' do %>
           <i class="fa fa-pencil"></i>
