@@ -11,7 +11,8 @@
         <span><i class='ti-stats-up'></i> Booking Status: <%= booking&.status&.humanize %></span><br>
         <span><i class="ti-calendar"></i> Booking From: <%= display_date(booking&.start_date) %> To: <%= display_date(booking&.end_date) %></span><br>
         <span><i class='ti-user'></i> Landlord Name: <%= booking&.apartment&.landlord_name %></span><br>
-        <span><i class='ti-mobile'></i> Landlord Contact: <%= booking&.apartment&.user_phone_no %></span>
+        <span><i class='ti-mobile'></i> Landlord Contact: <%= booking&.apartment&.user_phone_no %></span><br>
+        <span><i class='ti-email'></i> Landlord Email: <%= booking&.apartment&.user&.email %></span>
       </div>
     </div>
   </div>

@@ -146,6 +146,8 @@ en:
     select_distance: Select Distance
     property_date: Property Date
     landlord_name: Landlord Name
+    landlord_contact: Landlord Contact
+    landlord_details: Landlord Details
     confirmation: 'If you delete this record, then the associated subscription, bookings, invoices and payments will also be deleted. Are you sure you want to delete this record?'
   dashboard:
     count_of_ads: Count of Ads
