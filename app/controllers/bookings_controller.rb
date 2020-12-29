@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
   before_action :logged_in_user?, only: :student_bookings
 
   def index
-    @bookings = pagination(Booking.all)
+    @bookings = pagination(Booking.paid)
   end
 
   def show; end
@@ -44,7 +44,7 @@ class BookingsController < ApplicationController
 
   # Bookings of student
   def student_bookings
-    @bookings = current_user.bookings
+    @bookings = current_user.bookings.paid
     @bookings = if params[:start_date].present? && params[:end_date].present?
                   filter_by_status(@bookings).created_between(params[:start_date], params[:end_date])
                 else

@@ -39,7 +39,7 @@ module ApplicationHelper
   end
 
   def date_format(date)
-    date.strftime('%B %d, %Y') if date.present?
+    date.strftime('%B %d, %Y %I:%M %p') if date.present?
   end
 
   def display_date(date)
@@ -54,5 +54,9 @@ module ApplicationHelper
     elsif current_user.landlord?
       landlord_bookings_path
     end
+  end
+
+  def pagination_params
+    ((current_page || 1).to_i - 1) * Constant::PER_PAGE
   end
 end

@@ -7,36 +7,36 @@
         </div>
         <div class="card-body">
           <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-
-              <div class="table-responsive">
-                <table id="bootstrap-data-table" class="table table-bordered dataTable no-footer"
-                  role="grid" aria-describedby="bootstrap-data-table_info">
-                  <thead>
-                    <tr role="row">
-                      <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"><%= t('booking.property_name') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('booking.start_date') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('booking.end_date') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.firstname') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('users.lastname') %></th>
-                      <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:180px; text-align:center;" ><%= t('users.email') %></th>
+            <div class="table-responsive">
+              <table id="bootstrap-data-table" class="table table-bordered dataTable no-footer"
+                role="grid" aria-describedby="bootstrap-data-table_info">
+                <thead>
+                  <tr role="row">
+                    <th class="text-center"><%= t('sr_no') %></th>
+                    <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"><%= t('booking.property_name') %></th>
+                    <th class="sorting text-center" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('booking.start_date') %></th>
+                    <th class="sorting text-center" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('booking.end_date') %></th>
+                    <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('users.firstname') %></th>
+                    <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" ><%= t('users.lastname') %></th>
+                    <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:180px;" ><%= t('users.email') %></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @bookings.each.with_index(1) do |booking, index| %>
+                    <tr role="row" class="odd">
+                      <td class="text-center"><%= pagination_params + index %></td>
+                      <td><%= booking&.apartment_title %></td>
+                      <td class="text-center"><%= date_format(booking&.start_date) %></td>
+                      <td class="text-center"><%= date_format(booking&.end_date) %></td>
+                      <td><%= booking&.user&.firstname %></td>
+                      <td><%= booking&.user&.lastname %></td>
+                      <td><%= booking&.user&.email %></td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <% @bookings.each do |booking| %>
-                      <tr role="row" class="odd">
-                        <td><%= booking&.apartment_title %></td>
-                        <td><%= date_format(booking&.start_date) %></td>
-                        <td><%= date_format(booking&.end_date) %></td>
-                        <td><%= booking&.user&.firstname %></td>
-                        <td><%= booking&.user&.lastname %></td>
-                        <td><%= booking&.user&.email %></td>
-                      </tr>
-                    <% end %>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
+                  <% end %>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <div class="row">
               <% if controller_name == 'dashboard' %>
                 <div class="col-12 col-sm-12 col-md-12 at-btnarea-mt float-left">

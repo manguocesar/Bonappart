@@ -55,17 +55,8 @@ module ApartmentHelper
     ApartmentType.pluck(:name).map(&:humanize)
   end
 
-  def fetch_apartment_types
-    ApartmentType.pluck(:name, :id).uniq
-  end
-
   def apartment_types_array
-    fetch_apartment_types.delete_if { |a| a.first == Constant::DEFAULT_APARTMENT_TYPE }
-  end
-
-  def find_campus_from_default_type_id
-    default_apartment_types = ApartmentType.where(name: Constant::DEFAULT_APARTMENT_TYPE)
-    default_apartment_types.pluck(:campus, :id).join('_')
+    ApartmentType.pluck(:name, :id).uniq
   end
 
   def other_amenities_text(amenities)
@@ -99,5 +90,9 @@ module ApartmentHelper
     when 'users'
       params['type'] == 'landlord' ? 'landlord' : 'student'
     end
+  end
+
+  def check_float(field)
+    '%.2f' % field
   end
 end

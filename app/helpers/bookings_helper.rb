@@ -10,8 +10,4 @@ module BookingsHelper
     path = current_user.landlord? ? landlord_dashboard_path : admin_dashboard_path
     ['My Dashboard', path]
   end
-
-  def time_format(date)
-    date&.strftime('%I:%M %p')
-  end
 end

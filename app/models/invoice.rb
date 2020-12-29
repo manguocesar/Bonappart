@@ -8,6 +8,9 @@ class Invoice < ApplicationRecord
   # Status enum
   enum status: { unpaid: 0, paid: 1 }
 
+  # Scopes
+  scope :paid_invoices, -> { where(status: 'paid') }
+
   def payment_amount
     booking.present? ? Constant::PAYMENT_AMOUNT : subscription.subscription_amount
   end

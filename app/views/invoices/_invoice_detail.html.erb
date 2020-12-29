@@ -19,7 +19,7 @@
       <%= "#{t('invoice.end_date')}: #{date_format(@invoice.end_date)}" %>
     </div>
     <div class="col-sm-12 mb-3">
-      <%= "#{t('invoice.amount')}: #{@invoice.payment_amount}" %>
+      <%= "#{t('invoice.amount')}: €#{check_float(@invoice.payment_amount)}" %>
     </div>
     <div class="col-sm-12 mb-3">
       <%= "#{t('invoice.status')}: #{@invoice.status}" %>

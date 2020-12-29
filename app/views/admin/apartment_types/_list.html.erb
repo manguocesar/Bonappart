@@ -1,13 +1,14 @@
-<% @apartment_types.each do |apartment_type| %>
+<% @apartment_types.each.with_index(1) do |apartment_type, index| %>
   <tr>
+    <td class="text-center"><%= pagination_params + index %></td>
     <td><%= apartment_type.name %></td>
-    <td><%= apartment_type.landlord_listing_fee %></td>
-    <td><%= apartment_type.student_booking_fee %></td>
+    <td><%= "€#{check_float(apartment_type.landlord_listing_fee)}" %></td>
+    <td><%= "€#{check_float(apartment_type.student_booking_fee)}" %></td>
     <td><%= apartment_type.campus %></td>
     <td><%= apartment_type.status %></td>
     <td align="center">
       <%= link_to 'Edit', edit_admin_apartment_type_path(apartment_type), class:'btn btn-sm btn-success', remote: true %>
-      <% unless apartment_type.default %>
+      <% unless apartment_type.default_type %>
         <%= link_to 'Delete', admin_apartment_type_path(apartment_type), class:'btn btn-sm btn-danger', method: :delete, data: { confirm: t('confirmation') } %>
       <% end %>
     </td>

@@ -5,8 +5,13 @@ module InquiryHelper
     inquiry = Inquiry.find_by(apartment_id: params[:id])
     url =
       if inquiry.present?
-        room = Room.find_by(inquiry: inquiry)
-        room.present? ? room_path(room) : inquire_creation_url
+        past_inquiry = inquiry&.sender_id.eql?(current_user&.id)
+        if past_inquiry
+          room = Room.find_by(inquiry: inquiry)
+          room.present? ? room_path(room) : inquire_creation_url
+        else
+          inquire_creation_url
+        end
       else
         inquire_creation_url
       end

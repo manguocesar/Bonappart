@@ -21,4 +21,33 @@ module PaymentHelper
   def payment_url(params)
     params[:booking_id].present? ? create_payment_method_path : create_subscription_payment_path
   end
+
+  # Find apartment title
+  def apartment_title
+    record = find_booking_subscription(params)
+    record&.apartment.title
+  end
+
+  # Find start date of booking/subscription
+  def booking_subscription_start_date
+    record = find_booking_subscription(params)
+    record.instance_of?(Booking) ? date_format(record.start_date) : date_format(record.started_at)
+  end
+
+  # Find end date of booking/subscription
+  def booking_subscription_end_date
+    record = find_booking_subscription(params)
+    record.instance_of?(Booking) ? date_format(record.end_date) : date_format(record.expired_at)
+  end
+
+  # Find Booking/subscription
+  def find_booking_subscription(params)
+    params[:booking_id].present? ? Booking.find_by(id: params[:booking_id]) : Subscription.find_by(id: params[:subscription])
+  end
+
+  # Detail heading
+  def detail_heading
+    record = find_booking_subscription(params)
+    record.instance_of?(Booking) ? 'Booking' : 'Subscription'
+  end
 end

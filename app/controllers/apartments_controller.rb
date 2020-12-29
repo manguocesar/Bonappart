@@ -10,7 +10,7 @@ class ApartmentsController < ApplicationController
   end
 
   def show
-    @similar_apartments = @apartment.nearbys(30)&.where&.not(id: @apartment&.id)
+    @similar_apartments = @apartment.nearbys(30)&.where&.not(id: @apartment&.id)&.subscribed
   end
 
   def new
@@ -36,7 +36,7 @@ class ApartmentsController < ApplicationController
 
   def update
     begin
-      if @apartment.update(apartment_params)
+      if @apartment.update(apartment_params.except(:user_id))
         redirect_to apartment_path(@apartment), notice: t("apartment.update")
       else
         render :edit

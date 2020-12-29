@@ -9,7 +9,7 @@ module Landlord
     # GET
     # Invoice listings
     def index
-      @invoices = pagination(current_user.invoices.order('created_at DESC')).per(12)
+      @invoices = pagination(current_user.invoices.paid_invoices.order('created_at DESC'))
     end
 
     # GET

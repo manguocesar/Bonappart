@@ -44,7 +44,7 @@
                   <tr><td><%= t('apartment.floor') %>: <span><%= @apartment.floor %></span></li></tr>
                   <tr><td><%= t('apartment.total_bedrooms') %>: <span><%= @apartment.total_bedrooms %></span></td></tr>
                   <tr><td><%= t('apartment.area') %>: <span><%= @apartment.area %></li></tr>
-                  <tr><td><%= t('apartment.distance_from_campus') %>: <span><%= @apartment.distance_from_campus %></span></td></tr>
+                  <tr><td><%= t('apartment.distance_from_campus') %>: <span><%= "#{@apartment.duration_from_campus} minutes" %></span></td></tr>
                   <tr><td><%= t('apartment.other_facilities') %>: <span><%= @apartment.other_facilities %></span></td></tr>
                   <tr><td><%= t('apartment.virtual_visit_link') %>: <span><a href="<%= @apartment.virtual_visit_link %>"><%= @apartment.virtual_visit_link %></a></span></td></tr>
                 </tbody>
@@ -70,7 +70,7 @@
                     <tr>
                       <td><%= t('rent.net_rate') %>:
                         <span>
-                          <%= rent&.net_rate %>
+                          €<%= check_float(rent&.net_rate) %>
                           <% if rent&.included_in_net_rate.present? %>
                             (Including <%= rent&.included_in_net_rate&.map(&:humanize)&.join(', ') %>)
                           <% end %>
@@ -80,11 +80,11 @@
                     <% RentRate::INCLUDED_IN_NET_RATE_FIELDS.each do |field| %>
                       <% if !is_included_in_net_rate?(rent&.included_in_net_rate, field) %>
                         <% if rent&.send(field).present? %>
-                          <tr><td><%= t("rent.#{field}") %>: <span><%= rent&.send(field) %></span></td></tr>
+                          <tr><td><%= t("rent.#{field}") %>: <span>€<%= check_float(rent&.send(field)) %></span></td></tr>
                         <% end %>
                       <% end %>
                     <% end %>
-                    <tr><td><%= t('rent.deposit_amount') %>: <span><%= rent&.deposit_amount %></span></td></tr>
+                    <tr><td><%= t('rent.deposit_amount') %>: <span>€<%= check_float(rent&.deposit_amount) %></span></td></tr>
                   </tbody>
                 </table>
               </div>

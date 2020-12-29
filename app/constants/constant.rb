@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module Constant
+  PER_PAGE = 10
+
   USER_FIELDS = %i[firstname lastname username phone_no birthdate
                    gender address email password password_confirmation image terms_of_service].freeze
 
@@ -12,10 +14,13 @@ module Constant
 
   CONTACT_US_PARAMS = %i[first_name last_name email subject message].freeze
 
-  FORM_BASED_ON_LINKS = { 'login': ['Login', 'users/sessions/new'], 'student': ['Register', 'users/registrations/new'],
-                          'host': ['Become A Host', 'users/registrations/new'],
-                          'forgot_password': ['Forgot Your Password?', 'users/passwords/new'],
-                          'resend_confirmation': ['Resend Confirmation', 'users/confirmations/new'] }.freeze
+  FORM_BASED_ON_LINKS = {
+    'login': ['Login', 'users/sessions/new'],
+    'student': ['Register', 'users/registrations/new'],
+    'host': ['Become A Host', 'users/registrations/new'],
+    'forgot_password': ['Forgot Your Password?', 'users/passwords/new'],
+    'resend_confirmation': ['Resend Confirmation', 'users/confirmations/new']
+  }.freeze
 
   APARTMENT_OTHER_AMENITIES = %w[shower_room total_bedrooms].freeze
   APARTMENT_TYPE_PARAMS = %i[name amount image].freeze
@@ -26,13 +31,11 @@ module Constant
   EDIT = 'edit'
   ZERO = '0.0'
 
-  DEFAULT_APARTMENT_TYPE = 'default'
-
   MONTH_ARRAY = []
   (1..12).each do |number|
     MONTH_ARRAY << [Date::MONTHNAMES[number], number.to_s]
   end
-  YEAR_ARRAY = ('2020'..'2030').to_a
+  YEAR_ARRAY = ('2021'..'2030').to_a
 
   DISTANCE_FROM_CAMPUS = [
     '<10 minutes’ walk from campus',
