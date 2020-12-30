@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 module RoomsHelper
+
+  def find_apartment_for_current_room(room)
+    room&.inquiry&.apartment&.id if room&.inquiry&.apartment&.subscribed?
+  end
+
   def display_name_as_user_role(room)
     if current_user.student?
       room&.name_for_student

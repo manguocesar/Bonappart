@@ -11,14 +11,12 @@
           <%= link_to room, class: 'room-link' do %>
             <% active_class = (@room == room) ? 'active' : '' %>
             <div class="room-card <%= active_class %>">
-
-                <span class='name'><%= display_name_as_user_role(room) %><span><br>
-                <!--
-                  <span class='member-count'>
-                    <small><%#= room.users.uniq.count %> Members</small>
-                  </span>
-                -->
-
+              <span class='name'><%= display_name_as_user_role(room) %><span><br>
+              <!--
+                <span class='member-count'>
+                  <small><%#= room.users.uniq.count %> Members</small>
+                </span>
+              -->
             </div>
           <% end %>
         <% end %>
@@ -31,6 +29,11 @@
               <span href="#">
                 <%= display_name_as_user_role(@room) %>
               </span>
+              <% apartment_id = find_apartment_for_current_room(@room) %>
+              <% if current_user.student? && apartment_id.present? %>
+                <%= link_to t('booking.book_now'), apartment_path(apartment_id), class: 'btn btn-success bookNowBtn float-right' %>
+              <% end %>
+
               <!-- <small><%#= @room.users.uniq.count %> Members</small>  -->
             </nav>
             <div id="messages">

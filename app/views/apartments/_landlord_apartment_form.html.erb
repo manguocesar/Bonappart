@@ -108,12 +108,9 @@
     ApartmentForm.validate();
     $('.selectpicker').selectpicker();
   });
-  var campus_and_default_type_id = "<%=  find_campus_from_default_type_id %>"
-  $('#apartment_campus').on('change', function () {
-    var field_value = $(this).val();
-    var default_option = $('#apartment_apartment_type_id option:contains("<%= Constant::DEFAULT_APARTMENT_TYPE %>")')
-    if (field_value !== ''){
-      default_option.val(campus_and_default_type_id.split(`${field_value}_`)[1][0])
-    }
-  })
+  var fields = $('input[name="apartment[rent_rate_attributes][included_in_net_rate][]"');
+  for (let i = 0; i < fields.length; i++) {
+    const element = fields[i];
+    textFieldDisable($(element))
+  }
 </script>

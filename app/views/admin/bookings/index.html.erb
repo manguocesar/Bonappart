@@ -24,6 +24,7 @@
                     <th class="sorting text-center" tabindex="0" aria-controls="bootstrap-data-table"><%= t('booking.start_date') %></th>
                     <th class="sorting text-center" tabindex="0" aria-controls="bootstrap-data-table"><%= t('booking.end_date') %></th>
                     <th class="sorting text-center" tabindex="0" aria-controls="bootstrap-data-table"><%= t('booking.booking_date') %></th>
+                    <th class="sorting text-center" tabindex="0" aria-controls="bootstrap-data-table"><%= t('actions') %></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -36,7 +37,11 @@
                       <td><%= booking&.user&.email %></td>
                       <td class="text-center"><%= date_format(booking&.start_date) %></td>
                       <td class="text-center"><%= date_format(booking&.end_date) %></td>
-                      <td class="text-center"><%= date_format(booking&.created_at) %>
+                      <td class="text-center"><%= date_format(booking&.created_at) %></td>
+                      <td class='text-center'>
+                        <%= link_to admin_booking_cancel_booking_path(booking), method: :put, data: { confirm: t('cancelled_confirmation') } do %>
+                          <i class='fa fa-window-close fa-2x'></i>
+                        <% end %>
                       </td>
                     </tr>
                   <% end %>

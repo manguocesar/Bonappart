@@ -92,6 +92,7 @@ en:
   filter_results: Filter
   search: Seacrh
   confirmation: Are You Sure You want to Delete This?
+  cancelled_confirmation: Are You Sure You want to Cancel This Booking?
   apartments: Accomodations
   apartment:
     apartment_title: Apartment Title
@@ -216,6 +217,7 @@ en:
     book_property: Book Property
     new: New Booking
     booking_date: Booking Date
+    cancelled: 'Booking cancelled successfully'
   address:
     area: Area
     postal_code: Postal code

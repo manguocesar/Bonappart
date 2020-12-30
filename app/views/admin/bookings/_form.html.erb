@@ -1,5 +1,6 @@
 <%= form_for(booking, url: url, method: method, html: { id: 'user_booking_form' }) do |form| %>
   <%= render 'shared/messages' %>
+  <%= form.hidden_field :status, value: 'paid'  %>
   <div class="row">
     <div class="form-group col-sm-12">
       <%= form.label t('booking.student'), class:"col-form-label" %>
@@ -22,7 +23,7 @@
   </div>
   <%= form.hidden_field 'booking[status]', value: 'paid' %>
   <div class="actions text-right">
-    <%= link_to 'Back', admin_users_path, class: 'btn btn-dark' %>
+    <%= link_to 'Back', admin_bookings_path, class: 'btn btn-dark' %>
     <%= form.submit t('booking.book_now'), class:"btn btn-success" %>
   </div>
 <% end %>
