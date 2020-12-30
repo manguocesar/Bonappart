@@ -20,6 +20,16 @@ module Admin
       end
     end
 
+    def cancel_booking
+      @booking = Booking.find_by(id: params[:booking_id])
+      if @booking.present?
+        @booking.update(cancelled: true, cancelled_at: Time.now)
+        @booking&.apartment&.update(availability: true)
+        flash[:success] = t('booking.cancelled')
+      end
+      redirect_to admin_bookings_path
+    end
+
     private
 
     def load_apartment
