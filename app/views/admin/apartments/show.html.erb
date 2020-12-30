@@ -62,36 +62,46 @@
       </div>
       <div class="card-body">
         <div id="bootstrap-data-table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-
-            <div class="table-responsive">
-              <table id="bootstrap-data-table" class="table table-bordered dataTable no-footer"
-                role="grid" aria-describedby="bootstrap-data-table_info">
-                <tbody>
-                  <% rent = @apartment.rent_rate %>
-                  <tr>
-                    <td><%= t('rent.net_rate') %>:
-                      <span>
-                        €<%= check_float(rent&.net_rate) %>
-                        <% if rent&.included_in_net_rate.present? %>
-                          (Including <%= rent&.included_in_net_rate&.map(&:humanize)&.join(', ') %>)
-                        <% end %>
-                      </span>
-                    </td>
-                  </tr>
-                  <% RentRate::INCLUDED_IN_NET_RATE_FIELDS.each do |field| %>
-                    <% if !is_included_in_net_rate?(rent&.included_in_net_rate, field) %>
-                      <% if rent&.send(field).present? %>
-                        <tr><td><%= t("rent.#{field}") %>: <span>€<%= check_float(rent&.send(field)) %></span></td></tr>
+          <div class="table-responsive">
+            <table id="bootstrap-data-table" class="table table-bordered dataTable no-footer"
+              role="grid" aria-describedby="bootstrap-data-table_info">
+              <tbody>
+                <% rent = @apartment.rent_rate %>
+                <tr>
+                  <td><%= t('rent.net_rate') %>:
+                    <span>
+                      €<%= check_float(rent&.net_rate) %>
+                      <% if rent&.included_in_net_rate.present? %>
+                        (Including <%= rent&.included_in_net_rate&.map(&:humanize)&.join(', ') %>)
                       <% end %>
+                    </span>
+                  </td>
+                </tr>
+                <% RentRate::INCLUDED_IN_NET_RATE_FIELDS.each do |field| %>
+                  <% if !is_included_in_net_rate?(rent&.included_in_net_rate, field) %>
+                    <% if rent&.send(field).present? %>
+                      <tr><td><%= t("rent.#{field}") %>: <span>€<%= check_float(rent&.send(field)) %></span></td></tr>
                     <% end %>
                   <% end %>
-                  <tr>
-                    <td><%= t('rent.deposit_amount') %>: <span>€<%= check_float(rent&.deposit_amount) %></span></td>
-                  </tr>
-                </tbody>
+                <% end %>
+                <tr>
+                  <td><%= t('rent.deposit_amount') %>: <span>€<%= check_float(rent&.deposit_amount) %></span></td>
+                </tr>
               </table>
-            </div>
-
+            </tbody>
+          </div>
+          <div class="table-responsive">
+            <table id="bootstrap-data-table" class="table table-bordered dataTable no-footer"
+              role="grid" aria-describedby="bootstrap-data-table_info">
+              <tbody>
+                <h4 class="card-title"><%= t('apartment.landlord_details') %></h4>
+                <tr>
+                  <td><%= t('apartment.landlord_name') %>: <span><%= @apartment.user.fullname %></span></td>
+                </tr>
+                <tr><td><%= t('apartment.landlord_contact') %>: <span><%= @apartment.user.phone_no %></span></td></tr>
+              </table>
+            </tbody>
+          </div>
         </div>
       </div>
       <div class="card-footer">
