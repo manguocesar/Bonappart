@@ -4,7 +4,8 @@
       <div class='card'>
         <div class="card-header"><h3 class="card-title">Add Apartment</h3></div>
         <div class='card-body'>
-          <%= render partial: 'apartments/form', locals: { apartment: @apartment, url: landlord_apartments_path } %>
+          <% partial_name = current_user.landlord? ? 'apartments/landlord_apartment_form' : 'apartments/form' %>
+          <%= render partial: partial_name, locals: { apartment: @apartment, url: landlord_apartments_path } %>
         </div>
       </div>
     </div>
