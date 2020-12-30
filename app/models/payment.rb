@@ -34,4 +34,9 @@ class Payment < ApplicationRecord
   def self.payment_statuses
     statuses.map { |k, v| [k.humanize.capitalize, k] }
   end
+
+  # Find the booked property
+  def booked_apartment
+    booking&.apartment
+  end
 end

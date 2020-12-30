@@ -1,5 +1,7 @@
-Hello Student booking is confirmed
-here is Landlord details
-<%= @landlord.firstname %>
-<%= @landlord.lastname %>
-<%= @landlord.phone_no %>
+Hello <%= @student.fullname %>, <br/><br/>
+
+A booking for the apartment <%= @apartment.title %> has been confirmed. <br/><br/>
+here are the Landlord details: <br/><br/>
+Landlord Name: <%= @landlord.fullname %>
+Landlord Contact No: <%= @landlord.phone_no %>
+Booking from <%= @apartment.booking.start_date.strftime('%B %d, %Y %I:%M %p') %> to <%= @apartment.booking.end_date.strftime('%B %d, %Y %I:%M %p') %><br/>

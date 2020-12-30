@@ -19,6 +19,7 @@ class InquiriesController < ApplicationController
   def create
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
+      flash[:success] = 'Inquiry send to the landlord successfully.'
       InquiryMailerWorker.perform_async(@inquiry&.id)
     end
     respond_to do |format|
