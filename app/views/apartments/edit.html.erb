@@ -6,7 +6,8 @@
     <div class="card-body">
       <div class="row">
         <div class="col-sm-12">
-          <%= render 'form', apartment: @apartment, url: show_page_apartments %>
+          <% partial_name = current_user.landlord? ? 'landlord_apartment_form' : 'form' %>
+          <%= render partial_name, apartment: @apartment, url: show_page_apartments %>
         </div>
       </div>
     </div>

@@ -32,7 +32,7 @@
         <div class="col-12 col-sm-12 col-md-12 push-md-0 col-lg-10 push-lg-1 col-xl-8 push-xl-2">
           <div class="at-sectionhead">
             <div class="at-sectiontitle">
-              <h2>Recommended For You</h2>
+              <h2>Explore</h2>
               <span>Overview of properties</span>
             </div>
             <div class="at-description">
@@ -71,45 +71,6 @@
     </div>
   </section>
   <!-- Recommended Section End -->
-  <!-- Top Categories Start -->
-  <section class="at-haslayout at-main-section at-sectionbg">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-sm-12 col-md-12 push-md-0 col-lg-10 push-lg-1 col-xl-8 push-xl-2">
-          <div class="at-sectionhead">
-            <div class="at-sectiontitle">
-              <h2><%= t('homes.explore') %></h2>
-              <span><%= t('homes.explore_desc') %></span>
-            </div>
-            <div class="at-description">
-              <p><%= t('homes.explore_types') %></p>
-            </div>
-          </div>
-        </div>
-        <div class="at-category-gallery at-haslayout">
-          <% apartment_type_collection.each do |type| %>
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 float-left">
-              <a href="javascript:void(0);">
-                <figure class="at-category-img">
-                  <%= link_to apartments_path do %>
-                    <%= image_tag image_path('category/img-01.jpg') %>
-                    <%#= image_tag url_for(image), alt:"img description", class: "item" %>
-                  <% end %>
-                  <figcaption><h3><%= apartment_type_name(type) %></h3><span><%= "#{type&.apartments&.subscribed&.count} Listings" %></span></figcaption>
-                </figure>
-              </a>
-            </div>
-          <% end %>
-          <div class="col-12 col-sm-12 col-md-12 at-btnarea-mt float-left">
-            <div class="at-btnarea">
-              <%= link_to 'View All', apartments_path, class: 'at-btn' %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Top Categories End -->
 </main>
 <!-- Main End -->
 <script type="text/javascript">

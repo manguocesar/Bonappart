@@ -8,4 +8,9 @@ class ApartmentType < ApplicationRecord
   scope :singapore_campus, -> { where(campus: 'Singapore', default_type: true).first }
 
   validates_presence_of :name, :landlord_listing_fee, :student_booking_fee
+  before_destroy :update_apartment_type
+
+  def update_apartment_type
+    apartments.update_all(apartment_type_id: ApartmentType.fontainebleau_campus&.id)
+  end
 end

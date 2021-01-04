@@ -203,6 +203,7 @@ en:
     internet_charge: Internet charge
     insurance_charge: Insurance charge
     deposit_amount: Deposit amount
+    rent_amount: Rent amount
   booking:
     status: Status
     start_date: Start date
