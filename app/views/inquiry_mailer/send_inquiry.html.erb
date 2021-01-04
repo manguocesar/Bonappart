@@ -13,8 +13,7 @@
 </style>
 
 <h4><%= "Hello #{@receiver_name.titleize}" %></h4>
-<p><%= "#{@sender_name} has sent you the enquiry for your apartment" %></p>
-<br/>
-<p><%= @message %></p><br/><br/>
+<p><%= "#{@sender_name} has sent you the enquiry for your property." %></p>
+<p><%= @message %></p>
 
-Please login on <%= link_to 'bonapart.org', root_path %> and go to your "inquries" to provide answer to the request.
+Please login on <%= link_to 'bonapart.org', root_url %> and go to your "inquries" to provide answer to the request.
