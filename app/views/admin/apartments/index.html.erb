@@ -21,6 +21,7 @@
                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('apartment.campus') %></th>
                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('apartment.availability') %></th>
                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= t('rent.rent_amount') %></th>
+                    <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"><%= 'Status' %></th>
                     <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" style="width:150px; text-align:center;"><%= t('actions') %></th>
                   </tr>
                 </thead>
@@ -33,6 +34,7 @@
                       <td><%= apartment&.campus %></td>
                       <td><%= apartment&.display_proper_availability_date %></td>
                       <td><%= "€#{check_float(apartment&.rent_rate&.net_rate)}" %></td>
+                      <td><%= apartment.posted? %></td>
                       <td align="center">
                         <%= link_to admin_apartment_path(apartment), class:'btn btn-sm btn-primary' do %>
                           <i class='fa fa-eye'></i>

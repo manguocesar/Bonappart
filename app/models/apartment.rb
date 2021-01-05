@@ -59,6 +59,10 @@ class Apartment < ApplicationRecord
     image == images.first ? 'active' : ''
   end
 
+  def posted?
+    subscribed? ? 'Posted' : 'Not Posted'
+  end
+
   # For apply geocoding using full address
   def full_address
     [area, city, country].compact.join(', ')
